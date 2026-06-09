@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Host: addicionalseo.com
+
+Sitemap: https://addicionalseo.com/sitemap.xml

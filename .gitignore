@@ -1,0 +1,37 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporals
+tmp/
+temp/
+.cache/
+*.tmp
+
+# Backups
+_backup*/
+backup*/
+backups*/
+*.bak
+*.old
+*.zip
+
+# Credencials / configuracions sensibles
+.env
+.env.*
+config.php
+wp-config.php
+*.sql
+
+# Node / builds si existissin
+node_modules/
+dist/
+build/

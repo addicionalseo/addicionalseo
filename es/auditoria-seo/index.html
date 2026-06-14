@@ -21,6 +21,488 @@
 <meta content="https://addicionalseo.com/es/auditoria-seo/" property="og:url"/>
 <meta content="https://addicionalseo.com/assets/brand-card.png" property="og:image"/>
 <link href="/styles.css?v=8" rel="stylesheet"/>
+<style>
+      body.page-services.page-core-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+
+      body.page-services.page-core-premium .page-hero {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 4.8rem;
+        overflow: hidden;
+      }
+
+      body.page-services.page-core-premium .page-hero::before {
+        height: 560px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.2), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+
+      body.page-services.page-core-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.75), transparent 78%);
+        pointer-events: none;
+      }
+
+      .page-core-premium .page-hero .container,
+      .page-core-premium .section-shell .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-core-premium .page-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 2.5rem;
+        align-items: start;
+      }
+
+      .page-core-premium .hero-copy {
+        position: relative;
+      }
+
+      .page-core-premium .hero-copy::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        left: -1.1rem;
+        width: 108px;
+        height: 108px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .page-core-premium .hero-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .page-core-premium .hero-context {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.72rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.8);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .page-core-premium .hero-context::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+
+      .page-core-premium .page-hero-inner h1 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+        max-width: 11ch;
+        text-wrap: balance;
+        margin-bottom: 1.1rem;
+      }
+
+      .page-core-premium .hero-intro-card {
+        max-width: 44rem;
+        padding: 1.35rem 1.4rem 1.15rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(14,14,14,0.86);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.26);
+        backdrop-filter: blur(14px);
+      }
+
+      .page-core-premium .button-row {
+        align-items: center;
+        gap: 0.9rem;
+        margin-top: 1.35rem;
+      }
+
+      .page-core-premium .hero-proof,
+      .page-core-premium .cta-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .page-core-premium .proof-chip,
+      .page-core-premium .cta-proof span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .page-core-premium .proof-chip svg,
+      .page-core-premium .feature-icon svg,
+      .page-core-premium .trust-icon svg,
+      .page-core-premium .metric-icon svg,
+      .page-core-premium .rail-icon svg,
+      .page-core-premium .cta-side-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .page-core-premium .feature-panel,
+      .page-core-premium .insight-card,
+      .page-core-premium .audience-panel,
+      .page-core-premium .cta-side {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 26px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.15), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.05), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.3);
+      }
+
+      .page-core-premium .feature-panel {
+        padding: 1.7rem;
+      }
+
+      .page-core-premium .feature-panel::before,
+      .page-core-premium .insight-card::before,
+      .page-core-premium .audience-panel::before,
+      .page-core-premium .cta-side::before,
+      .page-core-premium .service-card::before,
+      .page-core-premium .process-step::before,
+      .page-core-premium .faq-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 90px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0.65), rgba(210,47,123,0.65), rgba(210,47,123,0));
+      }
+
+      .page-core-premium .feature-panel-head,
+      .page-core-premium .section-head {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .page-core-premium .feature-kicker,
+      .page-core-premium .tagline,
+      .page-core-premium .card-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .page-core-premium .feature-kicker::before,
+      .page-core-premium .tagline::before,
+      .page-core-premium .card-mark::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.35);
+      }
+
+      .page-core-premium .feature-title,
+      .page-core-premium .section-head h2,
+      .page-core-premium .cta-copy h2 {
+        font-size: clamp(1.8rem, 2.6vw, 2.45rem);
+        line-height: 1.03;
+        letter-spacing: -0.05em;
+        max-width: 18ch;
+      }
+
+      .page-core-premium .feature-metric-grid,
+      .page-core-premium .process-grid,
+      .page-core-premium .service-card-grid {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .page-core-premium .feature-metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1rem;
+      }
+
+      .page-core-premium .feature-metric,
+      .page-core-premium .service-card,
+      .page-core-premium .faq-card,
+      .page-core-premium .process-step {
+        position: relative;
+        overflow: hidden;
+        padding: 1.15rem 1.1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.95);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+      }
+
+      .page-core-premium .metric-top,
+      .page-core-premium .feature-top,
+      .page-core-premium .trust-item,
+      .page-core-premium .rail-card,
+      .page-core-premium .cta-side-item {
+        display: grid;
+        align-items: start;
+        gap: 0.75rem;
+      }
+
+      .page-core-premium .metric-top,
+      .page-core-premium .feature-top {
+        grid-template-columns: auto 1fr;
+      }
+
+      .page-core-premium .trust-item,
+      .page-core-premium .rail-card,
+      .page-core-premium .cta-side-item {
+        grid-template-columns: 2rem 1fr;
+      }
+
+      .page-core-premium .metric-icon,
+      .page-core-premium .feature-icon,
+      .page-core-premium .trust-icon,
+      .page-core-premium .rail-icon,
+      .page-core-premium .cta-side-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+      }
+
+      .page-core-premium .metric-value,
+      .page-core-premium .process-number {
+        display: block;
+        color: var(--white);
+        font-size: 1.18rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+
+      .page-core-premium .metric-label,
+      .page-core-premium .section-support,
+      .page-core-premium .feature-note,
+      .page-core-premium .audience-note {
+        color: rgba(255,255,255,0.66);
+      }
+
+      .page-core-premium .feature-list,
+      .page-core-premium .trust-list,
+      .page-core-premium .audience-rail,
+      .page-core-premium .cta-side-list {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .page-core-premium .section-shell {
+        position: relative;
+        padding-top: 5.6rem;
+        padding-bottom: 5.6rem;
+      }
+
+      .page-core-premium .section-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
+        opacity: 0.72;
+      }
+
+      .page-core-premium .section-shell.alt-surface {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+          rgba(13,13,13,0.78);
+      }
+
+      .page-core-premium .editorial-split,
+      .page-core-premium .audience-layout,
+      .page-core-premium .cta-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(290px, 0.92fr);
+        gap: 1.6rem;
+        align-items: start;
+      }
+
+      .page-core-premium .editorial-copy,
+      .page-core-premium .audience-copy,
+      .page-core-premium .cta-copy {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .page-core-premium .editorial-quote,
+      .page-core-premium .audience-note {
+        padding: 1.15rem 1.25rem;
+        border-left: 2px solid var(--yellow);
+        border-radius: 0 16px 16px 0;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.84);
+        font-weight: 600;
+      }
+
+      .page-core-premium .service-card h3,
+      .page-core-premium .faq-card h3,
+      .page-core-premium .process-step h3 {
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .page-core-premium .service-card p,
+      .page-core-premium .faq-card p,
+      .page-core-premium .process-step p {
+        color: rgba(255,255,255,0.68);
+      }
+
+      .page-core-premium .service-card p a,
+      .page-core-premium .faq-card p a,
+      .page-core-premium .cta-band p a {
+        color: var(--white);
+        text-decoration-color: rgba(255,255,255,0.28);
+      }
+
+      .page-core-premium .service-card-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-core-premium .service-card-grid .service-card {
+        grid-column: span 4;
+      }
+
+      .page-core-premium .service-card-grid .service-card-featured {
+        grid-column: span 6;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.13), transparent 28%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-core-premium .service-card-grid .service-card-accent {
+        background:
+          radial-gradient(circle at top left, rgba(252,243,0,0.1), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-core-premium .process-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-core-premium .process-step {
+        grid-column: span 6;
+        padding: 1.35rem;
+      }
+
+      .page-core-premium .cta-band {
+        padding: 1.8rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.16), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.96);
+        box-shadow: 0 32px 90px rgba(0,0,0,0.32);
+      }
+
+      .page-core-premium .cta-band::before,
+      .page-core-premium .cta-band::after {
+        display: none;
+      }
+
+      .page-core-premium .cta-side {
+        padding: 1.35rem;
+      }
+
+      .page-core-premium .faq-grid {
+        gap: 1rem;
+      }
+
+      @media (max-width: 1080px) {
+        .page-core-premium .page-hero-inner,
+        .page-core-premium .editorial-split,
+        .page-core-premium .audience-layout,
+        .page-core-premium .cta-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .page-core-premium .service-card-grid .service-card,
+        .page-core-premium .service-card-grid .service-card-featured,
+        .page-core-premium .process-step {
+          grid-column: span 12;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-core-premium .page-hero-inner h1 {
+          max-width: 11ch;
+          font-size: clamp(1.62rem, 5.9vw, 2.05rem);
+          line-height: 0.99;
+        }
+
+        .page-core-premium .feature-metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-core-premium .section-shell {
+          padding-top: 4.3rem;
+          padding-bottom: 4.3rem;
+        }
+      }
+    </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,7 +568,7 @@
 }
     </script>
 </head>
-<body class="page-services">
+<body class="page-services page-core-premium">
 <header class="site-header">
 <div class="container">
 <a aria-label="Addicionalseo" class="brand brand-logo" href="/es/">
@@ -110,37 +592,105 @@
 </div>
 </header>
 <main id="main-content">
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/es/">Inicio</a><span>/</span><span>Auditoría SEO</span></div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Diagnóstico SEO</p><h1>Auditoría SEO para saber qué está fallando, qué está funcionando y qué conviene priorizar primero.</h1><p class="page-intro">Analizamos la web desde una mirada técnica, comercial y de contenido para que tengas un diagnóstico claro y accionable.</p></div><div class="card feature-panel" data-reveal=""><div class="feature-list">
-<div class="feature-item"><h3>Diagnóstico técnico</h3><p>Cobertura, canónicos, redirecciones, velocidad y cualquier punto que afecte indexación o rendimiento.</p></div>
-<div class="feature-item"><h3>Revisión de contenido</h3><p>Vemos si las páginas responden bien a la búsqueda y si la jerarquía actual ayuda realmente a captar.</p></div>
-<div class="feature-item"><h3>Plan priorizado</h3><p>Entregamos una propuesta ordenada por impacto, urgencia y facilidad de implementación.</p></div>
-</div><h3 style="margin-top:1.4rem;">Enlaces relacionados</h3><ul class="article-list">
-<li><a href="/es/seo/">Servicio SEO</a></li>
-<li><a href="/es/auditoria-seo-que-incluye/">Artículo sobre auditoría SEO</a></li>
-<li><a href="/es/seo-para-pymes-prioridades-reales/">SEO para pymes</a></li>
-</ul></div></div></div></section>
-<section class="section-shell"><div class="container"><div data-reveal=""><p class="eyebrow">Qué trabajamos</p><h2>Una buena auditoría debe ordenar decisiones, no solo enumerar errores.</h2>
-<p class="page-intro">Revisamos rastreo, indexación, arquitectura, contenidos, intenciones de búsqueda y señales de confianza para ver dónde se pierde valor.</p>
-<p class="page-intro">El objetivo es priorizar qué corregir ahora, qué páginas conviene crear y qué mejoras pueden esperar una segunda fase.</p>
-</div></div></section>
-<section class="section-shell alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Capas de trabajo</p><h2>Qué suele descubrir una buena auditoría</h2><p>La utilidad real de una auditoría es que ordena problemas y oportunidades.</p></div><div class="card-grid">
-<article class="service-card" data-reveal=""><h3>Páginas demasiado genéricas</h3><p>URLs con potencial pero sin suficiente claridad comercial o semántica.</p></article>
-<article class="service-card" data-reveal=""><h3>Arquitectura poco clara</h3><p>Cuando los servicios no están bien separados, Google y el usuario entienden peor el proyecto.</p></article>
-<article class="service-card" data-reveal=""><h3>Bloqueos técnicos</h3><p>Fricciones invisibles que limitan indexación, experiencia y crecimiento.</p></article>
-</div></div></section>
-<section class="section-shell"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Proceso</p><h2>Cómo enfocamos la auditoría</h2><p>Queremos que el documento final sirva para decidir mejor e implementar mejor.</p></div><div class="process-grid">
-<article class="process-step" data-reveal=""><h3>Kickoff</h3><p>Entendemos objetivos, mercado, servicios y estado actual.</p></article>
-<article class="process-step" data-reveal=""><h3>Análisis</h3><p>Revisamos técnica, contenido, arquitectura y competencia.</p></article>
-<article class="process-step" data-reveal=""><h3>Priorización</h3><p>Clasificamos acciones por impacto y dependencia.</p></article>
-<article class="process-step" data-reveal=""><h3>Sesión final</h3><p>Aterrizamos conclusiones y siguientes pasos.</p></article>
-</div></div></section>
-<section class="section-shell compact alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Preguntas frecuentes</p><h2>Dudas habituales sobre una auditoría SEO</h2></div><div class="faq-grid">
+<section class="page-hero">
+<div class="container"><div class="breadcrumb"><a href="/es/">Inicio</a><span>/</span><span>Auditoría SEO</span></div><div class="page-hero-inner"><div class="hero-copy" data-reveal=""><div class="hero-badge-row"><p class="eyebrow">Diagnóstico SEO</p><span class="hero-context">Técnica · contenido · prioridades</span></div><h1>Auditoría SEO para entender qué está fallando, qué está sosteniendo la visibilidad y qué conviene priorizar primero.</h1><div class="hero-intro-card"><p class="page-intro">Analizamos la web desde una mirada técnica, comercial y de contenido para que tengas un diagnóstico claro y accionable. El objetivo no es acumular observaciones, sino convertirlas en decisiones útiles para ordenar la siguiente fase del proyecto.</p><div class="hero-proof" aria-label="Señales clave de la auditoría">
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg>Lectura SEO transversal</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg>Problemas ordenados por impacto</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg>Visión técnica y comercial</span>
+</div></div><div class="button-row"><a class="button" href="/es/contacto/">Solicitar auditoría</a><a class="button-secondary" href="/es/seo/">Ver servicio SEO</a></div></div><div class="feature-panel" data-reveal=""><div class="feature-panel-head"><span class="feature-kicker">Addicionalseo / auditoría SEO</span><h2 class="feature-title">Una auditoría útil debe filtrar el ruido y dejar claro qué toca hacer antes, qué puede esperar y por qué.</h2><div class="feature-metric-grid">
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><span class="metric-value">Diagnóstico técnico</span><span class="metric-label">Cobertura, indexación, canónicos, redirecciones y rendimiento.</span></div></div></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><span class="metric-value">Lectura de negocio</span><span class="metric-label">Vemos si las páginas y servicios tienen claridad suficiente para captar.</span></div></div></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><span class="metric-value">Prioridades reales</span><span class="metric-label">Entregamos un orden de trabajo pensado por impacto y viabilidad.</span></div></div></div>
+</div></div><div class="feature-list">
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><h3>No es solo una lista de errores</h3></div><p>El valor está en entender qué problemas te están limitando más y qué oportunidades merecen una segunda fase.</p></div>
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><h3>Encaja con rediseño, SEO o nuevas landings</h3></div><p>Sirve tanto para corregir una base débil como para decidir mejor si conviene atacar contenido, arquitectura o nuevas páginas.</p></div>
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><h3>Tienes contexto, no solo conclusiones</h3></div><p>Explicamos por qué detectamos cada punto y qué relación tiene con visibilidad, captación y experiencia de usuario.</p></div>
+</div><p class="feature-note"><strong>Idea base:</strong> ordenar el proyecto para que la siguiente inversión en SEO o web tenga mucho más sentido.</p></div></div></div>
+</section>
+<section class="section-shell">
+<div class="container">
+<div class="editorial-split" data-reveal="">
+<div class="editorial-copy">
+<p class="eyebrow">Qué trabajamos</p>
+<h2>Una buena auditoría debe ordenar decisiones, no solo enumerar errores ni inflar un documento.</h2>
+<p class="section-support">Revisamos rastreo, indexación, arquitectura, contenidos, intenciones de búsqueda y señales de confianza para ver dónde se pierde valor y cómo recuperarlo con más criterio.</p>
+<p class="page-intro">En muchas webs los problemas no vienen de un único error. Vienen de una suma de fricciones: páginas demasiado genéricas, servicios mal separados, falta de enlazado interno, canónicos mal resueltos o una jerarquía que no ayuda ni a Google ni al usuario.</p>
+<p class="page-intro">La auditoría sirve para poner orden. Para decidir qué corregir ahora, qué páginas conviene crear y qué mejoras pueden esperar una segunda fase sin perder oportunidades por el camino.</p>
+<p class="editorial-quote">Cuando el diagnóstico es bueno, el proyecto deja de avanzar por intuiciones y empieza a moverse con una secuencia mucho más clara.</p>
+</div>
+<aside class="insight-card">
+<span class="tagline">Lecturas habituales</span>
+<div class="trust-list">
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Páginas con potencial desaprovechado</strong><span>URLs que podrían captar mejor con una estructura y un mensaje más limpios.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><strong>Arquitectura poco útil para crecer</strong><span>Cuando los servicios y las intenciones de búsqueda están demasiado mezclados.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>Bloqueos técnicos invisibles</strong><span>Fricciones que limitan indexación, experiencia y margen de captación.</span></div></div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section-shell alt-surface">
+<div class="container">
+<div class="section-head" data-reveal=""><p class="eyebrow">Capas de trabajo</p><h2>Qué suele descubrir una auditoría bien planteada y qué hacemos con cada hallazgo.</h2><p class="section-support">La utilidad real no está en detectar muchísimas cosas, sino en separar lo urgente, lo importante y lo que solo es ruido.</p></div>
+<div class="service-card-grid">
+<article class="service-card service-card-featured" data-reveal=""><span class="card-mark">Semántica</span><h3>Páginas demasiado genéricas o difusas</h3><p>Identificamos URLs con potencial pero sin suficiente claridad comercial o semántica, y definimos cómo reenfocarlas para que sean más útiles para posicionar y convertir.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Jerarquía</span><h3>Arquitectura poco clara</h3><p>Cuando los servicios no están bien separados, Google y el usuario entienden peor el proyecto. Aquí suele haber mucho margen de mejora.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Técnica</span><h3>Bloqueos que frenan crecimiento</h3><p>Canónicos, redirecciones, cobertura, velocidad o rastreo pueden limitar la visibilidad sin que se note a simple vista.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Contenido</span><h3>Mensaje que no acompaña la búsqueda</h3><p>Vemos si las páginas responden realmente a la intención de búsqueda o si necesitan más estructura, más contexto o una propuesta más clara.</p></article>
+<article class="service-card service-card-accent" data-reveal=""><span class="card-mark">Priorización</span><h3>Acciones que deben ir antes</h3><p>No todas las mejoras tienen el mismo impacto. Definimos cuáles conviene ejecutar primero y cuáles pueden esperar sin penalizar la captación.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Hoja de ruta</span><h3>Siguiente fase con sentido</h3><p>La auditoría puede desembocar en <a href="/es/seo/">SEO continuado</a>, nuevas landings, una reestructuración de servicios o un rediseño más bien orientado.</p></article>
+</div>
+</div>
+</section>
+<section class="section-shell">
+<div class="container">
+<div class="audience-layout" data-reveal="">
+<div class="audience-copy">
+<p class="eyebrow">Cuándo encaja más</p>
+<h2>Es especialmente útil cuando la web ya existe, pero hay dudas reales sobre qué está frenando la visibilidad o la captación.</h2>
+<p class="page-intro">Suele tener mucho sentido antes de invertir más en contenido, rediseño o campañas, porque evita dedicar recursos a piezas que todavía no tienen una base suficientemente ordenada.</p>
+<p class="page-intro">También es una buena forma de decidir qué landings faltan, qué servicios conviene separar y qué relación debería tener el SEO con la web comercial.</p>
+<p class="audience-note">Es útil tanto para webs pequeñas como para proyectos más amplios, siempre que exista necesidad de priorizar con algo más de precisión.</p>
+</div>
+<aside class="audience-panel">
+<span class="tagline">Síntomas habituales</span>
+<div class="audience-rail">
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>La web no crece lo suficiente</strong><span>Hay movimiento, pero no queda claro dónde se pierde visibilidad o capacidad de conversión.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><div><strong>Se quiere rediseñar con criterio</strong><span>Antes de tocar estructura o contenido, conviene saber qué se debe preservar y qué hay que replantear.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>Hay que decidir nuevas páginas o prioridades</strong><span>No está claro si conviene reforzar servicios, crear landings o atacar contenido editorial.</span></div></div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section-shell alt-surface">
+<div class="container">
+<div class="section-head" data-reveal=""><p class="eyebrow">Proceso</p><h2>Cómo enfocamos la auditoría para que el resultado sirva para decidir mejor e implementar mejor.</h2></div>
+<div class="process-grid">
+<article class="process-step" data-reveal=""><span class="process-number">01</span><span class="card-mark">Contexto</span><h3>Kickoff y objetivos</h3><p>Entendemos mercado, servicios, estado actual de la web y qué decisiones se deben tomar a corto plazo.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">02</span><span class="card-mark">Diagnóstico</span><h3>Análisis técnico y de contenido</h3><p>Revisamos técnica, arquitectura, contenido, intenciones de búsqueda y cualquier fricción que pueda afectar visibilidad o captación.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">03</span><span class="card-mark">Orden</span><h3>Priorización</h3><p>Clasificamos acciones por impacto, urgencia y dependencia para que sea fácil saber qué hacer primero.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">04</span><span class="card-mark">Acción</span><h3>Sesión final y siguientes pasos</h3><p>Aterrizamos conclusiones, resolvemos dudas y dejamos una base clara para implementar cambios con más seguridad.</p></article>
+</div>
+</div>
+</section>
+<section class="section-shell compact alt-surface">
+<div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Preguntas frecuentes</p><h2>Dudas habituales sobre una auditoría SEO</h2></div><div class="faq-grid">
 <article class="faq-card" data-reveal=""><h3>¿Cuándo tiene sentido hacerla?</h3><p>Cuando la web no crece, cuando se va a rediseñar o cuando hay que decidir nuevas páginas y prioridades.</p></article>
 <article class="faq-card" data-reveal=""><h3>¿Incluye solo aspectos técnicos?</h3><p>No. También revisamos intenciones de búsqueda, mensaje, servicios y estructura.</p></article>
 <article class="faq-card" data-reveal=""><h3>¿Sirve para webs pequeñas?</h3><p>Sí. Una web pequeña también necesita orden, sobre todo si depende de pocos servicios.</p></article>
 <article class="faq-card" data-reveal=""><h3>¿Después podéis implementar cambios?</h3><p>Sí. Podemos ejecutar mejoras SEO, nuevas landings o rediseño si conviene.</p></article>
-</div></div></section>
-<section class="section-shell compact"><div class="container"><div class="cta-band" data-reveal=""><p class="eyebrow">Siguiente paso</p><h2>Si quieres saber qué necesita realmente tu web, podemos empezar por una auditoría.</h2><p>Es la mejor manera de ordenar prioridades antes de tocar SEO, contenido, rediseño o campañas.</p><div class="button-row"><a class="button" href="/es/contacto/">Solicitar auditoría</a><a class="button-secondary" href="/auditoria-seo/">Veure en català</a></div></div></div></section>
+</div></div>
+</section>
+<section class="section-shell compact">
+<div class="container">
+<div class="cta-band" data-reveal=""><div class="cta-layout"><div class="cta-copy"><p class="eyebrow">Siguiente paso</p><h2>Si quieres saber qué necesita realmente tu web antes de mover más piezas, podemos empezar por una auditoría.</h2><p>Es la forma más clara de ordenar prioridades antes de tocar SEO, contenido, rediseño o campañas. Te quedará una lectura útil del momento actual y una propuesta más limpia para la siguiente fase.</p><div class="cta-proof" aria-label="Ventajas del primer paso"><span>Diagnóstico con contexto</span><span>Prioridades accionables</span><span>Visión web + SEO</span></div><div class="button-row"><a class="button" href="/es/contacto/">Solicitar auditoría</a><a class="button-secondary" href="/auditoria-seo/">Veure versió en català</a></div></div><aside class="cta-side"><h3>Qué te llevas</h3><ul class="cta-side-list">
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Lectura clara del problema</strong><span>Dónde se pierde valor, qué páginas pueden crecer y qué fricciones hay que resolver antes.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>Relación entre SEO y estructura</strong><span>Cómo debería ordenarse la base para que contenido, servicios y visibilidad avancen juntos.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><strong>Orden para la siguiente inversión</strong><span>Ya sea SEO continuado, nuevas landings o rediseño, sabrás por dónde tiene más sentido empezar.</span></div></li>
+</ul></aside></div></div>
+</div>
+</section>
 </main>
 <footer class="footer"><div class="container footer-grid"><div><a aria-label="Addicionalseo" class="brand brand-logo" href="/es/"><img alt="Addicionalseo" src="/assets/logo-header.png"/></a><p>SEO, diseño web y captación para empresas de Cataluña y toda España.</p></div><div><h3>Navegación</h3><div class="footer-links"><a href="/es/agencia/">Agencia</a>
 <a href="/es/casos/">Casos</a>

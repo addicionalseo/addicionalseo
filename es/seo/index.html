@@ -16,6 +16,493 @@
 <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/styles.css?v=8" rel="stylesheet"/>
+<style>
+      body.page-services.page-core-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+
+      body.page-services.page-core-premium .page-hero {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 4.8rem;
+        overflow: hidden;
+      }
+
+      body.page-services.page-core-premium .page-hero::before {
+        height: 560px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.2), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+
+      body.page-services.page-core-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.75), transparent 78%);
+        pointer-events: none;
+      }
+
+      .page-core-premium .page-hero .container,
+      .page-core-premium .section-shell .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-core-premium .page-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        gap: 2.7rem;
+        align-items: start;
+      }
+
+      .page-core-premium .hero-copy {
+        position: relative;
+      }
+
+      .page-core-premium .hero-copy::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        left: -1.15rem;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .page-core-premium .hero-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .page-core-premium .hero-context {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.72rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.8);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .page-core-premium .hero-context::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+
+      .page-core-premium .page-hero-inner h1 {
+        font-size: clamp(2.05rem, 3.05vw, 3.15rem);
+        line-height: 0.97;
+        letter-spacing: -0.06em;
+        max-width: 12ch;
+        text-wrap: balance;
+        margin-bottom: 1.1rem;
+      }
+
+      .page-core-premium .hero-intro-card {
+        max-width: 45rem;
+        padding: 1.35rem 1.4rem 1.15rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(14,14,14,0.86);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.26);
+        backdrop-filter: blur(14px);
+      }
+
+      .page-core-premium .button-row {
+        align-items: center;
+        gap: 0.9rem;
+        margin-top: 1.35rem;
+      }
+
+      .page-core-premium .hero-proof,
+      .page-core-premium .cta-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .page-core-premium .proof-chip,
+      .page-core-premium .cta-proof span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .page-core-premium .proof-chip svg,
+      .page-core-premium .feature-icon svg,
+      .page-core-premium .trust-icon svg,
+      .page-core-premium .metric-icon svg,
+      .page-core-premium .rail-icon svg,
+      .page-core-premium .cta-side-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .page-core-premium .feature-panel,
+      .page-core-premium .insight-card,
+      .page-core-premium .audience-panel,
+      .page-core-premium .proof-box,
+      .page-core-premium .cta-side {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 26px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.15), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.05), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.3);
+      }
+
+      .page-core-premium .feature-panel {
+        padding: 1.7rem;
+      }
+
+      .page-core-premium .feature-panel::before,
+      .page-core-premium .insight-card::before,
+      .page-core-premium .audience-panel::before,
+      .page-core-premium .proof-box::before,
+      .page-core-premium .cta-side::before,
+      .page-core-premium .service-card::before,
+      .page-core-premium .process-step::before,
+      .page-core-premium .faq-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 90px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0.65), rgba(210,47,123,0.65), rgba(210,47,123,0));
+      }
+
+      .page-core-premium .feature-panel-head,
+      .page-core-premium .section-head {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .page-core-premium .feature-kicker,
+      .page-core-premium .tagline,
+      .page-core-premium .card-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .page-core-premium .feature-kicker::before,
+      .page-core-premium .tagline::before,
+      .page-core-premium .card-mark::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.35);
+      }
+
+      .page-core-premium .feature-title,
+      .page-core-premium .section-head h2,
+      .page-core-premium .cta-copy h2 {
+        font-size: clamp(1.85rem, 2.7vw, 2.55rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+        max-width: 18ch;
+      }
+
+      .page-core-premium .feature-metric-grid,
+      .page-core-premium .process-grid {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .page-core-premium .feature-metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1rem;
+      }
+
+      .page-core-premium .feature-metric,
+      .page-core-premium .service-card,
+      .page-core-premium .faq-card,
+      .page-core-premium .process-step {
+        position: relative;
+        overflow: hidden;
+        padding: 1.15rem 1.1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.95);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+      }
+
+      .page-core-premium .metric-top,
+      .page-core-premium .feature-top,
+      .page-core-premium .trust-item,
+      .page-core-premium .rail-card,
+      .page-core-premium .cta-side-item {
+        display: grid;
+        align-items: start;
+        gap: 0.75rem;
+      }
+
+      .page-core-premium .metric-top,
+      .page-core-premium .feature-top {
+        grid-template-columns: auto 1fr;
+      }
+
+      .page-core-premium .trust-item,
+      .page-core-premium .rail-card,
+      .page-core-premium .cta-side-item {
+        grid-template-columns: 2rem 1fr;
+      }
+
+      .page-core-premium .metric-icon,
+      .page-core-premium .feature-icon,
+      .page-core-premium .trust-icon,
+      .page-core-premium .rail-icon,
+      .page-core-premium .cta-side-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+      }
+
+      .page-core-premium .metric-value,
+      .page-core-premium .process-number {
+        display: block;
+        color: var(--white);
+        font-size: 1.18rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+
+      .page-core-premium .metric-label,
+      .page-core-premium .section-support,
+      .page-core-premium .feature-note,
+      .page-core-premium .proof-box p,
+      .page-core-premium .audience-note {
+        color: rgba(255,255,255,0.66);
+      }
+
+      .page-core-premium .feature-list,
+      .page-core-premium .trust-list,
+      .page-core-premium .proof-column,
+      .page-core-premium .audience-rail,
+      .page-core-premium .cta-side-list {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .page-core-premium .section-shell {
+        position: relative;
+        padding-top: 5.7rem;
+        padding-bottom: 5.7rem;
+      }
+
+      .page-core-premium .section-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
+        opacity: 0.72;
+      }
+
+      .page-core-premium .section-shell.alt-surface {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+          rgba(13,13,13,0.78);
+      }
+
+      .page-core-premium .editorial-split,
+      .page-core-premium .audience-layout,
+      .page-core-premium .cta-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 1.6rem;
+        align-items: start;
+      }
+
+      .page-core-premium .editorial-copy,
+      .page-core-premium .audience-copy,
+      .page-core-premium .cta-copy {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .page-core-premium .editorial-quote,
+      .page-core-premium .audience-note {
+        padding: 1.15rem 1.25rem;
+        border-left: 2px solid var(--yellow);
+        border-radius: 0 16px 16px 0;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.84);
+        font-weight: 600;
+      }
+
+      .page-core-premium .service-card h3,
+      .page-core-premium .faq-card h3,
+      .page-core-premium .process-step h3 {
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .page-core-premium .service-card p,
+      .page-core-premium .faq-card p,
+      .page-core-premium .process-step p {
+        color: rgba(255,255,255,0.68);
+      }
+
+      .page-core-premium .service-card p a,
+      .page-core-premium .faq-card p a,
+      .page-core-premium .cta-band p a {
+        color: var(--white);
+        text-decoration-color: rgba(255,255,255,0.28);
+      }
+
+      .page-core-premium .service-card-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .page-core-premium .service-card-grid .service-card {
+        grid-column: span 4;
+      }
+
+      .page-core-premium .service-card-grid .service-card-featured {
+        grid-column: span 6;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.13), transparent 28%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-core-premium .service-card-grid .service-card-accent {
+        background:
+          radial-gradient(circle at top left, rgba(252,243,0,0.1), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-core-premium .process-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-core-premium .process-step {
+        grid-column: span 6;
+        padding: 1.4rem;
+      }
+
+      .page-core-premium .cta-band {
+        padding: 1.8rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.16), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.96);
+        box-shadow: 0 32px 90px rgba(0,0,0,0.32);
+      }
+
+      .page-core-premium .cta-band::before,
+      .page-core-premium .cta-band::after {
+        display: none;
+      }
+
+      .page-core-premium .cta-side {
+        padding: 1.35rem;
+      }
+
+      .page-core-premium .faq-grid {
+        gap: 1rem;
+      }
+
+      @media (max-width: 1080px) {
+        .page-core-premium .page-hero-inner,
+        .page-core-premium .editorial-split,
+        .page-core-premium .audience-layout,
+        .page-core-premium .cta-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .page-core-premium .service-card-grid .service-card,
+        .page-core-premium .service-card-grid .service-card-featured,
+        .page-core-premium .process-step {
+          grid-column: span 12;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-core-premium .page-hero-inner h1 {
+          max-width: 11ch;
+          font-size: clamp(1.62rem, 6vw, 2.15rem);
+          line-height: 0.99;
+        }
+
+        .page-core-premium .feature-metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-core-premium .section-shell {
+          padding-top: 4.35rem;
+          padding-bottom: 4.35rem;
+        }
+      }
+    </style>
 <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -41,7 +528,7 @@
       }
     </script>
 </head>
-<body class="page-services">
+<body class="page-services page-core-premium">
 <header class="site-header">
 <div class="container">
 <a aria-label="Addicionalseo" class="brand brand-logo" href="/es/">
@@ -70,41 +557,46 @@
 <a href="/es/">Inicio</a>
 <span>/</span>
 <span>SEO</span>
-</div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Servicio SEO profesional</p><h1>SEO para empresas, autónomos y particulares que quieren que Google les encuentre antes que a la competencia.</h1><p class="page-intro">
+</div><div class="page-hero-inner"><div class="hero-copy" data-reveal=""><div class="hero-badge-row"><p class="eyebrow">Servicio SEO profesional</p><span class="hero-context">Arquitectura · contenido · visibilidad</span></div><h1>SEO para empresas, autónomos y particulares que quieren crecer con una base orgánica más sólida y rentable.</h1><div class="hero-intro-card"><p class="page-intro">
             El posicionamiento en Google no es un lujo, es el canal que genera clientes sin pagar por cada clic.
             Trabajamos el SEO de forma integral — arquitectura web, contenido de servicio y SEO local — para que
             empresas, autónomos y particulares de toda España aparezcan delante de los clientes que ya les están buscando.
-          </p><div class="button-row">
+          </p><div class="hero-proof" aria-label="Señales clave del servicio">
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg>Intenciones de búsqueda reales</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg>Prioridades con criterio</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg>Visión técnica y comercial</span>
+</div></div><div class="button-row">
 <a class="button" href="/es/contacto/">Solicitar revisión SEO</a>
 <a class="button-secondary" href="/es/diseno-web/">Ver diseño web</a>
-</div></div><div class="card feature-panel" data-reveal="">
-<div class="feature-list">
-<div class="feature-item">
-<h3>Arquitectura web</h3>
-<p>Estructura de URLs, jerarquía de páginas y enlazado interno pensados para que Google entienda tu negocio y lo posicione correctamente.</p>
-</div>
-<div class="feature-item">
-<h3>Contenido de servicio</h3>
-<p>Páginas transaccionales e informacionales que capturan las búsquedas de tus clientes potenciales en los momentos de máxima intención de compra.</p>
-</div>
-<div class="feature-item">
-<h3>SEO local y nacional</h3>
-<p>Visibilidad en Google Maps, páginas de zona y estrategias para captar búsquedas locales y nacionales según tus objetivos de mercado.</p>
-</div>
-</div>
-</div></div></div>
+</div></div><div class="feature-panel" data-reveal=""><div class="feature-panel-head"><span class="feature-kicker">Addicionalseo / servicio SEO</span><h2 class="feature-title">No buscamos solo visitas: buscamos que las páginas correctas capten mejor y sostengan crecimiento real.</h2><div class="feature-metric-grid">
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><span class="metric-value">Base técnica</span><span class="metric-label">Rastreo, arquitectura e indexación con orden.</span></div></div></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><span class="metric-value">Valor comercial</span><span class="metric-label">Páginas que no solo posicionan, sino que acercan al contacto.</span></div></div></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><span class="metric-value">Priorización real</span><span class="metric-label">No hacemos listas infinitas: definimos qué toca antes.</span></div></div></div>
+</div></div><div class="feature-list">
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><h3>SEO conectado con la web real</h3></div><p>Arquitectura, servicios, copy y enlazado interno se trabajan juntos para que el posicionamiento tenga base de verdad.</p></div>
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><h3>Más claridad sobre qué puede crecer</h3></div><p>Definimos qué páginas tienen más potencial, qué fricciones te están frenando y dónde hay margen real de captación.</p></div>
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><h3>SEO con más sentido comercial</h3></div><p>El foco no es solo subir impresiones, sino hacer que el orgánico conecte mejor con ventas, contactos y negocio local.</p></div>
+</div><p class="feature-note"><strong>Idea base:</strong> ordenar la estrategia orgánica para que cada acción tenga más sentido y no dependas solo de campañas o intuiciones.</p></div></div></div>
 </section>
 <section class="section-shell">
 <div class="container">
-<div data-reveal="">
+<div class="editorial-split" data-reveal="">
+<div class="editorial-copy">
 <p class="eyebrow">Enfoque</p>
-<h2>El SEO no es magia — es arquitectura, contenido y consistencia.</h2>
-<p class="page-intro">
-              Muchas agencias venden el SEO como si fuera una receta rápida. La realidad es que el posicionamiento
-              orgánico real se construye sobre tres pilares sólidos: una arquitectura web que Google pueda
-              entender, contenido que responde a las búsquedas reales de tus clientes y una presencia local
-              consistente en la zona donde trabajas.
-            </p>
+<h2>El SEO no es una receta rápida: es estructura, intención y capacidad de tomar buenas decisiones antes.</h2>
+<p class="section-support">Cuando el proyecto orgánico no tiene orden, es fácil invertir tiempo en contenido u optimizaciones que no mueven lo suficiente la aguja.</p>
+<p class="page-intro">Muchas agencias venden el SEO como si fuera una lista de acciones genéricas. La realidad es que el posicionamiento orgánico se construye sobre tres pilares sólidos: una arquitectura web que Google pueda entender, contenido que responde a las búsquedas reales de tus clientes y una presencia local consistente en la zona donde trabajas.</p>
+<p class="page-intro">Eso implica decidir bien qué páginas merecen más energía, qué palabras clave tienen sentido real y qué relación debe tener el SEO con la web, las campañas o los objetivos comerciales del negocio.</p>
+<p class="editorial-quote">El SEO funciona mucho mejor cuando la web deja de ser un conjunto de páginas sueltas y pasa a tener una lógica clara de servicios, intenciones y jerarquía.</p>
+</div>
+<aside class="insight-card">
+<span class="tagline">Qué suele cambiar</span>
+<div class="trust-list">
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Páginas mejor enfocadas</strong><span>Mejor relación entre intención de búsqueda, estructura y mensaje.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><strong>Más orden interno</strong><span>Jerarquía, enlazado y prioridades definidas con más criterio.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><strong>Acciones con retorno más claro</strong><span>Menos dispersión y más visión sobre qué conviene hacer antes y por qué.</span></div></div>
+</div>
+</aside>
 </div>
 </div>
 </section>
@@ -112,107 +604,78 @@
 <div class="container">
 <div class="section-head" data-reveal="">
 <p class="eyebrow">Líneas de trabajo</p>
-<h2>Dónde ponemos la energía para que el SEO genere resultados reales.</h2>
+<h2>Dónde ponemos la energía para que el SEO genere resultados reales y no solo tráfico difuso.</h2>
+<p class="section-support">Trabajamos sobre las piezas que suelen marcar más diferencia: páginas de servicio, arquitectura, contenido editorial y visibilidad local o sectorial.</p>
 </div>
-<div class="card-grid">
-<article class="service-card" data-reveal="">
-<h3>Páginas transaccionales</h3>
-<p>Creamos y optimizamos las páginas de servicio que capturan búsquedas con alta intención comercial. Las que traen los clientes que quieren comprar o contratar.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>SEO local</h3>
-<p>Posicionamiento en Google Maps y búsquedas locales por zona y municipio. <a href="/es/seo-local/">Descubre nuestro servicio de SEO local</a> para negocios de proximidad, o revisa cómo lo conectamos con el <a href="/es/diseno-web-barcelona/">diseño web en Barcelona</a> cuando la web debe captar negocio local.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Contenido editorial</h3>
-<p>Artículos y guías que posicionan por búsquedas informacionales y construyen autoridad de dominio en tu sector de forma progresiva.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Auditoría SEO</h3>
-<p>Diagnóstico completo del estado SEO actual: errores técnicos, oportunidades de mejora y plan de acción priorizado para obtener resultados rápidos.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Enlazado interno</h3>
-<p>Arquitectura de enlaces internos que distribuye la autoridad de forma eficiente y ayuda a Google a entender la jerarquía y la relación entre las páginas.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>SEO para pymes y particulares</h3>
-<p>Estrategias de posicionamiento ajustadas al presupuesto y las necesidades reales de <a href="/es/diseno-web-pymes/">pequeñas empresas y particulares</a> con proyectos en mente.</p>
-</article>
+<div class="service-card-grid">
+<article class="service-card service-card-featured" data-reveal=""><span class="card-mark">Intención</span><h3>Páginas transaccionales que capten mejor</h3><p>Creamos y optimizamos las páginas de servicio que capturan búsquedas con alta intención comercial. Las que traen los clientes que quieren comprar o contratar.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Territorio</span><h3>SEO local por zonas y negocios de proximidad</h3><p>Posicionamiento en Google Maps y búsquedas locales por zona y municipio. <a href="/es/seo-local/">Descubre nuestro servicio de SEO local</a> para negocios de proximidad.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Autoridad</span><h3>Contenido editorial con estructura</h3><p>Artículos y guías que posicionan por búsquedas informacionales y construyen autoridad de dominio en tu sector de forma progresiva.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Diagnóstico</span><h3>Auditoría SEO y hoja de ruta</h3><p>Diagnóstico completo del estado SEO actual: errores técnicos, oportunidades de mejora y plan de acción priorizado para obtener resultados rápidos.</p></article>
+<article class="service-card service-card-accent" data-reveal=""><span class="card-mark">Jerarquía</span><h3>Enlazado interno y arquitectura</h3><p>Arquitectura de enlaces internos que distribuye la autoridad de forma eficiente y ayuda a Google a entender la jerarquía y la relación entre las páginas.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Escala</span><h3>SEO para pymes y proyectos ajustados</h3><p>Estrategias de posicionamiento ajustadas al presupuesto y las necesidades reales de <a href="/es/diseno-web-pymes/">pequeñas empresas y particulares</a> con proyectos en mente.</p></article>
 </div>
 </div>
 </section>
 <section class="section-shell">
 <div class="container">
-<div class="section-head" data-reveal="">
-<p class="eyebrow">Cómo trabajamos el SEO</p>
-<h2>Del diagnóstico a la mejora de posiciones en 4 fases.</h2>
+<div class="audience-layout" data-reveal="">
+<div class="audience-copy">
+<p class="eyebrow">Cuándo encaja más</p>
+<h2>Proyectos que ya tienen web, tráfico o servicios claros, pero necesitan más orden para convertir mejor la visibilidad en negocio.</h2>
+<p class="page-intro">El SEO suele aportar mucho cuando el negocio ya tiene una oferta clara, pero la web no está suficientemente preparada para captar las búsquedas adecuadas o para convertirlas en contacto.</p>
+<p class="page-intro">También encaja muy bien cuando se quieren separar servicios, reforzar páginas locales, crear contenido con intención de búsqueda o dejar de depender tanto del pago por clic.</p>
+<p class="audience-note">Es especialmente útil para empresas y autónomos que quieren una base orgánica más sostenible, y para particulares con proyectos serios que necesitan empezar con criterio.</p>
 </div>
-<div class="process-grid">
-<article class="process-step" data-reveal="">
-<div class="process-number">01</div>
-<h3>Auditoría y diagnóstico</h3>
-<p>Analizamos el estado actual de la web: errores técnicos, páginas sin optimizar, oportunidades de palabras clave y competencia real del sector.</p>
-</article>
-<article class="process-step" data-reveal="">
-<div class="process-number">02</div>
-<h3>Estrategia y prioridades</h3>
-<p>Definimos qué páginas atacar primero, qué palabras clave priorizar y qué acciones tendrán más impacto en el menor tiempo posible.</p>
-</article>
-<article class="process-step" data-reveal="">
-<div class="process-number">03</div>
-<h3>Implementación</h3>
-<p>Aplicamos las mejoras: optimizamos páginas existentes, creamos contenido nuevo, corregimos errores técnicos y construimos la estructura SEO adecuada.</p>
-</article>
-<article class="process-step" data-reveal="">
-<div class="process-number">04</div>
-<h3>Medición e iteración</h3>
-<p>Medimos la evolución de posiciones, tráfico y conversiones. Iteramos la estrategia en función de los resultados para maximizar el retorno a largo plazo.</p>
-</article>
+<aside class="audience-panel">
+<span class="tagline">Síntomas habituales</span>
+<div class="audience-rail">
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>La web no aparece donde toca</strong><span>Hay páginas con potencial pero no están suficientemente bien trabajadas a nivel semántico.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><div><strong>Todo parece demasiado mezclado</strong><span>Los servicios no están bien separados y Google entiende peor el proyecto.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>No hay criterio de priorización</strong><span>Se invierte en SEO, pero no siempre en las páginas o acciones que más pueden devolver.</span></div></div>
+</div>
+</aside>
 </div>
 </div>
 </section>
 <section class="section-shell alt-surface">
 <div class="container">
 <div class="section-head" data-reveal="">
+<p class="eyebrow">Proceso</p>
+<h2>Del diagnóstico a la mejora de posiciones con una secuencia más clara y accionable.</h2>
+</div>
+<div class="process-grid">
+<article class="process-step" data-reveal=""><span class="process-number">01</span><span class="card-mark">Base</span><h3>Auditoría y diagnóstico</h3><p>Analizamos el estado actual de la web: errores técnicos, páginas sin optimizar, oportunidades de palabras clave y competencia real del sector.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">02</span><span class="card-mark">Estrategia</span><h3>Prioridades y estructura</h3><p>Definimos qué páginas atacar primero, qué palabras clave priorizar y qué acciones tendrán más impacto en el menor tiempo posible.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">03</span><span class="card-mark">Ejecución</span><h3>Implementación</h3><p>Aplicamos las mejoras: optimizamos páginas existentes, creamos contenido nuevo, corregimos errores técnicos y construimos la estructura SEO adecuada.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">04</span><span class="card-mark">Crecimiento</span><h3>Medición e iteración</h3><p>Medimos la evolución de posiciones, tráfico y conversiones. Iteramos la estrategia en función de los resultados para maximizar el retorno a largo plazo.</p></article>
+</div>
+</div>
+</section>
+<section class="section-shell">
+<div class="container">
+<div class="section-head" data-reveal="">
 <p class="eyebrow">Preguntas frecuentes</p>
 <h2>Lo que más nos preguntan sobre SEO profesional.</h2>
 </div>
 <div class="faq-grid">
-<article class="faq-card" data-reveal="">
-<h3>¿Cuánto tarda el SEO en dar resultados?</h3>
-<p>Depende de la competencia del sector y el estado de partida. En general, se empiezan a ver mejoras entre 3 y 6 meses. Para búsquedas poco competidas puede ser mucho más rápido. Lo que sí es seguro: cada mes que no empiezas es un mes de ventaja que le das a la competencia.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿Hacéis SEO para particulares?</h3>
-<p>Sí. Si eres un particular con un proyecto, una marca personal o un negocio que quieres impulsar, el SEO es una herramienta muy potente. Trabajamos con particulares que quieren posicionar su proyecto en Google de forma profesional y sostenible.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿Cuál es la diferencia entre SEO y Google Ads?</h3>
-<p>El SEO genera tráfico orgánico gratuito a largo plazo; <a href="/es/google-ads/">Google Ads</a> genera visitas de pago de forma inmediata. A menudo la mejor estrategia combina los dos: Ads para obtener resultados rápidos y SEO para crear una base sólida y sostenible.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿Podéis combinar web y SEO?</h3>
-<p>Sí, y es la combinación que da mejores resultados. Cuando la web se construye con el SEO integrado desde el principio, el esfuerzo es menor y los resultados llegan mucho antes. Hacemos el <a href="/es/diseno-web/">diseño web</a> y el SEO de forma coordinada.</p>
-</article>
+<article class="faq-card" data-reveal=""><h3>¿Cuánto tarda el SEO en dar resultados?</h3><p>Depende de la competencia del sector y del punto de partida. En general, se empiezan a ver mejoras entre 3 y 6 meses. Para búsquedas poco competidas puede ser mucho más rápido.</p></article>
+<article class="faq-card" data-reveal=""><h3>¿Hacéis SEO para particulares?</h3><p>Sí. Si eres un particular con un proyecto, una marca personal o un negocio que quieres impulsar, el SEO es una herramienta muy potente. Trabajamos con proyectos que quieren posicionarse de forma profesional y sostenible.</p></article>
+<article class="faq-card" data-reveal=""><h3>¿Cuál es la diferencia entre SEO y Google Ads?</h3><p>El SEO genera tráfico orgánico a largo plazo; <a href="/es/google-ads/">Google Ads</a> genera visitas de pago de forma inmediata. A menudo la mejor estrategia combina los dos: Ads para acelerar y SEO para construir una base sólida.</p></article>
+<article class="faq-card" data-reveal=""><h3>¿Podéis combinar web y SEO?</h3><p>Sí, y es la combinación que suele dar mejores resultados. Cuando la web se construye con el SEO integrado desde el principio, el esfuerzo es menor y los resultados llegan antes.</p></article>
 </div>
 </div>
 </section>
 <section class="section-shell compact">
 <div class="container">
-<div class="cta-band" data-reveal="">
-<p class="eyebrow">Hablemos</p>
-<h2>Empresa, autónomo o particular: si quieres que Google te encuentre, empezamos por una revisión.</h2>
-<p>
-              Te analizamos la situación SEO actual sin compromiso y te explicamos dónde tienes oportunidades reales.
-              Trabajamos con empresas de todos los sectores, autónomos que quieren crecer orgánicamente y
-              particulares con proyectos que merecen visibilidad.
-            </p>
-<div class="button-row">
+<div class="cta-band" data-reveal=""><div class="cta-layout"><div class="cta-copy"><p class="eyebrow">Hablemos</p><h2>Si quieres saber por dónde crecer en Google con más criterio, podemos empezar por una revisión útil y priorizada.</h2><p>Te analizamos la situación SEO actual sin compromiso y te explicamos dónde tienes oportunidades reales. Trabajamos con empresas de todos los sectores, autónomos que quieren crecer orgánicamente y particulares con proyectos que merecen visibilidad.</p><div class="cta-proof" aria-label="Ventajas del primer contacto"><span>Diagnóstico con criterio</span><span>Prioridades accionables</span><span>Visión web + SEO</span></div><div class="button-row">
 <a class="button" href="/es/contacto/">Solicitar revisión SEO</a>
 <a class="button-secondary" href="/es/diseno-web/">Diseño web</a>
-</div>
-</div>
+</div></div><aside class="cta-side"><h3>Qué obtienes en este primer paso</h3><ul class="cta-side-list">
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Lectura clara del momento actual</strong><span>Qué páginas pueden crecer antes, cuáles están frenadas y dónde se pierde valor.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>Relación entre SEO y estructura web</strong><span>Cómo debería ordenarse la base para que contenido y posicionamiento tengan más sentido.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><strong>Propuesta de siguiente fase</strong><span>Si conviene seguir con SEO, reforzar páginas de servicio, hacer una auditoría o plantear nuevos contenidos.</span></div></li>
+</ul></aside></div></div>
 </div>
 </section>
 </main>

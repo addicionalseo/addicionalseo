@@ -21,6 +21,488 @@
 <meta content="https://addicionalseo.com/auditoria-seo/" property="og:url"/>
 <meta content="https://addicionalseo.com/assets/brand-card.png" property="og:image"/>
 <link href="/styles.css?v=2" rel="stylesheet"/>
+<style>
+      body.page-services.page-core-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+
+      body.page-services.page-core-premium .page-hero {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 4.8rem;
+        overflow: hidden;
+      }
+
+      body.page-services.page-core-premium .page-hero::before {
+        height: 560px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.2), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+
+      body.page-services.page-core-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.75), transparent 78%);
+        pointer-events: none;
+      }
+
+      .page-core-premium .page-hero .container,
+      .page-core-premium .section-shell .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-core-premium .page-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 2.5rem;
+        align-items: start;
+      }
+
+      .page-core-premium .hero-copy {
+        position: relative;
+      }
+
+      .page-core-premium .hero-copy::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        left: -1.1rem;
+        width: 108px;
+        height: 108px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .page-core-premium .hero-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .page-core-premium .hero-context {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.72rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.8);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .page-core-premium .hero-context::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+
+      .page-core-premium .page-hero-inner h1 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+        max-width: 11ch;
+        text-wrap: balance;
+        margin-bottom: 1.1rem;
+      }
+
+      .page-core-premium .hero-intro-card {
+        max-width: 44rem;
+        padding: 1.35rem 1.4rem 1.15rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(14,14,14,0.86);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.26);
+        backdrop-filter: blur(14px);
+      }
+
+      .page-core-premium .button-row {
+        align-items: center;
+        gap: 0.9rem;
+        margin-top: 1.35rem;
+      }
+
+      .page-core-premium .hero-proof,
+      .page-core-premium .cta-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .page-core-premium .proof-chip,
+      .page-core-premium .cta-proof span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .page-core-premium .proof-chip svg,
+      .page-core-premium .feature-icon svg,
+      .page-core-premium .trust-icon svg,
+      .page-core-premium .metric-icon svg,
+      .page-core-premium .rail-icon svg,
+      .page-core-premium .cta-side-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .page-core-premium .feature-panel,
+      .page-core-premium .insight-card,
+      .page-core-premium .audience-panel,
+      .page-core-premium .cta-side {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 26px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.15), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.05), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.3);
+      }
+
+      .page-core-premium .feature-panel {
+        padding: 1.7rem;
+      }
+
+      .page-core-premium .feature-panel::before,
+      .page-core-premium .insight-card::before,
+      .page-core-premium .audience-panel::before,
+      .page-core-premium .cta-side::before,
+      .page-core-premium .service-card::before,
+      .page-core-premium .process-step::before,
+      .page-core-premium .faq-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 90px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0.65), rgba(210,47,123,0.65), rgba(210,47,123,0));
+      }
+
+      .page-core-premium .feature-panel-head,
+      .page-core-premium .section-head {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .page-core-premium .feature-kicker,
+      .page-core-premium .tagline,
+      .page-core-premium .card-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .page-core-premium .feature-kicker::before,
+      .page-core-premium .tagline::before,
+      .page-core-premium .card-mark::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.35);
+      }
+
+      .page-core-premium .feature-title,
+      .page-core-premium .section-head h2,
+      .page-core-premium .cta-copy h2 {
+        font-size: clamp(1.8rem, 2.6vw, 2.45rem);
+        line-height: 1.03;
+        letter-spacing: -0.05em;
+        max-width: 18ch;
+      }
+
+      .page-core-premium .feature-metric-grid,
+      .page-core-premium .process-grid,
+      .page-core-premium .service-card-grid {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .page-core-premium .feature-metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1rem;
+      }
+
+      .page-core-premium .feature-metric,
+      .page-core-premium .service-card,
+      .page-core-premium .faq-card,
+      .page-core-premium .process-step {
+        position: relative;
+        overflow: hidden;
+        padding: 1.15rem 1.1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.95);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+      }
+
+      .page-core-premium .metric-top,
+      .page-core-premium .feature-top,
+      .page-core-premium .trust-item,
+      .page-core-premium .rail-card,
+      .page-core-premium .cta-side-item {
+        display: grid;
+        align-items: start;
+        gap: 0.75rem;
+      }
+
+      .page-core-premium .metric-top,
+      .page-core-premium .feature-top {
+        grid-template-columns: auto 1fr;
+      }
+
+      .page-core-premium .trust-item,
+      .page-core-premium .rail-card,
+      .page-core-premium .cta-side-item {
+        grid-template-columns: 2rem 1fr;
+      }
+
+      .page-core-premium .metric-icon,
+      .page-core-premium .feature-icon,
+      .page-core-premium .trust-icon,
+      .page-core-premium .rail-icon,
+      .page-core-premium .cta-side-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+      }
+
+      .page-core-premium .metric-value,
+      .page-core-premium .process-number {
+        display: block;
+        color: var(--white);
+        font-size: 1.18rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+
+      .page-core-premium .metric-label,
+      .page-core-premium .section-support,
+      .page-core-premium .feature-note,
+      .page-core-premium .audience-note {
+        color: rgba(255,255,255,0.66);
+      }
+
+      .page-core-premium .feature-list,
+      .page-core-premium .trust-list,
+      .page-core-premium .audience-rail,
+      .page-core-premium .cta-side-list {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .page-core-premium .section-shell {
+        position: relative;
+        padding-top: 5.6rem;
+        padding-bottom: 5.6rem;
+      }
+
+      .page-core-premium .section-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
+        opacity: 0.72;
+      }
+
+      .page-core-premium .section-shell.alt-surface {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+          rgba(13,13,13,0.78);
+      }
+
+      .page-core-premium .editorial-split,
+      .page-core-premium .audience-layout,
+      .page-core-premium .cta-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(290px, 0.92fr);
+        gap: 1.6rem;
+        align-items: start;
+      }
+
+      .page-core-premium .editorial-copy,
+      .page-core-premium .audience-copy,
+      .page-core-premium .cta-copy {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .page-core-premium .editorial-quote,
+      .page-core-premium .audience-note {
+        padding: 1.15rem 1.25rem;
+        border-left: 2px solid var(--yellow);
+        border-radius: 0 16px 16px 0;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.84);
+        font-weight: 600;
+      }
+
+      .page-core-premium .service-card h3,
+      .page-core-premium .faq-card h3,
+      .page-core-premium .process-step h3 {
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .page-core-premium .service-card p,
+      .page-core-premium .faq-card p,
+      .page-core-premium .process-step p {
+        color: rgba(255,255,255,0.68);
+      }
+
+      .page-core-premium .service-card p a,
+      .page-core-premium .faq-card p a,
+      .page-core-premium .cta-band p a {
+        color: var(--white);
+        text-decoration-color: rgba(255,255,255,0.28);
+      }
+
+      .page-core-premium .service-card-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-core-premium .service-card-grid .service-card {
+        grid-column: span 4;
+      }
+
+      .page-core-premium .service-card-grid .service-card-featured {
+        grid-column: span 6;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.13), transparent 28%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-core-premium .service-card-grid .service-card-accent {
+        background:
+          radial-gradient(circle at top left, rgba(252,243,0,0.1), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-core-premium .process-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-core-premium .process-step {
+        grid-column: span 6;
+        padding: 1.35rem;
+      }
+
+      .page-core-premium .cta-band {
+        padding: 1.8rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.16), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.96);
+        box-shadow: 0 32px 90px rgba(0,0,0,0.32);
+      }
+
+      .page-core-premium .cta-band::before,
+      .page-core-premium .cta-band::after {
+        display: none;
+      }
+
+      .page-core-premium .cta-side {
+        padding: 1.35rem;
+      }
+
+      .page-core-premium .faq-grid {
+        gap: 1rem;
+      }
+
+      @media (max-width: 1080px) {
+        .page-core-premium .page-hero-inner,
+        .page-core-premium .editorial-split,
+        .page-core-premium .audience-layout,
+        .page-core-premium .cta-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .page-core-premium .service-card-grid .service-card,
+        .page-core-premium .service-card-grid .service-card-featured,
+        .page-core-premium .process-step {
+          grid-column: span 12;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-core-premium .page-hero-inner h1 {
+          max-width: 11ch;
+          font-size: clamp(1.62rem, 5.9vw, 2.05rem);
+          line-height: 0.99;
+        }
+
+        .page-core-premium .feature-metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-core-premium .section-shell {
+          padding-top: 4.3rem;
+          padding-bottom: 4.3rem;
+        }
+      }
+    </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,7 +568,7 @@
 }
     </script>
 </head>
-<body class="page-services">
+<body class="page-services page-core-premium">
 <header class="site-header">
 <div class="container">
 <a aria-label="Addicionalseo" class="brand brand-logo" href="/">
@@ -110,37 +592,105 @@
 </div>
 </header>
 <main id="main-content">
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Inici</a><span>/</span><span>Auditoria SEO</span></div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Diagnosi SEO</p><h1>Auditoria SEO per saber què està fallant, què està funcionant i què convé prioritzar primer.</h1><p class="page-intro">Analitzem la web des d’una mirada tècnica, comercial i de contingut perquè tinguis un diagnòstic clar i accionable.</p></div><div class="card feature-panel" data-reveal=""><div class="feature-list">
-<div class="feature-item"><h3>Diagnosi tècnica</h3><p>Cobertura, canònics, redireccions, velocitat i qualsevol punt que afecti indexació o rendiment.</p></div>
-<div class="feature-item"><h3>Revisió de contingut</h3><p>Mirem si les pàgines responen bé la cerca i si la jerarquia actual ajuda realment a captar.</p></div>
-<div class="feature-item"><h3>Pla prioritzat</h3><p>Lliurem una proposta ordenada per impacte, urgència i facilitat d’implementació.</p></div>
-</div><h3 style="margin-top:1.4rem;">Enllaços relacionats</h3><ul class="article-list">
-<li><a href="/seo/">Servei SEO</a></li>
-<li><a href="/auditoria-seo-que-inclou/">Article sobre auditoria SEO</a></li>
-<li><a href="/seo-per-a-pimes-prioritats-reals/">SEO per a pimes</a></li>
-</ul></div></div></div></section>
-<section class="section-shell"><div class="container"><div data-reveal=""><p class="eyebrow">Què treballem</p><h2>Una bona auditoria ha d’ordenar decisions, no només enumerar errors.</h2>
-<p class="page-intro">Revisem rastreig, indexació, arquitectura, continguts, intencions de cerca i senyals de confiança per veure on es perd valor.</p>
-<p class="page-intro">L’objectiu és prioritzar què corregir ara, quines pàgines convé crear i quines millores poden esperar una segona fase.</p>
-</div></div></section>
-<section class="section-shell alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Capes de treball</p><h2>Què acostuma a descobrir una bona auditoria</h2><p>La utilitat real d’una auditoria és que ordena problemes i oportunitats.</p></div><div class="card-grid">
-<article class="service-card" data-reveal=""><h3>Pàgines massa genèriques</h3><p>URLs amb potencial però sense prou claredat comercial o semàntica.</p></article>
-<article class="service-card" data-reveal=""><h3>Arquitectura poc clara</h3><p>Quan els serveis no estan ben separats, Google i l’usuari entenen pitjor el projecte.</p></article>
-<article class="service-card" data-reveal=""><h3>Bloquejos tècnics</h3><p>Friccions invisibles que limiten indexació, experiència i creixement.</p></article>
-</div></div></section>
-<section class="section-shell"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Procés</p><h2>Com enfoquem l’auditoria</h2><p>Volem que el document final serveixi per decidir millor i implementar millor.</p></div><div class="process-grid">
-<article class="process-step" data-reveal=""><h3>Kickoff</h3><p>Entenem objectius, mercat, serveis i estat actual.</p></article>
-<article class="process-step" data-reveal=""><h3>Anàlisi</h3><p>Revisem tècnica, contingut, arquitectura i competidors.</p></article>
-<article class="process-step" data-reveal=""><h3>Priorització</h3><p>Classifiquem accions per impacte i dependència.</p></article>
-<article class="process-step" data-reveal=""><h3>Sessió final</h3><p>Aterrem conclusions i següents passos.</p></article>
-</div></div></section>
-<section class="section-shell compact alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Preguntes freqüents</p><h2>Dubtes habituals sobre una auditoria SEO</h2></div><div class="faq-grid">
+<section class="page-hero">
+<div class="container"><div class="breadcrumb"><a href="/">Inici</a><span>/</span><span>Auditoria SEO</span></div><div class="page-hero-inner"><div class="hero-copy" data-reveal=""><div class="hero-badge-row"><p class="eyebrow">Diagnosi SEO</p><span class="hero-context">Tècnica · contingut · prioritats</span></div><h1>Auditoria SEO per entendre què està fallant, què està sostenint la visibilitat i què convé prioritzar primer.</h1><div class="hero-intro-card"><p class="page-intro">Analitzem la web des d’una mirada tècnica, comercial i de contingut perquè tinguis un diagnòstic clar i accionable. L’objectiu no és acumular observacions, sinó convertir-les en decisions útils per ordenar la següent fase del projecte.</p><div class="hero-proof" aria-label="Senyals clau de l'auditoria">
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg>Lectura SEO transversal</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg>Problemes ordenats per impacte</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg>Visió tècnica i comercial</span>
+</div></div><div class="button-row"><a class="button" href="/contacte/">Demanar auditoria</a><a class="button-secondary" href="/seo/">Veure servei SEO</a></div></div><div class="feature-panel" data-reveal=""><div class="feature-panel-head"><span class="feature-kicker">Addicionalseo / auditoria SEO</span><h2 class="feature-title">Una auditoria útil ha de filtrar el soroll i deixar clar què toca fer abans, què pot esperar i per què.</h2><div class="feature-metric-grid">
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><span class="metric-value">Diagnosi tècnica</span><span class="metric-label">Cobertura, indexació, canònics, redireccions i rendiment.</span></div></div></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><span class="metric-value">Lectura de negoci</span><span class="metric-label">Veiem si les pàgines i serveis tenen prou claredat per captar.</span></div></div></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><span class="metric-value">Prioritats reals</span><span class="metric-label">Lliurem un ordre de treball pensat per impacte i viabilitat.</span></div></div></div>
+</div></div><div class="feature-list">
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><h3>No és només una llista d’errors</h3></div><p>El valor és entendre quins problemes t’estan limitant més i quines oportunitats mereixen una segona fase.</p></div>
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><h3>Encaixa amb redisseny, SEO o noves landings</h3></div><p>Serveix tant per corregir una base feble com per decidir millor si convé atacar contingut, arquitectura o noves pàgines.</p></div>
+<div class="feature-item"><div class="feature-top"><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><h3>Tens context, no només conclusions</h3></div><p>Expliquem per què detectem cada punt i quina relació té amb visibilitat, captació i experiència d’usuari.</p></div>
+</div><p class="feature-note"><strong>Idea base:</strong> ordenar el projecte perquè la següent inversió en SEO o web tingui molt més sentit.</p></div></div></div>
+</section>
+<section class="section-shell">
+<div class="container">
+<div class="editorial-split" data-reveal="">
+<div class="editorial-copy">
+<p class="eyebrow">Què treballem</p>
+<h2>Una bona auditoria ha d’ordenar decisions, no només enumerar errors ni inflar un document.</h2>
+<p class="section-support">Revisem rastreig, indexació, arquitectura, continguts, intencions de cerca i senyals de confiança per veure on es perd valor i com recuperar-lo amb més criteri.</p>
+<p class="page-intro">A moltes webs els problemes no venen d’un únic error. Venen d’una suma de friccions: pàgines massa genèriques, serveis poc separats, manca d’enllaçat intern, canònics mal resolts o una jerarquia que no ajuda ni Google ni l’usuari.</p>
+<p class="page-intro">L’auditoria serveix per posar ordre. Per decidir què corregir ara, quines pàgines convé crear i quines millores poden esperar una segona fase sense perdre oportunitats pel camí.</p>
+<p class="editorial-quote">Quan la diagnosi és bona, el projecte deixa d’avançar per intuïcions i comença a moure’s amb una seqüència molt més clara.</p>
+</div>
+<aside class="insight-card">
+<span class="tagline">Lectures habituals</span>
+<div class="trust-list">
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Pàgines amb potencial mal aprofitat</strong><span>URLs que podrien captar millor amb una estructura i un missatge més nets.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><strong>Arquitectura poc útil per créixer</strong><span>Quan els serveis i les intencions de cerca estan massa barrejats.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>Bloquejos tècnics invisibles</strong><span>Friccions que limiten indexació, experiència i marge de captació.</span></div></div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section-shell alt-surface">
+<div class="container">
+<div class="section-head" data-reveal=""><p class="eyebrow">Capes de treball</p><h2>Què acostuma a descobrir una auditoria ben plantejada i què fem amb cada troballa.</h2><p class="section-support">La utilitat real no és detectar moltíssimes coses, sinó separar allò urgent, allò important i allò que només és soroll.</p></div>
+<div class="service-card-grid">
+<article class="service-card service-card-featured" data-reveal=""><span class="card-mark">Semàntica</span><h3>Pàgines massa genèriques o massa difuses</h3><p>Identifiquem URLs amb potencial però sense prou claredat comercial o semàntica, i definim com reenfocar-les perquè siguin més útils per posicionar i convertir.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Jerarquia</span><h3>Arquitectura poc clara</h3><p>Quan els serveis no estan ben separats, Google i l’usuari entenen pitjor el projecte. Aquí acostuma a haver-hi molt marge de millora.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Tècnica</span><h3>Bloquejos que limiten creixement</h3><p>Canònics, redireccions, cobertura, velocitat o rastreig poden frenar la visibilitat sense que es noti a simple vista.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Contingut</span><h3>Missatge que no acompanya la cerca</h3><p>Veiem si les pàgines responen realment a la intenció de cerca o si necessiten més estructura, més context o una proposta més clara.</p></article>
+<article class="service-card service-card-accent" data-reveal=""><span class="card-mark">Priorització</span><h3>Accions que s’han de fer abans</h3><p>No totes les millores tenen el mateix impacte. Definim quines convé executar primer i quines poden esperar sense penalitzar la captació.</p></article>
+<article class="service-card" data-reveal=""><span class="card-mark">Full de ruta</span><h3>Següent fase amb sentit</h3><p>L’auditoria pot desembocar en <a href="/seo/">SEO continuat</a>, noves landings, una reestructuració de serveis o un redisseny més ben orientat.</p></article>
+</div>
+</div>
+</section>
+<section class="section-shell">
+<div class="container">
+<div class="audience-layout" data-reveal="">
+<div class="audience-copy">
+<p class="eyebrow">Quan encaixa més</p>
+<h2>És especialment útil quan la web ja existeix, però hi ha dubtes reals sobre què està frenant la visibilitat o la captació.</h2>
+<p class="page-intro">Acostuma a tenir molt sentit abans d’invertir més en contingut, redisseny o campanyes, perquè evita dedicar recursos a peces que encara no tenen una base prou ordenada.</p>
+<p class="page-intro">També és una bona manera de decidir quines landings falten, quins serveis convé separar i quina relació hauria de tenir el SEO amb la web comercial.</p>
+<p class="audience-note">És útil tant per a webs petites com per a projectes més amplis, sempre que hi hagi necessitat de prioritzar amb una mica més de precisió.</p>
+</div>
+<aside class="audience-panel">
+<span class="tagline">Símptomes habituals</span>
+<div class="audience-rail">
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>La web no creix prou</strong><span>Hi ha moviment, però no queda clar on es perd visibilitat o capacitat de conversió.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><div><strong>Es vol redissenyar amb criteri</strong><span>Abans de tocar estructura o contingut, convé saber què s’ha de preservar i què cal replantejar.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>Cal decidir noves pàgines o prioritats</strong><span>No hi ha clar si convé reforçar serveis, crear landings o atacar contingut editorial.</span></div></div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section-shell alt-surface">
+<div class="container">
+<div class="section-head" data-reveal=""><p class="eyebrow">Procés</p><h2>Com enfoquem l’auditoria perquè el resultat serveixi per decidir millor i implementar millor.</h2></div>
+<div class="process-grid">
+<article class="process-step" data-reveal=""><span class="process-number">01</span><span class="card-mark">Context</span><h3>Kickoff i objectius</h3><p>Entenem mercat, serveis, estat actual de la web i quines decisions s’han de prendre a curt termini.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">02</span><span class="card-mark">Diagnosi</span><h3>Anàlisi tècnica i de contingut</h3><p>Revisem tècnica, arquitectura, contingut, intencions de cerca i qualsevol fricció que pugui afectar visibilitat o captació.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">03</span><span class="card-mark">Ordre</span><h3>Priorització</h3><p>Classifiquem accions per impacte, urgència i dependència perquè sigui fàcil saber què fer primer.</p></article>
+<article class="process-step" data-reveal=""><span class="process-number">04</span><span class="card-mark">Acció</span><h3>Sessió final i següents passos</h3><p>Aterrem conclusions, resolem dubtes i deixem una base clara per implementar canvis amb més seguretat.</p></article>
+</div>
+</div>
+</section>
+<section class="section-shell compact alt-surface">
+<div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Preguntes freqüents</p><h2>Dubtes habituals sobre una auditoria SEO</h2></div><div class="faq-grid">
 <article class="faq-card" data-reveal=""><h3>Quan té sentit fer-la?</h3><p>Quan la web no creix, quan es vol redissenyar o quan cal decidir noves pàgines i prioritats.</p></article>
 <article class="faq-card" data-reveal=""><h3>Inclou només aspectes tècnics?</h3><p>No. També revisem intencions de cerca, missatge, serveis i estructura.</p></article>
 <article class="faq-card" data-reveal=""><h3>Serveix per a webs petites?</h3><p>Sí. Una web petita també necessita ordre, sobretot si depèn de pocs serveis.</p></article>
 <article class="faq-card" data-reveal=""><h3>Després podeu implementar canvis?</h3><p>Sí. Podem executar millores SEO, noves landings o redisseny si convé.</p></article>
-</div></div></section>
-<section class="section-shell compact"><div class="container"><div class="cta-band" data-reveal=""><p class="eyebrow">Següent pas</p><h2>Si vols saber què necessita realment la teva web, podem començar per una auditoria.</h2><p>És la millor manera d’ordenar prioritats abans de tocar SEO, contingut, redisseny o campanyes.</p><div class="button-row"><a class="button" href="/contacte/">Demanar auditoria</a><a class="button-secondary" href="/es/auditoria-seo/">Ver en castellano</a></div></div></div></section>
+</div></div>
+</section>
+<section class="section-shell compact">
+<div class="container">
+<div class="cta-band" data-reveal=""><div class="cta-layout"><div class="cta-copy"><p class="eyebrow">Següent pas</p><h2>Si vols saber què necessita realment la teva web abans de moure més peces, podem començar per una auditoria.</h2><p>És la manera més clara d’ordenar prioritats abans de tocar SEO, contingut, redisseny o campanyes. Et quedarà una lectura útil del moment actual i una proposta més neta de següent fase.</p><div class="cta-proof" aria-label="Avantatges del primer pas"><span>Diagnosi amb context</span><span>Prioritats accionables</span><span>Visió web + SEO</span></div><div class="button-row"><a class="button" href="/contacte/">Demanar auditoria</a><a class="button-secondary" href="/es/auditoria-seo/">Veure versió en castellà</a></div></div><aside class="cta-side"><h3>Què t’emportes</h3><ul class="cta-side-list">
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Lectura clara del problema</strong><span>On es perd valor, quines pàgines poden créixer i quines friccions cal resoldre abans.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>Relació entre SEO i estructura</strong><span>Com hauria d’ordenar-se la base perquè contingut, serveis i visibilitat avancin junts.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><strong>Ordre per a la següent inversió</strong><span>Sigui SEO continuat, noves landings o redisseny, sabràs per on té més sentit començar.</span></div></li>
+</ul></aside></div></div>
+</div>
+</section>
 </main>
 <footer class="footer"><div class="container footer-grid"><div><a aria-label="Addicionalseo" class="brand brand-logo" href="/"><img alt="Addicionalseo" src="/assets/logo-header.png"/></a><p>SEO, disseny web i captació per a empreses de Catalunya i tot Espanya.</p></div><div><h3>Navegació</h3><div class="footer-links"><a href="/sobre-nosaltres/">Agència</a>
 <a href="/portfoli/">Casos</a>

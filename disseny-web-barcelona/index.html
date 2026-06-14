@@ -16,6 +16,880 @@
 <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/styles.css?v=2" rel="stylesheet"/>
+<style>
+      body.page-services.page-barcelona-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+
+      body.page-services.page-barcelona-premium .page-hero {
+        position: relative;
+        padding-top: 5.25rem;
+        padding-bottom: 5rem;
+        overflow: hidden;
+      }
+
+      body.page-services.page-barcelona-premium .page-hero::before {
+        height: 620px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.22), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+
+      body.page-services.page-barcelona-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.75), transparent 78%);
+        pointer-events: none;
+      }
+
+      .page-barcelona-premium .page-hero .container,
+      .page-barcelona-premium .section-shell .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-barcelona-premium .page-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 2.8rem;
+        align-items: start;
+      }
+
+      .page-barcelona-premium .hero-copy {
+        position: relative;
+      }
+
+      .page-barcelona-premium .hero-copy::before {
+        content: "";
+        position: absolute;
+        top: -1.1rem;
+        left: -1.25rem;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .page-barcelona-premium .hero-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .page-barcelona-premium .hero-location {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.7rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.78);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .page-barcelona-premium .hero-location::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+
+      .page-barcelona-premium .page-hero-inner h1 {
+        font-size: clamp(1.8rem, 3vw, 2.75rem);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+        max-width: 10ch;
+        text-wrap: balance;
+        margin-bottom: 1.15rem;
+      }
+
+      .page-barcelona-premium .page-intro strong,
+      .page-barcelona-premium p strong {
+        color: var(--white);
+      }
+
+      .page-barcelona-premium .hero-intro-card {
+        max-width: 45rem;
+        padding: 1.35rem 1.4rem 1.1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(14,14,14,0.86);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.26);
+        backdrop-filter: blur(14px);
+      }
+
+      .page-barcelona-premium .button-row {
+        align-items: center;
+        gap: 0.9rem;
+        margin-top: 1.35rem;
+      }
+
+      .hero-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .proof-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .proof-chip svg,
+      .feature-icon svg,
+      .trust-icon svg,
+      .metric-icon svg,
+      .cta-side-icon svg,
+      .rail-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .page-barcelona-premium .feature-panel {
+        position: relative;
+        overflow: hidden;
+        padding: 1.7rem;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.16), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 36px 90px rgba(0,0,0,0.38);
+      }
+
+      .page-barcelona-premium .feature-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0), rgba(252,243,0,0.35), rgba(210,47,123,0.55), rgba(210,47,123,0));
+      }
+
+      .page-barcelona-premium .feature-panel::after {
+        content: "";
+        position: absolute;
+        right: -48px;
+        bottom: -58px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .page-barcelona-premium .feature-panel-head {
+        display: grid;
+        gap: 1rem;
+        padding-bottom: 1.15rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .page-barcelona-premium .feature-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .page-barcelona-premium .feature-kicker::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.4);
+      }
+
+      .page-barcelona-premium .feature-title {
+        max-width: 18ch;
+        font-size: 1.55rem;
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+      }
+
+      .page-barcelona-premium .feature-metric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .page-barcelona-premium .feature-metric {
+        padding: 0.9rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.03);
+      }
+
+      .page-barcelona-premium .metric-top {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-bottom: 0.45rem;
+      }
+
+      .page-barcelona-premium .metric-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+      }
+
+      .page-barcelona-premium .metric-value {
+        display: block;
+        margin-bottom: 0.15rem;
+        color: var(--white);
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+
+      .page-barcelona-premium .metric-label {
+        color: rgba(255,255,255,0.64);
+        font-size: 0.78rem;
+      }
+
+      .page-barcelona-premium .feature-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .page-barcelona-premium .feature-item {
+        padding: 1rem 1.05rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        background: rgba(255,255,255,0.03);
+      }
+
+      .feature-top {
+        display: grid;
+        grid-template-columns: auto auto 1fr;
+        align-items: center;
+        gap: 0.85rem;
+        margin-bottom: 0.65rem;
+      }
+
+      .page-barcelona-premium .feature-index {
+        color: rgba(255,255,255,0.28);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+      }
+
+      .feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.15rem;
+        height: 2.15rem;
+        border-radius: 14px;
+        background: rgba(210,47,123,0.14);
+        color: var(--accent);
+        flex: 0 0 2.15rem;
+      }
+
+      .page-barcelona-premium .feature-note {
+        margin-top: 1.15rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.7);
+        font-size: 0.92rem;
+      }
+
+      .page-barcelona-premium .section-shell {
+        position: relative;
+        padding-top: 6.25rem;
+        padding-bottom: 6.25rem;
+      }
+
+      .page-barcelona-premium .section-shell.alt-surface {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+          rgba(13,13,13,0.78);
+      }
+
+      .page-barcelona-premium .section-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
+        opacity: 0.7;
+      }
+
+      .section-editorial .container,
+      .section-audience .container,
+      .section-reasons .container {
+        position: relative;
+      }
+
+      .page-barcelona-premium .section-head {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .page-barcelona-premium .section-head h2,
+      .page-barcelona-premium .section-editorial h2,
+      .page-barcelona-premium .section-audience h2,
+      .page-barcelona-premium .section-reasons h2 {
+        max-width: 18ch;
+        font-size: clamp(1.85rem, 2.9vw, 2.7rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+      }
+
+      .page-barcelona-premium .section-support {
+        max-width: 40rem;
+        color: rgba(255,255,255,0.62);
+        font-size: 1.02rem;
+      }
+
+      .editorial-split,
+      .reason-layout,
+      .audience-layout,
+      .cta-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 1.65rem;
+        align-items: start;
+      }
+
+      .page-barcelona-premium .editorial-copy,
+      .page-barcelona-premium .audience-copy,
+      .page-barcelona-premium .reason-copy {
+        display: grid;
+        gap: 1.05rem;
+      }
+
+      .page-barcelona-premium .editorial-quote,
+      .page-barcelona-premium .reason-quote {
+        padding: 1.2rem 1.3rem;
+        border-left: 2px solid var(--yellow);
+        border-radius: 0 16px 16px 0;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.84);
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .insight-card {
+        position: relative;
+        padding: 1.65rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.14), transparent 28%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(15,15,15,0.94);
+        box-shadow: 0 20px 48px rgba(0,0,0,0.28);
+      }
+
+      .insight-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 92px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--yellow), var(--accent));
+      }
+
+      .insight-card .tagline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .insight-card .tagline::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.5);
+      }
+
+      .insight-card h3 {
+        font-size: 1.2rem;
+        line-height: 1.08;
+      }
+
+      .trust-list,
+      .audience-rail,
+      .cta-side-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .trust-item,
+      .rail-card {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.8rem;
+        align-items: start;
+        color: var(--gray);
+        font-size: 0.96rem;
+      }
+
+      .trust-item strong,
+      .rail-card strong {
+        display: block;
+        margin-bottom: 0.15rem;
+        color: var(--white);
+      }
+
+      .trust-icon,
+      .rail-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+      }
+
+      .page-barcelona-premium .card-grid {
+        gap: 1.15rem;
+      }
+
+      .page-barcelona-premium .service-card,
+      .page-barcelona-premium .faq-card,
+      .page-barcelona-premium .process-step,
+      .page-barcelona-premium .cta-side {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.95);
+        box-shadow: 0 20px 48px rgba(0,0,0,0.22);
+      }
+
+      .page-barcelona-premium .service-card::before,
+      .page-barcelona-premium .process-step::before,
+      .page-barcelona-premium .faq-card::before,
+      .page-barcelona-premium .cta-side::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 78px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(210,47,123,0.9), rgba(210,47,123,0));
+      }
+
+      .card-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-bottom: 0.9rem;
+        color: var(--accent);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .card-mark::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      .page-barcelona-premium .section-services-premium .card-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-barcelona-premium .section-services-premium .service-card {
+        grid-column: span 4;
+        padding: 1.45rem;
+      }
+
+      .page-barcelona-premium .section-services-premium .service-card-featured {
+        grid-column: span 6;
+        padding: 1.7rem;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.13), transparent 28%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-barcelona-premium .section-services-premium .service-card-accent {
+        background:
+          radial-gradient(circle at top left, rgba(252,243,0,0.1), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(17,17,17,0.98);
+      }
+
+      .page-barcelona-premium .service-card h3,
+      .page-barcelona-premium .process-step h3,
+      .page-barcelona-premium .faq-card h3 {
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .page-barcelona-premium .service-card p,
+      .page-barcelona-premium .process-step p,
+      .page-barcelona-premium .faq-card p,
+      .page-barcelona-premium .proof-box p {
+        color: rgba(255,255,255,0.68);
+      }
+
+      .page-barcelona-premium .service-card p a,
+      .page-barcelona-premium .faq-card p a,
+      .page-barcelona-premium .cta-band p a {
+        color: var(--white);
+        text-decoration-color: rgba(255,255,255,0.28);
+      }
+
+      .page-barcelona-premium .audience-note {
+        margin-top: 0.15rem;
+        padding: 1.25rem 1.35rem;
+        border-left: 2px solid var(--yellow);
+        border-radius: 0 16px 16px 0;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.85);
+        font-weight: 600;
+      }
+
+      .page-barcelona-premium .audience-side {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .page-barcelona-premium .audience-panel {
+        padding: 1.45rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.12), transparent 30%),
+          rgba(16,16,16,0.95);
+      }
+
+      .page-barcelona-premium .audience-panel .tagline {
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .page-barcelona-premium .process-prelude {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin: 1.5rem 0 1.8rem;
+      }
+
+      .page-barcelona-premium .prelude-chip {
+        padding: 0.9rem 1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+
+      .page-barcelona-premium .process-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .page-barcelona-premium .process-step {
+        grid-column: span 6;
+        padding: 1.55rem;
+      }
+
+      .page-barcelona-premium .process-step:nth-child(3),
+      .page-barcelona-premium .process-step:nth-child(4) {
+        transform: translateY(0.6rem);
+      }
+
+      .proof-column {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .proof-box {
+        padding: 1.3rem 1.35rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(255,255,255,0.025);
+      }
+
+      .proof-box .stat {
+        display: block;
+        margin-bottom: 0.45rem;
+        color: var(--yellow);
+        font-size: 1.45rem;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+      }
+
+      .page-barcelona-premium .cta-band {
+        padding: 2.9rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.24), transparent 30%),
+          radial-gradient(circle at left bottom, rgba(252,243,0,0.1), transparent 26%),
+          linear-gradient(135deg, #111111, #1d0c14);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.3);
+      }
+
+      .page-barcelona-premium .cta-copy h2 {
+        max-width: 13ch;
+        font-size: clamp(2rem, 3vw, 2.85rem);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+      }
+
+      .cta-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin: 1.15rem 0 1.2rem;
+      }
+
+      .cta-proof span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.52rem 0.8rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .cta-proof span::before {
+        content: "";
+        width: 0.38rem;
+        height: 0.38rem;
+        border-radius: 999px;
+        background: var(--yellow);
+      }
+
+      .page-barcelona-premium .cta-side {
+        padding: 1.45rem;
+      }
+
+      .page-barcelona-premium .cta-side h3 {
+        margin-bottom: 0.85rem;
+        font-size: 1.1rem;
+      }
+
+      .page-barcelona-premium .cta-side-list li {
+        list-style: none;
+      }
+
+      .page-barcelona-premium .cta-side-item {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.8rem;
+        color: rgba(255,255,255,0.7);
+      }
+
+      .page-barcelona-premium .cta-side-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+      }
+
+      .page-barcelona-premium .faq-grid {
+        gap: 1rem;
+      }
+
+      .page-barcelona-premium .faq-card {
+        padding: 1.45rem;
+      }
+
+      .page-barcelona-premium .faq-card h3 {
+        max-width: 26ch;
+      }
+
+      .page-barcelona-premium .section-zones-premium .card-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .page-barcelona-premium .section-zones-premium .service-card {
+        display: block;
+        grid-column: span 4;
+        padding: 1.3rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .page-barcelona-premium .section-zones-premium .service-card h3::after {
+        content: "↗";
+        margin-left: 0.45rem;
+        color: var(--accent);
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 1120px) {
+        .page-barcelona-premium .page-hero-inner,
+        .editorial-split,
+        .reason-layout,
+        .audience-layout,
+        .cta-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .page-barcelona-premium .section-services-premium .service-card,
+        .page-barcelona-premium .section-zones-premium .service-card {
+          grid-column: span 6;
+        }
+
+        .page-barcelona-premium .section-services-premium .service-card-featured,
+        .page-barcelona-premium .process-step {
+          grid-column: span 12;
+        }
+
+        .page-barcelona-premium .process-step:nth-child(3),
+        .page-barcelona-premium .process-step:nth-child(4) {
+          transform: none;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .page-barcelona-premium .process-prelude,
+        .page-barcelona-premium .feature-metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-barcelona-premium .section-zones-premium .service-card,
+        .page-barcelona-premium .section-services-premium .service-card {
+          grid-column: span 12;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-barcelona-premium .page-hero {
+          padding-top: 3.25rem;
+          padding-bottom: 3.2rem;
+        }
+
+        .page-barcelona-premium .page-hero-inner h1 {
+          max-width: 9ch;
+          font-size: clamp(1.42rem, 5.9vw, 1.88rem);
+          line-height: 0.98;
+        }
+
+        .page-barcelona-premium .hero-intro-card,
+        .page-barcelona-premium .feature-panel,
+        .insight-card,
+        .page-barcelona-premium .audience-panel,
+        .page-barcelona-premium .cta-band,
+        .page-barcelona-premium .cta-side {
+          padding: 1.3rem;
+        }
+
+        .page-barcelona-premium .button-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .hero-proof,
+        .cta-proof {
+          gap: 0.6rem;
+        }
+
+        .proof-chip,
+        .cta-proof span {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .feature-top {
+          grid-template-columns: auto auto 1fr;
+          align-items: start;
+        }
+
+        .page-barcelona-premium .feature-title,
+        .page-barcelona-premium .cta-copy h2 {
+          font-size: 1.7rem;
+        }
+
+        .page-barcelona-premium .section-shell {
+          padding-top: 4.6rem;
+          padding-bottom: 4.6rem;
+        }
+      }
+    </style>
 <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -34,7 +908,7 @@
       }
     </script>
 </head>
-<body class="page-services">
+<body class="page-services page-barcelona-premium">
 <header class="site-header">
 <div class="container">
 <a aria-label="Addicionalseo" class="brand brand-logo" href="/">
@@ -65,147 +939,313 @@
 <a href="/disseny-web/">Disseny web</a>
 <span>/</span>
 <span>Barcelona</span>
-</div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Disseny web a Barcelona</p><h1>Disseny web professional a Barcelona per a empreses que necessiten resultats reals, no una web cara i buida.</h1><p class="page-intro">
-            Fem webs en codi per a negocis de Barcelona i la seva àrea metropolitana: webs ràpides, clares,
-            preparades per SEO i orientades a convertir visites en clients. Cada projecte s'adapta al negoci,
-            no a una plantilla.
-          </p><div class="button-row">
+</div><div class="page-hero-inner"><div class="hero-copy" data-reveal=""><div class="hero-badge-row"><p class="eyebrow">Disseny web a Barcelona</p><span class="hero-location">Barcelona · estratègia + disseny</span></div><h1>Disseny web a Barcelona per a empreses i negocis locals.</h1><div class="hero-intro-card"><p class="page-intro">
+            Si busques una agència de disseny web a Barcelona, segurament ja has vist moltes webs semblants: plantilles boniques, missatges genèrics i poca estratègia al darrere. Nosaltres enfoquem el projecte d'una altra manera. Dissenyem pàgines web professionals amb focus en posicionament a Google, experiència d'usuari, velocitat de càrrega i conversió perquè la web ajudi de veritat el negoci.
+          </p><div class="hero-proof" aria-label="Senyals d'enfocament del servei">
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg>SEO des de l'inici</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg>Responsive amb criteri</span>
+<span class="proof-chip"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg>Base per captar negoci</span>
+</div></div><div class="button-row">
 <a class="button" href="/contacte/">Sol·licitar pressupost</a>
-<a class="button-secondary" href="/disseny-web/">Veure servei complet</a>
+<a class="button-secondary" href="/quant-costa-una-web-a-barcelona/">Veure preus orientatius</a>
 </div></div><div class="card feature-panel" data-reveal="">
+<div class="feature-panel-head">
+<span class="feature-kicker">Addicionalseo / enfocament local</span>
+<h2 class="feature-title">Una landing amb intenció comercial, estructura clara i base SEO des del primer bloc.</h2>
+<div class="feature-metric-grid">
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><span class="metric-label">Base tècnica</span></div><span class="metric-value">SEO + UX</span><p class="metric-label">Arquitectura preparada per posicionar i convertir.</p></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><span class="metric-label">Pensada per a</span></div><span class="metric-value">Negoci local</span><p class="metric-label">Serveis, autoritat i següent pas més visibles.</p></div>
+<div class="feature-metric"><div class="metric-top"><span aria-hidden="true" class="metric-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><span class="metric-label">Resultat</span></div><span class="metric-value">Més claredat</span><p class="metric-label">Una web menys genèrica i més útil per vendre.</p></div>
+</div>
+</div>
 <div class="feature-list">
 <div class="feature-item">
-<h3>Codi net, sense plugins</h3>
-<p>Webs lleugeres i ràpides. Sense WordPress pesat. Core Web Vitals al màxim des del primer dia.</p>
+<div class="feature-top"><span class="feature-index">01</span><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path><path d="M8.5 12.5 10.5 10.5 12 12l3-3"></path></svg></span><h3>SEO i arquitectura des de l'inici</h3></div>
+<p>No deixem el posicionament per al final. Estructurem la web pensant en cerques, serveis, intencions i enllaçat intern des de la primera fase.</p>
 </div>
 <div class="feature-item">
-<h3>SEO on-page complet</h3>
-<p>Estructura, títols, metes, headings i URLs optimitzats per posicionar a Barcelona i l'àrea metropolitana.</p>
+<div class="feature-top"><span class="feature-index">02</span><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><h3>Disseny responsive i experiència d'usuari</h3></div>
+<p>La web ha de veure's bé, però també ser fàcil d'utilitzar, ràpida i clara tant en mòbil com en escriptori. Cada bloc existeix per acostar l'usuari a la conversió.</p>
 </div>
 <div class="feature-item">
-<h3>Disseny orientat a conversió</h3>
-<p>Cada secció treballa per guiar el visitant a contactar, demanar pressupost o trucar.</p>
+<div class="feature-top"><span class="feature-index">03</span><span aria-hidden="true" class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><h3>Tecnologia adequada per a cada projecte</h3></div>
+<p>Escollim la solució que més convé: WordPress, Shopify, PrestaShop o desenvolupament web a mida segons el tipus de negoci, el catàleg, el manteniment i els objectius.</p>
 </div>
 </div>
+<p class="feature-note"><strong>Idea base:</strong> que la web no es limiti a veure's bé, sinó que reforci percepció, confiança i captació a Barcelona.</p>
 </div></div></div>
 </section>
-<section class="section-shell">
+<section class="section-shell section-editorial">
 <div class="container">
-<div data-reveal="">
-<p class="eyebrow">Per a qui és</p>
-<h2>Empreses de Barcelona que volen una web que posicioni a Google i generi contactes reals.</h2>
+<div class="editorial-split" data-reveal="">
+<div class="editorial-copy">
+<p class="eyebrow">Enfocament</p>
+<h2>Una pàgina web a Barcelona no competeix només per estètica: competeix per atenció, confiança i visibilitat.</h2>
+<p class="section-support">La diferència no sol estar a tenir més efectes visuals, sinó a construir una pàgina que expliqui millor el negoci, ordeni els serveis i sostingui la captació amb més criteri.</p>
 <p class="page-intro">
-              Barcelona és un mercat molt competitiu. Per destacar, no n'hi ha prou amb tenir una web:
-              cal que estigui ben construïda, que carregui ràpid, que expliqui bé el negoci i que estigui
-              optimitzada per als termes que els teus clients busquen a Google.
+              En una ciutat com Barcelona, on conviuen despatxos, clíniques, ecommerce, marques locals, consultores, restaurants, estudis creatius i empreses de serveis, una web mediocre es queda curta molt ràpid. Per captar clients no n'hi ha prou amb "ser online". Cal una estratègia digital clara, una proposta de valor comprensible i una pàgina que no faci perdre oportunitats per culpa d'una mala estructura, una càrrega lenta o uns textos buits.
             </p>
+<p class="page-intro">
+              Per això aquesta pàgina està pensada específicament per a la intenció <strong>disseny web a Barcelona</strong>, mentre que la nostra pàgina general de <a href="/disseny-web/">disseny web professional</a> treballa una intenció més àmplia. Aquí parlem d'empreses, autònoms i negocis locals que volen guanyar visibilitat a Barcelona o a la seva àrea d'influència, i necessiten una web alineada amb la seva realitat comercial.
+            </p>
+<p class="editorial-quote">A Barcelona no n'hi ha prou amb "tenir una web": la pàgina ha d'aguantar comparació, transmetre nivell i facilitar el següent pas sense soroll.</p>
+</div>
+<aside class="insight-card">
+<span class="tagline">Visió de projecte</span>
+<h3>No dissenyem només una web bonica: construïm una base per vendre millor.</h3>
+<div class="trust-list">
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Més claredat comercial</strong><span>Oferta, serveis i següents passos millor ordenats perquè la web no perdi oportunitats.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>Més confiança des del primer scroll</strong><span>Jerarquia, ritme i missatges pensats per transmetre solidesa abans de demanar contacte.</span></div></div>
+<div class="trust-item"><span aria-hidden="true" class="trust-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path></svg></span><div><strong>Més marge per créixer</strong><span>L'estructura es planteja per conviure amb SEO, campanyes, landings i evolució futura sense refer-ho tot.</span></div></div>
+</div>
+</aside>
 </div>
 </div>
 </section>
-<section class="section-shell alt-surface">
+<section class="section-shell alt-surface section-services-premium">
 <div class="container">
 <div class="section-head" data-reveal="">
-<p class="eyebrow">Tipus de projectes</p>
-<h2>Webs que fem per a empreses de Barcelona.</h2>
+<p class="eyebrow">Què inclou</p>
+<h2>Serveis inclosos als nostres projectes de disseny web a Barcelona.</h2>
+<p class="section-support">No plantegem paquets estàndard sense context. L'estructura final depèn del tipus de negoci, del nivell de competència i de com es captarà trànsit després.</p>
 </div>
 <div class="card-grid">
-<article class="service-card" data-reveal="">
-<h3>Web corporativa</h3>
-<p>Per a empreses de serveis, consultores, despatxos i agències de Barcelona que necessiten una presència digital sòlida.</p>
+<article class="service-card service-card-featured" data-reveal="">
+<span class="card-mark">Captació</span>
+<h3>Web corporativa orientada a captar</h3>
+<p>Pàgines web corporatives per a empreses que necessiten presentar serveis, generar confiança i convertir visites en formularis, trucades o reunions.</p>
 </article>
 <article class="service-card" data-reveal="">
-<h3>Redisseny web</h3>
-<p>Renovem webs antigues millorant velocitat, missatge i SEO sense perdre el posicionament actual.</p>
+<span class="card-mark">A mida</span>
+<h3>Desenvolupament web a mida</h3>
+<p>Arquitectura, disseny i desenvolupament web a mida quan el projecte necessita més control, més rendiment o una solució fora de plantilla.</p>
 </article>
 <article class="service-card" data-reveal="">
-<h3>Landing pages</h3>
-<p>Pàgines d'aterratge per a <a href="/google-ads/">Google Ads</a> o serveis específics amb alta intenció de compra.</p>
+<span class="card-mark">Tecnologia</span>
+<h3>WordPress, Shopify o PrestaShop</h3>
+<p>Si el negoci necessita autogestió, ecommerce o catàleg, valorem WordPress, Shopify i PrestaShop amb criteri, sense imposar una tecnologia per sistema.</p>
 </article>
 <article class="service-card" data-reveal="">
-<h3>Web per a pimes</h3>
-<p>Solucions ajustades al pressupost real de petites i mitjanes empreses de Barcelona sense renunciar a la qualitat.</p>
+<span class="card-mark">Ecommerce</span>
+<h3>Botigues online i ecommerce</h3>
+<p>Dissenyem botigues online amb una estructura pensada per vendre: categories clares, fitxes útils, navegació neta i base SEO sòlida per créixer a Google.</p>
+</article>
+<article class="service-card service-card-accent" data-reveal="">
+<span class="card-mark">Visibilitat</span>
+<h3>SEO, SEM i màrqueting digital</h3>
+<p>La web es pot connectar amb <a href="/seo/">SEO</a>, <a href="/google-ads/">SEM i Google Ads</a> i altres accions de màrqueting digital perquè la captació tingui continuïtat.</p>
 </article>
 <article class="service-card" data-reveal="">
-<h3>Web + SEO local</h3>
-<p>Combinem disseny i <a href="/seo-local-barcelona/">SEO local a Barcelona</a> per captar clients des del primer mes.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Web + Google Ads</h3>
-<p>Landing optimitzada + campanya de <a href="/google-ads-barcelona/">Google Ads a Barcelona</a> per resultats immediats.</p>
+<span class="card-mark">Evolució</span>
+<h3>Manteniment web i evolució</h3>
+<p>Després del llançament podem continuar amb millores, noves landings, suport tècnic, optimització de conversió i manteniment web continu.</p>
 </article>
 </div>
 </div>
 </section>
-<section class="section-shell alt-surface">
+<section class="section-shell section-audience">
 <div class="container">
 <div class="section-head" data-reveal="">
-<p class="eyebrow">FAQ</p>
-<h2>Preguntes habituals sobre disseny web a Barcelona.</h2>
+<p class="eyebrow">Per a qui és</p>
+<h2>Disseny web per a negocis de Barcelona que necessiten alguna cosa més que una web bonica.</h2>
+</div>
+<div class="audience-layout" data-reveal="">
+<div class="audience-copy">
+<p class="page-intro">
+              Treballem amb empreses, autònoms i negocis locals que volen una web professional amb criteri comercial. Això inclou des de despatxos i consultores fins a clíniques, acadèmies, immobiliàries, estudis creatius, marques de producte o serveis B2B. El patró es repeteix sovint: tenen una web antiga, una pàgina feta de pressa o una presència digital que no reflecteix el nivell real del negoci.
+            </p>
+<p class="page-intro">
+              En aquests casos no només cal redissenyar. Cal ordenar l'oferta, prioritzar serveis, definir bé els missatges, crear una experiència d'usuari fluida i preparar la web per al posicionament a Google. Quan l'estructura està ben pensada, la velocitat de càrrega acompanya i cada CTA té sentit, la percepció canvia i la conversió també.
+            </p>
+<p class="page-intro">
+              També treballem amb negocis que ja inverteixen en màrqueting digital i necessiten una base millor perquè tot encaixi. Una campanya de Google Ads, una estratègia de SEO local o una acció de continguts rendeixen molt més quan aterren en una web clara, creïble i ben construïda. Si la pàgina no sosté el missatge ni facilita el següent pas, el cost de captació puja i la rendibilitat baixa.
+            </p>
+<p class="audience-note">Especialment encaixa amb empreses i negocis locals que necessiten una web professional alineada amb vendes, posicionament a Google i una percepció de marca més seriosa des del primer contacte.</p>
+</div>
+<aside class="audience-side">
+<div class="audience-panel">
+<span class="tagline">On sol encaixar millor</span>
+<div class="audience-rail">
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"></path><path d="m9.5 11.5 1.8 1.8 3.7-4.1"></path></svg></span><div><strong>Negocis locals amb ambició</strong><span>Empreses que ja no volen una presència bàsica i necessiten una web més sòlida.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><rect height="12.5" rx="2" width="18" x="3" y="4.5"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span><div><strong>Serveis complexos</strong><span>Projectes que necessiten ordenar millor oferta, arguments i pàgines clau.</span></div></div>
+<div class="rail-card"><span aria-hidden="true" class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 13.5V10.5"></path><path d="M6 10.5h3l7-4v11l-7-4H6z"></path><path d="M16 9.5a4.5 4.5 0 0 1 0 5"></path></svg></span><div><strong>Campanyes i SEO en marxa</strong><span>Negocis que ja inverteixen en captació i necessiten una base millor per rendibilitzar-la.</span></div></div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section-shell alt-surface section-process-premium">
+<div class="container">
+<div class="section-head" data-reveal="">
+<p class="eyebrow">Procés</p>
+<h2>Com treballem un projecte de disseny web professional a Barcelona.</h2>
+</div>
+<div class="process-prelude" data-reveal="">
+<div class="prelude-chip">Definim estructura, missatges i prioritats abans de dissenyar.</div>
+<div class="prelude-chip">Cada fase busca millorar claredat comercial, UX i base SEO.</div>
+<div class="prelude-chip">La web neix preparada per créixer amb campanyes, SEO o noves landings.</div>
+</div>
+<div class="process-grid">
+<article class="process-step" data-reveal="">
+<div class="process-number">01</div>
+<span class="card-mark">Base</span>
+<h3>Diagnosi i estratègia online</h3>
+<p>Revisem negoci, competència, serveis, paraules clau i oportunitats reals. Aquí definim si convé una web corporativa, una landing, un ecommerce o una estructura més àmplia.</p>
+</article>
+<article class="process-step" data-reveal="">
+<div class="process-number">02</div>
+<span class="card-mark">Missatge</span>
+<h3>Arquitectura, continguts i UX</h3>
+<p>Ordenem la informació, dissenyem la navegació i treballem textos amb enfocament comercial i SEO. L'experiència d'usuari no es deixa a l'atzar.</p>
+</article>
+<article class="process-step" data-reveal="">
+<div class="process-number">03</div>
+<span class="card-mark">Construcció</span>
+<h3>Disseny responsive i desenvolupament</h3>
+<p>Construïm la web perquè funcioni bé en mòbil, carregui ràpid i tingui una base tècnica neta. Això afecta directament percepció, posicionament i conversió.</p>
+</article>
+<article class="process-step" data-reveal="">
+<div class="process-number">04</div>
+<span class="card-mark">Creixement</span>
+<h3>Llançament, mesura i millora</h3>
+<p>Publiquem, validem elements clau i deixem la web llesta per continuar creixent amb SEO, campanyes SEM, noves landings o manteniment evolutiu.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section-shell section-reasons">
+<div class="container">
+<div class="section-head" data-reveal="">
+<p class="eyebrow">Per què nosaltres</p>
+<h2>Per què Addicionalseo pot encaixar si busques una agència de disseny web a Barcelona.</h2>
+</div>
+<div class="reason-layout" data-reveal="">
+<div class="reason-copy">
+<p class="page-intro">
+              No som una agència enorme amb capes i capes d'interlocució. Això ens permet treballar amb més detall, més criteri i més proximitat. Cada projecte s'enfoca des del negoci real: quin servei es vol vendre, quin tipus de client interessa, quines objeccions cal resoldre i quines pàgines han de posicionar abans.
+            </p>
+<p class="page-intro">
+              A més, no tractem la web com una peça aïllada. La connectem amb SEO, SEM i màrqueting digital quan té sentit. Si una empresa de Barcelona necessita posicionament a Google, una landing per a anuncis i una estructura clara de serveis, ho treballem tot de forma coherent. Aquesta visió conjunta sol marcar la diferència entre una web que "està bé" i una web que ajuda a facturar.
+            </p>
+<p class="page-intro">
+              També cuidem la part tècnica. Revisem headings, jerarquia, semàntica, temps de càrrega, responsive, CTAs, enllaçat intern i preparació per a analítica. No prometem miracles, però sí una base més sòlida per captar negoci local i no dependre només de recomanacions o de campanyes puntuals.
+            </p>
+<p class="page-intro">
+              I hi ha un altre punt important: parlem clar. Si una empresa necessita una web senzilla i ben enfocada, no l'empenyem cap a un projecte sobredimensionat. Si el que convé és una arquitectura més ambiciosa, un ecommerce o una fase prèvia d'auditoria SEO, també ho direm. Aquesta honestedat sol estalviar temps, pressupost i decisions equivocades.
+            </p>
+<p class="reason-quote">La part visual importa, però encara és més important que la web es noti pensada: en l'ordre, en el to i en la facilitat per entendre què fas i per què t'haurien de contactar.</p>
+</div>
+<aside class="proof-column">
+<div class="proof-box">
+<span class="stat">Visió 360º</span>
+<p>La web es planteja juntament amb SEO, campanyes i estructura de serveis, no com una peça aïllada.</p>
+</div>
+<div class="proof-box">
+<span class="stat">Criteri real</span>
+<p>Si convé una web senzilla ho direm. Si convé una arquitectura més ambiciosa, també.</p>
+</div>
+<div class="proof-box">
+<span class="stat">Més claredat</span>
+<p>Missatge, jerarquia, CTAs i base tècnica pensats per sostenir captació local a Barcelona.</p>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section-shell alt-surface section-cta-premium">
+<div class="container">
+<div class="cta-band" data-reveal="">
+<div class="cta-layout">
+<div class="cta-copy">
+<p class="eyebrow">CTA</p>
+<h2>Si vols una pàgina web a Barcelona pensada per posicionar i convertir, explica'ns el projecte.</h2>
+<p>
+              Et podem ajudar amb pàgines web corporatives, ecommerce, redissenys, migracions des de WordPress, manteniment web i estratègia digital connectada amb <a href="/seo/">SEO</a> i <a href="/google-ads/">SEM</a>. Si vols, comencem per una conversa breu i et diem què tindria més sentit en el teu cas.
+            </p>
+<div class="cta-proof" aria-label="Avantatges del contacte inicial">
+<span>Enfocament comercial</span>
+<span>SEO des del plantejament</span>
+<span>Proposta realista</span>
+</div>
+<div class="button-row">
+<a class="button" href="/contacte/">Anar al formulari de contacte</a>
+<a class="button-secondary" href="/seo/">Veure servei SEO</a>
+</div>
+</div>
+<aside class="cta-side">
+<h3>Què t'emportes en aquest primer contacte</h3>
+<ul class="cta-side-list">
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8"></path><path d="M14 7h6v6"></path></svg></span><div><strong>Lectura ràpida del projecte</strong><span>Et direm si encaixa millor una web corporativa, una landing més enfocada o una estructura més ambiciosa.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path></svg></span><div><strong>Visió SEO des de l'inici</strong><span>Valorem pàgines, intenció de cerca i com ordenar millor serveis o categories si cal.</span></div></li>
+<li class="cta-side-item"><span aria-hidden="true" class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8.5c0-1.7 1.8-3 5-3s5 1.3 5 3-1.8 3-5 3-5 1.3-5 3 1.8 3 5 3 5-1.3 5-3"></path></svg></span><div><strong>Proposta amb criteri</strong><span>Sense empènyer-te a més del que necessites i sense convertir la web en una plantilla cara sense direcció.</span></div></li>
+</ul>
+</aside>
+</div>
+</div>
+</div>
+</section>
+<section class="section-shell section-faq-premium">
+<div class="container">
+<div class="section-head" data-reveal="">
+<p class="eyebrow">Preguntes freqüents</p>
+<h2>FAQ sobre disseny web professional a Barcelona.</h2>
 </div>
 <div class="faq-grid">
 <article class="faq-card" data-reveal="">
-<h3>Quant costa una web professional a Barcelona?</h3>
-<p>Una web corporativa ben feta sol estar entre 1.200 i 3.500 €, depenent de la complexitat i el número de pàgines. Ho valorem cas per cas sense compromís.</p>
+<h3>Quant costa una pàgina web a Barcelona?</h3>
+<p>Depèn de si parlem d'una web corporativa bàsica, una pàgina de serveis més ambiciosa o un ecommerce. Hi influeixen el nombre de pàgines, la necessitat de copy, el disseny, les integracions i si hi ha estratègia SEO al darrere. Si vols una referència més detallada, pots veure la nostra guia sobre <a href="/quant-costa-una-web-a-barcelona/">quant costa una web a Barcelona</a>.</p>
 </article>
 <article class="faq-card" data-reveal="">
-<h3>La web posicionarà a Google a Barcelona?</h3>
-<p>Depèn del sector i la competència, però amb una base SEO sòlida és possible posicionar molt bé per cerques locals de Barcelona. Incloem tot el SEO on-page al projecte.</p>
+<h3>Quant tarda un disseny web professional?</h3>
+<p>El més habitual és entre 3 i 6 setmanes per a una web corporativa ben resolta. En projectes amb botiga online, diversos idiomes o fluxos més complexos, el termini es pot allargar. La clau és definir bé l'abast des de l'inici.</p>
 </article>
 <article class="faq-card" data-reveal="">
-<h3>Feu reunions presencials a Barcelona?</h3>
-<p>Sí, si el client ho prefereix. Treballem normalment en remot, però podem quedar a Barcelona sense cap problema.</p>
+<h3>La web queda preparada per a SEO?</h3>
+<p>Sí. Treballem estructura, headings, enllaçat intern, metadades, velocitat de càrrega i contingut base perquè la web surti preparada per al posicionament a Google. Si a més vols empènyer la captació, podem continuar amb un pla de <a href="/seo/">SEO</a>.</p>
 </article>
 <article class="faq-card" data-reveal="">
-<h3>Quant tarda un projecte?</h3>
-<p>Entre 3 i 6 setmanes per a una web corporativa. Una landing page senzilla pot estar en menys de 2 setmanes.</p>
+<h3>Treballeu amb WordPress?</h3>
+<p>Sí, quan té sentit. No forcem WordPress si el projecte demana una altra cosa. També treballem amb Shopify, PrestaShop o desenvolupament web a mida segons el negoci, l'autonomia que necessites i el tipus d'evolució prevista.</p>
+</article>
+<article class="faq-card" data-reveal="">
+<h3>Podeu crear botigues online i ecommerce?</h3>
+<p>Sí. Creem botigues online per a negocis que necessiten vendre serveis, productes o catàlegs de forma professional. Ens centrem en estructura, confiança, usabilitat, rendiment i base SEO per no llançar un ecommerce buit.</p>
+</article>
+<article class="faq-card" data-reveal="">
+<h3>Oferiu manteniment web?</h3>
+<p>Sí. Després del llançament ens podem ocupar de millores, noves seccions, optimització de conversió, suport tècnic i manteniment web perquè el projecte continuï creixent sense quedar congelat.</p>
 </article>
 </div>
 </div>
 </section>
-<section class="section-shell alt-surface">
+<section class="section-shell alt-surface section-zones-premium">
 <div class="container">
 <div class="section-head" data-reveal="">
-<p class="eyebrow">Zones que cobrim</p>
-<h2>Treballem a Barcelona i a tot el Vallès.</h2>
+<p class="eyebrow">Altres zones</p>
+<h2>També treballem disseny web en altres ciutats i comarques properes.</h2>
 </div>
 <div class="card-grid">
-<a class="service-card" data-reveal="" href="/disseny-web-castellar-del-valles/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Castellar del Valles</h3>
-<p>La nostra base. Webs per a empreses i autonoms de Castellar del Valles i rodalies.</p>
+<a class="service-card" data-reveal="" href="/disseny-web-castellar-del-valles/">
+<h3>Castellar del Vallès</h3>
+<p>Disseny web per a empreses i negocis de Castellar del Vallès i el seu entorn.</p>
 </a>
-<a class="service-card" data-reveal="" href="/disseny-web-sabadell/" style="display:block;text-decoration:none;color:inherit;">
+<a class="service-card" data-reveal="" href="/disseny-web-sabadell/">
 <h3>Sabadell</h3>
-<p>El mercat mes gran del Valles Occidental. Webs professionals per a tot tipus de negocis.</p>
+<p>Pàgines web professionals per a empreses, autònoms i negocis de Sabadell.</p>
 </a>
-<a class="service-card" data-reveal="" href="/disseny-web-terrassa/" style="display:block;text-decoration:none;color:inherit;">
+<a class="service-card" data-reveal="" href="/disseny-web-terrassa/">
 <h3>Terrassa</h3>
-<p>Gran ciutat industrial i de serveis a tocar de Barcelona. Presencia digital per a Terrassa.</p>
+<p>Disseny web professional i SEO local per a negocis de Terrassa i el Vallès Occidental.</p>
 </a>
-<a class="service-card" data-reveal="" href="/disseny-web-granollers/" style="display:block;text-decoration:none;color:inherit;">
+<a class="service-card" data-reveal="" href="/disseny-web-granollers/">
 <h3>Granollers</h3>
-<p>Centre del Valles Oriental. Webs per a negocis i autonoms de Granollers i la comarca.</p>
+<p>Webs per a empreses i projectes del Vallès Oriental amb base a Granollers.</p>
 </a>
-<a class="service-card" data-reveal="" href="/disseny-web-valles-occidental/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Valles Occidental</h3>
-<p>Castellar, Sabadell, Terrassa, Rubi, Cerdanyola i tots els municipis de la comarca.</p>
+<a class="service-card" data-reveal="" href="/disseny-web-valles-occidental/">
+<h3>Vallès Occidental</h3>
+<p>Disseny web per a tota la comarca, amb pàgines locals millor diferenciades i enllaçades entre elles.</p>
 </a>
-</div>
-</div>
-</section>
-<section class="section-shell compact">
-<div class="container">
-<div class="cta-band" data-reveal="">
-<p class="eyebrow">Parlem</p>
-<h2>Si el teu negoci a Barcelona necessita una web que funcioni, explica'ns el cas.</h2>
-<p>
-              Sense compromís. Treballem amb <a href="/disseny-web/">disseny web</a>,
-              <a href="/agencia-seo-barcelona/">SEO</a> i <a href="/google-ads-barcelona/">Google Ads a Barcelona</a>
-              per a empreses de tot Catalunya.
-            </p>
-<div class="button-row">
-<a class="button" href="/contacte/">Sol·licitar pressupost</a>
-<a class="button-secondary" href="/disseny-web-valles-occidental/">Disseny web al Vallès</a>
-</div>
 </div>
 </div>
 </section>

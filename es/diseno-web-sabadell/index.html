@@ -16,6 +16,212 @@
 <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/styles.css?v=8" rel="stylesheet"/>
+<style>
+      body.page-services.page-service-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+      body.page-services.page-service-premium .page-hero {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 4.8rem;
+        overflow: hidden;
+      }
+      body.page-services.page-service-premium .page-hero::before {
+        height: 620px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.22), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+      body.page-services.page-service-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.82), transparent 78%);
+        pointer-events: none;
+      }
+      .page-service-premium .page-hero .container,
+      .page-service-premium .section-shell .container { position: relative; z-index: 1; }
+      .page-service-premium .page-hero-inner,
+      .page-service-premium .cta-band,
+      .page-service-premium .split-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+        gap: 2.4rem;
+        align-items: start;
+      }
+      .page-service-premium .hero-copy { position: relative; }
+      .page-service-premium .hero-copy::before {
+        content: ""; position: absolute; top: -1rem; left: -1.15rem; width: 120px; height: 120px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%); filter: blur(10px); pointer-events: none;
+      }
+      .page-service-premium .hero-badge-row,
+      .page-service-premium .hero-proof,
+      .page-service-premium .cta-proof,
+      .page-service-premium .button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+      .page-service-premium .hero-badge-row { margin-bottom: 1rem; }
+      .page-service-premium .hero-context,
+      .page-service-premium .tagline,
+      .page-service-premium .card-mark {
+        display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.46rem 0.74rem; border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px; background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.82); font-size: 0.74rem; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+      }
+      .page-service-premium .hero-context::before,
+      .page-service-premium .tagline::before,
+      .page-service-premium .card-mark::before {
+        content: ""; width: 0.45rem; height: 0.45rem; border-radius: 999px; background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+      .page-service-premium .page-hero-inner h1 { font-size: clamp(1.95rem, 3vw, 3rem); line-height: 0.96; letter-spacing: -0.06em; max-width: 11ch; text-wrap: balance; margin-bottom: 1rem; }
+      .page-service-premium .hero-intro-card,
+      .page-service-premium .feature-panel,
+      .page-service-premium .audience-panel,
+      .page-service-premium .insight-card,
+      .page-service-premium .proof-box,
+      .page-service-premium .cta-side,
+      .page-service-premium .service-card,
+      .page-service-premium .faq-card,
+      .page-service-premium .rail-link {
+        position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.12), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.05), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(15,15,15,0.94);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+      }
+      .page-service-premium .hero-intro-card,
+      .page-service-premium .feature-panel,
+      .page-service-premium .audience-panel,
+      .page-service-premium .proof-box,
+      .page-service-premium .cta-side { padding: 1.45rem; }
+      .page-service-premium .hero-intro-card { max-width: 44rem; backdrop-filter: blur(14px); }
+      .page-service-premium .hero-proof,
+      .page-service-premium .cta-proof { margin-top: 1rem; }
+      .page-service-premium .proof-chip,
+      .page-service-premium .cta-proof span {
+        display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.72rem 0.95rem; border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.84); font-size: 0.77rem; font-weight: 700;
+      }
+      .page-service-premium .proof-chip svg,
+      .page-service-premium .feature-icon svg,
+      .page-service-premium .metric-icon svg,
+      .page-service-premium .trust-icon svg,
+      .page-service-premium .rail-icon svg,
+      .page-service-premium .cta-side-icon svg {
+        width: 16px; height: 16px; display: block; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+      }
+      .page-service-premium .feature-panel::before,
+      .page-service-premium .audience-panel::before,
+      .page-service-premium .insight-card::before,
+      .page-service-premium .proof-box::before,
+      .page-service-premium .cta-side::before,
+      .page-service-premium .service-card::before,
+      .page-service-premium .faq-card::before,
+      .page-service-premium .rail-link::before {
+        content: ""; position: absolute; inset: 0 auto auto 0; width: 92px; height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0.6), rgba(210,47,123,0.68), rgba(210,47,123,0));
+      }
+      .page-service-premium .feature-panel-head,
+      .page-service-premium .section-head { display: grid; gap: 0.85rem; }
+      .page-service-premium .feature-kicker {
+        display: inline-flex; align-items: center; gap: 0.55rem; color: var(--yellow); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      }
+      .page-service-premium .feature-kicker::before { content: ""; width: 0.45rem; height: 0.45rem; border-radius: 999px; background: currentColor; box-shadow: 0 0 16px rgba(252,243,0,0.36); }
+      .page-service-premium .feature-title,
+      .page-service-premium .section-head h2,
+      .page-service-premium .cta-copy h2 { font-size: clamp(1.8rem, 2.65vw, 2.5rem); line-height: 1.02; letter-spacing: -0.05em; max-width: 18ch; text-wrap: balance; }
+      .page-service-premium .feature-metric-grid,
+      .page-service-premium .card-grid,
+      .page-service-premium .faq-grid,
+      .page-service-premium .insight-grid,
+      .page-service-premium .locality-grid { display: grid; gap: 1rem; }
+      .page-service-premium .feature-metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.2rem; }
+      .page-service-premium .feature-metric,
+      .page-service-premium .feature-item { padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; background: rgba(255,255,255,0.03); }
+      .page-service-premium .metric-top,
+      .page-service-premium .feature-top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.55rem; }
+      .page-service-premium .metric-icon,
+      .page-service-premium .feature-icon,
+      .page-service-premium .trust-icon,
+      .page-service-premium .rail-icon,
+      .page-service-premium .cta-side-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.95rem; height: 1.95rem; border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--white); flex: 0 0 auto; }
+      .page-service-premium .metric-value { display: block; color: var(--white); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.05em; }
+      .page-service-premium .metric-label { color: rgba(255,255,255,0.62); font-size: 0.78rem; }
+      .page-service-premium .feature-list { display: grid; gap: 0.95rem; margin-top: 1.2rem; }
+      .page-service-premium .feature-item p,
+      .page-service-premium .service-card p,
+      .page-service-premium .faq-card p,
+      .page-service-premium .insight-card p,
+      .page-service-premium .audience-panel p,
+      .page-service-premium .proof-box p,
+      .page-service-premium .rail-link p,
+      .page-service-premium .cta-copy p,
+      .page-service-premium .cta-side p { margin: 0; }
+      .page-service-premium .section-shell { position: relative; padding-block: 4.4rem; }
+      .page-service-premium .section-shell.alt-surface { background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0)), rgba(255,255,255,0.015); }
+      .page-service-premium .section-shell.compact { padding-block: 3.8rem; }
+      .page-service-premium .section-head { margin-bottom: 1.45rem; }
+      .page-service-premium .insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .page-service-premium .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .page-service-premium .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .page-service-premium .locality-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .page-service-premium .insight-card,
+      .page-service-premium .service-card,
+      .page-service-premium .faq-card,
+      .page-service-premium .rail-link { padding: 1.2rem; }
+      .page-service-premium .rail-link { display: grid; gap: 0.85rem; text-decoration: none; color: inherit; }
+      .page-service-premium .rail-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+      .page-service-premium .proof-list { display: grid; gap: 0.9rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+      .page-service-premium .proof-list li { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; }
+      .page-service-premium .cta-band {
+        padding: 1.7rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.18), transparent 28%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 36px 90px rgba(0,0,0,0.34);
+      }
+      .page-service-premium .cta-copy { display: grid; gap: 1rem; }
+      .page-service-premium .cta-side { min-height: 100%; }
+      .page-service-premium .button-row { margin-top: 1.25rem; }
+      @media (max-width: 1120px) {
+        .page-service-premium .page-hero-inner,
+        .page-service-premium .cta-band,
+        .page-service-premium .split-section { grid-template-columns: 1fr; }
+        .page-service-premium .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 820px) {
+        .page-service-premium .page-hero { padding-top: 4.3rem; padding-bottom: 4rem; }
+        .page-service-premium .page-hero-inner h1 { max-width: 13ch; }
+        .page-service-premium .feature-metric-grid,
+        .page-service-premium .card-grid,
+        .page-service-premium .faq-grid,
+        .page-service-premium .insight-grid,
+        .page-service-premium .locality-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px) {
+        .page-service-premium .section-shell { padding-block: 3.5rem; }
+        .page-service-premium .hero-intro-card,
+        .page-service-premium .feature-panel,
+        .page-service-premium .audience-panel,
+        .page-service-premium .proof-box,
+        .page-service-premium .cta-band,
+        .page-service-premium .cta-side { padding: 1.2rem; }
+        .page-service-premium .page-hero-inner h1 { font-size: clamp(1.85rem, 10vw, 2.45rem); max-width: 12ch; }
+      }
+    </style>
 <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -40,7 +246,7 @@
       }
     </script>
 </head>
-<body class="page-services">
+<body class="page-services page-service-premium">
 <header class="site-header">
 <div class="container">
 <a aria-label="Addicionalseo" class="brand brand-logo" href="/es/">
@@ -65,159 +271,155 @@
 </header>
 <main id="main-content">
 <section class="page-hero">
-<div class="container"><div class="breadcrumb">
-<a href="/es/">Inicio</a>
-<span>/</span>
-<a href="/es/diseno-web/">Diseño web</a>
-<span>/</span>
-<span>Sabadell</span>
-</div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Diseño web en Sabadell</p><h1>Diseño web profesional en Sabadell para empresas y autónomos que quieren captar clientes en la ciudad y su área de influencia.</h1><p class="page-intro">
-            Sabadell es uno de los grandes mercados del Vallès Occidental: gran tejido industrial y de servicios, mucha competencia y una demanda local que busca en Google antes de decidir. Para destacar en ese entorno necesitas una web que posicione, que transmita confianza y que convierta visitas en clientes. Eso es lo que hacemos.
-          </p><div class="button-row">
+<div class="container">
+<div class="breadcrumb"><a href="/es/">Inicio</a><span>/</span><a href="/es/diseno-web/">Diseño web</a><span>/</span><span>Sabadell</span></div>
+<div class="page-hero-inner">
+<div class="hero-copy" data-reveal="">
+<div class="hero-badge-row">
+<p class="eyebrow">Diseño web en Sabadell</p>
+<span class="hero-context">Sabadell + Vallès Occidental</span>
+</div>
+<h1>Diseño web profesional en Sabadell para empresas y autónomos que quieren captar clientes en la ciudad y su área de influencia.</h1>
+<div class="hero-intro-card">
+<p class="page-intro">Construimos webs en código para negocios y proyectos de Sabadell que necesitan una presencia digital clara, rápida, preparada para SEO local y pensada para convertir visitas en clientes sin parecer una plantilla genérica.</p>
+<div class="button-row">
 <a class="button" href="/es/contacto/">Solicitar presupuesto</a>
 <a class="button-secondary" href="/es/diseno-web/">Ver servicio completo</a>
-</div></div><div class="card feature-panel" data-reveal="">
+</div>
+<div class="hero-proof">
+<span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg>Web rápida y limpia</span>
+<span class="proof-chip"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>SEO local integrado</span>
+<span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M12 4v16"/></svg>Mensaje orientado a captar</span>
+</div>
+</div>
+</div>
+<aside class="feature-panel" data-reveal="">
+<div class="feature-panel-head">
+<span class="feature-kicker">Addicionalseo / Sabadell</span>
+<h2 class="feature-title">Una landing local debe sentirse como una pieza comercial sólida, no como una página oscura con cuatro cards repetidas.</h2>
+</div>
+<div class="feature-metric-grid">
+<div class="feature-metric"><div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/></svg></span><span class="metric-value">SEO</span></div><span class="metric-label">Base local mejor preparada.</span></div>
+<div class="feature-metric"><div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h7"/></svg></span><span class="metric-value">Claridad</span></div><span class="metric-label">Más orden en el mensaje.</span></div>
+<div class="feature-metric"><div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/></svg></span><span class="metric-value">Confianza</span></div><span class="metric-label">Mejor sensación de marca.</span></div>
+</div>
 <div class="feature-list">
-<div class="feature-item">
-<h3>Código limpio, sin plugins</h3>
-<p>Webs ligeras que cargan en menos de 2 segundos. Google lo premia y los usuarios lo notan. Sin WordPress ni plantillas que lastren el rendimiento.</p>
+<div class="feature-item"><div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/></svg></span><h3>Código limpio, sin plugins</h3></div><p>Webs ligeras que cargan rápido y generan una mejor primera impresión.</p></div>
+<div class="feature-item"><div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 12h18"/></svg></span><h3>SEO local integrado</h3></div><p>Optimizamos cada página para captar búsquedas en Sabadell y en el Vallès Occidental desde el primer día.</p></div>
+<div class="feature-item"><div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><h3>CTA y estructura con intención</h3></div><p>Cada bloque está pensado para que el visitante entienda qué ofreces y se acerque al contacto.</p></div>
 </div>
-<div class="feature-item">
-<h3>SEO local integrado</h3>
-<p>Estructura semántica, palabras clave locales y optimización para búsquedas en Sabadell y el Vallès Occidental desde el primer día.</p>
-</div>
-<div class="feature-item">
-<h3>Mensaje orientado a la conversión</h3>
-<p>Textos, titulares y CTAs pensados para explicar claramente tu valor y guiar al visitante a contactar o comprar.</p>
+</aside>
 </div>
 </div>
-</div></div></div>
 </section>
+
 <section class="section-shell">
 <div class="container">
+<div class="split-section">
 <div data-reveal="">
+<div class="section-head">
 <p class="eyebrow">Para quién es</p>
-<h2>Empresas y autónomos de Sabadell que necesitan una presencia digital que trabaje por ellos.</h2>
-<p class="page-intro">
-              En Sabadell la competencia es alta en prácticamente todos los sectores. Una web genérica o lenta no es suficiente para destacar. Necesitas código limpio que cargue rápido, SEO local que posicione en las búsquedas de tu zona y un mensaje que convenza al visitante de que eres la mejor opción.
-            </p>
+<h2>Empresas y autónomos de Sabadell que necesitan una web que trabaje por ellos.</h2>
+<p>Sabadell es un mercado con competencia real. Una web lenta, genérica o mal explicada deja a cualquier negocio en desventaja antes incluso de hablar con el cliente.</p>
+</div>
+<div class="insight-grid">
+<article class="insight-card" data-reveal=""><span class="card-mark">Empresa</span><h3>Servicios y pymes</h3><p>Webs corporativas y comerciales para explicar mejor la oferta y reforzar credibilidad.</p></article>
+<article class="insight-card" data-reveal=""><span class="card-mark">Proyecto</span><h3>Autónomos y marcas personales</h3><p>Páginas más ligeras y enfocadas a captar consultas sin perder nivel de marca.</p></article>
+</div>
+</div>
+<aside class="audience-panel" data-reveal="">
+<span class="tagline">Lo que suele pasar</span>
+<ul class="proof-list">
+<li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span><div><h3>Web demasiado genérica</h3><p>El negocio no se diferencia y el visitante no encuentra motivos claros para contactar.</p></div></li>
+<li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></span><div><h3>Oferta mal explicada</h3><p>Los servicios se ven igual de planos y la página no genera recorrido comercial.</p></div></li>
+<li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span><div><h3>Base técnica limitada</h3><p>Cuando la web pesa demasiado, se nota en SEO, en la experiencia y en la percepción global.</p></div></li>
+</ul>
+</aside>
 </div>
 </div>
 </section>
+
 <section class="section-shell alt-surface">
 <div class="container">
 <div class="section-head" data-reveal="">
 <p class="eyebrow">Tipos de proyectos</p>
-<h2>Qué proyectos de diseño web hacemos en Sabadell.</h2>
+<h2>Proyectos de diseño web que hacemos para Sabadell y su área de influencia.</h2>
 </div>
 <div class="card-grid">
-<article class="service-card" data-reveal="">
-<h3>Web corporativa</h3>
-<p>Para empresas y autónomos de Sabadell que necesitan una presencia digital clara, profesional y optimizada para SEO local y nacional.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Rediseño web</h3>
-<p>Renovamos webs antiguas, lentas o poco atractivas sin perder el posicionamiento <a href="/es/seo/">SEO</a> existente. Más rápida, más clara y más efectiva.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Landing pages</h3>
-<p>Páginas específicas para campañas de <a href="/es/google-ads/">Google Ads</a> o servicios concretos con alta intención de compra en Sabadell.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Web para pymes</h3>
-<p>Soluciones a medida con presupuesto ajustado para pequeñas y medianas empresas de Sabadell sin renunciar a calidad ni rendimiento.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Web + SEO local</h3>
-<p>Combinamos diseño web y <a href="/es/seo-local/">SEO local</a> para captar clientes en Sabadell y municipios cercanos desde el primer día.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Web + Google Ads</h3>
-<p>Web optimizada más campaña de <a href="/es/google-ads/">Google Ads</a> para resultados inmediatos mientras el SEO orgánico crece a largo plazo.</p>
-</article>
+<article class="service-card" data-reveal=""><h3>Web corporativa</h3><p>Para empresas de servicios, industria y comercio de Sabadell que necesitan explicar mejor su propuesta de valor.</p></article>
+<article class="service-card" data-reveal=""><h3>Web para profesionales</h3><p>Si tienes una idea, una marca o un proyecto personal, te ayudamos a aterrizarlo con criterio profesional.</p></article>
+<article class="service-card" data-reveal=""><h3>Rediseño web</h3><p>Renovamos webs antiguas manteniendo el SEO existente y mejorando velocidad, diseño y conversión.</p></article>
+<article class="service-card" data-reveal=""><h3>Landing pages</h3><p>Páginas específicas para campañas de <a href="/es/google-ads/">Google Ads</a> o servicios concretos con alta intención.</p></article>
+<article class="service-card" data-reveal=""><h3>Web para pymes</h3><p>Soluciones ajustadas al presupuesto real de pequeñas y medianas empresas sin renunciar a calidad.</p></article>
+<article class="service-card" data-reveal=""><h3>Web + SEO local</h3><p>Combinamos diseño web y <a href="/es/seo-local/">SEO local</a> para maximizar visibilidad desde el primer día.</p></article>
 </div>
 </div>
 </section>
+
 <section class="section-shell">
 <div class="container">
-<div class="section-head" data-reveal="">
-<p class="eyebrow">Preguntas frecuentes</p>
-<h2>Lo que más nos preguntan sobre diseño web en Sabadell.</h2>
+<div class="split-section">
+<div data-reveal="">
+<div class="section-head">
+<p class="eyebrow">Zonas cercanas</p>
+<h2>Diseño web en Sabadell y en toda la comarca del Vallès.</h2>
+<p>La relación con Sabadell tiene sentido cuando también conectas con municipios cercanos donde quieres visibilidad y captación.</p>
 </div>
-<div class="faq-grid">
-<article class="faq-card" data-reveal="">
-<h3>¿Cuánto cuesta una web profesional en Sabadell?</h3>
-<p>Una web corporativa bien construida suele estar entre 1.200 y 3.500 €. Para proyectos más sencillos, podemos ajustar el presupuesto. Lo valoramos caso a caso sin compromiso.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿La web posicionará en Sabadell?</h3>
-<p>Si la construimos con <a href="/es/seo/">SEO on-page</a> desde el principio, sí. Trabajamos las palabras clave locales, la estructura semántica y los metadatos para posicionar en Sabadell y el área del Vallès Occidental.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿La competencia en Sabadell es alta? ¿Puede posicionar mi web?</h3>
-<p>Depende del sector. En algunos casos la competencia orgánica en Sabadell es elevada, por eso recomendamos combinar <a href="/es/seo/">SEO</a> con <a href="/es/google-ads/">Google Ads</a> para obtener resultados a corto y largo plazo simultáneamente.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿Cuánto tarda en estar lista la web?</h3>
-<p>Una web corporativa estándar tarda entre 3 y 6 semanas. Si necesitas algo más sencillo o urgente, podemos ajustarnos a tus plazos.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿Podéis migrar mi web de WordPress?</h3>
-<p>Sí. Migramos webs de WordPress a código limpio manteniendo o mejorando el SEO existente. La nueva web será más rápida, más segura y menos costosa de mantener.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>¿También trabajáis en municipios cercanos a Sabadell?</h3>
-<p>Sí. Cubrimos <a href="/es/diseno-web-terrassa/">Terrassa</a>, <a href="/es/diseno-web-castellar-del-valles/">Castellar del Vallès</a>, <a href="/es/diseno-web-granollers/">Granollers</a>, <a href="/es/diseno-web-barcelona/">Barcelona</a> y todo el <a href="/es/diseno-web-valles-occidental/">Vallès Occidental</a>.</p>
-</article>
+<div class="locality-grid">
+<a class="rail-link" data-reveal="" href="/es/diseno-web-castellar-del-valles/"><div class="rail-top"><strong>Castellar del Vallès</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Nuestra base y una conexión natural para negocios de la zona.</p></a>
+<a class="rail-link" data-reveal="" href="/es/diseno-web-terrassa/"><div class="rail-top"><strong>Terrassa</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Otro mercado fuerte del Vallès Occidental, muy conectado con Sabadell.</p></a>
+<a class="rail-link" data-reveal="" href="/es/diseno-web-granollers/"><div class="rail-top"><strong>Granollers</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Proyectos para empresas y profesionales del Vallès Oriental.</p></a>
+<a class="rail-link" data-reveal="" href="/es/diseno-web-barcelona/"><div class="rail-top"><strong>Barcelona</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>El mismo enfoque premium para proyectos en Barcelona y área metropolitana.</p></a>
+</div>
+</div>
+<aside class="proof-box" data-reveal="">
+<span class="tagline">Relacionado</span>
+<ul class="proof-list">
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/></svg></span><div><h3><a href="/es/diseno-web/">Servicio completo</a></h3><p>Cómo planteamos el servicio de diseño web más allá de las landings locales.</p></div></li>
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg></span><div><h3><a href="/es/seo/">SEO</a></h3><p>La continuación natural cuando la web ya está preparada para captar tráfico orgánico.</p></div></li>
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 18l6-6 4 4 6-8"/></svg></span><div><h3><a href="/disseny-web-sabadell/">Versió en català</a></h3><p>Mismo nivel visual y misma intención comercial para la versión CA.</p></div></li>
+</ul>
+</aside>
 </div>
 </div>
 </section>
+
 <section class="section-shell alt-surface">
 <div class="container">
 <div class="section-head" data-reveal="">
-<p class="eyebrow">Otras zonas</p>
-<h2>También trabajamos en estas zonas de Catalunya.</h2>
+<p class="eyebrow">FAQ</p>
+<h2>Preguntas habituales sobre diseño web en Sabadell.</h2>
 </div>
-<div class="card-grid">
-<a class="service-card" data-reveal="" href="/es/diseno-web-castellar-del-valles/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Castellar del Valles</h3>
-<p>Diseno web para empresas y negocios de Castellar del Valles y su entorno.</p>
-</a>
-<a class="service-card" data-reveal="" href="/es/diseno-web-terrassa/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Terrassa</h3>
-<p>Diseno web y SEO local para negocios de Terrassa y el Valles Occidental.</p>
-</a>
-<a class="service-card" data-reveal="" href="/es/diseno-web-granollers/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Granollers</h3>
-<p>Webs para empresas del Valles Oriental con sede en Granollers.</p>
-</a>
-<a class="service-card" data-reveal="" href="/es/diseno-web-valles-occidental/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Valles Occidental</h3>
-<p>Diseno web para toda la comarca del Valles Occidental: Sabadell, Terrassa, Castellar y mas.</p>
-</a>
-<a class="service-card" data-reveal="" href="/es/diseno-web-barcelona/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Barcelona</h3>
-<p>Diseno web profesional para empresas y autonomos de Barcelona y su area metropolitana.</p>
-</a>
+<div class="faq-grid">
+<article class="faq-card" data-reveal=""><h3>¿Trabajáis presencialmente en Sabadell?</h3><p>Trabajamos sobre todo en remoto, pero si hace falta una reunión presencial en Sabadell o en el Vallès, la podemos organizar.</p></article>
+<article class="faq-card" data-reveal=""><h3>¿Cuánto tarda un proyecto?</h3><p>Una web corporativa suele estar lista entre 3 y 6 semanas, según complejidad y contenidos.</p></article>
+<article class="faq-card" data-reveal=""><h3>¿Podéis hacer el mantenimiento posterior?</h3><p>Sí. Ofrecemos soporte técnico y actualizaciones puntuales cuando el proyecto lo necesita.</p></article>
+<article class="faq-card" data-reveal=""><h3>¿La web posicionará en Google?</h3><p>Si la construimos bien, sí. Incluimos SEO on-page, estructura semántica y páginas locales pensadas para captar búsquedas de Sabadell.</p></article>
 </div>
 </div>
 </section>
+
 <section class="section-shell compact">
 <div class="container">
 <div class="cta-band" data-reveal="">
-<p class="eyebrow">Empieza hoy</p>
-<h2>Si tu negocio en Sabadell necesita una web que funcione, cuéntanos el caso.</h2>
-<p>
-              Trabajamos con <a href="/es/diseno-web/">diseño web</a>, <a href="/es/seo/">SEO</a> y
-              <a href="/es/google-ads/">Google Ads</a> para empresas y autónomos de Sabadell y la comarca.
-              También cubrimos <a href="/es/diseno-web-terrassa/">Terrassa</a> y
-              <a href="/es/diseno-web-castellar-del-valles/">Castellar del Vallès</a>.
-              Presupuesto sin compromiso.
-            </p>
+<div class="cta-copy">
+<p class="eyebrow">Empezar</p>
+<h2>Si tienes un proyecto en Sabadell y necesitas una web que se sienta de verdad una pieza de marca, empecemos por aquí.</h2>
+<p>Valoramos el caso sin compromiso y te decimos si tiene más sentido una web nueva, un rediseño o una combinación con <a href="/es/seo/">SEO</a> y <a href="/es/google-ads/">Google Ads</a>.</p>
 <div class="button-row">
 <a class="button" href="/es/contacto/">Solicitar presupuesto gratuito</a>
-<a class="button-secondary" href="/es/diseno-web/">Ver servicio completo</a>
+<a class="button-secondary" href="/es/diseno-web-valles-occidental/">Diseño web en Vallès Occidental</a>
 </div>
+<div class="cta-proof">
+<span>Mensaje más claro</span>
+<span>Más confianza local</span>
+<span>Base SEO preparada</span>
+</div>
+</div>
+<aside class="cta-side">
+<div class="feature-top"><span class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7z"/></svg></span><h3>Cierre más potente</h3></div>
+<p>Una buena página local no solo informa: también transmite nivel, ayuda a diferenciarte y orienta mejor el siguiente paso del cliente.</p>
+</aside>
 </div>
 </div>
 </section>
@@ -259,7 +461,7 @@
 </div>
 </div>
 <div class="container footer-bottom">
-<small>© <span id="current-year"></span> Addicionalseo. Diseño web profesional para empresas y particulares.</small>
+<small>© <span id="current-year"></span> Addicionalseo. Diseño web en Sabadell y el Vallès Occidental.</small>
 </div>
 </footer>
 <script defer="" src="/script.js"></script>

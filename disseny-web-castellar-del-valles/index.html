@@ -16,6 +16,294 @@
 <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/styles.css?v=8" rel="stylesheet"/>
+<style>
+      body.page-services.page-service-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+      body.page-services.page-service-premium .page-hero {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 4.8rem;
+        overflow: hidden;
+      }
+      body.page-services.page-service-premium .page-hero::before {
+        height: 620px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.22), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+      body.page-services.page-service-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.82), transparent 78%);
+        pointer-events: none;
+      }
+      .page-service-premium .page-hero .container,
+      .page-service-premium .section-shell .container { position: relative; z-index: 1; }
+      .page-service-premium .page-hero-inner,
+      .page-service-premium .cta-band,
+      .page-service-premium .split-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+        gap: 2.4rem;
+        align-items: start;
+      }
+      .page-service-premium .hero-copy { position: relative; }
+      .page-service-premium .hero-copy::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        left: -1.15rem;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+      .page-service-premium .hero-badge-row,
+      .page-service-premium .hero-proof,
+      .page-service-premium .cta-proof,
+      .page-service-premium .button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+      .page-service-premium .hero-badge-row { margin-bottom: 1rem; }
+      .page-service-premium .hero-context,
+      .page-service-premium .tagline,
+      .page-service-premium .card-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.46rem 0.74rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.82);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .page-service-premium .hero-context::before,
+      .page-service-premium .tagline::before,
+      .page-service-premium .card-mark::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+      .page-service-premium .page-hero-inner h1 {
+        font-size: clamp(1.95rem, 3vw, 3rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+        max-width: 11ch;
+        text-wrap: balance;
+        margin-bottom: 1rem;
+      }
+      .page-service-premium .hero-intro-card,
+      .page-service-premium .feature-panel,
+      .page-service-premium .audience-panel,
+      .page-service-premium .insight-card,
+      .page-service-premium .proof-box,
+      .page-service-premium .cta-side,
+      .page-service-premium .service-card,
+      .page-service-premium .faq-card,
+      .page-service-premium .rail-link {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.12), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.05), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(15,15,15,0.94);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+      }
+      .page-service-premium .hero-intro-card,
+      .page-service-premium .feature-panel,
+      .page-service-premium .audience-panel,
+      .page-service-premium .proof-box,
+      .page-service-premium .cta-side { padding: 1.45rem; }
+      .page-service-premium .hero-intro-card { max-width: 44rem; backdrop-filter: blur(14px); }
+      .page-service-premium .hero-proof,
+      .page-service-premium .cta-proof { margin-top: 1rem; }
+      .page-service-premium .proof-chip,
+      .page-service-premium .cta-proof span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.77rem;
+        font-weight: 700;
+      }
+      .page-service-premium .proof-chip svg,
+      .page-service-premium .feature-icon svg,
+      .page-service-premium .metric-icon svg,
+      .page-service-premium .trust-icon svg,
+      .page-service-premium .rail-icon svg,
+      .page-service-premium .cta-side-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .page-service-premium .feature-panel::before,
+      .page-service-premium .audience-panel::before,
+      .page-service-premium .insight-card::before,
+      .page-service-premium .proof-box::before,
+      .page-service-premium .cta-side::before,
+      .page-service-premium .service-card::before,
+      .page-service-premium .faq-card::before,
+      .page-service-premium .rail-link::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 92px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0.6), rgba(210,47,123,0.68), rgba(210,47,123,0));
+      }
+      .page-service-premium .feature-panel-head,
+      .page-service-premium .section-head { display: grid; gap: 0.85rem; }
+      .page-service-premium .feature-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .page-service-premium .feature-kicker::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.36);
+      }
+      .page-service-premium .feature-title,
+      .page-service-premium .section-head h2,
+      .page-service-premium .cta-copy h2 {
+        font-size: clamp(1.8rem, 2.65vw, 2.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+        max-width: 18ch;
+        text-wrap: balance;
+      }
+      .page-service-premium .feature-metric-grid,
+      .page-service-premium .card-grid,
+      .page-service-premium .faq-grid,
+      .page-service-premium .insight-grid,
+      .page-service-premium .locality-grid { display: grid; gap: 1rem; }
+      .page-service-premium .feature-metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.2rem; }
+      .page-service-premium .feature-metric,
+      .page-service-premium .feature-item { padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; background: rgba(255,255,255,0.03); }
+      .page-service-premium .metric-top,
+      .page-service-premium .feature-top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.55rem; }
+      .page-service-premium .metric-icon,
+      .page-service-premium .feature-icon,
+      .page-service-premium .trust-icon,
+      .page-service-premium .rail-icon,
+      .page-service-premium .cta-side-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.95rem;
+        height: 1.95rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+        flex: 0 0 auto;
+      }
+      .page-service-premium .metric-value { display: block; color: var(--white); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.05em; }
+      .page-service-premium .metric-label { color: rgba(255,255,255,0.62); font-size: 0.78rem; }
+      .page-service-premium .feature-list { display: grid; gap: 0.95rem; margin-top: 1.2rem; }
+      .page-service-premium .feature-item p,
+      .page-service-premium .service-card p,
+      .page-service-premium .faq-card p,
+      .page-service-premium .insight-card p,
+      .page-service-premium .audience-panel p,
+      .page-service-premium .proof-box p,
+      .page-service-premium .rail-link p,
+      .page-service-premium .cta-copy p,
+      .page-service-premium .cta-side p { margin: 0; }
+      .page-service-premium .section-shell { position: relative; padding-block: 4.4rem; }
+      .page-service-premium .section-shell.alt-surface { background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0)), rgba(255,255,255,0.015); }
+      .page-service-premium .section-shell.compact { padding-block: 3.8rem; }
+      .page-service-premium .section-head { margin-bottom: 1.45rem; }
+      .page-service-premium .insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .page-service-premium .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .page-service-premium .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .page-service-premium .locality-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .page-service-premium .insight-card,
+      .page-service-premium .service-card,
+      .page-service-premium .faq-card,
+      .page-service-premium .rail-link { padding: 1.2rem; }
+      .page-service-premium .rail-link { display: grid; gap: 0.85rem; text-decoration: none; color: inherit; }
+      .page-service-premium .rail-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+      .page-service-premium .proof-list { display: grid; gap: 0.9rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+      .page-service-premium .proof-list li { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; }
+      .page-service-premium .cta-band {
+        padding: 1.7rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.18), transparent 28%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 36px 90px rgba(0,0,0,0.34);
+      }
+      .page-service-premium .cta-copy { display: grid; gap: 1rem; }
+      .page-service-premium .cta-side { min-height: 100%; }
+      .page-service-premium .button-row { margin-top: 1.25rem; }
+      @media (max-width: 1120px) {
+        .page-service-premium .page-hero-inner,
+        .page-service-premium .cta-band,
+        .page-service-premium .split-section { grid-template-columns: 1fr; }
+        .page-service-premium .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 820px) {
+        .page-service-premium .page-hero { padding-top: 4.3rem; padding-bottom: 4rem; }
+        .page-service-premium .page-hero-inner h1 { max-width: 13ch; }
+        .page-service-premium .feature-metric-grid,
+        .page-service-premium .card-grid,
+        .page-service-premium .faq-grid,
+        .page-service-premium .insight-grid,
+        .page-service-premium .locality-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px) {
+        .page-service-premium .section-shell { padding-block: 3.5rem; }
+        .page-service-premium .hero-intro-card,
+        .page-service-premium .feature-panel,
+        .page-service-premium .audience-panel,
+        .page-service-premium .proof-box,
+        .page-service-premium .cta-band,
+        .page-service-premium .cta-side { padding: 1.2rem; }
+        .page-service-premium .page-hero-inner h1 { font-size: clamp(1.85rem, 10vw, 2.45rem); max-width: 12ch; }
+      }
+    </style>
 <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -45,232 +333,17 @@
       }
     </script>
 </head>
-<body class="page-services">
-<header class="site-header">
-<div class="container">
-<a aria-label="Addicionalseo" class="brand brand-logo" href="/">
-<img alt="Addicionalseo" src="/assets/logo-header.png" width="160"/>
-</a>
-<button aria-controls="site-nav" aria-expanded="false" aria-label="Obrir menu" class="nav-toggle" type="button">
-<span></span><span></span><span></span>
-</button>
-<nav aria-label="Principal" class="site-nav" id="site-nav">
-<a href="/">Inici</a>
-<a href="/disseny-web/">Disseny web</a>
-<a href="/seo/">SEO</a>
-<a href="/google-ads/">Google Ads</a>
-<a href="/magazine/">Magazine</a>
-<a class="button button-small" href="/contacte/">Parlem</a>
-<div class="nav-language">
-<a aria-current="page" href="/disseny-web-castellar-del-valles/">CA</a>
-<a href="/es/diseno-web-castellar-del-valles/">ES</a>
-</div>
-</nav>
-</div>
-</header>
+<body class="page-services page-service-premium">
+<header class="site-header"><div class="container"><a aria-label="Addicionalseo" class="brand brand-logo" href="/"><img alt="Addicionalseo" src="/assets/logo-header.png" width="160"/></a><button aria-controls="site-nav" aria-expanded="false" aria-label="Obrir menu" class="nav-toggle" type="button"><span></span><span></span><span></span></button><nav aria-label="Principal" class="site-nav" id="site-nav"><a href="/">Inici</a><a href="/disseny-web/">Disseny web</a><a href="/seo/">SEO</a><a href="/google-ads/">Google Ads</a><a href="/magazine/">Magazine</a><a class="button button-small" href="/contacte/">Parlem</a><div class="nav-language"><a aria-current="page" href="/disseny-web-castellar-del-valles/">CA</a><a href="/es/diseno-web-castellar-del-valles/">ES</a></div></nav></div></header>
 <main id="main-content">
-<section class="page-hero">
-<div class="container"><div class="breadcrumb">
-<a href="/">Inici</a>
-<span>/</span>
-<a href="/disseny-web/">Disseny web</a>
-<span>/</span>
-<span>Castellar del Vallès</span>
-</div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Disseny web a Castellar del Vallès</p><h1>Disseny web a Castellar del Vallès per a empreses, autònoms i particulars del Vallès Occidental.</h1><p class="page-intro">
-            Creem webs professionals per a negocis i projectes de Castellar del Vallès que necessiten una
-            presència digital sòlida: clara en el missatge, preparada per SEO i orientada a captar clients
-            reals. Tant si ets una empresa establerta, un autònom que vol créixer digitalment, com un
-            particular amb un projecte en ment: sense plantilles genèriques, sense WordPress pesat.
-          </p><div class="button-row">
-<a class="button" href="/contacte/">Sol·licitar pressupost gratuït</a>
-<a class="button-secondary" href="/disseny-web/">Veure servei complet</a>
-</div></div><div class="card feature-panel" data-reveal="">
-<div class="feature-list">
-<div class="feature-item">
-<h3>Web en codi a mida</h3>
-<p>Cap plantilla genèrica. La web reflecteix el vostre negoci o projecte, és lleugera i carrega molt ràpid.</p>
-</div>
-<div class="feature-item">
-<h3>Preparada per SEO local</h3>
-<p>Estructura, contingut i senyals pensats perquè Google us associï a Castellar del Vallès i rodalies.</p>
-</div>
-<div class="feature-item">
-<h3>Orientada a conversió</h3>
-<p>El missatge, els CTA i l'estructura treballen perquè el visitant contacti o demani pressupost.</p>
-</div>
-<div class="feature-item">
-<h3>Per a particulars</h3>
-<p>Tens una idea de negoci o un projecte personal? T'ajudem a tirar-lo endavant amb una web professional i un pressupost ajustat.</p>
-</div>
-</div>
-</div></div></div>
-</section>
-<section class="section-shell">
-<div class="container">
-<div data-reveal="">
-<p class="eyebrow">Per a qui és</p>
-<h2>Empreses, autònoms i particulars de Castellar del Vallès que necessiten una web que treballi per ells.</h2>
-<p class="page-intro">
-              Molts negocis locals tenen una web antiga, lenta o que no explica bé el que fan. I hi ha
-              particulars amb un projecte en ment que no saben per on començar. Si competiu o viviu a
-              Castellar del Vallès, Sabadell o el Vallès Occidental, una web ben construïda és el primer
-              pas per captar més clients o fer realitat el teu projecte sense dependre d'intermediaris.
-            </p>
-</div>
-</div>
-</section>
-<section class="section-shell alt-surface">
-<div class="container">
-<div class="section-head" data-reveal="">
-<p class="eyebrow">Què inclou</p>
-<h2>El que inclou un projecte de disseny web a Castellar del Vallès.</h2>
-</div>
-<div class="card-grid">
-<article class="service-card" data-reveal="">
-<h3>Web corporativa</h3>
-<p>Per explicar millor l'empresa, els serveis i la proposta de valor a clients de la zona i de tot Catalunya.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>SEO on-page</h3>
-<p>Títols, metes, headings, URLs i estructura semàntica perquè Google entengui bé el negoci i la zona.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Velocitat i rendiment</h3>
-<p>Codi net, sense plugins innecessaris. Webs que carreguen en menys de 2 segons en mòbil i escriptori.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Formulari i contacte</h3>
-<p>Sistema de contacte funcional per rebre consultes directament al correu, sense intermediaris ni subscripcions externes.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Disseny adaptat al mòbil</h3>
-<p>Experiència perfecta en tots els dispositius. La majoria de cerques locals es fan des del mòbil.</p>
-</article>
-<article class="service-card" data-reveal="">
-<h3>Estructura escalable</h3>
-<p>Podeu afegir pàgines, serveis o articles nous sense haver de refer-ho tot de zero quan el negoci creixi.</p>
-</article>
-</div>
-</div>
-</section>
-<section class="section-shell">
-<div class="container">
-<div class="section-head" data-reveal="">
-<p class="eyebrow">Zones que cobrim</p>
-<h2>Treballem per a negocis i projectes de tot el Vallès Occidental i rodalies.</h2>
-</div>
-<div class="card-grid">
-<article class="service-card" data-reveal="">
-<h3>Castellar del Valles</h3>
-<p>La nostra zona principal. Coneixem el teixit empresarial local i les necessitats digitals dels negocis i particulars de la vila.</p>
-</article>
-<a class="service-card" data-reveal="" href="/disseny-web-sabadell/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Sabadell</h3>
-<p>Gran mercat proper. Webs professionals per a empreses i autonoms de Sabadell.</p>
-</a>
-<a class="service-card" data-reveal="" href="/disseny-web-terrassa/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Terrassa</h3>
-<p>Cobrim projectes a Terrassa per a empreses industrials, de serveis i comerc.</p>
-</a>
-<a class="service-card" data-reveal="" href="/disseny-web-granollers/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Granollers</h3>
-<p>Centre del Valles Oriental. Webs per a negocis i particulars de Granollers.</p>
-</a>
-<a class="service-card" data-reveal="" href="/disseny-web-valles-occidental/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Valles Occidental</h3>
-<p>Polinya, Sentmenat, Palau-solita, Sant Quirze, Barbera... Treballem per a tot el Valles.</p>
-</a>
-<a class="service-card" data-reveal="" href="/disseny-web-barcelona/" style="display:block;text-decoration:none;color:inherit;">
-<h3>Barcelona</h3>
-<p>Projectes a Barcelona i la seva area amb codi net i SEO des del principi.</p>
-</a>
-</div>
-</div>
-</section>
-<section class="section-shell alt-surface">
-<div class="container">
-<div class="section-head" data-reveal="">
-<p class="eyebrow">FAQ</p>
-<h2>Preguntes habituals sobre disseny web a Castellar del Vallès.</h2>
-</div>
-<div class="faq-grid">
-<article class="faq-card" data-reveal="">
-<h3>Quant costa una web professional a Castellar del Vallès?</h3>
-<p>Depèn de la complexitat. Una web corporativa ben feta, en codi i preparada per SEO, sol estar entre 1.200 i 3.500 €. Ho valorem cas per cas sense compromís.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>Heu de ser a Castellar per treballar amb vosaltres?</h3>
-<p>No. Treballem en remot sense cap problema. La majoria de reunions es fan per videoconferència i l'acompanyament és continu durant tot el projecte.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>La web ajudarà a posicionar a Google?</h3>
-<p>Sí, si es construeix bé des del principi. Fem el SEO on-page, l'estructura i el contingut perquè Google entengui el negoci, la zona i els serveis que oferiu.</p>
-</article>
-<article class="faq-card" data-reveal="">
-<h3>Podeu millorar la web que ja tinc?</h3>
-<p>Sí. Analitzem el que teniu i proposem si és millor millorar-la o fer-la nova. De vegades un bon redisseny és suficient; d'altres, és més eficient partir de zero.</p>
-</article>
-</div>
-</div>
-</section>
-<section class="section-shell compact">
-<div class="container">
-<div class="cta-band" data-reveal="">
-<p class="eyebrow">Parlem</p>
-<h2>Empresa, autònom o particular a Castellar del Vallès: si tens un projecte, comencem per aquí.</h2>
-<p>
-              Explica'ns el projecte i et donem una orientació clara. Sense compromís, sense comercials agressius.
-              Treballem amb <a href="/disseny-web/">disseny web</a>, <a href="/seo-local/">SEO local</a> i
-              <a href="/google-ads/">Google Ads</a> per a negocis i projectes del Vallès i de tot Catalunya.
-            </p>
-<div class="button-row">
-<a class="button" href="/contacte/">Sol·licitar pressupost gratuït</a>
-<a class="button-secondary" href="/disseny-web-valles-occidental/">Disseny web al Vallès Occidental</a>
-</div>
-</div>
-</div>
-</section>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Inici</a><span>/</span><a href="/disseny-web/">Disseny web</a><span>/</span><span>Castellar del Vallès</span></div><div class="page-hero-inner"><div class="hero-copy" data-reveal=""><div class="hero-badge-row"><p class="eyebrow">Disseny web a Castellar del Vallès</p><span class="hero-context">Base local + comarca</span></div><h1>Disseny web a Castellar del Vallès per a empreses, autònoms i particulars del Vallès Occidental.</h1><div class="hero-intro-card"><p class="page-intro">Castellar és la nostra base, i això ens permet entendre molt bé com s’han de presentar digitalment els negocis de la zona: amb una web clara, ràpida, ben estructurada i prou sòlida per captar clients a la comarca.</p><div class="button-row"><a class="button" href="/contacte/">Sol·licitar pressupost gratuït</a><a class="button-secondary" href="/disseny-web/">Veure servei complet</a></div><div class="hero-proof"><span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg>Base local real</span><span class="proof-chip"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>SEO de proximitat</span><span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M12 4v16"/></svg>Missatge més clar</span></div></div></div><aside class="feature-panel" data-reveal=""><div class="feature-panel-head"><span class="feature-kicker">Addicionalseo / Castellar</span><h2 class="feature-title">A Castellar no cal una pàgina petita sense personalitat: cal una web ben pensada que estigui a l’altura del negoci i del territori.</h2></div><div class="feature-metric-grid"><div class="feature-metric"><div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/></svg></span><span class="metric-value">Proximitat</span></div><span class="metric-label">Coneixement real de la zona.</span></div><div class="feature-metric"><div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/></svg></span><span class="metric-value">Claredat</span></div><span class="metric-label">Oferta millor ordenada.</span></div><div class="feature-metric"><div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/></svg></span><span class="metric-value">Confiança</span></div><span class="metric-label">Millor percepció de marca.</span></div></div><div class="feature-list"><div class="feature-item"><div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/></svg></span><h3>Web en codi a mida</h3></div><p>Sense plantilla genèrica i amb més control sobre el rendiment, el missatge i la presentació final.</p></div><div class="feature-item"><div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 12h18"/></svg></span><h3>Preparada per SEO local</h3></div><p>Estructura, contingut i senyals pensats perquè Google us associï a Castellar i al seu entorn natural.</p></div><div class="feature-item"><div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><h3>CTA i estructura amb sentit</h3></div><p>La pàgina està orientada a ajudar el visitant a entendre, confiar i demanar pressupost.</p></div></div></aside></div></div></section>
+<section class="section-shell"><div class="container"><div class="split-section"><div data-reveal=""><div class="section-head"><p class="eyebrow">Per a qui és</p><h2>Empreses, autònoms i particulars de Castellar del Vallès que necessiten una web que treballi per ells.</h2><p>Molts negocis locals tenen una web antiga o poc clara, i molts projectes personals no acaben de fer el pas digital. Una web ben construïda és el primer moviment per presentar-se millor i captar amb més criteri.</p></div><div class="insight-grid"><article class="insight-card" data-reveal=""><span class="card-mark">Empresa</span><h3>Negoci local</h3><p>Webs per explicar millor serveis, proposta de valor i recorregut comercial.</p></article><article class="insight-card" data-reveal=""><span class="card-mark">Projecte</span><h3>Particulars i noves marques</h3><p>Presentacions professionals per a idees, negocis o projectes personals amb ambició.</p></article></div></div><aside class="audience-panel" data-reveal=""><span class="tagline">Quan sol fallar</span><ul class="proof-list"><li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span><div><h3>Web massa petita</h3><p>La pàgina es queda curta i no reflecteix ni el nivell ni la varietat del negoci.</p></div></li><li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></span><div><h3>Estructura poc comercial</h3><p>El visitant entén fragments, però no rep un relat clar ni una proposta sòlida.</p></div></li><li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span><div><h3>Massa dependència tècnica</h3><p>Quan la base està mal resolta, qualsevol creixement futur es torna més lent i menys net.</p></div></li></ul></aside></div></div></section>
+<section class="section-shell alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Què inclou</p><h2>El que inclou un projecte de disseny web a Castellar del Vallès.</h2></div><div class="card-grid"><article class="service-card" data-reveal=""><h3>Web corporativa</h3><p>Per explicar millor l’empresa, els serveis i la proposta de valor a la zona i més enllà.</p></article><article class="service-card" data-reveal=""><h3>SEO on-page</h3><p>Títols, metes, headings i estructura perquè Google entengui millor el negoci i l’entorn local.</p></article><article class="service-card" data-reveal=""><h3>Velocitat i rendiment</h3><p>Codi net, sense plugins innecessaris i amb una experiència més lleugera en mòbil i escriptori.</p></article><article class="service-card" data-reveal=""><h3>Formulari i contacte</h3><p>Sistema de contacte funcional perquè la web també treballi de veritat per captar consultes.</p></article><article class="service-card" data-reveal=""><h3>Disseny adaptat al mòbil</h3><p>La majoria de cerques locals passen pel mòbil, i això s’ha de notar en la composició i l’ús.</p></article><article class="service-card" data-reveal=""><h3>Estructura escalable</h3><p>La web queda preparada per créixer amb pàgines, serveis o articles sense haver-la de refer.</p></article></div></div></section>
+<section class="section-shell"><div class="container"><div class="split-section"><div data-reveal=""><div class="section-head"><p class="eyebrow">Zones que cobrim</p><h2>Treballem per a negocis i projectes de tot el Vallès Occidental i rodalies.</h2><p>Castellar es relaciona de forma natural amb Sabadell, Terrassa, Barcelona i la resta de la comarca, així que la pàgina també ha de reflectir aquest radi real.</p></div><div class="locality-grid"><a class="rail-link" data-reveal="" href="/disseny-web-sabadell/"><div class="rail-top"><strong>Sabadell</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Gran mercat proper i connexió natural amb molts projectes de la zona.</p></a><a class="rail-link" data-reveal="" href="/disseny-web-terrassa/"><div class="rail-top"><strong>Terrassa</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Projectes per a empreses industrials, de serveis i comerç.</p></a><a class="rail-link" data-reveal="" href="/disseny-web-valles-occidental/"><div class="rail-top"><strong>Vallès Occidental</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Visió comarcal per a negocis que volen captar més enllà d’un sol municipi.</p></a><a class="rail-link" data-reveal="" href="/disseny-web-barcelona/"><div class="rail-top"><strong>Barcelona</strong><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></div><p>Mateix enfocament premium per a projectes a Barcelona i la seva àrea.</p></a></div></div><aside class="proof-box" data-reveal=""><span class="tagline">Relacionat</span><ul class="proof-list"><li><span class="rail-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/></svg></span><div><h3><a href="/disseny-web/">Servei complet</a></h3><p>La base general del servei de disseny web per a empreses, autònoms i projectes personals.</p></div></li><li><span class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg></span><div><h3><a href="/seo-local/">SEO local</a></h3><p>La continuació natural quan la web ja està preparada per captar cerques de proximitat.</p></div></li><li><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 18l6-6 4 4 6-8"/></svg></span><div><h3><a href="/es/diseno-web-castellar-del-valles/">Versió en castellà</a></h3><p>Mateix nivell visual i mateixa lògica comercial a la versió ES.</p></div></li></ul></aside></div></div></section>
+<section class="section-shell alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">FAQ</p><h2>Preguntes habituals sobre disseny web a Castellar del Vallès.</h2></div><div class="faq-grid"><article class="faq-card" data-reveal=""><h3>Quant costa una web professional?</h3><p>Una web corporativa ben feta, en codi i preparada per SEO, sol estar entre 1.200 i 3.500 €, segons el cas.</p></article><article class="faq-card" data-reveal=""><h3>Heu de ser a Castellar per treballar amb vosaltres?</h3><p>No. Treballem en remot sense cap problema i mantenim l’acompanyament durant tot el projecte.</p></article><article class="faq-card" data-reveal=""><h3>La web ajudarà a posicionar a Google?</h3><p>Sí, si es construeix bé des del principi. Fem l’on-page i l’estructura perquè Google entengui negoci, zona i serveis.</p></article><article class="faq-card" data-reveal=""><h3>Podeu millorar la web que ja tinc?</h3><p>Sí. Analitzem si convé millorar-la o refer-la des d’una base més neta i més escalable.</p></article></div></div></section>
+<section class="section-shell compact"><div class="container"><div class="cta-band" data-reveal=""><div class="cta-copy"><p class="eyebrow">Parlem</p><h2>Si teniu un projecte a Castellar del Vallès i voleu una web amb més nivell, més claredat i més capacitat de captar, ho podem plantejar bé.</h2><p>Sense compromís i sense soroll comercial. Revisem el cas i proposem el que realment té sentit per al negoci o projecte.</p><div class="button-row"><a class="button" href="/contacte/">Sol·licitar pressupost gratuït</a><a class="button-secondary" href="/disseny-web-valles-occidental/">Disseny web al Vallès Occidental</a></div><div class="cta-proof"><span>Base local real</span><span>Més confiança</span><span>Web preparada per créixer</span></div></div><aside class="cta-side"><div class="feature-top"><span class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7z"/></svg></span><h3>Tancament més premium</h3></div><p>La pàgina tanca amb més pes visual i amb una sensació més clara d’agència professional, no de pàgina local improvisada.</p></aside></div></div></section>
 </main>
-<footer class="footer">
-<div class="container footer-grid">
-<div>
-<a class="brand" href="/">Addicionalseo</a>
-<p>Disseny web, SEO i Google Ads per a empreses, autònoms i particulars de Catalunya i tot Espanya.</p>
-</div>
-<div>
-<h3>Serveis</h3>
-<div class="footer-links">
-<a href="/disseny-web/">Disseny web</a>
-<a href="/seo/">SEO</a>
-<a href="/google-ads/">Google Ads</a>
-<a href="/seo-local/">SEO local</a>
-<a href="/disseny-web-pimes/">Web per a pimes</a>
-</div>
-</div>
-<div>
-<h3>Zones</h3>
-<div class="footer-links">
-<a href="/disseny-web-castellar-del-valles/">Castellar del Vallès</a>
-<a href="/disseny-web-sabadell/">Sabadell</a>
-<a href="/disseny-web-terrassa/">Terrassa</a>
-<a href="/disseny-web-granollers/">Granollers</a>
-<a href="/disseny-web-valles-occidental/">Vallès Occidental</a>
-<a href="/disseny-web-barcelona/">Barcelona</a>
-</div>
-</div>
-<div>
-<h3>Contacte</h3>
-<div class="footer-links">
-<a href="/contacte/">Sol·licitar pressupost</a>
-<a href="tel:+34687894716">687 89 47 16</a>
-<a href="mailto:info@addicionalseo.com">info@addicionalseo.com</a>
-</div>
-</div>
-</div>
-<div class="container footer-bottom">
-<small>© <span id="current-year"></span> Addicionalseo. Disseny web a Castellar del Vallès i el Vallès Occidental.</small>
-</div>
-</footer>
+<footer class="footer"><div class="container footer-grid"><div><a class="brand" href="/">Addicionalseo</a><p>Disseny web, SEO i Google Ads per a empreses, autònoms i particulars de Catalunya i tot Espanya.</p></div><div><h3>Serveis</h3><div class="footer-links"><a href="/disseny-web/">Disseny web</a><a href="/seo/">SEO</a><a href="/google-ads/">Google Ads</a><a href="/seo-local/">SEO local</a><a href="/disseny-web-pimes/">Web per a pimes</a></div></div><div><h3>Zones</h3><div class="footer-links"><a href="/disseny-web-castellar-del-valles/">Castellar del Vallès</a><a href="/disseny-web-sabadell/">Sabadell</a><a href="/disseny-web-terrassa/">Terrassa</a><a href="/disseny-web-granollers/">Granollers</a><a href="/disseny-web-valles-occidental/">Vallès Occidental</a><a href="/disseny-web-barcelona/">Barcelona</a></div></div><div><h3>Contacte</h3><div class="footer-links"><a href="/contacte/">Sol·licitar pressupost</a><a href="tel:+34687894716">687 89 47 16</a><a href="mailto:info@addicionalseo.com">info@addicionalseo.com</a></div></div></div><div class="container footer-bottom"><small>© <span id="current-year"></span> Addicionalseo. Disseny web a Castellar del Vallès i el Vallès Occidental.</small></div></footer>
 <script defer="" src="/script.js"></script>
 </body>
 </html>

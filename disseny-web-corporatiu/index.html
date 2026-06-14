@@ -21,6 +21,513 @@
 <meta content="https://addicionalseo.com/disseny-web-corporatiu/" property="og:url"/>
 <meta content="https://addicionalseo.com/assets/project-gestior.png" property="og:image"/>
 <link href="/styles.css?v=2" rel="stylesheet"/>
+<style>
+      body.page-services.page-service-premium {
+        overflow-x: clip;
+        background:
+          radial-gradient(circle at top left, rgba(210,47,123,0.08), transparent 28%),
+          radial-gradient(circle at top right, rgba(252,243,0,0.05), transparent 22%),
+          #080808;
+      }
+
+      body.page-services.page-service-premium .page-hero {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 4.9rem;
+        overflow: hidden;
+      }
+
+      body.page-services.page-service-premium .page-hero::before {
+        height: 620px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(210,47,123,0.22), transparent 34%),
+          radial-gradient(circle at 16% 14%, rgba(252,243,0,0.08), transparent 24%),
+          linear-gradient(180deg, rgba(29,9,18,0.94), rgba(8,8,8,0));
+      }
+
+      body.page-services.page-service-premium .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.08;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.82), transparent 78%);
+        pointer-events: none;
+      }
+
+      .page-service-premium .page-hero .container,
+      .page-service-premium .section-shell .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-service-premium .page-hero-inner,
+      .page-service-premium .cta-band {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+        gap: 2.6rem;
+        align-items: start;
+      }
+
+      .page-service-premium .hero-copy {
+        position: relative;
+      }
+
+      .page-service-premium .hero-copy::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        left: -1.15rem;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(210,47,123,0.18), transparent 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .page-service-premium .hero-badge-row,
+      .page-service-premium .hero-proof,
+      .page-service-premium .cta-proof,
+      .page-service-premium .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .page-service-premium .hero-badge-row {
+        margin-bottom: 1rem;
+      }
+
+      .page-service-premium .hero-context,
+      .page-service-premium .tagline,
+      .page-service-premium .card-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.46rem 0.74rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.82);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .page-service-premium .hero-context::before,
+      .page-service-premium .tagline::before,
+      .page-service-premium .card-mark::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--accent));
+        box-shadow: 0 0 14px rgba(210,47,123,0.35);
+      }
+
+      .page-service-premium .page-hero-inner h1 {
+        font-size: clamp(1.95rem, 3vw, 3rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+        max-width: 11ch;
+        text-wrap: balance;
+        margin-bottom: 1rem;
+      }
+
+      .page-service-premium .page-intro strong,
+      .page-service-premium p strong {
+        color: var(--white);
+      }
+
+      .page-service-premium .hero-intro-card,
+      .page-service-premium .feature-panel,
+      .page-service-premium .audience-panel,
+      .page-service-premium .insight-card,
+      .page-service-premium .proof-box,
+      .page-service-premium .cta-side,
+      .page-service-premium .service-card,
+      .page-service-premium .faq-card,
+      .page-service-premium .process-step,
+      .page-service-premium .rail-link {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.12), transparent 30%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.05), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          rgba(15,15,15,0.94);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+      }
+
+      .page-service-premium .hero-intro-card,
+      .page-service-premium .feature-panel,
+      .page-service-premium .audience-panel,
+      .page-service-premium .proof-box,
+      .page-service-premium .cta-side {
+        padding: 1.45rem;
+      }
+
+      .page-service-premium .hero-intro-card {
+        max-width: 44rem;
+        backdrop-filter: blur(14px);
+      }
+
+      .page-service-premium .hero-proof,
+      .page-service-premium .cta-proof {
+        margin-top: 1rem;
+      }
+
+      .page-service-premium .proof-chip,
+      .page-service-premium .cta-proof span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.77rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .page-service-premium .proof-chip svg,
+      .page-service-premium .feature-icon svg,
+      .page-service-premium .metric-icon svg,
+      .page-service-premium .trust-icon svg,
+      .page-service-premium .rail-icon svg,
+      .page-service-premium .cta-side-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .page-service-premium .feature-panel::before,
+      .page-service-premium .audience-panel::before,
+      .page-service-premium .insight-card::before,
+      .page-service-premium .proof-box::before,
+      .page-service-premium .cta-side::before,
+      .page-service-premium .service-card::before,
+      .page-service-premium .faq-card::before,
+      .page-service-premium .process-step::before,
+      .page-service-premium .rail-link::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 92px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(252,243,0,0.6), rgba(210,47,123,0.68), rgba(210,47,123,0));
+      }
+
+      .page-service-premium .feature-panel-head,
+      .page-service-premium .section-head {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .page-service-premium .feature-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--yellow);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .page-service-premium .feature-kicker::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px rgba(252,243,0,0.36);
+      }
+
+      .page-service-premium .feature-title,
+      .page-service-premium .section-head h2,
+      .page-service-premium .cta-copy h2 {
+        font-size: clamp(1.8rem, 2.65vw, 2.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+        max-width: 18ch;
+        text-wrap: balance;
+      }
+
+      .page-service-premium .feature-metric-grid,
+      .page-service-premium .card-grid,
+      .page-service-premium .faq-grid,
+      .page-service-premium .process-grid,
+      .page-service-premium .insight-grid,
+      .page-service-premium .locality-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .page-service-premium .feature-metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1.2rem;
+      }
+
+      .page-service-premium .feature-metric,
+      .page-service-premium .feature-item {
+        padding: 1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.03);
+      }
+
+      .page-service-premium .metric-top,
+      .page-service-premium .feature-top {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.55rem;
+      }
+
+      .page-service-premium .metric-icon,
+      .page-service-premium .feature-icon,
+      .page-service-premium .trust-icon,
+      .page-service-premium .rail-icon,
+      .page-service-premium .cta-side-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.95rem;
+        height: 1.95rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+        flex: 0 0 auto;
+      }
+
+      .page-service-premium .metric-value {
+        display: block;
+        color: var(--white);
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+
+      .page-service-premium .metric-label,
+      .page-service-premium .muted {
+        color: rgba(255,255,255,0.62);
+        font-size: 0.78rem;
+      }
+
+      .page-service-premium .feature-list {
+        display: grid;
+        gap: 0.95rem;
+        margin-top: 1.2rem;
+      }
+
+      .page-service-premium .feature-item p,
+      .page-service-premium .service-card p,
+      .page-service-premium .faq-card p,
+      .page-service-premium .insight-card p,
+      .page-service-premium .audience-panel p,
+      .page-service-premium .proof-box p,
+      .page-service-premium .rail-link p,
+      .page-service-premium .cta-copy p,
+      .page-service-premium .cta-side p {
+        margin: 0;
+      }
+
+      .page-service-premium .section-shell {
+        position: relative;
+        padding-block: 4.4rem;
+      }
+
+      .page-service-premium .section-shell.alt-surface {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0)),
+          rgba(255,255,255,0.015);
+      }
+
+      .page-service-premium .section-shell.compact {
+        padding-block: 3.8rem;
+      }
+
+      .page-service-premium .split-section,
+      .page-service-premium .cta-band {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+        gap: 1.2rem;
+        align-items: start;
+      }
+
+      .page-service-premium .section-head {
+        margin-bottom: 1.45rem;
+      }
+
+      .page-service-premium .section-head p,
+      .page-service-premium .page-intro,
+      .page-service-premium .hero-intro-card p {
+        max-width: 62ch;
+      }
+
+      .page-service-premium .insight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page-service-premium .insight-card,
+      .page-service-premium .service-card,
+      .page-service-premium .faq-card,
+      .page-service-premium .process-step,
+      .page-service-premium .rail-link {
+        padding: 1.2rem;
+      }
+
+      .page-service-premium .card-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .page-service-premium .process-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .page-service-premium .faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page-service-premium .locality-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page-service-premium .rail-link {
+        display: grid;
+        gap: 0.85rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .page-service-premium .rail-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .page-service-premium .rail-link strong,
+      .page-service-premium .service-card h3,
+      .page-service-premium .faq-card h3,
+      .page-service-premium .process-step h3,
+      .page-service-premium .insight-card h3,
+      .page-service-premium .audience-panel h3,
+      .page-service-premium .proof-box h3,
+      .page-service-premium .feature-item h3,
+      .page-service-premium .cta-side h3 {
+        color: var(--white);
+      }
+
+      .page-service-premium .proof-list {
+        display: grid;
+        gap: 0.9rem;
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .page-service-premium .proof-list li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem;
+        align-items: start;
+      }
+
+      .page-service-premium .cta-band {
+        padding: 1.7rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top right, rgba(210,47,123,0.18), transparent 28%),
+          radial-gradient(circle at left center, rgba(252,243,0,0.06), transparent 24%),
+          linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
+          rgba(16,16,16,0.95);
+        box-shadow: 0 36px 90px rgba(0,0,0,0.34);
+      }
+
+      .page-service-premium .cta-copy {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .page-service-premium .cta-side {
+        min-height: 100%;
+      }
+
+      .page-service-premium .button-row {
+        margin-top: 1.25rem;
+      }
+
+      @media (max-width: 1120px) {
+        .page-service-premium .page-hero-inner,
+        .page-service-premium .cta-band,
+        .page-service-premium .split-section {
+          grid-template-columns: 1fr;
+        }
+
+        .page-service-premium .card-grid,
+        .page-service-premium .process-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 820px) {
+        .page-service-premium .page-hero {
+          padding-top: 4.3rem;
+          padding-bottom: 4rem;
+        }
+
+        .page-service-premium .page-hero-inner h1 {
+          max-width: 13ch;
+        }
+
+        .page-service-premium .feature-metric-grid,
+        .page-service-premium .card-grid,
+        .page-service-premium .faq-grid,
+        .page-service-premium .process-grid,
+        .page-service-premium .insight-grid,
+        .page-service-premium .locality-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-service-premium .section-shell {
+          padding-block: 3.5rem;
+        }
+
+        .page-service-premium .hero-intro-card,
+        .page-service-premium .feature-panel,
+        .page-service-premium .audience-panel,
+        .page-service-premium .proof-box,
+        .page-service-premium .cta-band,
+        .page-service-premium .cta-side {
+          padding: 1.2rem;
+        }
+
+        .page-service-premium .page-hero-inner h1 {
+          font-size: clamp(1.85rem, 10vw, 2.45rem);
+          max-width: 12ch;
+        }
+      }
+    </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,7 +593,7 @@
 }
     </script>
 </head>
-<body class="page-services">
+<body class="page-services page-service-premium">
 <header class="site-header">
 <div class="container">
 <a aria-label="Addicionalseo" class="brand brand-logo" href="/">
@@ -110,37 +617,187 @@
 </div>
 </header>
 <main id="main-content">
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Inici</a><span>/</span><span>Disseny web corporatiu</span></div><div class="page-hero-inner"><div data-reveal=""><p class="eyebrow">Web corporativa</p><h1>Disseny web corporatiu per presentar millor l’empresa i convertir la web en una eina de confiança.</h1><p class="page-intro">Construïm webs corporatives en codi per a marques que necessiten explicar millor què fan i créixer amb una base més neta.</p></div><div class="card feature-panel" data-reveal=""><div class="feature-list">
-<div class="feature-item"><h3>Arquitectura de serveis</h3><p>Decidim com s’han d’ordenar les pàgines principals, els serveis i els recursos.</p></div>
-<div class="feature-item"><h3>Direcció visual</h3><p>Busquem una web sòbria, elegant i clara, coherent amb la percepció de marca.</p></div>
-<div class="feature-item"><h3>Base preparada per SEO</h3><p>Deixem una estructura neta perquè pugui créixer amb contingut i campanyes.</p></div>
-</div><h3 style="margin-top:1.4rem;">Enllaços relacionats</h3><ul class="article-list">
-<li><a href="/disseny-web/">Servei de disseny web</a></li>
-<li><a href="/redissenyar-una-web-sense-perdre-seo/">Redissenyar una web sense perdre SEO</a></li>
-<li><a href="/com-estructurar-els-serveis-duna-web/">Com estructurar els serveis</a></li>
-</ul></div></div></div></section>
-<section class="section-shell"><div class="container"><div data-reveal=""><p class="eyebrow">Per què importa</p><h2>La web corporativa no hauria de ser només una presentació.</h2>
-<p class="page-intro">Quan la proposta de valor no és clara, quan els serveis estan mal ordenats o quan la web depèn massa de plantilles, la captació es ressent.</p>
-<p class="page-intro">Treballar una web corporativa amb criteri vol dir ordenar missatge, estructura, jerarquia, SEO i desenvolupament.</p>
-</div></div></section>
-<section class="section-shell alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Què inclou</p><h2>Peces habituals d’una web corporativa ben resolta</h2><p>Més que afegir seccions, interessa que cada peça reforci missatge i conversió.</p></div><div class="card-grid">
-<article class="service-card" data-reveal=""><h3>Home amb direcció clara</h3><p>Una portada que expliqui bé oferta, posicionament i proper pas.</p></article>
-<article class="service-card" data-reveal=""><h3>Pàgines de servei sòlides</h3><p>Landings pensades perquè cada servei tingui pes comercial i SEO propi.</p></article>
-<article class="service-card" data-reveal=""><h3>Proves de confiança</h3><p>Casos, procés, FAQs i contingut editorial per donar context i credibilitat.</p></article>
-</div></div></section>
-<section class="section-shell"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Desenvolupament</p><h2>Com acostumem a construir una web corporativa</h2><p>El projecte avança per fases perquè cada decisió visual estigui connectada amb negoci i captació.</p></div><div class="process-grid">
-<article class="process-step" data-reveal=""><h3>Diagnosi</h3><p>Revisem web actual, competidors, oferta i objectius.</p></article>
-<article class="process-step" data-reveal=""><h3>Arquitectura</h3><p>Definim mapa de pàgines i jerarquia de serveis.</p></article>
-<article class="process-step" data-reveal=""><h3>Disseny i desenvolupament</h3><p>Treballem la nova web en codi, amb bon rendiment.</p></article>
-<article class="process-step" data-reveal=""><h3>Llançament</h3><p>Publiquem i deixem la base preparada per créixer.</p></article>
-</div></div></section>
-<section class="section-shell compact alt-surface"><div class="container"><div class="section-head" data-reveal=""><p class="eyebrow">Preguntes habituals</p><h2>Dubtes sobre una web corporativa</h2></div><div class="faq-grid">
+<section class="page-hero">
+<div class="container">
+<div class="breadcrumb"><a href="/">Inici</a><span>/</span><span>Disseny web corporatiu</span></div>
+<div class="page-hero-inner">
+<div class="hero-copy" data-reveal="">
+<div class="hero-badge-row">
+<p class="eyebrow">Web corporativa</p>
+<span class="hero-context">Marca + estructura + conversió</span>
+</div>
+<h1>Disseny web corporatiu per presentar millor l’empresa i convertir la web en una eina de confiança.</h1>
+<div class="hero-intro-card">
+<p class="page-intro">Construïm webs corporatives en codi per a marques que necessiten explicar millor què fan, ordenar la seva oferta i créixer amb una base més neta, més elegant i més preparada per captar.</p>
+<div class="button-row">
+<a class="button" href="/contacte/">Parlem de la nova web</a>
+<a class="button-secondary" href="/disseny-web/">Veure servei complet</a>
+</div>
+<div class="hero-proof">
+<span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M12 4v16"/></svg>Estructura pensada per serveis</span>
+<span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg>Missatge més clar i comercial</span>
+<span class="proof-chip"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/></svg>Base sòlida per SEO i captació</span>
+</div>
+</div>
+</div>
+<aside class="feature-panel" data-reveal="">
+<div class="feature-panel-head">
+<span class="feature-kicker">Addicionalseo / enfocament corporatiu</span>
+<h2 class="feature-title">Una web corporativa ha de transmetre nivell, ordenar el relat i donar confiança abans del primer contacte.</h2>
+</div>
+<div class="feature-metric-grid">
+<div class="feature-metric">
+<div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/><path d="M8 19v2"/><path d="M16 19v2"/><path d="M9 9h6"/><path d="M9 13h4"/></svg></span><span class="metric-value">Base</span></div>
+<span class="metric-label">Arquitectura neta i escalable.</span>
+</div>
+<div class="feature-metric">
+<div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/></svg></span><span class="metric-value">Missatge</span></div>
+<span class="metric-label">Més claredat per vendre millor.</span>
+</div>
+<div class="feature-metric">
+<div class="metric-top"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 12h18"/></svg></span><span class="metric-value">SEO</span></div>
+<span class="metric-label">Preparada per créixer en serveis i continguts.</span>
+</div>
+</div>
+<div class="feature-list">
+<div class="feature-item">
+<div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h7"/></svg></span><h3>Arquitectura de serveis</h3></div>
+<p>Decidim com s’han d’ordenar les pàgines principals, els serveis i els recursos perquè la web expliqui millor què feu.</p>
+</div>
+<div class="feature-item">
+<div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 7-7 11-7-11 7-7z"/></svg></span><h3>Direcció visual</h3></div>
+<p>Busquem una web sòbria, elegant i clara, coherent amb la percepció de marca que voleu transmetre.</p>
+</div>
+<div class="feature-item">
+<div class="feature-top"><span class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg></span><h3>Base preparada per SEO</h3></div>
+<p>Deixem una estructura neta perquè pugui créixer amb contingut, landings i campanyes sense haver de refer-la.</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+
+<section class="section-shell">
+<div class="container">
+<div class="split-section">
+<div data-reveal="">
+<div class="section-head">
+<p class="eyebrow">Per què importa</p>
+<h2>La web corporativa no hauria de ser només una presentació correcta.</h2>
+<p>Quan la proposta de valor no és clara, quan els serveis estan mal ordenats o quan la web depèn massa de plantilles, la captació es ressent encara que l’empresa treballi bé.</p>
+</div>
+<div class="insight-grid">
+<article class="insight-card" data-reveal="">
+<span class="card-mark">Claredat</span>
+<h3>Explicar millor per vendre millor</h3>
+<p>Una web corporativa ben enfocada fa més fàcil entendre l’oferta, el posicionament i el següent pas.</p>
+</article>
+<article class="insight-card" data-reveal="">
+<span class="card-mark">Coherència</span>
+<h3>Marca, estructura i negoci alineats</h3>
+<p>La percepció visual i el relat comercial han de jugar a favor de la confiança, no en contra.</p>
+</article>
+</div>
+</div>
+<aside class="audience-panel" data-reveal="">
+<span class="tagline">Quan acostuma a fallar</span>
+<ul class="proof-list">
+<li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span><div><h3>Oferta poc prioritzada</h3><p>Els serveis importants queden diluïts i el visitant no sap per on començar.</p></div></li>
+<li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/><path d="M9 9h6v6H9z"/></svg></span><div><h3>Seccions sense jerarquia</h3><p>La web suma blocs però no construeix un relat sòlid per captar i convèncer.</p></div></li>
+<li><span class="trust-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span><div><h3>Base tècnica poc fiable</h3><p>Quan tot depèn de plantilles i plugins, la web perd lleugeresa, control i escalabilitat.</p></div></li>
+</ul>
+</aside>
+</div>
+</div>
+</section>
+
+<section class="section-shell alt-surface">
+<div class="container">
+<div class="section-head" data-reveal="">
+<p class="eyebrow">Què inclou</p>
+<h2>Peces habituals d’una web corporativa ben resolta.</h2>
+<p>Més que afegir seccions, interessa que cada peça reforci missatge, confiança i conversió.</p>
+</div>
+<div class="card-grid">
+<article class="service-card" data-reveal=""><h3>Home amb direcció clara</h3><p>Una portada que expliqui bé oferta, posicionament i següent pas sense dependre d’un discurs ambigu.</p></article>
+<article class="service-card" data-reveal=""><h3>Pàgines de servei sòlides</h3><p>Landings pensades perquè cada servei tingui pes comercial i SEO propi dins la mateixa arquitectura.</p></article>
+<article class="service-card" data-reveal=""><h3>Proves de confiança</h3><p>Casos, procés, FAQs i contingut editorial per donar context i credibilitat a la decisió.</p></article>
+<article class="service-card" data-reveal=""><h3>Navegació més intel·ligent</h3><p>Jerarquia i recorregut perquè la web sigui fàcil d’entendre tant per usuaris com per Google.</p></article>
+<article class="service-card" data-reveal=""><h3>Disseny amb criteri</h3><p>Una presència més neta, elegant i coherent amb el nivell de l’empresa i del servei.</p></article>
+<article class="service-card" data-reveal=""><h3>Escalabilitat real</h3><p>Base preparada per créixer amb nous serveis, continguts i campanyes sense haver de començar de zero.</p></article>
+</div>
+</div>
+</section>
+
+<section class="section-shell">
+<div class="container">
+<div class="split-section">
+<div data-reveal="">
+<div class="section-head">
+<p class="eyebrow">Desenvolupament</p>
+<h2>Com acostumem a construir una web corporativa.</h2>
+<p>El projecte avança per fases perquè cada decisió visual estigui connectada amb negoci, SEO i captació.</p>
+</div>
+<div class="process-grid">
+<article class="process-step" data-reveal=""><h3>Diagnosi</h3><p>Revisem web actual, competidors, oferta i objectius per detectar què s’ha d’ordenar primer.</p></article>
+<article class="process-step" data-reveal=""><h3>Arquitectura</h3><p>Definim mapa de pàgines, prioritat de serveis i jerarquia de contingut perquè la web respiri millor.</p></article>
+<article class="process-step" data-reveal=""><h3>Disseny i desenvolupament</h3><p>Treballem la nova web en codi, amb millor ritme visual, rendiment i més control sobre el resultat.</p></article>
+<article class="process-step" data-reveal=""><h3>Llançament</h3><p>Publiquem amb una base preparada per continuar creixent amb SEO, continguts i noves landings.</p></article>
+</div>
+</div>
+<aside class="proof-box" data-reveal="">
+<span class="tagline">Enllaços relacionats</span>
+<ul class="proof-list">
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"/><path d="M8 19v2"/><path d="M16 19v2"/></svg></span><div><h3><a href="/disseny-web/">Servei de disseny web</a></h3><p>La base general del servei i com plantegem webs en codi per captar millor.</p></div></li>
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M4 18l6-6 4 4 6-8"/></svg></span><div><h3><a href="/redissenyar-una-web-sense-perdre-seo/">Redissenyar una web sense perdre SEO</a></h3><p>Quan cal modernitzar la web sense perdre el treball orgànic acumulat.</p></div></li>
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M5 7h14"/><path d="M5 12h14"/><path d="M5 17h10"/></svg></span><div><h3><a href="/com-estructurar-els-serveis-duna-web/">Com estructurar els serveis</a></h3><p>Un bon recordatori de per què l’arquitectura és clau en una web corporativa.</p></div></li>
+<li><span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><div><h3><a href="/es/diseno-web-corporativo/">Versió en castellà</a></h3><p>Mateix plantejament visual i estructural per a la versió ES de la pàgina.</p></div></li>
+</ul>
+</aside>
+</div>
+</div>
+</section>
+
+<section class="section-shell compact alt-surface">
+<div class="container">
+<div class="section-head" data-reveal="">
+<p class="eyebrow">Preguntes habituals</p>
+<h2>Dubtes sobre una web corporativa.</h2>
+</div>
+<div class="faq-grid">
 <article class="faq-card" data-reveal=""><h3>Quan convé redissenyar la web?</h3><p>Quan la marca ha evolucionat o la web ja no transmet prou bé l’oferta.</p></article>
 <article class="faq-card" data-reveal=""><h3>Té sentit si també voleu treballar SEO?</h3><p>Sí. És molt millor quan la web es planteja ja preparada per SEO i continguts.</p></article>
 <article class="faq-card" data-reveal=""><h3>Podeu treballar en català i castellà?</h3><p>Sí. Podem plantejar webs bilingües i estructures per a tot Espanya.</p></article>
 <article class="faq-card" data-reveal=""><h3>La web es pot ampliar després?</h3><p>Sí. Busquem que pugui créixer amb nous serveis, articles i landings.</p></article>
-</div></div></section>
-<section class="section-shell compact"><div class="container"><div class="cta-band" data-reveal=""><p class="eyebrow">Nova web</p><h2>Si necessites una web corporativa que transmeti més nivell, la podem plantejar bé.</h2><p>El millor disseny és el que ordena el missatge i ajuda a captar sense carregar la web de soroll.</p><div class="button-row"><a class="button" href="/contacte/">Parlem de la nova web</a><a class="button-secondary" href="/es/diseno-web-corporativo/">Ver en castellano</a></div></div></div></section>
+</div>
+</div>
+</section>
+
+<section class="section-shell compact">
+<div class="container">
+<div class="cta-band" data-reveal="">
+<div class="cta-copy">
+<p class="eyebrow">Nova web</p>
+<h2>Si necessites una web corporativa que transmeti més nivell, la podem plantejar bé.</h2>
+<p>El millor disseny és el que ordena el missatge, dona més confiança i ajuda a captar sense carregar la web de soroll ni d’elements genèrics.</p>
+<div class="button-row">
+<a class="button" href="/contacte/">Parlem de la nova web</a>
+<a class="button-secondary" href="/es/diseno-web-corporativo/">Veure en castellà</a>
+</div>
+<div class="cta-proof">
+<span>Web més clara</span>
+<span>Més confiança</span>
+<span>Base SEO millor preparada</span>
+</div>
+</div>
+<aside class="cta-side">
+<div class="feature-top"><span class="cta-side-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7z"/></svg></span><h3>Tancament amb sentit comercial</h3></div>
+<p>Aquesta mena de projecte funciona millor quan el missatge, l’estructura i la direcció visual s’han pensat com una mateixa peça.</p>
+</aside>
+</div>
+</div>
+</section>
 </main>
 <footer class="footer"><div class="container footer-grid"><div><a aria-label="Addicionalseo" class="brand brand-logo" href="/"><img alt="Addicionalseo" src="/assets/logo-header.png"/></a><p>SEO, disseny web i captació per a empreses de Catalunya i tot Espanya.</p></div><div><h3>Navegació</h3><div class="footer-links"><a href="/sobre-nosaltres/">Agència</a>
 <a href="/portfoli/">Casos</a>

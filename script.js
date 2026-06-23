@@ -136,10 +136,123 @@ if (document.body.classList.contains("page-home")) {
 
 function initHomeMotion() {
   const parallaxMedia = document.querySelectorAll("[data-parallax]");
+  const zoomMedia = document.querySelectorAll("[data-scroll-zoom]");
 
   if (!prefersReducedMotion()) {
     initParallax(parallaxMedia);
+    initScrollZoom(zoomMedia);
+    initHeroVideoScrub();
   }
+}
+
+function initScrollZoom(nodes) {
+  if (!nodes.length) {
+    return;
+  }
+
+  let ticking = false;
+
+  const update = () => {
+    const viewportHeight = window.innerHeight || 1;
+
+    nodes.forEach((node) => {
+      const section = node.closest(".scene-section") || node.parentElement;
+      const rect = section.getBoundingClientRect();
+      const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + rect.height), 0), 1);
+      const zoom = 1 + (progress * 0.08);
+      const y = (progress - 0.5) * -18;
+
+      node.style.setProperty("--scene-zoom", zoom.toFixed(4));
+      node.style.setProperty("--scene-scroll-y", `${y.toFixed(2)}px`);
+    });
+
+    ticking = false;
+  };
+
+  const requestTick = () => {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  };
+
+  update();
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick);
+}
+
+function initHeroVideoScrub() {
+  const video = document.querySelector(".page-home .hero-video");
+
+  if (!video) {
+    return;
+  }
+
+  const sensitivity = 0.8;
+  let prevX = null;
+  let isSeeking = false;
+  let pendingTime = null;
+  let targetTime = 0;
+
+  const seekTo = (nextTime) => {
+    if (!Number.isFinite(video.duration) || video.duration <= 0) {
+      return;
+    }
+
+    const clamped = Math.min(Math.max(nextTime, 0), video.duration);
+    targetTime = clamped;
+
+    if (isSeeking) {
+      pendingTime = clamped;
+      return;
+    }
+
+    isSeeking = true;
+    video.currentTime = clamped;
+  };
+
+  video.pause();
+
+  video.addEventListener("loadedmetadata", () => {
+    video.pause();
+  });
+
+  video.addEventListener("seeked", () => {
+    if (pendingTime !== null && Math.abs(pendingTime - video.currentTime) > 0.01) {
+      const queuedTime = pendingTime;
+      pendingTime = null;
+      video.currentTime = queuedTime;
+      return;
+    }
+
+    pendingTime = null;
+    isSeeking = false;
+
+    if (Math.abs(targetTime - video.currentTime) > 0.01) {
+      seekTo(targetTime);
+    }
+  });
+
+  window.addEventListener("mousemove", (event) => {
+    if (!Number.isFinite(video.duration) || video.duration <= 0) {
+      prevX = event.clientX;
+      return;
+    }
+
+    if (prevX === null) {
+      prevX = event.clientX;
+      return;
+    }
+
+    const delta = event.clientX - prevX;
+    prevX = event.clientX;
+    const deltaTime = (delta / window.innerWidth) * sensitivity * video.duration;
+    seekTo(video.currentTime + deltaTime);
+  });
+
+  window.addEventListener("mouseleave", () => {
+    prevX = null;
+  });
 }
 
 function initInteractiveSurface(surface) {

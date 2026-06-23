@@ -1,0 +1,373 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link "Addicionalseo" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Addicionalseo" [ref=e6]
+        - generic [ref=e7]: ✳︎
+      - navigation "Principal" [ref=e8]:
+        - link "Disseny web" [ref=e9] [cursor=pointer]:
+          - /url: /disseny-web/
+        - link "SEO" [ref=e10] [cursor=pointer]:
+          - /url: /seo/
+        - link "Google Ads" [ref=e11] [cursor=pointer]:
+          - /url: /google-ads/
+        - link "Magazine" [ref=e12] [cursor=pointer]:
+          - /url: /magazine/
+      - generic [ref=e13]:
+        - link "Parlem" [ref=e14] [cursor=pointer]:
+          - /url: /contacte/
+        - generic "Idioma" [ref=e15]:
+          - link "CA" [ref=e16] [cursor=pointer]:
+            - /url: /
+          - link "ES" [ref=e17] [cursor=pointer]:
+            - /url: /es/
+  - main [ref=e18]:
+    - region "Addicionalseo hero" [ref=e19]:
+      - generic [ref=e21]:
+        - paragraph: Addicionalseo · Disseny web, SEO i Google Ads
+        - heading "Webs que semblen bones. I funcionen millor." [level=1] [ref=e22]
+        - paragraph [ref=e23]: Disseny web, SEO i Google Ads treballats com un sol sistema perquè et trobin, et triïn i et contactin.
+        - generic "Accions principals" [ref=e24]:
+          - link "Vull una web que vengui" [ref=e25] [cursor=pointer]:
+            - /url: /contacte/
+          - link "Millorar el meu SEO" [ref=e26] [cursor=pointer]:
+            - /url: /seo/
+    - generic [ref=e27]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: Ja ets dins
+          - heading "Una web premium no és una suma de blocs. És una estructura amb criteri." [level=2] [ref=e32]
+          - paragraph [ref=e33]: Després del hero no entres en una web genèrica. Entres en un sistema digital on disseny web, SEO i captació formen la mateixa arquitectura per posicionar millor, captar demanda i convertir-la en negoci.
+          - generic [ref=e34]:
+            - article [ref=e35]:
+              - generic [ref=e36]: "01"
+              - generic [ref=e37]:
+                - strong [ref=e38]: Estratègia que ordena
+                - paragraph [ref=e39]: Abans de dissenyar, definim què s’ha de dir, a qui i amb quin recorregut comercial.
+            - article [ref=e40]:
+              - generic [ref=e41]: "02"
+              - generic [ref=e42]:
+                - strong [ref=e43]: Forma i fons alineats
+                - paragraph [ref=e44]: UX, copy, desenvolupament i posicionament resolts com una sola peça.
+            - article [ref=e45]:
+              - generic [ref=e46]: "03"
+              - generic [ref=e47]:
+                - strong [ref=e48]: Dades per créixer
+                - paragraph [ref=e49]: Mesurem el que impacta el negoci i refinem el sistema amb sentit.
+        - complementary "Mapa estratègic Addicionalseo" [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]: Sistema digital
+            - strong [ref=e53]: Web · SEO · Ads
+          - generic [ref=e54]:
+            - article [ref=e55]:
+              - text: "01"
+              - strong [ref=e56]: Missatge
+              - paragraph [ref=e57]: Què cal explicar perquè la marca s'entengui ràpid.
+            - article [ref=e58]:
+              - text: "02"
+              - strong [ref=e59]: Estructura
+              - paragraph [ref=e60]: Com ordenar serveis, intenció de cerca i recorregut.
+            - article [ref=e61]:
+              - text: "03"
+              - strong [ref=e62]: Captació
+              - paragraph [ref=e63]: On dirigir trànsit SEO i Ads perquè converteixi millor.
+            - article [ref=e64]:
+              - text: "04"
+              - strong [ref=e65]: Mesura
+              - paragraph [ref=e66]: Què observar per millorar sense perdre criteri.
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: Què fem
+          - heading "Dissenyem un sistema digital complet, no peces aïllades." [level=2] [ref=e71]
+          - paragraph [ref=e72]: Cada servei entra en el moment adequat i compleix una funció concreta dins de la mateixa estructura de creixement.
+        - generic [ref=e73]:
+          - article [ref=e74]:
+            - paragraph [ref=e75]: Disseny web + SEO
+            - generic [ref=e76]:
+              - generic [ref=e77]: "00"
+              - heading "La combinació que més impacte genera." [level=3] [ref=e78]
+            - paragraph [ref=e79]: Quan la web neix amb estructura SEO, millor missatge i més intenció comercial, tot el sistema treballa a favor teu des del primer dia.
+            - link "Veure servei →" [ref=e81] [cursor=pointer]:
+              - /url: /disseny-web/
+          - article [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e84]: "01"
+              - heading "Disseny web" [level=3] [ref=e85]
+            - paragraph [ref=e86]: Webs a mida amb estructura clara, to premium i jerarquia comercial perquè la marca es percebi millor i el recorregut sigui més convincent.
+            - generic [ref=e87]:
+              - generic [ref=e88]: Arquitectura, UX, copy i desenvolupament.
+              - link "Veure servei →" [ref=e89] [cursor=pointer]:
+                - /url: /disseny-web/
+          - article [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: "02"
+              - heading "SEO" [level=3] [ref=e93]
+            - paragraph [ref=e94]: Posicionament des del primer dia perquè el disseny no sigui un obstacle, sinó la base sobre la qual Google entén el teu valor.
+            - generic [ref=e95]:
+              - generic [ref=e96]: Tècnic, contingut i intenció de cerca.
+              - link "Veure servei →" [ref=e97] [cursor=pointer]:
+                - /url: /seo/
+          - article [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: "03"
+              - heading "Google Ads" [level=3] [ref=e101]
+            - paragraph [ref=e102]: Captació immediata amb missatge, landings i estructura preparats per reduir fricció i millorar retorn.
+            - generic [ref=e103]:
+              - generic [ref=e104]: SEM amb criteri, no només trànsit.
+              - link "Veure servei →" [ref=e105] [cursor=pointer]:
+                - /url: /google-ads/
+          - article [ref=e106]:
+            - generic [ref=e107]:
+              - generic [ref=e108]: "04"
+              - heading "Branding" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Construïm una identitat més clara i més sofisticada perquè la web i la captació transmetin confiança abans de la primera conversa.
+            - generic [ref=e111]:
+              - generic [ref=e112]: Identitat visual i coherència verbal.
+              - link "Veure servei →" [ref=e113] [cursor=pointer]:
+                - /url: /branding/
+          - article [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e116]: "05"
+              - heading "Conversió" [level=3] [ref=e117]
+            - paragraph [ref=e118]: Optimitzem missatge, CTA, estructura i prova de valor perquè la visibilitat es transformi en consultes, oportunitats i vendes.
+            - generic [ref=e119]:
+              - generic [ref=e120]: Fricció mínima, decisió més fàcil.
+              - link "Veure servei →" [ref=e121] [cursor=pointer]:
+                - /url: /contacte/
+          - article [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]: "06"
+              - heading "Analítica" [level=3] [ref=e125]
+            - paragraph [ref=e126]: Mesurem el que importa per entendre què funciona, què no, i quines decisions poden fer créixer el projecte amb més precisió.
+            - generic [ref=e127]:
+              - generic [ref=e128]: Dades útils per decidir millor.
+              - link "Veure servei →" [ref=e129] [cursor=pointer]:
+                - /url: /contacte/
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - paragraph [ref=e133]: Per què Addicionalseo
+          - heading "Autoritat tranquil·la, criteri estratègic i una web pensada per vendre." [level=2] [ref=e134]
+          - paragraph [ref=e135]: No venem una web bonica sense recorregut. Construïm una base digital preparada per posicionar-se, captar demanda i sostenir una percepció de marca més alta.
+          - generic [ref=e136]:
+            - generic [ref=e137]: Criteri
+            - generic [ref=e138]:
+              - strong [ref=e139]: Estratègia abans que decoració
+              - paragraph [ref=e140]: Cada decisió visual, tècnica i de contingut respon a negoci, posicionament i conversió.
+          - generic [ref=e141]:
+            - generic [ref=e142]: Base
+            - generic [ref=e143]:
+              - strong [ref=e144]: SEO des del primer dia
+              - paragraph [ref=e145]: La web neix amb estructura, contingut i rendiment preparats per competir a Google.
+          - generic [ref=e146]:
+            - generic [ref=e147]: Acompanyament
+            - generic [ref=e148]:
+              - strong [ref=e149]: Seguiment real del projecte
+              - paragraph [ref=e150]: No desapareixem després de l’entrega. Mesurem, refinem i mantenim el focus on hi ha impacte.
+        - complementary [ref=e151]:
+          - heading "Per a marques que necessiten més que presència." [level=3] [ref=e152]
+          - paragraph [ref=e153]: Treballar Addicionalseo vol dir construir una web que pugui suportar SEO, SEM, credibilitat comercial i creixement futur sense haver-la de replantejar al cap de pocs mesos.
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - paragraph [ref=e157]: Resultats i prova
+          - heading "Quan la base està ben resolta, els números pesen més que el discurs." [level=2] [ref=e158]
+          - paragraph [ref=e159]: "Dades grans, context curt i impacte creïble. El disseny no decora els resultats: els fa més llegibles i més convincents."
+        - generic [ref=e160]:
+          - complementary [ref=e161]:
+            - generic [ref=e162]:
+              - text: Indicador principal
+              - generic [ref=e163]:
+                - generic [ref=e164]: +
+                - generic [ref=e165]: "340"
+                - generic [ref=e166]: "%"
+              - paragraph [ref=e167]: Mitjana de creixement de tràfic orgànic en projectes treballats amb nova estructura digital i SEO ben plantejat.
+            - list [ref=e168]:
+              - listitem [ref=e169]:
+                - text: Projectes
+                - strong [ref=e170]: 120+
+                - paragraph [ref=e171]: Projectes completats amb criteri de disseny, posicionament i captació.
+              - listitem [ref=e172]:
+                - text: Experiència
+                - strong [ref=e173]: 8 anys
+                - paragraph [ref=e174]: Anys treballant sectors competitius amb objectius comercials reals.
+              - listitem [ref=e175]:
+                - text: Satisfacció
+                - strong [ref=e176]: 98%
+                - paragraph [ref=e177]: Clients que valoren claredat, rigor i una execució ben sostinguda.
+          - generic [ref=e178]:
+            - generic [ref=e179]:
+              - generic [ref=e180]:
+                - text: Cas destacat
+                - heading "Açaí to amo" [level=3] [ref=e181]
+              - generic [ref=e182]: Disseny web + SEO
+            - generic [ref=e183]:
+              - text: +
+              - generic [ref=e184]: "380"
+              - generic [ref=e185]: "%"
+            - paragraph [ref=e186]: Redisseny complet, nova arquitectura i posicionament orientat a paraules clau de compra. El resultat va ser un augment sostingut de tràfic qualificat i una base més sòlida per convertir demanda en vendes.
+            - generic [ref=e187]:
+              - article [ref=e188]:
+                - text: ESA BIC Barcelona
+                - strong [ref=e189]: +240%
+                - paragraph [ref=e190]: Sol·licituds d’admissió amb SEO internacional i SEM més enfocats.
+              - article [ref=e191]:
+                - text: Viure Present
+                - strong [ref=e192]: ×2.8
+                - paragraph [ref=e193]: Sol·licituds d’empresa amb una proposta digital més clara i creïble.
+              - article [ref=e194]:
+                - text: Enfocament
+                - strong [ref=e195]: Clar
+                - paragraph [ref=e196]: Números llegibles, context suficient i cap artifici visual innecessari.
+      - generic [ref=e198]:
+        - complementary [ref=e199]:
+          - paragraph [ref=e200]: Procés
+          - heading "Una manera de treballar que dona ritme al projecte i calma a la presa de decisions." [level=2] [ref=e201]
+          - paragraph [ref=e202]: "Cada fase té una funció clara. L’objectiu no és omplir passos: és reduir soroll, ordenar prioritats i avançar amb coherència."
+        - generic [ref=e203]:
+          - generic [ref=e204]:
+            - generic [ref=e205]: "01"
+            - strong [ref=e206]: Diagnòstic
+            - paragraph [ref=e207]: Entenem negoci, mercat, competència i estat actual per prioritzar allò que tindrà impacte real.
+          - generic [ref=e208]:
+            - generic [ref=e209]: "02"
+            - strong [ref=e210]: Estratègia
+            - paragraph [ref=e211]: Definim estructura, missatge i proposta de valor perquè el projecte tingui una sola direcció.
+          - generic [ref=e212]:
+            - generic [ref=e213]: "03"
+            - strong [ref=e214]: Disseny
+            - paragraph [ref=e215]: Creem una experiència visual premium, llegible i comercial que estigui a l’altura de la marca.
+          - generic [ref=e216]:
+            - generic [ref=e217]: "04"
+            - strong [ref=e218]: Desenvolupament
+            - paragraph [ref=e219]: Construïm una base sòlida, ràpida i preparada per a SEO, campanyes i manteniment futur.
+          - generic [ref=e220]:
+            - generic [ref=e221]: "05"
+            - strong [ref=e222]: SEO / SEM
+            - paragraph [ref=e223]: Activem posicionament i captació amb una estructura ja pensada per convertir millor.
+          - generic [ref=e224]:
+            - generic [ref=e225]: "06"
+            - strong [ref=e226]: Mesura i millora
+            - paragraph [ref=e227]: Mesurem el rendiment i refinem allò que ajuda a créixer amb més precisió i més control.
+      - generic [ref=e230]:
+        - generic [ref=e231]:
+          - paragraph [ref=e232]: Decisió final
+          - heading "Si vols una web a l’altura del teu negoci, comencem bé." [level=2] [ref=e233]
+          - paragraph [ref=e234]: T’enviem una proposta clara, elegant i realista sobre disseny web, SEO i SEM perquè la teva presència digital pugui captar demanda i convertir-la amb més autoritat.
+        - generic [ref=e235]:
+          - link "Parlem del teu projecte" [ref=e236] [cursor=pointer]:
+            - /url: "#contacte"
+          - link "Vull una web que vengui" [ref=e237] [cursor=pointer]:
+            - /url: "#contacte"
+    - generic [ref=e239]:
+      - complementary [ref=e240]:
+        - paragraph [ref=e241]: Contacte
+        - heading "Parlem del teu projecte." [level=2] [ref=e242]
+        - paragraph [ref=e243]: Explica'ns on ets i on vols arribar. T'enviem una proposta personalitzada en menys de 48 hores. Sense compromís, sense lletra petita.
+        - list [ref=e244]:
+          - listitem [ref=e245]:
+            - generic [ref=e246]: Email
+            - link "info@addicionalseo.com" [ref=e247] [cursor=pointer]:
+              - /url: mailto:info@addicionalseo.com
+          - listitem [ref=e248]:
+            - generic [ref=e249]: Telèfon
+            - link "687 89 47 16" [ref=e250] [cursor=pointer]:
+              - /url: tel:+34687894716
+          - listitem [ref=e251]:
+            - generic [ref=e252]: Ubicació
+            - text: Barcelona, Catalunya
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - generic [ref=e256]:
+            - generic [ref=e257]: Nom *
+            - textbox "Nom *" [ref=e258]:
+              - /placeholder: El teu nom
+          - generic [ref=e259]:
+            - generic [ref=e260]: Empresa
+            - textbox "Empresa" [ref=e261]:
+              - /placeholder: Nom de l'empresa
+        - generic [ref=e262]:
+          - generic [ref=e263]:
+            - generic [ref=e264]: Email *
+            - textbox "Email *" [ref=e265]:
+              - /placeholder: tu@empresa.com
+          - generic [ref=e266]:
+            - generic [ref=e267]: Telèfon
+            - textbox "Telèfon" [ref=e268]:
+              - /placeholder: 6XX XXX XXX
+        - generic [ref=e269]:
+          - generic [ref=e270]: Servei d'interès
+          - combobox "Servei d'interès" [ref=e271]:
+            - option "Quin servei t'interessa?" [disabled] [selected]
+            - option "SEO Orgànic"
+            - option "Disseny Web"
+            - option "Google Ads / SEM"
+            - option "Branding"
+            - option "Tot integrat"
+            - option "No ho sé encara"
+        - generic [ref=e272]:
+          - generic [ref=e273]: Missatge
+          - textbox "Missatge" [ref=e274]:
+            - /placeholder: Explica'ns el teu negoci, objectius o dubtes...
+        - paragraph [ref=e275]: Resposta en menys de 48 h. Sense compromís.
+        - paragraph [ref=e276]:
+          - text: Enviant acceptes la nostra
+          - link "política de privacitat" [ref=e277] [cursor=pointer]:
+            - /url: /politica-privacitat/
+          - text: .
+        - button "Parlem del teu projecte →" [ref=e278]
+  - contentinfo [ref=e279]:
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - link "Addicionalseo" [ref=e282] [cursor=pointer]:
+          - /url: /
+          - img "Addicionalseo" [ref=e283]
+        - paragraph [ref=e284]: Agència SEO, disseny web i màrqueting digital a Barcelona. Creem pàgines web que venen i posicionem empreses a Google.
+      - generic [ref=e285]:
+        - heading "Serveis" [level=3] [ref=e286]
+        - generic [ref=e287]:
+          - link "Auditoria SEO" [ref=e288] [cursor=pointer]:
+            - /url: /auditoria-seo/
+          - link "SEO per eCommerce" [ref=e289] [cursor=pointer]:
+            - /url: /seo-ecommerce/
+          - link "Disseny web corporatiu" [ref=e290] [cursor=pointer]:
+            - /url: /disseny-web-corporatiu/
+          - link "Landing pages per Google Ads" [ref=e291] [cursor=pointer]:
+            - /url: /landing-pages-google-ads/
+          - link "SEO local Barcelona" [ref=e292] [cursor=pointer]:
+            - /url: /seo-local-barcelona/
+      - generic [ref=e293]:
+        - heading "Empresa" [level=3] [ref=e294]
+        - generic [ref=e295]:
+          - link "Sobre nosaltres" [ref=e296] [cursor=pointer]:
+            - /url: /sobre-nosaltres/
+          - link "Projectes" [ref=e297] [cursor=pointer]:
+            - /url: /portfoli/
+          - link "Magazine SEO" [ref=e298] [cursor=pointer]:
+            - /url: /magazine/
+          - link "Contacte" [ref=e299] [cursor=pointer]:
+            - /url: /contacte/
+      - generic [ref=e300]:
+        - heading "Contacte" [level=3] [ref=e301]
+        - generic [ref=e302]:
+          - link "info@addicionalseo.com" [ref=e303] [cursor=pointer]:
+            - /url: mailto:info@addicionalseo.com
+          - link "687 894 716" [ref=e304] [cursor=pointer]:
+            - /url: tel:+34687894716
+          - generic [ref=e305]: Barcelona, Catalunya
+      - generic [ref=e306]:
+        - heading "Legal" [level=3] [ref=e307]
+        - generic [ref=e308]:
+          - link "Política de privacitat" [ref=e309] [cursor=pointer]:
+            - /url: /politica-privacitat/
+          - link "Avís legal" [ref=e310] [cursor=pointer]:
+            - /url: /avis-legal/
+          - link "Cookies" [ref=e311] [cursor=pointer]:
+            - /url: /politica-cookies/
+    - generic [ref=e313]: © 2026 Addicionalseo. Tots els drets reservats.
+  - dialog "Cookies d'analitica" [ref=e315]:
+    - paragraph [ref=e316]: Cookies d'analitica
+    - paragraph [ref=e317]: Fem servir eines de mesura per millorar l'experiencia del lloc. Pots acceptar o rebutjar aquest us.
+    - generic [ref=e318]:
+      - button "Rebutjar" [ref=e319] [cursor=pointer]
+      - button "Acceptar" [ref=e320] [cursor=pointer]

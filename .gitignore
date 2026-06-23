@@ -35,3 +35,5 @@ wp-config.php
 node_modules/
 dist/
 build/
+# Local design references for Claude
+references/

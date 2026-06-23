@@ -25,9 +25,8 @@
   <link rel="alternate" hreflang="ca" href="https://addicionalseo.com/">
   <link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium">
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg">
 
   <script type="application/ld+json">
   {
@@ -45,1604 +44,371 @@
   }
   </script>
 
+  <link rel="stylesheet" href="/styles.css?v=31">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:       #080808;
-      --bg2:      #0f0f0f;
-      --bg3:      #151515;
-      --line:     rgba(255,255,255,0.08);
-      --accent:   #D22F7B;
-      --accentd:  #b02468;
-      --yellow:   #FCF300;
-      --white:    #FFFFFF;
-      --gray:     rgba(255,255,255,0.45);
-      --gray2:    rgba(255,255,255,0.2);
-      --font:     'Inter', -apple-system, sans-serif;
-      --max:      1200px;
-      --r:        12px;
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-    a   { color: inherit; text-decoration: none; }
-
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-    section { padding: 112px 0; }
-
-    /* ── HEADER ──────────────────────────────── */
-    #header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 500;
-      border-bottom: 1px solid transparent;
-      transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
-    }
-    #header.scrolled {
-      background: rgba(8,8,8,0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-color: rgba(255,255,255,0.1);
-      box-shadow: 0 4px 32px rgba(0,0,0,0.45);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-
-    .logo img {
-      width: min(200px, 44vw); height: auto;
-      filter: brightness(0) invert(1);
-      transition: transform 0.25s ease;
-    }
-    .logo:hover img { transform: scale(1.06); }
-
-    .main-nav { display: flex; align-items: center; gap: 36px; }
-    .main-nav a {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.78);
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-    .main-nav a:hover { color: var(--white); }
-
-    .header-cta { display: flex; align-items: center; gap: 12px; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font);
-      font-size: 13px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      padding: 10px 22px;
-      border-radius: 6px;
-      transition: all 0.2s;
-      letter-spacing: 0.01em;
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.28);
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.5); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-    }
-    .btn-primary:hover { background: var(--accentd); transform: translateY(-1px); }
-
-    .btn-yellow {
-      background: var(--yellow);
-      color: #080808;
-    }
-    .btn-yellow:hover { background: #e6db00; transform: translateY(-1px); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.2);
-      font-size: 14px;
-      padding: 12px 28px;
-    }
-    .btn-outline:hover { border-color: var(--white); }
-
-    .btn-lg {
-      font-size: 15px;
-      padding: 15px 32px;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.25s;
-    }
-    .menu-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .menu-toggle.open span:nth-child(2) { opacity: 0; }
-    .menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background: rgba(8,8,8,0.97);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid var(--line);
-      padding-bottom: 20px;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      padding: 14px 32px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--gray);
-      border-bottom: 1px solid var(--line);
-    }
-    .mobile-nav a:hover { color: var(--white); }
-    .mobile-nav .btn-primary { margin: 12px 20px 4px; padding: 10px 20px; font-size: 13px; align-self: flex-start; border-bottom: none; }
-
-    /* ── HERO ────────────────────────────────── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 72px;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(
-        105deg,
-        rgba(8,8,8,0.90) 0%,
-        rgba(8,8,8,0.72) 52%,
-        rgba(8,8,8,0.25) 100%
-      );
-    }
-
-    .hero .container {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 80px;
-      padding: 80px 0;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 32px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 1.5px;
-      background: var(--yellow);
-      flex-shrink: 0;
-    }
-
-    .hero h1 {
-      font-size: clamp(44px, 5.8vw, 78px);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -3px;
-      color: var(--white);
-      margin-bottom: 28px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--yellow);
-    }
-
-    .hero-sub {
-      font-size: 17px;
-      color: var(--gray);
-      line-height: 1.7;
-      max-width: 480px;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions { display: flex; align-items: center; gap: 14px; margin-bottom: 56px; }
-
-    .hero-stats {
-      display: flex;
-      gap: 0;
-      border-top: 1px solid var(--line);
-      padding-top: 36px;
-    }
-    .hero-stat {
-      padding-right: 36px;
-      margin-right: 36px;
-      border-right: 1px solid var(--line);
-    }
-    .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .stat-val {
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      color: var(--white);
-      line-height: 1;
-    }
-    .stat-val span { color: var(--yellow); }
-    .stat-lbl { font-size: 11px; color: var(--gray); margin-top: 5px; letter-spacing: 0.03em; }
-
-    /* Hero visual — dashboard */
-    .hero-visual { display: flex; flex-direction: column; gap: 14px; }
-
-    .dash-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 24px 28px 22px;
-      backdrop-filter: blur(12px);
-    }
-    .dash-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    .dash-title {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .badge-up {
-      font-size: 11px;
-      font-weight: 700;
-      color: #34d399;
-      background: rgba(52,211,153,0.12);
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-    .chart-wrap {
-      display: flex;
-      align-items: flex-end;
-      gap: 6px;
-      height: 80px;
-      margin-bottom: 18px;
-    }
-    .bar {
-      flex: 1;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px 4px 0 0;
-    }
-    .bar.a1 { background: rgba(210,47,123,0.4); }
-    .bar.a2 { background: var(--accent); }
-    .dash-metric {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      color: var(--white);
-      line-height: 1;
-    }
-    .dash-meta { font-size: 11px; color: var(--gray); margin-top: 4px; }
-
-    .dash-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .dash-pill {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .pill-icon { font-size: 18px; line-height: 1; }
-    .pill-val  { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--white); line-height: 1; }
-    .pill-lbl  { font-size: 11px; color: var(--gray); margin-top: 3px; }
-
-    /* ── MARQUEE ─────────────────────────────── */
-    .marquee-wrap {
-      background: var(--yellow);
-      overflow: hidden;
-      padding: 16px 0;
-      border-top: none;
-      border-bottom: none;
-    }
-    .marquee-track {
-      display: flex;
-      gap: 0;
-      animation: marquee 30s linear infinite;
-      white-space: nowrap;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    @media (max-width: 768px) {
-      .marquee-track { animation-duration: 7s; }
-    }
-    .marquee-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #080808;
-      padding: 0 32px;
-    }
-    .marquee-dot {
-      width: 5px;
-      height: 5px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ── SECTION LABELS ──────────────────────── */
-    .s-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 14px;
-    }
-    .s-title {
-      font-size: clamp(32px, 3.8vw, 52px);
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.0;
-      color: var(--white);
-    }
-    .s-title em { font-style: normal; color: var(--yellow); }
-    .s-sub {
-      font-size: 16px;
-      color: var(--gray);
-      line-height: 1.7;
-      max-width: 480px;
-    }
-
-    /* ── ABOUT ───────────────────────────────── */
-    .about { padding: 96px 0; background: var(--bg); }
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: center;
-    }
-    .about-left .s-title { margin-bottom: 24px; }
-    .about-left .s-sub { margin-bottom: 36px; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      overflow: hidden;
-    }
-    .about-stat {
-      background: var(--bg2);
-      padding: 28px 24px;
-      transition: background 0.2s;
-    }
-    .about-stat:hover { background: var(--bg3); }
-    .as-val {
-      font-size: 36px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--white);
-      line-height: 1;
-    }
-    .as-val em { color: var(--yellow); font-style: normal; }
-    .as-lbl { font-size: 12px; color: var(--gray); margin-top: 6px; }
-
-    .about-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      overflow: hidden;
-    }
-    .about-item {
-      background: var(--bg2);
-      padding: 28px 32px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      border-bottom: 1px solid var(--line);
-      transition: background 0.2s;
-    }
-    .about-item:last-child { border-bottom: none; }
-    .about-item:hover { background: var(--bg3); }
-    .ai-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      flex-shrink: 0;
-      padding-top: 3px;
-    }
-    .ai-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
-    .ai-desc { font-size: 14px; color: var(--gray); line-height: 1.6; }
-
-    /* ── SERVICES ────────────────────────────── */
-    .services { background: var(--bg2); padding: 112px 0; }
-    .services-head {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: end;
-      margin-bottom: 72px;
-    }
-
-    .svc-grid {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      overflow: hidden;
-    }
-    .svc-row {
-      display: grid;
-      grid-template-columns: 56px 1fr 1fr 180px;
-      align-items: center;
-      gap: 24px;
-      padding: 28px 32px;
-      border-bottom: 1px solid var(--line);
-      transition: background 0.2s;
-      cursor: default;
-    }
-    .svc-row:last-child { border-bottom: none; }
-    .svc-row:hover { background: var(--bg3); }
-
-    .svc-row-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-    }
-    .svc-row-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .svc-row-title .ico {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      color: var(--text);
-      flex: 0 0 18px;
-    }
-    .svc-row-title .ico svg {
-      width: 18px;
-      height: 18px;
-      display: block;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .svc-row-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-    .svc-tags-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
-    .tag {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--gray);
-      border: 1px solid var(--line);
-      padding: 4px 10px;
-      border-radius: 4px;
-    }
-
-    /* ── RESULTS ─────────────────────────────── */
-    .results { background: var(--bg); }
-    .results-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 64px;
-    }
-
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .result-card {
-      background: var(--bg2);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    .result-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-
-    .result-img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      position: relative;
-    }
-    .result-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      transition: transform 0.5s;
-    }
-    .result-card:hover .result-img img { transform: scale(1.03); }
-
-    .result-body { padding: 24px 28px; }
-    .result-cat {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    .result-num {
-      font-size: 48px;
-      font-weight: 900;
-      letter-spacing: -3px;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-    .result-num em { font-style: normal; color: var(--yellow); }
-    .result-desc { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 20px; }
-    .result-client {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-    .r-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--white);
-      flex-shrink: 0;
-    }
-    .r-name  { font-size: 13px; font-weight: 700; color: var(--white); }
-    .r-type  { font-size: 11px; color: var(--gray); margin-top: 2px; }
-
-    /* ── BRANDING ────────────────────────────── */
-    .branding { background: var(--bg2); padding: 112px 0; }
-    .branding-head {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: end;
-      margin-bottom: 56px;
-    }
-    .branding-showcase {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-    .brand-item { border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); }
-    .brand-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand-landscape { aspect-ratio: 16/9; }
-    .brand-card { aspect-ratio: 3/4; }
-
-    /* ── PROCESS ─────────────────────────────── */
-    .process { background: var(--bg); }
-    .process-head { text-align: center; max-width: 560px; margin: 0 auto 72px; }
-    .process-head .s-title { margin-bottom: 16px; }
-    .process-head .s-sub { margin: 0 auto; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      overflow: hidden;
-    }
-    .step {
-      background: var(--bg2);
-      padding: 40px 32px;
-      transition: background 0.2s;
-    }
-    .step:hover { background: var(--bg3); }
-    .step-n {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-    .step-title { font-size: 17px; font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -0.3px; }
-    .step-desc  { font-size: 13px; color: var(--gray); line-height: 1.7; }
-
-    /* ── TESTIMONIALS ────────────────────────── */
-    .testimonials { background: var(--bg2); }
-    .testi-head { text-align: center; max-width: 500px; margin: 0 auto 64px; }
-    .testi-head .s-title { margin-bottom: 0; }
-
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .testi-card {
-      background: var(--bg3);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 36px 32px;
-      transition: border-color 0.3s;
-    }
-    .testi-card:hover { border-color: var(--accent); }
-    .stars { color: var(--yellow); font-size: 14px; letter-spacing: 2px; margin-bottom: 20px; }
-    .testi-text {
-      font-size: 15px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.75;
-      margin-bottom: 28px;
-      font-style: italic;
-    }
-    .testi-author { display: flex; align-items: center; gap: 14px; }
-    .t-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--white);
-      flex-shrink: 0;
-    }
-    .t-name { font-size: 14px; font-weight: 700; color: var(--white); }
-    .t-role { font-size: 11px; color: var(--gray); margin-top: 2px; }
-
-    /* ── CTA BAND ────────────────────────────── */
-    .cta-band {
-      padding: 96px 0;
-      background: var(--yellow);
-      text-align: center;
-    }
-    .cta-band .s-label { color: var(--accent); }
-    .cta-band-title {
-      font-size: clamp(36px, 5vw, 68px);
-      font-weight: 900;
-      letter-spacing: -3px;
-      line-height: 1.0;
-      color: #080808;
-      margin-bottom: 16px;
-    }
-    .cta-band-sub {
-      font-size: 17px;
-      color: rgba(0,0,0,0.55);
-      margin-bottom: 40px;
-    }
-    .cta-band .btn-primary { font-size: 15px; padding: 15px 36px; }
-
-    /* ── CONTACT ─────────────────────────────── */
-    .contact-section { background: var(--bg2); }
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-left .s-title { margin: 14px 0 20px; }
-    .contact-lead { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 40px; }
-
-    .contact-details { display: flex; flex-direction: column; gap: 20px; }
-    .contact-detail { display: flex; align-items: flex-start; gap: 16px; }
-    .cd-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--bg3);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-    .cd-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--gray); text-transform: uppercase; }
-    .cd-value { font-size: 15px; font-weight: 600; color: var(--white); margin-top: 3px; }
-    .cd-value a { transition: color 0.2s; }
-    .cd-value a:hover { color: var(--yellow); }
-
-    /* Form */
-    .contact-form-wrap {
-      background: var(--bg3);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 40px 40px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-    .form-group label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      background: var(--bg2);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 13px 16px;
-      font-family: var(--font);
-      font-size: 14px;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-      -webkit-appearance: none;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--accent); }
-    .form-group select option { background: #1a1a1a; }
-    .form-group textarea { min-height: 120px; resize: vertical; }
-
-    .form-submit {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      margin-top: 8px;
-    }
-    .form-legal { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.5; }
-    .form-legal a { color: rgba(255,255,255,0.4); text-decoration: underline; }
-
-    .btn-submit {
-      flex-shrink: 0;
-      background: var(--accent);
-      color: var(--white);
-      font-family: var(--font);
-      font-size: 14px;
-      font-weight: 700;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .btn-submit:hover { background: var(--accentd); transform: translateY(-1px); }
-    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 60px 24px;
-    }
-    .form-success-icon { font-size: 40px; margin-bottom: 16px; }
-    .form-success h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .form-success p  { color: var(--gray); font-size: 15px; }
-
-    /* ── FOOTER ──────────────────────────────── */
-    footer {
-      background: var(--bg);
-      border-top: 1px solid var(--line);
-      padding: 72px 0 32px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 32px;
-    }
-
-    .logo-footer img { height: 36px; filter: brightness(0) invert(1); margin-bottom: 16px; }
-    .f-tagline { font-size: 15px; color: var(--gray); font-style: italic; margin-bottom: 12px; }
-    .f-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
-
-    .f-social { display: flex; gap: 10px; }
-    .f-soc {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gray);
-      transition: all 0.2s;
-    }
-    .f-soc:hover { border-color: var(--accent); color: var(--accent); }
-
-    .f-col-ttl {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 20px;
-    }
-    .f-links { display: flex; flex-direction: column; gap: 12px; }
-    .f-links a { font-size: 13px; color: rgba(255,255,255,0.45); transition: color 0.2s; }
-    .f-links a:hover { color: var(--white); }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .f-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .cd-label { display: block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.2rem; }
+    .contact-list a:hover,
+    .f-legal a:hover { color: #111111; opacity: 0.58; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .f-legal { display: flex; gap: 24px; }
-    .f-legal a { font-size: 12px; color: rgba(255,255,255,0.25); transition: color 0.2s; }
-    .f-legal a:hover { color: var(--gray); }
-
-    /* ── DIVIDER ─────────────────────────────── */
-    .divider { height: 1px; background: var(--line); }
-
-    /* ── ANIMATIONS ──────────────────────────── */
-    .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .fi.v { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ──────────────────────────── */
-    @media (max-width: 1024px) {
-      .hero-inner       { grid-template-columns: 1fr; gap: 0; }
-      .hero-visual      { display: none; }
-      .about-inner      { grid-template-columns: 1fr; gap: 56px; }
-      .services-head    { grid-template-columns: 1fr; gap: 24px; }
-      .svc-row          { grid-template-columns: 40px 1fr; gap: 16px; }
-      .svc-row-desc, .svc-tags-row { display: none; }
-      .results-grid     { grid-template-columns: 1fr 1fr; }
-      .branding-head    { grid-template-columns: 1fr; gap: 24px; }
-      .steps            { grid-template-columns: 1fr 1fr; }
-      .testi-grid       { grid-template-columns: 1fr 1fr; }
-      .contact-inner    { grid-template-columns: 1fr; gap: 48px; }
-      .footer-grid      { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      section { padding: 80px 0; }
-      .container { padding: 0 20px; }
-      .main-nav, .header-cta .btn-ghost, .header-cta .btn-primary { display: none; }
-      .menu-toggle { display: flex; }
-      .hero-inner   { padding: 60px 0 48px; }
-      .hero h1      { letter-spacing: -2px; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-      .results-grid { grid-template-columns: 1fr; }
-      .about-stats  { grid-template-columns: 1fr 1fr; }
-      .steps        { grid-template-columns: 1fr; }
-      .testi-grid   { grid-template-columns: 1fr; }
-      .footer-grid  { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom{ flex-direction: column; gap: 16px; text-align: center; }
-      .branding-showcase { grid-template-columns: 1fr; }
-      .results-head { flex-direction: column; gap: 16px; align-items: flex-start; }
-      .form-row     { grid-template-columns: 1fr; }
-      .form-submit  { flex-direction: column; align-items: stretch; }
-      .contact-form-wrap { padding: 28px 24px; }
-      .cta-band-title { letter-spacing: -2px; }
-      .svc-row      { padding: 20px 20px; }
-      .about-item   { padding: 20px 20px; gap: 14px; }
-      .testi-card   { padding: 24px 20px; }
-      .step         { padding: 28px 20px; }
-      .result-body  { padding: 18px 20px; }
-      .services-head { margin-bottom: 40px; }
-    }
-
-    /* ── LOCAL ZONES ─────────────────────────── */
-    .local-zones { padding: 96px 0; background: var(--bg2); }
-    .zones-head { margin-bottom: 48px; }
-    .zones-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 14px;
-    }
-    .zone-card {
-      display: block;
-      padding: 22px 20px;
-      background: var(--bg3);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .zone-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .zone-name { display: block; font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 5px; }
-    .zone-svc { display: block; font-size: 12px; color: var(--gray); letter-spacing: 0.02em; }
-    .zones-all { margin-top: 36px; }
-
-    @media (max-width: 480px) {
-      section { padding: 64px 0; }
-      .container { padding: 0 16px; }
-      .hero-inner   { padding: 40px 0 32px; }
-      .hero h1      { font-size: clamp(46px, 12vw, 58px); letter-spacing: -1.5px; }
-      .hero-sub     { font-size: 15px; margin-bottom: 28px; }
-      .hero-actions { gap: 10px; }
-      .btn-lg       { font-size: 14px; padding: 13px 22px; }
-      .hero-stats   { flex-direction: column; gap: 24px; }
-      .hero-stat    { border-right: none; margin-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
-      .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
-      .s-title      { font-size: clamp(26px, 8vw, 36px); letter-spacing: -1.5px; }
-      .s-sub        { font-size: 14px; }
-      .svc-row      { padding: 16px 14px; gap: 10px; }
-      .svc-row-num  { font-size: 10px; }
-      .svc-row-title { font-size: 14px; gap: 8px; }
-      .about        { padding: 64px 0; }
-      .about-item   { padding: 16px 14px; gap: 12px; }
-      .ai-title     { font-size: 14px; }
-      .ai-desc      { font-size: 13px; }
-      .as-val       { font-size: 28px; }
-      .testi-card   { padding: 20px 16px; }
-      .testi-text   { font-size: 14px; }
-      .step         { padding: 24px 16px; }
-      .step-title   { font-size: 15px; }
-      .contact-form-wrap { padding: 20px 16px; }
-      .cta-band     { padding: 64px 0; }
-      .cta-band-title { font-size: clamp(28px, 8vw, 36px); letter-spacing: -1.5px; }
-      .local-zones  { padding: 64px 0; }
-      .zones-grid   { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .zone-card    { padding: 16px 14px; }
-      .result-body  { padding: 16px; }
-      .result-num   { font-size: 36px; }
-      footer        { padding: 48px 0 24px; }
-      .footer-grid  { gap: 24px; }
-      .stat-val     { font-size: 26px; }
-    }
+    .f-legal a { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); }
   </style>
 </head>
-<body>
+<body class="page-home">
 
-<!-- HEADER -->
-<header id="header">
-  <div class="container">
-    <div class="header-inner">
-      <a href="/" class="logo" aria-label="Addicionalseo">
-        <img src="/assets/logo-header.png" alt="Addicionalseo">
+<header class="site-header mainframe-site-header">
+  <div class="mainframe-nav-shell">
+    <div class="mainframe-brand-wrap">
+      <a href="/" class="brand brand-logo mainframe-brand" aria-label="Addicionalseo">
+        <img src="/assets/logo-header.png" alt="Addicionalseo" width="220" height="88">
       </a>
-      <nav class="main-nav" aria-label="Navegació principal">
-        <a href="#serveis">Serveis</a>
-        <a href="#resultats">Portfoli</a>
-        <a href="#proces">Procés</a>
-        <a href="#nosaltres">Nosaltres</a>
-        <a href="#contacte">Contacte</a>
-      </nav>
-      <div class="header-cta">
-        <a href="/" aria-current="page" style="display:inline-flex;align-items:center;justify-content:center;min-width:2rem;min-height:1.8rem;padding:0 .5rem;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.08em;color:#fff;background:#D22F7B;text-decoration:none;">CA</a><a href="/es/" style="display:inline-flex;align-items:center;justify-content:center;min-width:2rem;min-height:1.8rem;padding:0 .5rem;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.08em;color:rgba(255,255,255,.55);text-decoration:none;">ES</a>
-        <a href="tel:+34687894716" class="btn btn-ghost">Parlem?</a>
-        <a href="#contacte" class="btn btn-primary">Sol·licitar pressupost</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Obrir menú" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+      <span class="brand-star" aria-hidden="true">✳︎</span>
+    </div>
+
+    <nav class="site-nav mainframe-nav" id="site-nav" aria-label="Principal">
+        <a href="/disseny-web/">Disseny web</a>
+        <a href="/seo/">SEO</a>
+        <a href="/google-ads/">Google Ads</a>
+        <a href="/magazine/">Magazine</a>
+    </nav>
+
+    <div class="mainframe-header-actions">
+      <a class="mainframe-contact" href="/contacte/">Parlem</a>
+      <div class="nav-language mainframe-language" aria-label="Idioma">
+        <a href="/" aria-current="page">CA</a>
+        <a href="/es/">ES</a>
       </div>
+      <button class="nav-toggle mainframe-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Obrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-  <nav class="mobile-nav" id="mobileNav" aria-label="Menú mòbil">
-    <a href="#serveis">Serveis</a>
-    <a href="#resultats">Portfoli</a>
-    <a href="#proces">Procés</a>
-    <a href="#nosaltres">Nosaltres</a>
-    <a href="#contacte">Contacte</a>
-    <a href="#contacte" class="btn btn-primary">Sol·licitar pressupost</a>
-  </nav>
 </header>
 
+<main id="main-content">
 
-<!-- HERO -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-bg" aria-hidden="true">
-    <img src="hdesigner-1-1.jpg" alt="" fetchpriority="high">
-  </div>
-  <div class="hero-overlay" aria-hidden="true"></div>
-
-  <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-eyebrow">Agència digital · Barcelona</div>
-        <h1 id="hero-title">
-          Que et trobin.<br>
-          Que et triïn.<br>
-          Que <em>tornin</em>.
-        </h1>
-        <p class="hero-sub">
-          La teva web no és una despesa, és la millor inversió per créixer. SEO, disseny i publicitat digital que generen tràfic real i resultats mesurables.
-        </p>
-        <div class="hero-actions">
-          <a href="#contacte" class="btn btn-yellow btn-lg">Vull més clients</a>
-          <a href="#resultats" class="btn btn-outline btn-lg">Veure resultats →</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="stat-val"><span>+<span class="count-num" data-to="340">340</span></span>%</div>
-            <div class="stat-lbl">Tràfic orgànic mitjà</div>
-          </div>
-          <div class="hero-stat">
-            <div class="stat-val"><span class="count-num" data-to="8">8</span> <span>anys</span></div>
-            <div class="stat-lbl">d'experiència</div>
-          </div>
-          <div class="hero-stat">
-            <div class="stat-val"><span class="count-num" data-to="120">120</span><span>+</span></div>
-            <div class="stat-lbl">Projectes completats</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="dash-card">
-          <div class="dash-header">
-            <span class="dash-title">Tràfic orgànic mensual</span>
-            <span class="badge-up">↑ +187%</span>
-          </div>
-          <div class="chart-wrap" id="heroChart">
-            <div class="bar" style="height:28%"></div>
-            <div class="bar" style="height:36%"></div>
-            <div class="bar" style="height:32%"></div>
-            <div class="bar a1" style="height:50%"></div>
-            <div class="bar a1" style="height:62%"></div>
-            <div class="bar a2" style="height:74%"></div>
-            <div class="bar a2" style="height:84%"></div>
-            <div class="bar a2" style="height:100%"></div>
-          </div>
-          <div class="dash-metric">24.840</div>
-          <div class="dash-meta">visites / mes · últims 8 mesos</div>
-        </div>
-        <div class="dash-pills">
-          <div class="dash-pill">
-            <div class="pill-icon">📈</div>
-            <div>
-              <div class="pill-val">#1</div>
-              <div class="pill-lbl">Posició a Google</div>
-            </div>
-          </div>
-          <div class="dash-pill">
-            <div class="pill-icon">🎯</div>
-            <div>
-              <div class="pill-val">+64%</div>
-              <div class="pill-lbl">Conversions</div>
-            </div>
-          </div>
-        </div>
+  <section class="home-hero mainframe-hero" id="hero" aria-label="Addicionalseo hero">
+    <video class="hero-video mainframe-bg-video" muted playsinline preload="auto" aria-hidden="true">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4" type="video/mp4">
+    </video>
+    <div class="mainframe-hero-content">
+      <p class="hero-intro">Addicionalseo · Disseny web, SEO i Google Ads</p>
+      <h1 class="hero-h1">Que et trobin.<br>Que et triïn.<br>Que tornin.</h1>
+      <p class="hero-typed">Disseny web, SEO i Google Ads treballats com un sol sistema perquè et trobin, et triïn i et contactin.</p>
+      <div class="hero-actions mainframe-pills" aria-label="Accions principals">
+          <a href="/contacte/" class="mainframe-pill">Vull una web que vengui</a>
+          <a href="/seo/" class="mainframe-pill">Millorar el meu SEO</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- MARQUEE -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">SEO Orgànic<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Disseny Web<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Google Ads<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Branding<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Disseny Gràfic<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Fotografia<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Meta Ads<span class="marquee-dot"></span></span>
-    <span class="marquee-item">SEO Local<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Core Web Vitals<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Link Building<span class="marquee-dot"></span></span>
-    <!-- duplicat per loop infinit -->
-    <span class="marquee-item">SEO Orgànic<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Disseny Web<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Google Ads<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Branding<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Disseny Gràfic<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Fotografia<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Meta Ads<span class="marquee-dot"></span></span>
-    <span class="marquee-item">SEO Local<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Core Web Vitals<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Link Building<span class="marquee-dot"></span></span>
-  </div>
-</div>
-
-
-<!-- ABOUT -->
-<section class="about" id="nosaltres" aria-labelledby="about-title">
-  <div class="container">
-    <div class="about-inner">
-      <div class="about-left">
-        <span class="s-label">Per què Addicionalseo</span>
-        <h2 class="s-title" id="about-title">Treballem per<br>resultats, <em>no</em><br>per hores.</h2>
-        <p class="s-sub">Més de 8 anys posicionant empreses a Google. Cada acció té un objectiu clar: augmentar el teu tràfic, els teus leads i els teus ingressos.</p>
-        <div class="about-stats fi">
-          <div class="about-stat">
-            <div class="as-val"><em>+<span class="count-num" data-to="340">340</span></em>%</div>
-            <div class="as-lbl">Tràfic orgànic mitjà</div>
+  <div class="home-wrap">
+    <section class="landing-block home-editorial-block scene-section manifest-scene" id="oficina">
+      <div class="scene-media" aria-hidden="true">
+        <video class="manifest-bg-video" data-scroll-zoom poster="/public/media/home/images/3.png" autoplay muted loop playsinline preload="metadata">
+          <source src="/public/media/home/videos/Fotos%20i%20videos%20addicionalseo%20%282%29.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="container editorial-bento scene-panel-layout">
+        <div class="editorial-copy scene-copy-panel" data-reveal>
+          <p class="eyebrow">Ja ets dins</p>
+          <h2>Una web premium no és una suma de blocs. És una estructura amb criteri.</h2>
+          <p class="page-intro">Després del hero no entres en una web genèrica. Entres en un sistema digital on disseny web, SEO i captació formen la mateixa arquitectura per posicionar millor, captar demanda i convertir-la en negoci.</p>
+          <div class="editorial-points">
+            <article>
+              <span>01</span>
+              <div>
+                <strong>Estratègia que ordena</strong>
+                <p>Abans de dissenyar, definim què s’ha de dir, a qui i amb quin recorregut comercial.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <strong>Forma i fons alineats</strong>
+                <p>UX, copy, desenvolupament i posicionament resolts com una sola peça.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <strong>Dades per créixer</strong>
+                <p>Mesurem el que impacta el negoci i refinem el sistema amb sentit.</p>
+              </div>
+            </article>
           </div>
-          <div class="about-stat">
-            <div class="as-val"><em><span class="count-num" data-to="120">120</span></em>+</div>
-            <div class="as-lbl">Projectes completats</div>
+        </div>
+
+        <aside class="strategy-map" data-reveal aria-label="Mapa estratègic Addicionalseo">
+          <div class="strategy-map-header">
+            <span>Sistema digital</span>
+            <strong>Web · SEO · Ads</strong>
           </div>
-          <div class="about-stat">
-            <div class="as-val"><em><span class="count-num" data-to="8">8</span></em> anys</div>
-            <div class="as-lbl">d'experiència</div>
+          <div class="strategy-map-flow">
+            <article>
+              <span>01</span>
+              <strong>Missatge</strong>
+              <p>Què cal explicar perquè la marca s'entengui ràpid.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <strong>Estructura</strong>
+              <p>Com ordenar serveis, intenció de cerca i recorregut.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <strong>Captació</strong>
+              <p>On dirigir trànsit SEO i Ads perquè converteixi millor.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <strong>Mesura</strong>
+              <p>Què observar per millorar sense perdre criteri.</p>
+            </article>
           </div>
-          <div class="about-stat">
-            <div class="as-val"><em><span class="count-num" data-to="98">98</span></em>%</div>
-            <div class="as-lbl">Clients satisfets</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="landing-block services-scene" id="serveis">
+      <div class="container landing-shell">
+        <div class="landing-copy" data-reveal>
+          <p class="eyebrow">Què fem</p>
+          <h2>Dissenyem un sistema digital complet, no peces aïllades.</h2>
+          <p class="page-intro">Cada servei entra en el moment adequat i compleix una funció concreta dins de la mateixa estructura de creixement.</p>
+        </div>
+
+        <div class="services-editorial" data-reveal>
+          <article class="service-stage service-stage-featured service-stage-cinema large">
+            <p class="service-kicker">Disseny web + SEO</p>
+            <header><span class="service-index">00</span><h3>La combinació que més impacte genera.</h3></header>
+            <p>Quan la web neix amb estructura SEO, millor missatge i més intenció comercial, tot el sistema treballa a favor teu des del primer dia.</p>
+            <footer><a href="/disseny-web/" class="service-link">Veure servei →</a></footer>
+          </article>
+          <article class="service-stage large">
+            <header><span class="service-index">01</span><h3>Disseny web</h3></header>
+            <p>Webs a mida amb estructura clara, to premium i jerarquia comercial perquè la marca es percebi millor i el recorregut sigui més convincent.</p>
+            <footer><span>Arquitectura, UX, copy i desenvolupament.</span><a href="/disseny-web/" class="service-link">Veure servei →</a></footer>
+          </article>
+          <article class="service-stage service-stage-image medium">
+            <header><span class="service-index">02</span><h3>SEO</h3></header>
+            <p>Posicionament des del primer dia perquè el disseny no sigui un obstacle, sinó la base sobre la qual Google entén el teu valor.</p>
+            <footer><span>Tècnic, contingut i intenció de cerca.</span><a href="/seo/" class="service-link">Veure servei →</a></footer>
+          </article>
+          <article class="service-stage half">
+            <header><span class="service-index">03</span><h3>Google Ads</h3></header>
+            <p>Captació immediata amb missatge, landings i estructura preparats per reduir fricció i millorar retorn.</p>
+            <footer><span>SEM amb criteri, no només trànsit.</span><a href="/google-ads/" class="service-link">Veure servei →</a></footer>
+          </article>
+          <article class="service-stage half">
+            <header><span class="service-index">04</span><h3>Branding</h3></header>
+            <p>Construïm una identitat més clara i més sofisticada perquè la web i la captació transmetin confiança abans de la primera conversa.</p>
+            <footer><span>Identitat visual i coherència verbal.</span><a href="/branding/" class="service-link">Veure servei →</a></footer>
+          </article>
+          <article class="service-stage medium">
+            <header><span class="service-index">05</span><h3>Conversió</h3></header>
+            <p>Optimitzem missatge, CTA, estructura i prova de valor perquè la visibilitat es transformi en consultes, oportunitats i vendes.</p>
+            <footer><span>Fricció mínima, decisió més fàcil.</span><a href="/contacte/" class="service-link">Veure servei →</a></footer>
+          </article>
+          <article class="service-stage large">
+            <header><span class="service-index">06</span><h3>Analítica</h3></header>
+            <p>Mesurem el que importa per entendre què funciona, què no, i quines decisions poden fer créixer el projecte amb més precisió.</p>
+            <footer><span>Dades útils per decidir millor.</span><a href="/contacte/" class="service-link">Veure servei →</a></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-block scene-section trust-scene">
+      <div class="scene-media" aria-hidden="true">
+        <img src="/public/media/home/images/1.png" alt="">
+      </div>
+      <div class="container trust-grid">
+        <div class="manifesto-panel" data-reveal>
+          <p class="eyebrow">Per què Addicionalseo</p>
+          <h2>Autoritat tranquil·la, criteri estratègic i una web pensada per vendre.</h2>
+          <p class="manifesto-intro">No venem una web bonica sense recorregut. Construïm una base digital preparada per posicionar-se, captar demanda i sostenir una percepció de marca més alta.</p>
+          <div class="manifesto-line">
+            <span>Criteri</span>
+            <div>
+              <strong>Estratègia abans que decoració</strong>
+              <p>Cada decisió visual, tècnica i de contingut respon a negoci, posicionament i conversió.</p>
+            </div>
+          </div>
+          <div class="manifesto-line">
+            <span>Base</span>
+            <div>
+              <strong>SEO des del primer dia</strong>
+              <p>La web neix amb estructura, contingut i rendiment preparats per competir a Google.</p>
+            </div>
+          </div>
+          <div class="manifesto-line">
+            <span>Acompanyament</span>
+            <div>
+              <strong>Seguiment real del projecte</strong>
+              <p>No desapareixem després de l’entrega. Mesurem, refinem i mantenim el focus on hi ha impacte.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="trust-note" data-reveal>
+          <h3>Per a marques que necessiten més que presència.</h3>
+          <p>Treballar Addicionalseo vol dir construir una web que pugui suportar SEO, SEM, credibilitat comercial i creixement futur sense haver-la de replantejar al cap de pocs mesos.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="landing-block home-results-block scene-section results-cinema" id="resultats">
+      <div class="scene-media" aria-hidden="true">
+        <img class="parallax-layer" data-parallax="case" src="/public/media/home/images/4.png" alt="">
+      </div>
+      <div class="container landing-shell">
+        <div class="landing-copy" data-reveal>
+          <p class="eyebrow">Resultats i prova</p>
+          <h2>Quan la base està ben resolta, els números pesen més que el discurs.</h2>
+          <p class="page-intro">Dades grans, context curt i impacte creïble. El disseny no decora els resultats: els fa més llegibles i més convincents.</p>
+        </div>
+
+        <div class="results-stage" data-reveal>
+          <aside class="metric-proof">
+            <div>
+              <span class="metric-label">Indicador principal</span>
+              <div class="metric-value"><span class="metric-prefix">+</span><span class="count-num" data-to="340">340</span><span class="metric-suffix">%</span></div>
+              <p>Mitjana de creixement de tràfic orgànic en projectes treballats amb nova estructura digital i SEO ben plantejat.</p>
+            </div>
+            <ul>
+              <li><span class="metric-label">Projectes</span><strong>120+</strong><p>Projectes completats amb criteri de disseny, posicionament i captació.</p></li>
+              <li><span class="metric-label">Experiència</span><strong>8 anys</strong><p>Anys treballant sectors competitius amb objectius comercials reals.</p></li>
+              <li><span class="metric-label">Satisfacció</span><strong>98%</strong><p>Clients que valoren claredat, rigor i una execució ben sostinguda.</p></li>
+            </ul>
+          </aside>
+
+          <div class="case-spotlight">
+            <div class="case-topline">
+              <div>
+                <span>Cas destacat</span>
+                <h3>Açaí to amo</h3>
+              </div>
+              <div class="case-client">Disseny web + SEO</div>
+            </div>
+            <div class="case-figure">+<span class="count-num" data-to="380">380</span><small>%</small></div>
+            <p>Redisseny complet, nova arquitectura i posicionament orientat a paraules clau de compra. El resultat va ser un augment sostingut de tràfic qualificat i una base més sòlida per convertir demanda en vendes.</p>
+            <div class="result-bench">
+              <article>
+                <span class="bench-label">ESA BIC Barcelona</span>
+                <strong>+240%</strong>
+                <p>Sol·licituds d’admissió amb SEO internacional i SEM més enfocats.</p>
+              </article>
+              <article>
+                <span class="bench-label">Viure Present</span>
+                <strong>×2.8</strong>
+                <p>Sol·licituds d’empresa amb una proposta digital més clara i creïble.</p>
+              </article>
+              <article>
+                <span class="bench-label">Enfocament</span>
+                <strong>Clar</strong>
+                <p>Números llegibles, context suficient i cap artifici visual innecessari.</p>
+              </article>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="about-right fi">
-        <div class="about-item">
-          <div class="ai-num">01</div>
+    <section class="landing-block" id="proces">
+      <div class="container process-sticky-layout">
+        <aside class="process-intro" data-reveal>
+          <p class="eyebrow">Procés</p>
+          <h2>Una manera de treballar que dona ritme al projecte i calma a la presa de decisions.</h2>
+          <p class="page-intro">Cada fase té una funció clara. L’objectiu no és omplir passos: és reduir soroll, ordenar prioritats i avançar amb coherència.</p>
+        </aside>
+
+        <div class="process-editorial process-timeline">
+          <div class="process-row" data-reveal>
+            <span>01</span>
+            <strong>Diagnòstic</strong>
+            <p>Entenem negoci, mercat, competència i estat actual per prioritzar allò que tindrà impacte real.</p>
+          </div>
+          <div class="process-row" data-reveal>
+            <span>02</span>
+            <strong>Estratègia</strong>
+            <p>Definim estructura, missatge i proposta de valor perquè el projecte tingui una sola direcció.</p>
+          </div>
+          <div class="process-row" data-reveal>
+            <span>03</span>
+            <strong>Disseny</strong>
+            <p>Creem una experiència visual premium, llegible i comercial que estigui a l’altura de la marca.</p>
+          </div>
+          <div class="process-row" data-reveal>
+            <span>04</span>
+            <strong>Desenvolupament</strong>
+            <p>Construïm una base sòlida, ràpida i preparada per a SEO, campanyes i manteniment futur.</p>
+          </div>
+          <div class="process-row" data-reveal>
+            <span>05</span>
+            <strong>SEO / SEM</strong>
+            <p>Activem posicionament i captació amb una estructura ja pensada per convertir millor.</p>
+          </div>
+          <div class="process-row" data-reveal>
+            <span>06</span>
+            <strong>Mesura i millora</strong>
+            <p>Mesurem el rendiment i refinem allò que ajuda a créixer amb més precisió i més control.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-block final-scene">
+      <div class="container">
+        <div class="final-decision final-cta-surface" data-reveal>
           <div>
-            <div class="ai-title">Orientació a resultats</div>
-            <p class="ai-desc">Cada acció té un KPI clar. Res existeix per omplir hores ni informes. Mesurem el que importa i actuem en conseqüència.</p>
+            <p class="eyebrow">Decisió final</p>
+            <h2>Si vols una web a l’altura del teu negoci, comencem bé.</h2>
+            <p>T’enviem una proposta clara, elegant i realista sobre disseny web, SEO i SEM perquè la teva presència digital pugui captar demanda i convertir-la amb més autoritat.</p>
           </div>
-        </div>
-        <div class="about-item">
-          <div class="ai-num">02</div>
-          <div>
-            <div class="ai-title">Estratègia basada en dades</div>
-            <p class="ai-desc">Prenem decisions amb analítica real: comportament d'usuari, dades de cerca i rendiment real del negoci.</p>
-          </div>
-        </div>
-        <div class="about-item">
-          <div class="ai-num">03</div>
-          <div>
-            <div class="ai-title">Experiència demostrada</div>
-            <p class="ai-desc">Hem vist el que funciona en sectors competitius. Apliquem únicament allò que dona resultats tangibles i duradors.</p>
-          </div>
-        </div>
-        <div class="about-item">
-          <div class="ai-num">04</div>
-          <div>
-            <div class="ai-title">Transparència total</div>
-            <p class="ai-desc">Informes mensuals clars. Saps exactament on inverteix cada euro i quin retorn obté el teu negoci. Sense lletra petita.</p>
+          <div class="button-row">
+            <a href="#contacte" class="button-secondary">Parlem del teu projecte</a>
+            <a href="#contacte" class="button">Vull una web que vengui</a>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-</section>
 
+  <!-- CONTACT -->
+  <section class="section-shell" id="contacte">
+    <div class="container contact-grid">
+      <aside data-reveal>
+        <p class="eyebrow">Contacte</p>
+        <h2>Parlem del teu projecte.</h2>
+        <p class="page-intro">Explica'ns on ets i on vols arribar. T'enviem una proposta personalitzada en menys de 48 hores. Sense compromís, sense lletra petita.</p>
+        <ul class="contact-list">
+          <li><span class="cd-label">Email</span><a href="mailto:info@addicionalseo.com">info@addicionalseo.com</a></li>
+          <li><span class="cd-label">Telèfon</span><a href="tel:+34687894716">687 89 47 16</a></li>
+          <li><span class="cd-label">Ubicació</span><span>Barcelona, Catalunya</span></li>
+        </ul>
+      </aside>
 
-<!-- SERVICES -->
-<section class="services" id="serveis" aria-labelledby="services-title">
-  <div class="container">
-    <div class="services-head">
-      <div>
-        <span class="s-label">Els nostres serveis</span>
-        <h2 class="s-title" id="services-title">Tot el que necessites<br>per créixer <em>online</em>.</h2>
-      </div>
-      <p class="s-sub">Serveis digitals integrats dissenyats per generar tràfic qualificat, convertir visites en clients i escalar el teu negoci.</p>
-    </div>
-
-    <div class="svc-grid fi">
-      <a class="svc-row" href="/disseny-web-corporatiu/" style="text-decoration:none;color:inherit;">
-        <div class="svc-row-num">01</div>
-        <div class="svc-row-title"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2"></rect><path d="M8 20h8"></path><path d="M12 17v3"></path></svg></span> Disseny Web</div>
-        <div class="svc-row-desc">Webs a mida orientades a conversió. Ràpides, accessibles i optimitzades per a SEO des del primer dia.</div>
-        <div class="svc-tags-row">
-          <span class="tag">WordPress</span>
-          <span class="tag">UX/UI</span>
-          <span class="tag">Core Web Vitals</span>
-        </div>
-      </a>
-      <a class="svc-row" href="/auditoria-seo/" style="text-decoration:none;color:inherit;">
-        <div class="svc-row-num">02</div>
-        <div class="svc-row-title"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.2-4.2"></path><path d="M8.5 12.5 10.5 10.5 12 12l3-3"></path></svg></span> Posicionament SEO</div>
-        <div class="svc-row-desc">Estratègies white-hat que posicionen el teu negoci a Google de manera sòlida i duradora.</div>
-        <div class="svc-tags-row">
-          <span class="tag">SEO Tècnic</span>
-          <span class="tag">Link Building</span>
-          <span class="tag">SEO Local</span>
-        </div>
-      </a>
-      <a class="svc-row" href="/landing-pages-google-ads/" style="text-decoration:none;color:inherit;">
-        <div class="svc-row-num">03</div>
-        <div class="svc-row-title"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 13.5V10.5"></path><path d="M6 10.5h3l7-4v11l-7-4H6z"></path><path d="M16 9.5a4.5 4.5 0 0 1 0 5"></path><path d="M18.5 7.5a7.5 7.5 0 0 1 0 9"></path></svg></span> Publicitat Digital</div>
-        <div class="svc-row-desc">Google Ads i Meta Ads amb segmentació precisa i gestió activa per maximitzar el ROI.</div>
-        <div class="svc-tags-row">
-          <span class="tag">Google Ads</span>
-          <span class="tag">Meta Ads</span>
-          <span class="tag">Retargeting</span>
-        </div>
-      </a>
-      <a class="svc-row" href="/branding/" style="text-decoration:none;color:inherit;">
-        <div class="svc-row-num">04</div>
-        <div class="svc-row-title"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.7 5.4 6 0.9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.3l6-0.9z"></path></svg></span> Branding i Identitat</div>
-        <div class="svc-row-desc">Identitats visuals que transmeten qui ets i construeixen relacions de confiança duradores.</div>
-        <div class="svc-tags-row">
-          <span class="tag">Logotip</span>
-          <span class="tag">Identitat visual</span>
-          <span class="tag">Manual de marca</span>
-        </div>
-      </a>
-      <a class="svc-row" href="/disseny-grafic/" style="text-decoration:none;color:inherit;">
-        <div class="svc-row-num">05</div>
-        <div class="svc-row-title"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 0 0 16h1.2a2.3 2.3 0 0 0 0-4.6H12a2.2 2.2 0 0 1 0-4.4h4.3A3.7 3.7 0 0 0 20 7.3 8 8 0 0 0 12 4Z"></path><circle cx="7.5" cy="10" r="0.9" fill="currentColor" stroke="none"></circle><circle cx="10.2" cy="7.6" r="0.9" fill="currentColor" stroke="none"></circle><circle cx="14" cy="7.4" r="0.9" fill="currentColor" stroke="none"></circle></svg></span> Disseny Gràfic</div>
-        <div class="svc-row-desc">Comunicació visual per a digital i imprès: cartelleria, presentacions, flyers i packaging.</div>
-        <div class="svc-tags-row">
-          <span class="tag">Cartelleria</span>
-          <span class="tag">Packaging</span>
-          <span class="tag">Presentacions</span>
-        </div>
-      </a>
-      <a class="svc-row" href="/fotografia-video/" style="text-decoration:none;color:inherit;">
-        <div class="svc-row-num">06</div>
-        <div class="svc-row-title"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"></rect><circle cx="9.5" cy="12" r="2.5"></circle><path d="m16 10 5-3v10l-5-3z"></path></svg></span> Fotografia i Vídeo</div>
-        <div class="svc-row-desc">Contingut visual professional per transmetre l'essència de la marca en tots els formats.</div>
-        <div class="svc-tags-row">
-          <span class="tag">Corporativa</span>
-          <span class="tag">Producte</span>
-          <span class="tag">Vídeo corporatiu</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- LOCAL ZONES -->
-<section class="local-zones">
-  <div class="container">
-    <div class="zones-head fi">
-      <span class="s-label">SEO local · Disseny web</span>
-      <h2 class="s-title">De Catalunya<br>a tot <em>Espanya</em>.</h2>
-      <p class="s-sub">Treballem per a empreses de tot Catalunya i de la resta d'Espanya, amb especial enfocament al Vallès Occidental i Barcelona. Webs i SEO pensats per captar clients locals i nacionals amb una estratègia coherent.</p>
-    </div>
-    <div class="zones-grid fi">
-      <a href="/disseny-web-castellar-del-valles/" class="zone-card">
-        <span class="zone-name">Castellar del Vallès</span>
-        <span class="zone-svc">Disseny web · SEO local</span>
-      </a>
-      <a href="/disseny-web-sabadell/" class="zone-card">
-        <span class="zone-name">Sabadell</span>
-        <span class="zone-svc">Disseny web · SEO local</span>
-      </a>
-      <a href="/disseny-web-terrassa/" class="zone-card">
-        <span class="zone-name">Terrassa</span>
-        <span class="zone-svc">Disseny web · SEO local</span>
-      </a>
-      <a href="/disseny-web-granollers/" class="zone-card">
-        <span class="zone-name">Granollers</span>
-        <span class="zone-svc">Disseny web · SEO local</span>
-      </a>
-      <a href="/disseny-web-valles-occidental/" class="zone-card">
-        <span class="zone-name">Vallès Occidental</span>
-        <span class="zone-svc">Disseny web · SEO local</span>
-      </a>
-      <a href="/disseny-web-barcelona/" class="zone-card">
-        <span class="zone-name">Barcelona</span>
-        <span class="zone-svc">Disseny web · SEO</span>
-      </a>
-      <a href="/seo-local-barcelona/" class="zone-card">
-        <span class="zone-name">SEO local Barcelona</span>
-        <span class="zone-svc">Posicionament local</span>
-      </a>
-      <a href="/disseny-web-pimes/" class="zone-card">
-        <span class="zone-name">Pimes i autònoms</span>
-        <span class="zone-svc">Disseny web a mida</span>
-      </a>
-    </div>
-    <div class="zones-all fi">
-      <a href="/seo/" class="btn btn-ghost">Veure cobertura SEO a Espanya →</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- RESULTS -->
-<section class="results" id="resultats" aria-labelledby="results-title">
-  <div class="container">
-    <div class="results-head">
-      <div>
-        <span class="s-label">Casos d'èxit</span>
-        <h2 class="s-title" id="results-title">Números reals,<br>clients <em>reals</em>.</h2>
-      </div>
-      <p class="s-sub">Resultats en sectors competitius. Sense estadístiques inflades ni promeses buidesde compliment.</p>
-    </div>
-
-    <div class="results-grid">
-      <div class="result-card fi">
-        <div class="result-img">
-          <img src="Captura-acaiteamo.png" alt="Projecte web Açaí to amo" loading="lazy">
-        </div>
-        <div class="result-body">
-          <div class="result-cat">E-commerce · Alimentació</div>
-          <div class="result-num">+<em>380</em>%</div>
-          <p class="result-desc">Augment de tràfic orgànic en 10 mesos. Nou web + SEO des de zero fins a posicions #1 per paraules clau de compra.</p>
-          <div class="result-client">
-            <div class="r-avatar" style="background:#7C2D12">AÇ</div>
-            <div>
-              <div class="r-name">Açaí to amo</div>
-              <div class="r-type">Disseny web + SEO</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="result-card fi">
-        <div class="result-img">
-          <img src="Captura-esabic.png" alt="Projecte web ESA BIC Barcelona" loading="lazy">
-        </div>
-        <div class="result-body">
-          <div class="result-cat">Tech · Incubadora Startup</div>
-          <div class="result-num">+<em>240</em>%</div>
-          <p class="result-desc">Increment en sol·licituds d'admissió en 8 mesos. Estratègia SEO internacional + SEM per a perfil d'emprenedor tecnològic.</p>
-          <div class="result-client">
-            <div class="r-avatar" style="background:#0057a8">ES</div>
-            <div>
-              <div class="r-name">ESA BIC Barcelona</div>
-              <div class="r-type">SEO + Google Ads</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="result-card fi">
-        <div class="result-img">
-          <img src="Captura-viurepresent.png" alt="Projecte web Viure Present" loading="lazy">
-        </div>
-        <div class="result-body">
-          <div class="result-cat">Benestar · B2B Empreses</div>
-          <div class="result-num">×<em>2.8</em></div>
-          <p class="result-desc">Sol·licituds d'empresa multiplicades per 2,8 en 6 mesos. Nou web, SEO local i estratègia de contingut bilingüe.</p>
-          <div class="result-client">
-            <div class="r-avatar" style="background:#059669">VP</div>
-            <div>
-              <div class="r-name">Viure Present</div>
-              <div class="r-type">Web + SEO local</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- BRANDING SHOWCASE -->
-<section class="branding" aria-labelledby="branding-title">
-  <div class="container">
-    <div class="branding-head">
-      <div>
-        <span class="s-label">Branding i identitat</span>
-        <h2 class="s-title" id="branding-title">La marca que<br>et fa <em>recordar</em>.</h2>
-      </div>
-      <p class="s-sub">Dissenyem identitats visuals coherents en tots els formats: digital, imprès i exterior. Una marca forta és la base de tot el que construïm.</p>
-    </div>
-    <div class="branding-showcase fi">
-      <div class="brand-item brand-landscape">
-        <img src="Dise%C3%B1o%20Sin%20T%C3%ADtulo%20-%201%20(2).png" alt="Campanya publicitària Addicionalseo" loading="lazy">
-      </div>
-      <div class="brand-item brand-card">
-        <img src="Targeta%20visita%20Addicionalseo%201.png" alt="Targeta de visita Addicionalseo" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- PROCESS -->
-<section class="process" id="proces" aria-labelledby="process-title">
-  <div class="container">
-    <div class="process-head">
-      <span class="s-label">Com treballem</span>
-      <h2 class="s-title" id="process-title">Un procés <em>clar</em>,<br>sense sorpreses.</h2>
-      <p class="s-sub">Cada fase té un objectiu concret i entregables definits. Saps en tot moment on som i cap on anem.</p>
-    </div>
-    <div class="steps fi">
-      <div class="step">
-        <div class="step-n">01 · Anàlisi</div>
-        <h3 class="step-title">Diagnòstic complet</h3>
-        <p class="step-desc">Auditoria del teu negoci digital: competidors, oportunitats de cerca, estat tècnic i rendiment actual. Cap assumció, tot mesurat.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">02 · Estratègia</div>
-        <h3 class="step-title">Pla personalitzat</h3>
-        <p class="step-desc">Pla d'acció concret per als teus objectius i pressupost, prioritzant les accions amb major impacte en el menor temps possible.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">03 · Execució</div>
-        <h3 class="step-title">Implementació àgil</h3>
-        <p class="step-desc">Implementem amb precisió. Cada tasca té un responsable, un termini i un KPI clar. Res queda pendent de manera indefinida.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">04 · Optimització</div>
-        <h3 class="step-title">Millora contínua</h3>
-        <p class="step-desc">Monitoritzem, reportem i millorem cada mes. Ajustem l'estratègia en base als resultats reals i les oportunitats noves.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- TESTIMONIALS -->
-<section class="testimonials" aria-labelledby="testi-title">
-  <div class="container">
-    <div class="testi-head">
-      <span class="s-label">Testimonis</span>
-      <h2 class="s-title" id="testi-title">El que diuen<br>els nostres <em>clients</em>.</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card fi">
-        <div class="stars" aria-label="5 estrelles">★★★★★</div>
-        <p class="testi-text">"Bons professionals, estan fent un magnífic treball de Màrqueting. Des que treballen amb nosaltres hem notat un creixement real i constant."</p>
-        <div class="testi-author">
-          <div class="t-avatar" style="background:#D22F7B">FT</div>
-          <div>
-            <div class="t-name">Funtasting</div>
-            <div class="t-role">Client Addicionalseo</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card fi">
-        <div class="stars" aria-label="5 estrelles">★★★★★</div>
-        <p class="testi-text">"Super trabajazo con Google Ads, conseguido un montón de conversiones. El equipo sabe exactamente qué hacer para que los resultados lleguen de verdad."</p>
-        <div class="testi-author">
-          <div class="t-avatar" style="background:#1a1a1a; border: 1px solid rgba(255,255,255,0.15)">AJ</div>
-          <div>
-            <div class="t-name">AJSpinning</div>
-            <div class="t-role">Google Ads</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card fi">
-        <div class="stars" aria-label="5 estrelles">★★★★★</div>
-        <p class="testi-text">"El nou web reflecteix exactament qui som. Han entès la nostra marca des del primer dia i han creat quelcom que ens representa de veritat."</p>
-        <div class="testi-author">
-          <div class="t-avatar" style="background:#059669">VP</div>
-          <div>
-            <div class="t-name">Viure Present</div>
-            <div class="t-role">Web + SEO</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- CTA BAND -->
-<div class="cta-band">
-  <div class="container">
-    <span class="s-label">Comencem</span>
-    <div class="cta-band-title">Preparat per créixer?</div>
-    <p class="cta-band-sub">Explica'ns el teu projecte i t'enviem una proposta en 48 h.</p>
-    <a href="#contacte" class="btn btn-primary">Sol·licitar pressupost gratuït →</a>
-  </div>
-</div>
-
-
-<!-- CONTACT -->
-<section class="contact-section" id="contacte" aria-labelledby="contact-title">
-  <div class="container">
-    <div class="contact-inner">
-      <div class="contact-left">
-        <span class="s-label">Contacte</span>
-        <h2 class="s-title" id="contact-title">Parlem del<br>teu <em>projecte</em>.</h2>
-        <p class="contact-lead">Explica'ns on ets i on vols arribar. T'enviem una proposta personalitzada en menys de 48 hores. Sense compromís, sense lletra petita.</p>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="cd-icon">✉</div>
-            <div>
-              <div class="cd-label">Email</div>
-              <div class="cd-value"><a href="mailto:info@addicionalseo.com">info@addicionalseo.com</a></div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="cd-icon">📞</div>
-            <div>
-              <div class="cd-label">Telèfon</div>
-              <div class="cd-value"><a href="tel:+34687894716">687 894 716</a></div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="cd-icon">📍</div>
-            <div>
-              <div class="cd-label">Ubicació</div>
-              <div class="cd-value">Barcelona, Catalunya</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form-wrap">
-        <form id="contactForm" novalidate>
+      <div class="contact-form-card" data-reveal>
+        <form class="js-contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="f-name">Nom *</label>
-              <input type="text" id="f-name" name="name" placeholder="El teu nom" required>
+              <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="El teu nom">
             </div>
             <div class="form-group">
-              <label for="f-company">Empresa</label>
-              <input type="text" id="f-company" name="company" placeholder="Nom de l'empresa">
+              <label for="f-business">Empresa</label>
+              <input type="text" id="f-business" name="business" autocomplete="organization" placeholder="Nom de l'empresa">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="f-email">Email *</label>
-              <input type="email" id="f-email" name="email" placeholder="tu@empresa.com" required>
+              <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="tu@empresa.com">
             </div>
             <div class="form-group">
               <label for="f-phone">Telèfon</label>
-              <input type="tel" id="f-phone" name="phone" placeholder="6XX XXX XXX">
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="6XX XXX XXX">
             </div>
           </div>
           <div class="form-group">
@@ -1659,206 +425,100 @@
           </div>
           <div class="form-group">
             <label for="f-message">Missatge</label>
-            <textarea id="f-message" name="message" placeholder="Explica'ns el teu negoci, objectius o dubtes..."></textarea>
+            <textarea id="f-message" name="message" rows="4" placeholder="Explica'ns el teu negoci, objectius o dubtes..."></textarea>
           </div>
-          <div class="form-submit">
-            <p class="form-legal">Enviant acceptes la nostra <a href="/politica-privacitat/">política de privacitat</a>. No compartim les teves dades.</p>
-            <button type="submit" class="btn-submit">Enviar missatge →</button>
-          </div>
+          <p class="form-trust">Resposta en menys de 48 h. Sense compromís.</p>
+          <p class="form-note">Enviant acceptes la nostra <a href="/politica-privacitat/">política de privacitat</a>.</p>
+          <button type="submit" class="button">Parlem del teu projecte →</button>
         </form>
-        <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">✅</div>
-          <h3>Missatge enviat!</h3>
-          <p>Gràcies. Et respondrem en menys de 48 hores.</p>
-        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="logo-footer">
-          <img src="/assets/logo-header.png" alt="Addicionalseo">
-        </div>
-        <p class="f-tagline">Dóna vida a la teva marca.</p>
-        <p class="f-desc">Agència SEO, disseny web i màrqueting digital a Barcelona. Creem pàgines web que venen i posicionem empreses a Google.</p>
-        <div class="f-social">
-          <a href="#" class="f-soc" aria-label="LinkedIn">in</a>
-          <a href="#" class="f-soc" aria-label="Instagram">ig</a>
-          <a href="#" class="f-soc" aria-label="X / Twitter">𝕏</a>
-        </div>
-      </div>
-      <div>
-        <div class="f-col-ttl">Serveis</div>
-        <div class="f-links">
-          <a href="/auditoria-seo/">Auditoria SEO</a>
-          <a href="/seo-ecommerce/">SEO per eCommerce</a>
-          <a href="/disseny-web-corporatiu/">Disseny web corporatiu</a>
-          <a href="/landing-pages-google-ads/">Landing pages per Google Ads</a>
-          <a href="/seo-local-barcelona/">SEO local Barcelona</a>
-        </div>
-      </div>
-      <div>
-        <div class="f-col-ttl">Empresa</div>
-        <div class="f-links">
-          <a href="/sobre-nosaltres/">Sobre nosaltres</a>
-          <a href="/portfoli/">Projectes</a>
-          <a href="/magazine/">Magazine SEO</a>
-          <a href="/contacte/">Contacte</a>
-        </div>
-      </div>
-      <div>
-        <div class="f-col-ttl">Contacte</div>
-        <div class="f-links">
-          <a href="mailto:info@addicionalseo.com">info@addicionalseo.com</a>
-          <a href="tel:+34687894716">687 894 716</a>
-          <span style="color:rgba(255,255,255,0.45); font-size:13px;">Barcelona, Catalunya</span>
-        </div>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand brand-logo" href="/" aria-label="Addicionalseo">
+        <img src="/assets/logo-header.png" alt="Addicionalseo" width="220" height="88">
+      </a>
+      <p>Agència SEO, disseny web i màrqueting digital a Barcelona. Creem pàgines web que venen i posicionem empreses a Google.</p>
+    </div>
+    <div>
+      <h3>Serveis</h3>
+      <div class="footer-links">
+        <a href="/auditoria-seo/">Auditoria SEO</a>
+        <a href="/seo-ecommerce/">SEO per eCommerce</a>
+        <a href="/disseny-web-corporatiu/">Disseny web corporatiu</a>
+        <a href="/landing-pages-google-ads/">Landing pages per Google Ads</a>
+        <a href="/seo-local-barcelona/">SEO local Barcelona</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="f-copy">© 2025 Addicionalseo. Tots els drets reservats.</div>
-      <div class="f-legal">
+    <div>
+      <h3>Empresa</h3>
+      <div class="footer-links">
+        <a href="/sobre-nosaltres/">Sobre nosaltres</a>
+        <a href="/portfoli/">Projectes</a>
+        <a href="/magazine/">Magazine SEO</a>
+        <a href="/contacte/">Contacte</a>
+      </div>
+    </div>
+    <div>
+      <h3>Contacte</h3>
+      <div class="footer-links">
+        <a href="mailto:info@addicionalseo.com">info@addicionalseo.com</a>
+        <a href="tel:+34687894716">687 894 716</a>
+        <span>Barcelona, Catalunya</span>
+      </div>
+    </div>
+    <div>
+      <h3>Legal</h3>
+      <div class="footer-links">
         <a href="/politica-privacitat/">Política de privacitat</a>
         <a href="/avis-legal/">Avís legal</a>
         <a href="/politica-cookies/">Cookies</a>
       </div>
     </div>
   </div>
+  <div class="container footer-bottom">
+    <small>© <span id="current-year"></span> Addicionalseo. Tots els drets reservats.</small>
+  </div>
 </footer>
 
-
+<script src="/script.js?v=24" defer></script>
 <script>
-'use strict';
-
-// Header on scroll
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-
-// Mobile menu
-const menuBtn   = document.getElementById('menuToggle');
-const mobileNav = document.getElementById('mobileNav');
-menuBtn.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
-  menuBtn.classList.toggle('open', open);
-  menuBtn.setAttribute('aria-expanded', String(open));
-});
-mobileNav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileNav.classList.remove('open');
-    menuBtn.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  });
-});
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
-    if (id === '#') return;
-    const el = document.querySelector(id);
-    if (el) {
-      e.preventDefault();
-      const offset = 80;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-});
-
-// Animate chart bars
-const chart = document.getElementById('heroChart');
-if (chart) {
-  const bars   = chart.querySelectorAll('.bar');
-  const finalH = Array.from(bars).map(b => b.style.height);
-  bars.forEach(b => { b.style.height = '0'; b.style.transition = 'none'; });
-  new IntersectionObserver(entries => {
-    if (!entries[0].isIntersecting) return;
-    bars.forEach((b, i) => {
-      setTimeout(() => {
-        b.style.transition = 'height 0.6s cubic-bezier(0.34,1.56,0.64,1)';
-        b.style.height = finalH[i];
-      }, i * 60);
+  window.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.button-row .button').forEach(function (btn) {
+      if (typeof initMagneticButton === 'function') initMagneticButton(btn);
     });
-  }, { threshold: 0.4 }).observe(chart);
-}
-
-// Fade-in on scroll
-const fadeIO = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('v'); fadeIO.unobserve(e.target); }
   });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fi').forEach((el, i) => {
-  el.style.transitionDelay = (i % 4) * 0.07 + 's';
-  fadeIO.observe(el);
-});
 
-// Contact form
-const form       = document.getElementById('contactForm');
-const successMsg = document.getElementById('formSuccess');
-if (form) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name  = form.querySelector('#f-name');
-    const email = form.querySelector('#f-email');
-    let valid   = true;
-    [name, email].forEach(f => {
-      if (!f.value.trim()) { f.style.borderColor = '#EF4444'; valid = false; }
-      else { f.style.borderColor = ''; }
-    });
-    if (!valid) return;
-    const btn = form.querySelector('.btn-submit');
-    btn.textContent = 'Enviant…';
-    btn.disabled = true;
-    setTimeout(() => {
-      form.style.display = 'none';
-      successMsg.style.display = 'block';
-    }, 900);
-  });
-  form.querySelectorAll('input, textarea').forEach(f => {
-    f.addEventListener('input', () => { f.style.borderColor = ''; });
-  });
-}
-</script>
-
-<script>
-(function() {
-  function animateCount(el) {
-    const target = parseInt(el.dataset.to, 10);
-    const duration = 2600;
-    const start = performance.now();
-    function update(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target);
-      if (p < 1) requestAnimationFrame(update);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(update);
-  }
-
-  const obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !entry.target.dataset.counted) {
-        entry.target.dataset.counted = '1';
-        animateCount(entry.target);
+  (function () {
+    function animateCount(el) {
+      var target = parseInt(el.dataset.to, 10);
+      var start = performance.now();
+      var duration = 2400;
+      function update(now) {
+        var p = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(ease * target);
+        if (p < 1) requestAnimationFrame(update);
+        else el.textContent = target;
       }
-    });
-  }, { threshold: 0.6 });
-
-  document.querySelectorAll('.count-num').forEach(function(el) {
-    obs.observe(el);
-  });
-})();
+      requestAnimationFrame(update);
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = '1';
+          animateCount(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.count-num').forEach(function (el) { obs.observe(el); });
+  })();
 </script>
-
+<script defer src="/analytics.js?v=2"></script>
 </body>
 </html>

@@ -4288,6 +4288,20 @@ html {
   }
 }
 
+/* Final post-hero video framing and stronger scroll depth. */
+.page-home .manifest-scene .scene-media .manifest-bg-video {
+  height: 124% !important;
+  object-position: center bottom !important;
+  transform-origin: center bottom !important;
+}
+
+@media (max-width: 760px) {
+  .page-home .manifest-scene .scene-media .manifest-bg-video {
+    height: 112% !important;
+    object-position: center bottom !important;
+  }
+}
+
 /* Final required locks for the 2026-06 post-hero video and hero H1 pass. */
 .page-home .mainframe-hero .hero-h1 {
   max-width: 640px !important;
@@ -4305,13 +4319,13 @@ html {
 .page-home .scene-media .manifest-bg-video {
   display: block !important;
   width: 100% !important;
-  height: 116% !important;
+  height: 124% !important;
   object-fit: cover !important;
-  object-position: center !important;
+  object-position: center bottom !important;
   pointer-events: none !important;
   filter: grayscale(0.08) saturate(0.62) contrast(1.08) brightness(0.52) !important;
   transform: translate3d(0, var(--scene-scroll-y, 0px), 0) scale(var(--scene-zoom, 1));
-  transform-origin: center center;
+  transform-origin: center bottom;
   will-change: transform;
 }
 
@@ -4343,6 +4357,20 @@ html {
   .page-home .mainframe-hero .hero-h1 {
     max-width: 340px !important;
     font-size: clamp(36px, 11vw, 48px) !important;
+  }
+}
+
+/* Post-hero video framing correction: keep the lower part visible while zooming. */
+.page-home .manifest-scene .scene-media .manifest-bg-video {
+  height: 124% !important;
+  object-position: center bottom !important;
+  transform-origin: center bottom !important;
+}
+
+@media (max-width: 760px) {
+  .page-home .manifest-scene .scene-media .manifest-bg-video {
+    height: 112% !important;
+    object-position: center bottom !important;
   }
 }
 
@@ -4903,13 +4931,13 @@ html {
 .page-home .scene-media .manifest-bg-video {
   display: block !important;
   width: 100% !important;
-  height: 116% !important;
+  height: 124% !important;
   object-fit: cover !important;
-  object-position: center !important;
+  object-position: center bottom !important;
   pointer-events: none !important;
   filter: grayscale(0.08) saturate(0.62) contrast(1.08) brightness(0.52) !important;
   transform: translate3d(0, var(--scene-scroll-y, 0px), 0) scale(var(--scene-zoom, 1));
-  transform-origin: center center;
+  transform-origin: center bottom;
   will-change: transform;
 }
 

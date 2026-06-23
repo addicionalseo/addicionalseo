@@ -159,8 +159,8 @@ function initScrollZoom(nodes) {
       const section = node.closest(".scene-section") || node.parentElement;
       const rect = section.getBoundingClientRect();
       const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + rect.height), 0), 1);
-      const zoom = 1 + (progress * 0.08);
-      const y = (progress - 0.5) * -18;
+      const zoom = 1 + (progress * 0.18);
+      const y = (progress - 0.5) * -42;
 
       node.style.setProperty("--scene-zoom", zoom.toFixed(4));
       node.style.setProperty("--scene-scroll-y", `${y.toFixed(2)}px`);

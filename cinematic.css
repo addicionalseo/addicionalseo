@@ -1,9 +1,0 @@
-/* ══════════════════════════════════════════════════════════════
-   DEPRECATED — superseded by the "Estudi Editorial" system now
-   baked directly into /styles.css (paper/ink/terracotta, Fraunces
-   + Inter). This file is intentionally left empty so any page
-   still linking it (pending cleanup) falls back cleanly to the
-   new shared system instead of re-applying the old dark/gold
-   cinematic skin. Safe to remove the <link> and `cinematic` body
-   class from those pages whenever they're next touched.
-   ══════════════════════════════════════════════════════════════ */

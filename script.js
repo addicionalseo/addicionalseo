@@ -138,6 +138,8 @@ function initHomeMotion() {
   const parallaxMedia = document.querySelectorAll("[data-parallax]");
   const zoomMedia = document.querySelectorAll("[data-scroll-zoom]");
 
+  syncServiceCardBackgrounds();
+
   if (!prefersReducedMotion()) {
     initParallax(parallaxMedia);
     initScrollZoom(zoomMedia);
@@ -159,8 +161,11 @@ function initScrollZoom(nodes) {
       const section = node.closest(".scene-section") || node.parentElement;
       const rect = section.getBoundingClientRect();
       const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + rect.height), 0), 1);
-      const zoom = 1 + (progress * 0.18);
-      const y = (progress - 0.5) * -42;
+      const zoomBase = parseFloat(node.dataset.zoomBase || "1");
+      const zoomAmount = parseFloat(node.dataset.zoomAmount || "0.18");
+      const yAmount = parseFloat(node.dataset.yAmount || "42");
+      const zoom = zoomBase + (progress * zoomAmount);
+      const y = (progress - 0.5) * -yAmount;
 
       node.style.setProperty("--scene-zoom", zoom.toFixed(4));
       node.style.setProperty("--scene-scroll-y", `${y.toFixed(2)}px`);
@@ -253,6 +258,113 @@ function initHeroVideoScrub() {
   window.addEventListener("mouseleave", () => {
     prevX = null;
   });
+}
+
+function syncServiceCardBackgrounds() {
+  const grids = document.querySelectorAll(".page-home .services-editorial");
+
+  if (!grids.length) {
+    return;
+  }
+
+  let assetRequest = null;
+
+  const loadAsset = (grid) => {
+    const rawAsset = getComputedStyle(grid).getPropertyValue("--service-bg-image").trim();
+    const match = rawAsset.match(/url\((['"]?)(.*?)\1\)/);
+    const src = match?.[2];
+
+    if (!src) {
+      return Promise.resolve({ width: 1, height: 1 });
+    }
+
+    const resolvedSrc = new URL(src, window.location.href).href;
+
+    if (assetRequest?.src === resolvedSrc) {
+      return assetRequest.promise;
+    }
+
+    assetRequest = {
+      src: resolvedSrc,
+      promise: new Promise((resolve) => {
+        const image = new Image();
+        image.onload = () => {
+          resolve({
+            width: image.naturalWidth || 1,
+            height: image.naturalHeight || 1
+          });
+        };
+        image.onerror = () => resolve({ width: 1, height: 1 });
+        image.src = resolvedSrc;
+      })
+    };
+
+    return assetRequest.promise;
+  };
+
+  const syncGrid = async (grid) => {
+    const cards = [...grid.querySelectorAll(".service-stage")];
+
+    if (!cards.length) {
+      return;
+    }
+
+    const gridRect = grid.getBoundingClientRect();
+    const gridWidth = Math.round(gridRect.width);
+    const gridHeight = Math.round(gridRect.height);
+
+    if (!gridWidth || !gridHeight) {
+      return;
+    }
+
+    const { width: assetWidth, height: assetHeight } = await loadAsset(grid);
+    const scale = Math.max(gridWidth / assetWidth, gridHeight / assetHeight);
+    const mosaicWidth = Math.round(assetWidth * scale);
+    const mosaicHeight = Math.round(assetHeight * scale);
+    const originX = Math.round((gridWidth - mosaicWidth) / 2);
+    const originY = Math.round((gridHeight - mosaicHeight) / 2);
+
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const x = Math.round(rect.left - gridRect.left);
+      const y = Math.round(rect.top - gridRect.top);
+
+      card.style.setProperty("--bg-width", `${mosaicWidth}px`);
+      card.style.setProperty("--bg-height", `${mosaicHeight}px`);
+      card.style.setProperty("--bg-pos-x", `${originX - x}px`);
+      card.style.setProperty("--bg-pos-y", `${originY - y}px`);
+    });
+  };
+
+  let frame = 0;
+
+  const requestSync = () => {
+    if (frame) {
+      window.cancelAnimationFrame(frame);
+    }
+
+    frame = window.requestAnimationFrame(() => {
+      Promise.all([...grids].map(syncGrid)).finally(() => {
+        frame = 0;
+      });
+    });
+  };
+
+  requestSync();
+  window.addEventListener("load", requestSync);
+  window.addEventListener("resize", requestSync);
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(requestSync).catch(() => {});
+  }
+
+  if ("ResizeObserver" in window) {
+    const observer = new ResizeObserver(requestSync);
+    grids.forEach((grid) => {
+      observer.observe(grid);
+      grid.querySelectorAll(".service-stage").forEach((card) => observer.observe(card));
+    });
+  }
 }
 
 function initInteractiveSurface(surface) {

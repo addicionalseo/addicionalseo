@@ -35,3 +35,7 @@ wp-config.php
 node_modules/
 dist/
 build/
+
+# Local tooling
+.vercel/
+.playwright-mcp/

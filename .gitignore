@@ -38,3 +38,7 @@ build/
 # Local design references for Claude
 references/
 .vercel
+
+# Local Playwright/MCP snapshots
+.playwright-mcp/page-*.yml
+_backup-canvis-abans-commit.patch

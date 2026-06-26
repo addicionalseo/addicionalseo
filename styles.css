@@ -7351,6 +7351,75 @@ body.page-home .process-row span {
   color: rgba(255,255,255,.86) !important;
   font-size: clamp(16px, 1.25vw, 19px) !important;
   line-height: 1.55 !important;
+  margin-bottom: 0 !important;
+}
+
+.page-home .mainframe-hero .hero-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 24px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.28s ease, transform 0.28s ease !important;
+}
+
+.page-home .mainframe-pills {
+  gap: 10px !important;
+  margin-top: 24px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.28s ease, transform 0.28s ease !important;
+}
+
+.page-home .mainframe-pill {
+  min-height: 44px !important;
+  padding: 0 18px !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+}
+
+.page-home .mainframe-pill-primary,
+.page-home .mainframe-pill-primary:first-child,
+.page-home .mainframe-pill-primary:last-child {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #ffffff !important;
+}
+
+.page-home .mainframe-pill-secondary,
+.page-home .mainframe-pill-secondary:first-child,
+.page-home .mainframe-pill-secondary:last-child {
+  background: rgba(255,255,255,0.08) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.32) !important;
+}
+
+.page-home .mainframe-pill-tertiary,
+.page-home .mainframe-pill-tertiary:first-child,
+.page-home .mainframe-pill-tertiary:last-child {
+  background: transparent !important;
+  color: rgba(255,255,255,0.82) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+.page-home .mainframe-pill-secondary:hover,
+.page-home .mainframe-pill-tertiary:hover {
+  border-color: rgba(255,255,255,0.42) !important;
+  color: #ffffff !important;
+}
+
+.page-home .hero-trust {
+  max-width: 520px !important;
+  margin: 16px 0 0 !important;
+  color: rgba(255,255,255,0.68) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.01em !important;
 }
 
 .page-home .manifest-scene {
@@ -7596,15 +7665,56 @@ body.page-home .process-row span {
 @media (max-width: 900px) {
   .page-home .mainframe-hero-content {
     top: auto !important;
-    bottom: 36px !important;
+    bottom: 28px !important;
     transform: none !important;
     width: min(100%, calc(100vw - 32px)) !important;
     padding-left: 18px !important;
+    padding-right: 14px !important;
   }
 
   .page-home .mainframe-hero .hero-h1 {
     max-width: 9.5ch !important;
     font-size: clamp(40px, 10.5vw, 60px) !important;
+  }
+
+  .page-home .mainframe-hero .hero-intro {
+    margin-bottom: 14px !important;
+  }
+
+  .page-home .mainframe-hero .hero-typed {
+    max-width: min(420px, calc(100vw - 36px)) !important;
+    font-size: clamp(15px, 4.2vw, 17px) !important;
+    line-height: 1.58 !important;
+  }
+
+  .page-home .mainframe-hero .hero-actions,
+  .page-home .mainframe-pills {
+    gap: 8px !important;
+    margin-top: 20px !important;
+  }
+
+  .page-home .mainframe-pill {
+    min-height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 12.5px !important;
+  }
+
+  .page-home .mainframe-pill-primary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .page-home .mainframe-pill-secondary,
+  .page-home .mainframe-pill-tertiary {
+    width: auto !important;
+    justify-content: center !important;
+  }
+
+  .page-home .hero-trust {
+    max-width: min(420px, calc(100vw - 36px)) !important;
+    margin-top: 14px !important;
+    font-size: 12.5px !important;
+    line-height: 1.52 !important;
   }
 
   .page-home #oficina .manifest-content {

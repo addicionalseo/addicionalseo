@@ -1,0 +1,25 @@
+{
+  "name": "addicionalseo",
+  "version": "1.0.0",
+  "description": "Web estàtica en codi per substituir l'actual WordPress de addicionalseo.com.",
+  "main": "analytics.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addicionalseo/addicionalseo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/addicionalseo/addicionalseo/issues"
+  },
+  "homepage": "https://github.com/addicionalseo/addicionalseo#readme",
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}

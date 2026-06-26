@@ -36,6 +36,26 @@ node_modules/
 dist/
 build/
 
-# Local tooling
+# Local design references for Claude
+references/
 .vercel/
+
+# Local Playwright/MCP snapshots
 .playwright-mcp/
+_backup-canvis-abans-commit.patch
+
+# Local visual review captures at repo root
+/_home-*.png
+/addicionalseo-*.png
+/hero-gray-fixed-*.png
+/hero-viewport-now.png
+/home-current-desktop.png
+/mainframe-addicionalseo-light-desktop.png
+/mainframe-landing-desktop.png
+/Captura-*.png
+/Targeta visita Addicionalseo 1.png
+/Diseno-sin-titulo-34.png
+/Diseño Sin Título - 1*.png
+/Diseño sin título - *.png
+/hdesigner-*.jpg
+/2024-03-21.png

@@ -144,7 +144,9 @@
     setStoredConsent(analyticsEnabled);
     applyConsent(analyticsEnabled);
     removeBanner();
-    showManageButton();
+    if (!analyticsEnabled) {
+      showManageButton();
+    }
   }
 
   function showBanner() {
@@ -324,7 +326,9 @@
   const storedConsent = getStoredConsent();
   if (storedConsent && typeof storedConsent[ANALYTICS_STORAGE_KEY] === "boolean") {
     applyConsent(storedConsent[ANALYTICS_STORAGE_KEY]);
-    showManageButton();
+    if (!storedConsent[ANALYTICS_STORAGE_KEY]) {
+      showManageButton();
+    }
   } else {
     showBanner();
   }

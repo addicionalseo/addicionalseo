@@ -9766,56 +9766,6 @@ body.page-home::after,
   }
 }
 
-/* Testimonials — page-home context: fondo claro, texto oscuro */
-.page-home .testimonials-scene {
-  background: transparent !important;
-}
-
-.page-home .testimonials-scene .eyebrow {
-  color: rgba(17,17,17,0.54) !important;
-}
-
-.page-home .testimonials-scene .landing-copy h2 {
-  color: #111111 !important;
-}
-
-.page-home .testimonials-scene .landing-copy .page-intro {
-  color: rgba(17,17,17,0.72) !important;
-}
-
-.page-home .testimonial-card {
-  background: rgba(17,17,17,0.04) !important;
-  border-color: rgba(17,17,17,0.1) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-.page-home .testimonial-card:hover {
-  background: rgba(17,17,17,0.07) !important;
-  border-color: rgba(17,17,17,0.16) !important;
-}
-
-.page-home .testimonial-card blockquote {
-  color: rgba(17,17,17,0.82) !important;
-}
-
-.page-home .testimonial-card strong {
-  color: #111111 !important;
-}
-
-.page-home .testimonial-card span {
-  color: rgba(17,17,17,0.48) !important;
-}
-
-.page-home .testimonial-card-footer {
-  border-color: rgba(17,17,17,0.1) !important;
-}
-
-.page-home .testimonial-logo {
-  filter: none !important;
-  opacity: 0.72 !important;
-}
-
 /* Logos de clientes en testimonios */
 .testimonial-logo {
   display: block;
@@ -11141,4 +11091,72 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   .page-home .contact-form-card::before {
     transition: none !important;
   }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   FIX MÒBIL — menú + desplaçament lateral
+   ═══════════════════════════════════════════════════════ */
+
+/* Fix 1 — el menú mòbil apareix sota el header (posicionament absolut, no fix) */
+@media (max-width: 980px) {
+  .page-home .mainframe-nav-shell {
+    position: relative !important;
+  }
+
+  .page-home .mainframe-nav {
+    position: absolute !important;
+    inset: auto !important;
+    top: calc(100% + 6px) !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    bottom: auto !important;
+    z-index: 200 !important;
+    display: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 0.8rem 1rem !important;
+    background: rgba(255,255,255,0.97) !important;
+    border: 1px solid rgba(17,17,17,0.09) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.10) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+  }
+
+  .page-home .mainframe-nav.is-open {
+    display: flex !important;
+  }
+
+  .page-home .mainframe-nav a {
+    width: 100% !important;
+    padding: 0.75rem 0.5rem !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    border-bottom: 1px solid rgba(17,17,17,0.07) !important;
+    font-size: 15px !important;
+    color: #111111 !important;
+    opacity: 1 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .page-home .mainframe-nav a:last-child {
+    border-bottom: none !important;
+  }
+
+  .page-home .mainframe-nav a::after {
+    content: none !important;
+  }
+}
+
+/* Fix 2 — desplaçament lateral: html sense overflow horitzontal + tanca clip del manifest */
+html {
+  overflow-x: clip;
+}
+
+.page-home .manifest-scene {
+  overflow: hidden !important;
 }

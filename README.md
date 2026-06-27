@@ -44,3 +44,4 @@ Després obre:
 - El model correcte de publicacio es **HTML font directe del repo** cap a `public_html`.
 - No s'ha de barrejar aquesta font amb `dist/` ni amb assets hashejats de Vite.
 - Documentacio operativa: [docs/deployment-model.md](C:/Projectes/Addicionalseo/docs/deployment-model.md)
+- Runbook de deploy: [docs/deploy-runbook.md](C:/Projectes/Addicionalseo/docs/deploy-runbook.md)

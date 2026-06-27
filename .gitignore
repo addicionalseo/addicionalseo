@@ -43,6 +43,10 @@ references/
 # Local Playwright/MCP snapshots
 .playwright-mcp/
 _backup-canvis-abans-commit.patch
+cpanel_cookies.txt
+cpanel_upload_test.txt
+Obrazec2 - FREE/
+bingo_dilan_extracted/
 
 # Local visual review captures at repo root
 /_home-*.png
@@ -52,6 +56,7 @@ _backup-canvis-abans-commit.patch
 /home-current-desktop.png
 /mainframe-addicionalseo-light-desktop.png
 /mainframe-landing-desktop.png
+/public_home_live.html
 /Captura-*.png
 /Targeta visita Addicionalseo 1.png
 /Diseno-sin-titulo-34.png

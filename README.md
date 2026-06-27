@@ -38,3 +38,9 @@ Després obre:
 - La nova base està pensada per ser molt més lleugera que WordPress.
 - Les URLs principals actuals s'han mantingut per minimitzar impacte SEO.
 - Encara es poden afegir més articles o pàgines de servei abans de publicar.
+
+## Publicacio
+
+- El model correcte de publicacio es **HTML font directe del repo** cap a `public_html`.
+- No s'ha de barrejar aquesta font amb `dist/` ni amb assets hashejats de Vite.
+- Documentacio operativa: [docs/deployment-model.md](C:/Projectes/Addicionalseo/docs/deployment-model.md)

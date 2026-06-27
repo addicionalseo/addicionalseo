@@ -2006,18 +2006,28 @@ form > * + *,
   transform: translateY(0);
 }
 
+/* Clip-reveal: each word slides up from behind its parent mask */
+.word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em; /* breathing room for descenders */
+}
 .word {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(0.35em);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: calc(var(--i, 0) * 60ms);
+  transform: translateY(110%);
+  transition: transform 0.78s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--word-idx, 0) * 58ms);
+  will-change: transform;
 }
-[data-reveal].is-visible .word { opacity: 1; transform: translateY(0); }
+[data-reveal].is-visible .word,
+.js-split-title.is-visible .word { transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1; transform: none; transition: none; }
-  [data-reveal] .word { opacity: 1; transform: none; }
+  [data-reveal] .word,
+  .js-split-title .word { transform: none !important; transition: none !important; }
+  .word-wrap { overflow: visible; padding-bottom: 0; }
   .marquee-track { animation: none !important; }
   .hub-ring { animation: none !important; }
   [style*="breathe"], .breathe { animation: none !important; }
@@ -8220,9 +8230,14 @@ body.page-home .process-row span {
   position: relative;
   overflow: hidden;
   padding: clamp(34px, 4.4vw, 48px) !important;
-  border-color: rgba(17,17,17,0.08) !important;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,248,246,0.98) 100%) !important;
+  border-color: rgba(255,176,0,0.14) !important;
+  background-color: rgba(10,11,12,0.98) !important;
+  background-image:
+    radial-gradient(circle at top left, rgba(255,176,0,0.08) 0%, transparent 24%),
+    linear-gradient(180deg, rgba(15,16,18,0.96) 0%, rgba(10,11,12,0.98) 100%) !important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.03) !important;
 }
 
 .page-home .final-cta-surface::before {
@@ -8231,8 +8246,8 @@ body.page-home .process-row span {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 100% 0%, rgba(17,17,17,0.06) 0%, rgba(17,17,17,0) 28%),
-    linear-gradient(135deg, rgba(17,17,17,0.035) 0%, rgba(17,17,17,0) 22%);
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 28%),
+    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 22%);
 }
 
 .page-home .final-cta-surface > * {
@@ -9254,7 +9269,9 @@ body.page-home .process-row span {
 }
 
 .page-home .footer-grid {
-  grid-template-columns: 1.35fr repeat(3, 1fr) 1.1fr !important;
+  grid-template-columns: minmax(320px, 1.5fr) repeat(3, minmax(140px, 0.8fr)) minmax(220px, 1fr) !important;
+  gap: clamp(28px, 3vw, 44px) !important;
+  align-items: start !important;
 }
 
 .page-home .footer h3,
@@ -9290,6 +9307,15 @@ body.page-home .process-row span {
   opacity: 1 !important;
 }
 
+.page-home .footer-brand-column {
+  max-width: 34ch;
+}
+
+.page-home .footer-brand-column p {
+  margin-top: 16px !important;
+  line-height: 1.72 !important;
+}
+
 .page-home .footer p,
 .page-home .footer small,
 .page-home .footer a,
@@ -9305,27 +9331,28 @@ body.page-home .process-row span {
   color: #ffffff !important;
 }
 
-.page-home .footer-grid > div:last-child {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+.page-home .footer-nav-column,
+.page-home .footer-contact-column {
+  min-width: 0;
 }
 
-.page-home .footer-grid > div:last-child::before {
-  content: "CONNECTION: SECURE";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 220px;
-  min-height: 64px;
-  padding: 0 18px;
-  border: 1px solid #FFB000;
-  color: #FFB000;
-  font-family: "Space Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.page-home .footer-links {
+  gap: 10px !important;
+}
+
+.page-home .footer h3 {
+  margin-bottom: 16px !important;
+}
+
+.page-home .footer-contact-column .footer-links {
+  gap: 12px !important;
+}
+
+.page-home .footer-contact-note {
+  display: block !important;
+  max-width: 24ch;
+  color: rgba(245, 241, 232, 0.62) !important;
+  line-height: 1.6 !important;
 }
 
 @media (max-width: 1120px) {
@@ -9427,10 +9454,11 @@ body.page-home .process-row span {
 
   .page-home .footer-grid {
     grid-template-columns: 1fr !important;
+    gap: 24px !important;
   }
 
-  .page-home .footer-grid > div:last-child {
-    justify-content: flex-start;
+  .page-home .footer-brand-column {
+    max-width: none;
   }
 }
 
@@ -9552,5 +9580,1565 @@ body.page-home .process-row span {
     font-size: clamp(28px, 8vw, 40px) !important;
     line-height: 1.08 !important;
     max-width: 13ch !important;
+  }
+}
+
+/* Controlled visual-layer cleanup: keep functional layers, remove decorative noise. */
+body.page-home::after,
+.page-home .home-wrap::before,
+.page-home .services-scene::before,
+.page-home #contacte::before,
+.page-home .services-editorial .service-stage::before,
+.page-home .services-editorial .service-stage-featured::before,
+.page-home .services-editorial .service-stage::after,
+.page-home .services-editorial .service-stage-featured::after {
+  content: none !important;
+}
+
+.page-home .trust-scene::before,
+.page-home .results-cinema::before,
+.page-home .final-scene::before {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page-home .case-spotlight::before,
+.page-home .final-cta-surface::before {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PATCH 2026-06 — UI/SEO/Performance audit improvements
+   ═══════════════════════════════════════════════════════ */
+
+/* 1. Contrast: ink-faint bumped 0.46 → 0.54 for WCAG legibility */
+:root { --ink-faint: rgba(244,240,232,0.54); }
+
+/* 2. Inline CSS moved from <head> to stylesheet */
+.cd-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.2rem;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.f-legal { display: flex; gap: 24px; }
+
+.f-legal a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+/* Fix hover: was #111111 (invisible on dark bg) → gold for legibility */
+.contact-list a:hover,
+.f-legal a:hover {
+  color: var(--gold);
+  opacity: 1;
+}
+
+/* 3. Footer grid — HTML has 5 children, CSS had 4 columns */
+.footer-grid {
+  grid-template-columns: 1.1fr 0.85fr 0.85fr 0.85fr 0.85fr;
+}
+
+.page-home .footer-grid {
+  grid-template-columns: 1.1fr 0.85fr 0.85fr 0.85fr 0.85fr !important;
+}
+
+@media (max-width: 1100px) {
+  .footer-grid,
+  .page-home .footer-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid,
+  .page-home .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* 4. Hero CTAs — animation fallback if JS is slow or absent */
+@keyframes hero-actions-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-actions {
+  animation: hero-actions-reveal 0.4s ease 1.5s forwards;
+}
+.hero-actions.is-visible { animation: none; }
+
+.page-home .mainframe-pills {
+  animation: hero-actions-reveal 0.4s ease 1.5s forwards;
+}
+.page-home .mainframe-pills.is-visible { animation: none; }
+
+/* 5. System bar — use IBM Plex Mono (already loaded), drop Space Mono dependency */
+.page-home .home-system-bar__inner {
+  font-family: var(--font-mono);
+}
+
+/* 6. Testimonials section */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.testimonial-card {
+  padding: 1.8rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  justify-content: space-between;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.testimonial-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.testimonial-card blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(0.96rem, 1.22vw, 1.08rem);
+  line-height: 1.65;
+  color: rgba(244,240,232,0.9);
+  font-style: italic;
+  quotes: none;
+}
+
+.testimonial-card-footer {
+  border-top: 1px solid rgba(244,240,232,0.1);
+  padding-top: 1rem;
+}
+
+.testimonial-card strong {
+  display: block;
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.testimonial-card span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: 0.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Testimonials — page-home context: fondo claro, texto oscuro */
+.page-home .testimonials-scene {
+  background: transparent !important;
+}
+
+.page-home .testimonials-scene .eyebrow {
+  color: rgba(17,17,17,0.54) !important;
+}
+
+.page-home .testimonials-scene .landing-copy h2 {
+  color: #111111 !important;
+}
+
+.page-home .testimonials-scene .landing-copy .page-intro {
+  color: rgba(17,17,17,0.72) !important;
+}
+
+.page-home .testimonial-card {
+  background: rgba(17,17,17,0.04) !important;
+  border-color: rgba(17,17,17,0.1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page-home .testimonial-card:hover {
+  background: rgba(17,17,17,0.07) !important;
+  border-color: rgba(17,17,17,0.16) !important;
+}
+
+.page-home .testimonial-card blockquote {
+  color: rgba(17,17,17,0.82) !important;
+}
+
+.page-home .testimonial-card strong {
+  color: #111111 !important;
+}
+
+.page-home .testimonial-card span {
+  color: rgba(17,17,17,0.48) !important;
+}
+
+.page-home .testimonial-card-footer {
+  border-color: rgba(17,17,17,0.1) !important;
+}
+
+.page-home .testimonial-logo {
+  filter: none !important;
+  opacity: 0.72 !important;
+}
+
+/* Logos de clientes en testimonios */
+.testimonial-logo {
+  display: block;
+  height: 32px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 0.6rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.72;
+}
+
+.testimonial-card:hover .testimonial-logo {
+  opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TIPOGRAFIA — Obrazec (display) · EB Garamond (body) · Josefin Sans (labels)
+   ═══════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "Obrazec";
+  src: url("/assets/fonts/Obrazec-2.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BingoDilan";
+  src: url("/assets/fonts/BingoDilan-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SuperRetro";
+  src: url("/assets/fonts/SuperRetroM54.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SuperRetro";
+  src: url("/assets/fonts/SuperRetroM54-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* 1. Font tokens */
+:root {
+  --font-display: "BingoDilan", Georgia, serif;
+  --font-body:    "Josefin Sans", "Arial Narrow", sans-serif;
+  --font-mono:    "Josefin Sans", "Arial Narrow", sans-serif;
+}
+
+/* 2. Base */
+body { font-family: var(--font-body); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
+
+/* Body text — Josefin Sans a tot, igual que el text del hero */
+.page-home p,
+.page-home li,
+.page-home blockquote,
+.page-home td,
+.page-home th,
+.page-home span:not([class*="eyebrow"]):not([class*="index"]):not([class*="kicker"]):not([class*="label"]):not([class*="link"]):not([class*="cursor"]) {
+  font-family: "Josefin Sans", "Arial Narrow", sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+.page-home p,
+.page-home li {
+  line-height: 1.65 !important;
+  font-size: clamp(15px, 1.05vw, 17px) !important;
+  font-weight: 300 !important;
+}
+
+/* 3. Display headings hardcoded ("Anybody" / "Space Grotesk") → Playfair Display */
+.page-home .services-scene .landing-copy h2,
+.page-home .trust-scene h2,
+.page-home .results-cinema h2,
+.page-home .process-intro h2,
+.page-home .final-cta-surface h2,
+.page-home .contact-grid h2,
+.page-home .services-editorial .service-stage h3,
+.page-home .services-editorial .service-stage-featured h3,
+.page-home #oficina .manifest-title,
+.page-home .trust-scene .manifesto-panel h2,
+.page-home .strategy-map-flow strong,
+.page-home .manifesto-line strong,
+.page-home .trust-note h3,
+.page-home .case-figure,
+.page-home .result-bench article strong,
+.page-home .metric-proof li strong,
+.page-home .case-spotlight h3,
+.page-home .process-row strong {
+  font-family: "BingoDilan", Georgia, serif !important;
+  letter-spacing: 0em !important;
+}
+
+/* Line-height adjustment for multi-line Playfair Display headings */
+.page-home .services-scene .landing-copy h2,
+.page-home .trust-scene h2,
+.page-home .results-cinema h2,
+.page-home .process-intro h2,
+.page-home .final-cta-surface h2,
+.page-home .contact-grid h2,
+.page-home #oficina .manifest-title,
+.page-home .trust-scene .manifesto-panel h2 {
+  line-height: 1.1 !important;
+}
+
+/* 4. Body paragraphs hardcoded as "IBM Plex Mono" → Lora */
+.page-home .services-scene .landing-copy .page-intro,
+.page-home .trust-scene p,
+.page-home .results-cinema p,
+.page-home .process-intro .page-intro,
+.page-home .process-row p,
+.page-home .final-cta-surface p,
+.page-home .contact-grid p,
+.page-home .contact-list,
+.page-home .contact-list a,
+.page-home .form-trust,
+.page-home .form-note,
+.page-home .services-editorial .service-stage p,
+.page-home .services-editorial .service-stage-featured p,
+.page-home .services-editorial .service-stage footer span,
+.page-home .services-editorial .service-stage-featured footer span,
+.page-home #oficina .manifest-copy,
+.page-home #oficina .manifest-point p,
+.page-home .trust-scene .manifesto-intro,
+.page-home .trust-scene .manifesto-line p,
+.page-home .trust-scene .trust-note p,
+.page-home .strategy-map-flow p,
+.page-home .footer h3,
+.page-home .footer-links span,
+.page-home .footer-links a,
+.page-home .footer p,
+.page-home .footer small {
+  font-family: "Josefin Sans", "Arial Narrow", sans-serif !important;
+  letter-spacing: 0em !important;
+}
+
+/* 5. Labels/accents/mono hardcoded ("Space Mono" / "IBM Plex Mono") → Courier Prime */
+.page-home .services-scene .landing-copy .eyebrow,
+.page-home .trust-scene .eyebrow,
+.page-home .results-cinema .eyebrow,
+.page-home .process-intro .eyebrow,
+.page-home .final-scene .eyebrow,
+.page-home #contacte .eyebrow,
+.page-home #contacto .eyebrow,
+.page-home .services-editorial .service-stage .service-index,
+.page-home .services-editorial .service-stage .service-kicker,
+.page-home .services-editorial .service-stage .service-link,
+.page-home #oficina .manifest-kicker,
+.page-home #oficina .manifest-point-number,
+.page-home .manifesto-line span,
+.page-home .process-row span,
+.page-home .strategy-map-header,
+.page-home .strategy-map-flow span,
+.page-home .metric-label,
+.page-home .bench-label,
+.page-home .case-topline span,
+.page-home .case-client,
+.page-home .results-stage::after,
+.page-home .button,
+.page-home .button-secondary,
+.page-home .contact-form-card button,
+.page-home .cookie-banner button,
+.page-home .cookie-manage,
+.page-home .contact-form-card label,
+.page-home .cd-label,
+.page-home .footer-links strong,
+.page-home .footer-grid h3,
+.page-home .footer-grid > div:not(:first-child):not(:last-child)::before,
+.page-home .home-system-bar__inner {
+  font-family: "Josefin Sans", "Arial Narrow", sans-serif !important;
+}
+
+/* 6. Testimonial blockquote — Cormorant Garamond italic */
+.testimonial-card blockquote {
+  font-family: "BingoDilan", Georgia, serif !important;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem) !important;
+}
+
+/* 7. Cormorant Garamond necessita pes 600 i mida +10% per a la seva elegància */
+.page-home .services-scene .landing-copy h2,
+.page-home .trust-scene h2,
+.page-home .results-cinema h2,
+.page-home .process-intro h2,
+.page-home .final-cta-surface h2,
+.page-home .contact-grid h2,
+.page-home #oficina .manifest-title,
+.page-home .trust-scene .manifesto-panel h2 {
+  font-weight: 600 !important;
+  font-size: clamp(34px, 3.6vw, 52px) !important;
+}
+
+.page-home .services-editorial .service-stage h3,
+.page-home .services-editorial .service-stage-featured h3 {
+  font-weight: 600 !important;
+  font-size: clamp(26px, 2.2vw, 38px) !important;
+}
+
+/* 8. Josefin Sans — pes lleuger (300) per a labels + UPPERCASE inherent */
+.page-home .services-scene .landing-copy .eyebrow,
+.page-home .trust-scene .eyebrow,
+.page-home .results-cinema .eyebrow,
+.page-home .process-intro .eyebrow,
+.page-home .final-scene .eyebrow,
+.page-home #contacte .eyebrow,
+.page-home #contacto .eyebrow {
+  font-weight: 400 !important;
+  letter-spacing: 0.22em !important;
+}
+
+.page-home .button,
+.page-home .button-secondary,
+.page-home .contact-form-card button {
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+}
+
+@media (max-width: 600px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   AUDIT V1 — G1→G8: contrast, jerarquia, accesibilitat
+   ═══════════════════════════════════════════════════════ */
+
+/* ── G1: Jerarquia hero CTAs ─────────────────────────── */
+.page-home .mainframe-pill-primary {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.22) !important;
+}
+.page-home .mainframe-pill-secondary {
+  background: transparent !important;
+  color: rgba(255,255,255,0.9) !important;
+  border: 1px solid rgba(255,255,255,0.52) !important;
+  font-weight: 400 !important;
+}
+.page-home .mainframe-pill-tertiary {
+  background: transparent !important;
+  color: rgba(255,255,255,0.52) !important;
+  border: none !important;
+  padding-inline: 0.4rem !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  text-decoration-color: rgba(255,255,255,0.28) !important;
+  box-shadow: none !important;
+}
+.page-home .mainframe-pill-primary:hover {
+  background: #f0e8d0 !important;
+  border-color: #f0e8d0 !important;
+}
+.page-home .mainframe-pill-secondary:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.85) !important;
+  color: #ffffff !important;
+}
+.page-home .mainframe-pill-tertiary:hover {
+  color: rgba(255,255,255,0.85) !important;
+  text-decoration-color: rgba(255,255,255,0.5) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-home .mainframe-pill-primary,
+  .page-home .mainframe-pill-secondary,
+  .page-home .mainframe-pill-tertiary { transition: none !important; }
+}
+
+/* ── G2: Overlays direccionals ───────────────────────── */
+/* Imatges de fons: baixem opacitat lleugerament perquè el text dels panels destaqui */
+.page-home .scene-media img,
+.page-home .scene-media > video:not(.manifest-bg-video) {
+  opacity: 0.68 !important;
+  filter: brightness(0.88) !important;
+}
+/* Results — reforç extra sota les xifres */
+.page-home .results-cinema .scene-media img {
+  opacity: 0.52 !important;
+  filter: brightness(0.72) !important;
+}
+
+/* ── G3: Text secundari WCAG AA ──────────────────────── */
+.page-home .home-wrap .service-stage .service-index,
+.page-home .home-wrap .metric-label,
+.page-home .home-wrap .bench-label,
+.page-home .home-wrap .manifesto-line span,
+.page-home .home-wrap .process-row span {
+  color: rgba(244,240,232,0.72) !important;
+}
+.page-home .metric-proof li p,
+.page-home .result-bench article p,
+.page-home .form-trust,
+.page-home .form-note {
+  color: rgba(244,240,232,0.68) !important;
+}
+
+/* ── G4: Service cards ───────────────────────────────── */
+/* Overlay uniforme (sense variar per paritat nth-child) */
+.page-home .services-editorial .service-stage,
+.page-home .services-editorial .service-stage-featured {
+  background-image:
+    linear-gradient(180deg, rgba(8,9,13,0.78) 0%, rgba(8,9,13,0.94) 100%),
+    var(--service-bg-image) !important;
+}
+/* Service-link sempre al fons de la card */
+.page-home .services-editorial .service-stage,
+.page-home .services-editorial .service-stage-featured {
+  justify-content: space-between !important;
+}
+
+/* ── G5: Testimonials ────────────────────────────────── */
+/* BingoDilan no té cursiva — elimina synthesized italic */
+.testimonial-card blockquote,
+.page-home .testimonial-card blockquote {
+  font-style: normal !important;
+}
+/* Logos: mateixa alçada */
+.testimonial-logo,
+.page-home .testimonial-logo {
+  height: 28px !important;
+  width: auto !important;
+  max-width: 110px !important;
+  object-fit: contain !important;
+}
+
+/* ── G6: Formulari accessible ────────────────────────── */
+.page-home .contact-form-card label {
+  color: rgba(244,240,232,0.92) !important;
+}
+.page-home .contact-form-card input::placeholder,
+.page-home .contact-form-card textarea::placeholder {
+  color: rgba(244,240,232,0.36) !important;
+}
+.page-home .contact-form-card input:focus-visible,
+.page-home .contact-form-card select:focus-visible,
+.page-home .contact-form-card textarea:focus-visible {
+  outline: 2px solid #FFB000 !important;
+  outline-offset: 3px !important;
+  border-bottom-color: #FFB000 !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .contact-form-card input,
+  .page-home .contact-form-card select,
+  .page-home .contact-form-card textarea {
+    transition: border-color 160ms ease !important;
+  }
+}
+
+/* ── G7: Hover footer + CTAs ─────────────────────────── */
+.page-home .footer-links a {
+  transition: color 180ms ease !important;
+  text-underline-offset: 3px !important;
+}
+.page-home .footer-links a:hover {
+  color: #FFB000 !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(255,176,0,0.48) !important;
+}
+.page-home .button-secondary {
+  transition: border-color 180ms ease, color 180ms ease !important;
+}
+.page-home .button-secondary:hover {
+  border-color: #FFB000 !important;
+  color: #FFB000 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-home .footer-links a,
+  .page-home .button-secondary { transition: none !important; }
+}
+
+/* ── G8: Ritme vertical ──────────────────────────────── */
+/* Respiració extra entre seccions dark consecutives */
+.page-home .testimonials-scene {
+  padding-top: clamp(64px, 7vw, 96px) !important;
+  padding-bottom: clamp(64px, 7vw, 96px) !important;
+  border-top: 1px solid rgba(17,17,17,0.08) !important;
+}
+/* Separació visual subtil entre seccions clares */
+.page-home .services-scene {
+  padding-top: clamp(80px, 9vw, 116px) !important;
+  padding-bottom: clamp(80px, 9vw, 116px) !important;
+}
+/* Transició clara→fosca: pseudo-gradient a la part superior del home-wrap */
+.page-home .home-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(245,243,238,0.18) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BLOC 2 — Service card hover premium
+   Image → ::before (zoom), gradient → ::after, content z:3
+   ═══════════════════════════════════════════════════════ */
+
+/* Strip card's own background — image & overlay live in pseudo-elements */
+.page-home .services-editorial .service-stage,
+.page-home .services-editorial .service-stage-featured {
+  background: rgba(8,9,13,1) !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition:
+    transform 440ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 440ms ease,
+    border-color 300ms ease !important;
+}
+
+/* Image layer: uses mosaic variables set by JS, zooms on hover */
+.page-home .services-editorial .service-stage::before,
+.page-home .services-editorial .service-stage-featured::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  background-image: var(--service-bg-image) !important;
+  background-size: var(--bg-width, 100%) var(--bg-height, 100%) !important;
+  background-position: var(--bg-pos-x, 50%) var(--bg-pos-y, 50%) !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.68;
+  transform: scale(1);
+  transition:
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 600ms ease !important;
+  will-change: transform;
+}
+
+/* Gradient overlay on top of image, below content */
+.page-home .services-editorial .service-stage::after,
+.page-home .services-editorial .service-stage-featured::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  background:
+    radial-gradient(ellipse at top right, rgba(167,183,201,0.07) 0%, transparent 32%),
+    linear-gradient(180deg, rgba(8,9,13,0.74) 0%, rgba(8,9,13,0.97) 100%) !important;
+  pointer-events: none !important;
+}
+
+/* Card content above both pseudo-elements */
+.page-home .services-editorial .service-stage > *,
+.page-home .services-editorial .service-stage-featured > * {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* Hover: lift + gold border + image zoom */
+@media (hover: hover) {
+  .page-home .services-editorial .service-stage:hover,
+  .page-home .services-editorial .service-stage-featured:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(255,176,0,0.52) !important;
+    box-shadow:
+      0 18px 48px rgba(0,0,0,0.42),
+      0 2px 10px rgba(0,0,0,0.22),
+      0 0 0 0px rgba(255,176,0,0.18) !important;
+  }
+
+  /* Allow lift on all cards — override legacy nth-child(4) lock */
+  .page-home .services-editorial .service-stage:nth-child(4):hover,
+  .page-home .services-editorial .service-stage:nth-child(7):hover {
+    transform: translateY(-6px) !important;
+  }
+
+  .page-home .services-editorial .service-stage:hover::before,
+  .page-home .services-editorial .service-stage-featured:hover::before {
+    transform: scale(1.08) !important;
+    opacity: 0.88 !important;
+  }
+}
+
+/* Service link: subtle baseline → gold + shift on hover */
+.page-home .services-editorial .service-link {
+  opacity: 0.44 !important;
+  transition:
+    color 270ms ease,
+    opacity 270ms ease,
+    transform 270ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+@media (hover: hover) {
+  .page-home .services-editorial .service-stage:hover .service-link,
+  .page-home .services-editorial .service-stage-featured:hover .service-link {
+    color: #FFB000 !important;
+    opacity: 1 !important;
+    transform: translateX(6px) !important;
+  }
+}
+
+/* Stagger on reveal: each card slides up with increasing delay */
+.page-home .services-editorial[data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+.page-home .services-editorial .service-stage,
+.page-home .services-editorial .service-stage-featured {
+  /* Initial hidden state for stagger */
+}
+.page-home .services-editorial:not(.is-visible) .service-stage,
+.page-home .services-editorial:not(.is-visible) .service-stage-featured {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+}
+.page-home .services-editorial.is-visible .service-stage:nth-child(1) { transition-delay: 0ms; }
+.page-home .services-editorial.is-visible .service-stage:nth-child(2) { transition-delay: 85ms; }
+.page-home .services-editorial.is-visible .service-stage:nth-child(3) { transition-delay: 165ms; }
+.page-home .services-editorial.is-visible .service-stage:nth-child(4) { transition-delay: 240ms; }
+.page-home .services-editorial.is-visible .service-stage:nth-child(5) { transition-delay: 310ms; }
+.page-home .services-editorial.is-visible .service-stage:nth-child(6) { transition-delay: 375ms; }
+
+/* Reset stagger delay on hover so the lift is immediate */
+@media (hover: hover) {
+  .page-home .services-editorial.is-visible .service-stage:hover,
+  .page-home .services-editorial.is-visible .service-stage-featured:hover {
+    transition-delay: 0ms !important;
+  }
+}
+
+/* prefers-reduced-motion: keep color + border only, no motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-home .services-editorial .service-stage,
+  .page-home .services-editorial .service-stage-featured {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: border-color 180ms ease, box-shadow 180ms ease !important;
+  }
+  .page-home .services-editorial:not(.is-visible) .service-stage,
+  .page-home .services-editorial:not(.is-visible) .service-stage-featured {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .page-home .services-editorial .service-stage::before,
+  .page-home .services-editorial .service-stage-featured::before {
+    transform: none !important;
+    transition: opacity 180ms ease !important;
+  }
+  .page-home .services-editorial .service-link {
+    transition: color 160ms ease, opacity 160ms ease !important;
+  }
+  .page-home .services-editorial.is-visible .service-stage,
+  .page-home .services-editorial.is-visible .service-stage-featured {
+    transition-delay: 0ms !important;
+  }
+}
+
+/* ── Bloc 5 + contrast fixups home/es ───────────────── */
+.page-home .services-scene .landing-copy h2 {
+  color: rgba(17, 17, 17, 0.88) !important;
+}
+
+.page-home .services-scene .landing-copy .page-intro {
+  color: rgba(17, 17, 17, 0.74) !important;
+}
+
+.page-home .projects-marquee-scene .marquee-view-all {
+  color: rgba(244, 240, 232, 0.72) !important;
+}
+
+.page-home .projects-marquee-scene .project-card-type {
+  color: rgba(244, 240, 232, 0.62) !important;
+}
+
+.page-home .final-scene {
+  position: relative !important;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 176, 0, 0.1), transparent 28%),
+    linear-gradient(180deg, #111214 0%, #0b0c0d 100%) !important;
+  overflow: hidden !important;
+}
+
+.page-home .final-scene::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+  background-size: 64px 64px !important;
+  opacity: 0.22 !important;
+  pointer-events: none !important;
+}
+
+.page-home .final-scene .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.page-home .final-scene-title {
+  color: rgba(255, 255, 255, 0.96) !important;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.24) !important;
+}
+
+.page-home .final-cta-surface > div > p,
+.page-home .final-scene .button-row .button-secondary {
+  color: rgba(244, 240, 232, 0.76) !important;
+}
+
+.page-home .final-scene .button-row .button-secondary {
+  border-color: rgba(255, 255, 255, 0.24) !important;
+}
+
+.page-home .final-scene .button-row .button-secondary:hover {
+  border-color: #ffb000 !important;
+  color: #ffb000 !important;
+}
+
+.page-home .contact-grid aside {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.page-home .contact-grid aside::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(circle at top left, rgba(255, 176, 0, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 42%) !important;
+  pointer-events: none !important;
+}
+
+.page-home .contact-grid aside > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.page-home .contact-grid h2 {
+  color: rgba(255, 255, 255, 0.94) !important;
+}
+
+.page-home .contact-grid .page-intro,
+.page-home .contact-list,
+.page-home .contact-list a,
+.page-home .contact-list span:not(.cd-label) {
+  color: rgba(244, 240, 232, 0.74) !important;
+}
+
+.page-home .contact-list li {
+  border-color: rgba(255, 176, 0, 0.12) !important;
+}
+
+.page-home .contact-list a:hover {
+  color: #ffffff !important;
+}
+
+.page-home .contact-form-card {
+  transform:
+    perspective(1200px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateY(0) !important;
+  transform-style: preserve-3d !important;
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease !important;
+  will-change: transform !important;
+}
+
+.page-home .contact-form-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(
+      320px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgba(255, 176, 0, 0.12),
+      transparent 58%
+    ) !important;
+  opacity: 0 !important;
+  transition: opacity 220ms ease !important;
+  pointer-events: none !important;
+}
+
+.page-home .contact-form-card.is-interacting,
+.page-home .contact-form-card:focus-within {
+  border-color: rgba(255, 176, 0, 0.36) !important;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 176, 0, 0.12) inset !important;
+}
+
+.page-home .contact-form-card.is-interacting::before,
+.page-home .contact-form-card:focus-within::before {
+  opacity: 1 !important;
+}
+
+.page-home .contact-form-card form {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .contact-form-card {
+    transform: none !important;
+    transition: border-color 180ms ease, box-shadow 180ms ease !important;
+  }
+
+  .page-home .contact-form-card::before {
+    transition: none !important;
+  }
+}
+
+/* Final override layer: testimonials contrast */
+.page-home .testimonials-scene {
+  background: linear-gradient(180deg, rgba(11, 12, 13, 0.98) 0%, rgba(8, 9, 10, 0.98) 100%) !important;
+}
+
+.page-home .testimonials-scene .landing-copy .eyebrow {
+  color: rgba(255, 176, 0, 0.88) !important;
+}
+
+.page-home .testimonials-scene .landing-copy h2 {
+  color: rgba(247, 244, 242, 0.96) !important;
+}
+
+.page-home .testimonials-scene .landing-copy,
+.page-home .testimonials-scene .testimonials-grid,
+.page-home .testimonials-scene .testimonial-card {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.page-home .testimonials-grid {
+  align-items: stretch !important;
+}
+
+.page-home .testimonial-card {
+  background: linear-gradient(180deg, rgba(22, 23, 25, 0.98) 0%, rgba(16, 17, 19, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+.page-home .testimonial-card:hover {
+  background: linear-gradient(180deg, rgba(28, 29, 31, 0.98) 0%, rgba(19, 20, 22, 0.98) 100%) !important;
+  border-color: rgba(255, 176, 0, 0.24) !important;
+}
+
+.page-home .testimonial-card blockquote {
+  font-family: var(--font-body) !important;
+  font-size: clamp(1.02rem, 1.18vw, 1.14rem) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.72 !important;
+  color: rgba(244, 240, 232, 0.9) !important;
+  opacity: 1 !important;
+}
+
+.page-home .testimonial-card strong {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  color: rgba(247, 244, 242, 0.96) !important;
+}
+
+.page-home .testimonial-card span {
+  font-family: var(--font-body) !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  color: rgba(244, 240, 232, 0.68) !important;
+}
+
+.page-home .testimonial-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.page-home .testimonial-logo {
+  opacity: 0.9 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BLOC 3 — Final scene: moment impacte + accent daurat
+   ═══════════════════════════════════════════════════════ */
+
+/* Section: full-height breathing room, no background change */
+.page-home .final-scene {
+  min-height: 82vh !important;
+  padding: clamp(112px, 16vh, 196px) 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Strip the card/panel — this section IS the stage, not a card inside one */
+.page-home .final-cta-surface {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: block !important;
+}
+
+/* Layout: stacked, headline dominates vertically */
+.page-home .final-decision {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+/* Gold eyebrow — visual marker before the giant headline */
+.page-home .final-scene .eyebrow {
+  color: #FFB000 !important;
+  letter-spacing: 0.26em !important;
+  font-size: 11px !important;
+  margin-bottom: clamp(28px, 4vw, 52px) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+/* Gold rule beside the eyebrow */
+.page-home .final-scene .eyebrow::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 36px !important;
+  height: 1.5px !important;
+  background: #FFB000 !important;
+  flex-shrink: 0 !important;
+}
+
+/* GIANT headline — the "uau" moment */
+.page-home .final-scene-title {
+  font-size: clamp(60px, 10vw, 148px) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.04em !important;
+  max-width: none !important;
+  color: #ffffff !important;
+  margin-bottom: clamp(32px, 4.5vw, 64px) !important;
+  font-style: normal !important;
+}
+
+/* Gold accent word — the spotlight */
+.page-home .final-scene-title .gold-word {
+  color: #FFB000 !important;
+  font-style: normal !important;
+}
+
+/* Body copy below the headline: readable width, lower opacity */
+.page-home .final-cta-surface > div > p {
+  font-size: clamp(16px, 1.15vw, 18px) !important;
+  max-width: 54ch !important;
+  color: rgba(255,255,255,0.62) !important;
+  margin-bottom: clamp(40px, 5vw, 64px) !important;
+  line-height: 1.7 !important;
+}
+
+/* Buttons: horizontal, modest, not competing with the title */
+.page-home .final-cta-surface .button-row {
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+  margin-top: 0 !important;
+}
+
+/* ── Reveal animations ─────────────────────────────── */
+/* Headline: single dramatic fade+lift (not word-by-word) */
+[data-reveal] .final-scene-title {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+[data-reveal].is-visible .final-scene-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold word: delayed spotlight — appears just as the headline lands */
+[data-reveal] .final-scene-title .gold-word {
+  opacity: 0;
+  transition: opacity 0.72s ease 0.82s;
+}
+[data-reveal].is-visible .final-scene-title .gold-word {
+  opacity: 1;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] .final-scene-title {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  [data-reveal] .final-scene-title .gold-word {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .page-home .final-scene {
+    min-height: auto !important;
+    padding: clamp(80px, 14vh, 120px) 0 !important;
+  }
+  .page-home .final-scene-title {
+    font-size: clamp(48px, 13vw, 80px) !important;
+    letter-spacing: -0.03em !important;
+  }
+  .page-home .final-cta-surface .button-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   BLOC 4 — Projects marquee
+   Markup ready: swap .project-card-ph for <img> when assets exist
+   ═══════════════════════════════════════════════════════ */
+
+/* Section wrapper */
+.page-home .projects-marquee-scene {
+  padding: clamp(72px, 9vw, 112px) 0 !important;
+  background: transparent !important;
+  overflow: hidden;
+}
+
+/* Header row: eyebrow left, link right */
+.page-home .marquee-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.page-home .marquee-view-all {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244,240,232,0.5);
+  transition: color 200ms ease;
+}
+@media (hover: hover) {
+  .page-home .marquee-view-all:hover { color: #FFB000; }
+}
+
+/* Overflow container: hides track ends + masks edges */
+.page-home .marquee-overflow {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+/* Scrolling track — Set A + Set B = 12 cards, animates -50% = 1 full set */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.page-home .marquee-track {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+/* Pause scroll on hover/focus (accessibility) */
+.page-home .marquee-overflow:hover .marquee-track,
+.page-home .marquee-overflow:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Individual card */
+.page-home .project-card {
+  flex-shrink: 0;
+  width: clamp(240px, 26vw, 340px);
+}
+
+.page-home .project-card-link {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111316;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: transform 360ms ease, border-color 280ms ease;
+}
+@media (hover: hover) {
+  .page-home .project-card-link:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,176,0,0.36);
+  }
+}
+
+/* Media area: 3:2 ratio */
+.page-home .project-card-media {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #141618;
+}
+
+/* Real image (added when assets exist) */
+.page-home .project-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: saturate(0.72) contrast(1.04);
+  transition: transform 480ms ease, filter 480ms ease;
+}
+@media (hover: hover) {
+  .page-home .project-card-link:hover .project-card-img {
+    transform: scale(1.04);
+    filter: saturate(1) contrast(1);
+  }
+}
+
+
+/* ── CSS Placeholder (remove when adding real img) ───── */
+.page-home .project-card-ph {
+  width: 100%;
+  height: 100%;
+  background: #141618;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle grid pattern mimicking a site wireframe */
+.page-home .project-card-ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+  background-size: 28px 20px;
+}
+/* Watermark A */
+.page-home .project-card-ph::after {
+  content: "A";
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  color: rgba(255,255,255,0.055);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+}
+
+/* Caption row */
+.page-home .project-card-caption {
+  padding: 0.8rem 1rem;
+  display: grid;
+  gap: 0.18rem;
+  background: #111316;
+}
+
+.page-home .project-card-type {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(244,240,232,0.42);
+  font-family: var(--font-body) !important;
+}
+
+.page-home .project-card-name {
+  font-size: 0.9rem;
+  color: rgba(244,240,232,0.86);
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+}
+
+/* prefers-reduced-motion: static grid instead of scroll */
+@media (prefers-reduced-motion: reduce) {
+  .page-home .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+  /* Hide Set B duplicates */
+  .page-home .project-card[aria-hidden="true"] {
+    display: none;
+  }
+  .page-home .marquee-overflow {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow: visible;
+  }
+}
+
+/* Responsive: smaller cards on mobile */
+@media (max-width: 640px) {
+  .page-home .project-card {
+    width: clamp(200px, 72vw, 280px);
+  }
+  .page-home .marquee-overflow {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  }
+}
+
+/* Final override layer: contrast + bloc 5 */
+.page-home .services-scene .landing-copy h2 {
+  color: rgba(17, 17, 17, 0.88) !important;
+}
+
+.page-home .services-scene .landing-copy .page-intro {
+  color: rgba(17, 17, 17, 0.76) !important;
+}
+
+.page-home .projects-marquee-scene .marquee-view-all {
+  color: rgba(244, 240, 232, 0.74) !important;
+}
+
+.page-home .projects-marquee-scene .project-card-type {
+  color: rgba(244, 240, 232, 0.62) !important;
+}
+
+.page-home .final-scene {
+  position: relative !important;
+  background-color: #0b0c0d !important;
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(255, 176, 0, 0.08), transparent 26%),
+    linear-gradient(180deg, #111214 0%, #0b0c0d 100%) !important;
+  overflow: hidden !important;
+}
+
+.page-home .final-scene::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+  background-size: 64px 64px !important;
+  opacity: 0.18 !important;
+  pointer-events: none !important;
+}
+
+.page-home .final-scene .container,
+.page-home .contact-grid aside > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.page-home .final-scene .eyebrow {
+  color: #c7921f !important;
+}
+
+.page-home .final-cta-surface {
+  opacity: 1 !important;
+  transform: none !important;
+  background-color: rgba(10, 11, 12, 0.98) !important;
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 176, 0, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(15, 16, 18, 0.96) 0%, rgba(10, 11, 12, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 176, 0, 0.14) !important;
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  padding: clamp(40px, 6vw, 72px) !important;
+}
+
+.page-home .final-cta-surface[data-reveal],
+.page-home .final-cta-surface[data-reveal].is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.page-home .final-scene-title {
+  color: rgba(17, 17, 17, 0.94) !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.page-home .final-cta-surface > div > p {
+  color: rgba(17, 17, 17, 0.72) !important;
+  opacity: 1 !important;
+}
+
+.page-home .final-scene .button-row .button-secondary {
+  color: rgba(17, 17, 17, 0.78) !important;
+  border-color: rgba(17, 17, 17, 0.2) !important;
+}
+
+.page-home .final-scene .button-row .button-secondary:hover {
+  border-color: #ffb000 !important;
+  color: #ffb000 !important;
+}
+
+.page-home .contact-grid aside {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.page-home .contact-grid aside::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(circle at top left, rgba(255, 176, 0, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 42%) !important;
+  pointer-events: none !important;
+}
+
+.page-home .contact-grid h2 {
+  color: rgba(255, 255, 255, 0.94) !important;
+  opacity: 1 !important;
+}
+
+.page-home .contact-grid .page-intro,
+.page-home .contact-list,
+.page-home .contact-list a,
+.page-home .contact-list span:not(.cd-label) {
+  color: rgba(244, 240, 232, 0.74) !important;
+  opacity: 1 !important;
+}
+
+.page-home .contact-list li {
+  border-color: rgba(255, 176, 0, 0.12) !important;
+}
+
+.page-home .contact-list a:hover {
+  color: #ffffff !important;
+}
+
+.page-home .contact-form-card {
+  transform:
+    perspective(1200px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateY(0) !important;
+  transform-style: preserve-3d !important;
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease !important;
+  will-change: transform !important;
+}
+
+.page-home .contact-form-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(
+      320px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgba(255, 176, 0, 0.12),
+      transparent 58%
+    ) !important;
+  opacity: 0 !important;
+  transition: opacity 220ms ease !important;
+  pointer-events: none !important;
+}
+
+.page-home .contact-form-card.is-interacting,
+.page-home .contact-form-card:focus-within {
+  border-color: rgba(255, 176, 0, 0.36) !important;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 176, 0, 0.12) inset !important;
+}
+
+.page-home .contact-form-card.is-interacting::before,
+.page-home .contact-form-card:focus-within::before {
+  opacity: 1 !important;
+}
+
+.page-home .contact-form-card form {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .contact-form-card {
+    transform: none !important;
+    transition: border-color 180ms ease, box-shadow 180ms ease !important;
+  }
+
+  .page-home .contact-form-card::before {
+    transition: none !important;
   }
 }

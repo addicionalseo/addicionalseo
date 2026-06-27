@@ -13,6 +13,11 @@ const siteNav = document.querySelector(".site-nav");
 const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const prefersReducedMotion = () => prefersReducedMotionQuery.matches;
 
+// Split H2 headings into word spans BEFORE the reveal observer fires
+if (document.body.classList.contains("page-home")) {
+  initWordReveal();
+}
+
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
@@ -60,6 +65,19 @@ if (revealElements.length) {
     );
 
     revealElements.forEach((element) => observer.observe(element));
+
+    // Fallback: force-reveal elements already in viewport after 600ms.
+    // Handles direct links, hash navigation and fast scroll that can bypass
+    // the IntersectionObserver callback before the element leaves view.
+    setTimeout(function () {
+      revealElements.forEach(function (el) {
+        if (el.classList.contains("is-visible")) return;
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 20 && rect.bottom > 0) {
+          el.classList.add("is-visible");
+        }
+      });
+    }, 600);
   }
 }
 
@@ -514,4 +532,48 @@ function initParallax(nodes) {
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
   requestTick();
+}
+
+// ── BLOC 1: Word clip-reveal ──────────────────────────
+function initWordReveal() {
+  if (prefersReducedMotion()) return;
+
+  var titles = document.querySelectorAll(".js-split-title");
+  if (!titles.length) return;
+
+  titles.forEach(function (el) {
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = "";
+    var idx = 0;
+
+    nodes.forEach(function (node) {
+      if (node.nodeType !== 3) {
+        // preserve non-text nodes (e.g. <br>, <em>)
+        el.appendChild(node.cloneNode(true));
+        return;
+      }
+
+      node.textContent.split(/(\s+)/).forEach(function (chunk) {
+        if (/^\s+$/.test(chunk) || chunk === "") {
+          if (chunk) el.appendChild(document.createTextNode(chunk));
+          return;
+        }
+        var wrap = document.createElement("span");
+        wrap.className = "word-wrap";
+        var inner = document.createElement("span");
+        inner.className = "word";
+        inner.style.setProperty("--word-idx", idx);
+        inner.textContent = chunk;
+        wrap.appendChild(inner);
+        el.appendChild(wrap);
+        idx++;
+      });
+    });
+  });
+}
+
+// BLOC 5 — Interactive surface on contact form card (any page)
+var contactFormCard = document.querySelector(".contact-form-card");
+if (contactFormCard && !prefersReducedMotion()) {
+  initInteractiveSurface(contactFormCard);
 }

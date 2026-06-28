@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/
-    - /bin/rsync -av --exclude='.git' --exclude='.cpanel.yml' --exclude='_deploy-backup' --exclude='node_modules' --exclude='.github' ./ $DEPLOYPATH
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/tar --exclude='.git' --exclude='.cpanel.yml' --exclude='_deploy-backup' --exclude='node_modules' --exclude='.github' --exclude='dist' -cf - . | (cd "$DEPLOYPATH" && /bin/tar -xf -)

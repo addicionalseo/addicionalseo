@@ -4,3 +4,4 @@ deployment:
     - export DEPLOYPATH=$HOME/public_html/
     - /bin/mkdir -p "$DEPLOYPATH"
     - /bin/tar --exclude='.git' --exclude='.cpanel.yml' --exclude='_deploy-backup' --exclude='node_modules' --exclude='.github' --exclude='dist' -cf - . | (cd "$DEPLOYPATH" && /bin/tar -xf -)
+    - /bin/chmod 755 "$DEPLOYPATH"

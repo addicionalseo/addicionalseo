@@ -92,7 +92,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/styles.css?v=58">
+  <link rel="stylesheet" href="/styles.css?v=59">
 </head>
 <body class="page-home">
 
@@ -134,7 +134,11 @@
     </video>
     <div class="mainframe-hero-content">
       <p class="hero-intro">Addicionalseo · Disseny web, SEO i captació digital</p>
-      <h1 class="hero-h1">Que et trobin.<br>Que et triïn.<br>Que tornin.</h1>
+      <h1 class="hero-h1">
+        <span class="hero-h1-line">Que et <span class="hero-h1-accent">trobin.</span></span>
+        <span class="hero-h1-line">Que et <span class="hero-h1-accent">triïn.</span></span>
+        <span class="hero-h1-line">Que <span class="hero-h1-accent">tornin.</span></span>
+      </h1>
       <p class="hero-typed">Dissenyem webs amb estructura, contingut i posicionament perquè la teva empresa no només es vegi millor: aparegui abans, generi confiança i converteixi visites en contactes.</p>
       <div class="hero-actions mainframe-pills" aria-label="Accions principals">
           <a href="/contacte/" class="mainframe-pill mainframe-pill-primary">Parlem del teu projecte</a>
@@ -223,9 +227,11 @@
     <section class="landing-block services-scene" id="serveis">
       <div class="container landing-shell">
         <div class="landing-copy" data-reveal>
-          <p class="eyebrow">SERVEIS</p>
-          <h2 class="js-split-title">Disseny, SEO i captació amb la mateixa direcció.</h2>
-          <p class="page-intro">Cada negoci necessita una web diferent. No treballem amb plantilles tancades ni amb solucions iguals per a tothom: adaptem disseny, estructura, contingut, SEO i captació perquè la web respongui al punt on ets ara i al tipus d’oportunitat que vols generar.</p>
+          <div class="landing-copy-inner services-copy-parallax">
+            <p class="eyebrow">SERVEIS</p>
+            <h2 class="js-split-title">Disseny, SEO i captació amb la mateixa direcció.</h2>
+            <p class="page-intro">Cada negoci necessita una web diferent. No treballem amb plantilles tancades ni amb solucions iguals per a tothom: adaptem disseny, estructura, contingut, SEO i captació perquè la web respongui al punt on ets ara i al tipus d’oportunitat que vols generar.</p>
+          </div>
         </div>
 
         <div class="services-editorial" data-reveal>
@@ -685,7 +691,7 @@
   </div>
 </footer>
 
-<script src="/script.js?v=27" defer></script>
+<script src="/script.js?v=28" defer></script>
 <script>
   window.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.button-row .button').forEach(function (btn) {

@@ -121,6 +121,19 @@ textarea:focus-visible {
   50% { opacity: 0; }
 }
 
+@keyframes heroAccentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.18em);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 /* Parallax-able layers — read --parallax-y written by script.js */
 .parallax-layer { transform: translate3d(0, var(--parallax-y, 0px), 0); }
 
@@ -1137,6 +1150,11 @@ textarea:focus-visible {
 
 .landing-copy {
   max-width: 43rem;
+}
+
+.landing-copy-inner {
+  transform: translate3d(0, var(--services-copy-y, 0px), 0);
+  will-change: transform;
 }
 
 .landing-copy .page-intro,
@@ -7082,12 +7100,44 @@ html {
 /* Home typography audit pass: preserve impact, remove collisions */
 .page-home .hero-h1,
 .page-home .mainframe-hero .hero-h1 {
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
   max-width: 7.2ch !important;
   font-size: clamp(52px, 7vw, 116px) !important;
   line-height: 1.04 !important;
   letter-spacing: -0.035em !important;
   text-wrap: balance;
   overflow: visible !important;
+}
+
+.page-home .hero-h1-line,
+.page-home .mainframe-hero .hero-h1-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.page-home .hero-h1-accent,
+.page-home .mainframe-hero .hero-h1-accent {
+  color: #c89b45;
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(0.18em);
+  animation: heroAccentReveal 0.72s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.page-home .hero-h1-line:nth-child(1) .hero-h1-accent,
+.page-home .mainframe-hero .hero-h1-line:nth-child(1) .hero-h1-accent {
+  animation-delay: 0.15s;
+}
+
+.page-home .hero-h1-line:nth-child(2) .hero-h1-accent,
+.page-home .mainframe-hero .hero-h1-line:nth-child(2) .hero-h1-accent {
+  animation-delay: 0.45s;
+}
+
+.page-home .hero-h1-line:nth-child(3) .hero-h1-accent,
+.page-home .mainframe-hero .hero-h1-line:nth-child(3) .hero-h1-accent {
+  animation-delay: 0.75s;
 }
 
 .page-home .landing-block h2,
@@ -7275,7 +7325,7 @@ body.page-home .process-row span {
   align-items: center !important;
   padding: 4px 0 !important;
   font-family: var(--font-body) !important;
-  font-size: 14px !important;
+  font-size: clamp(16px, 1.05vw, 18px) !important;
   font-weight: 700 !important;
   letter-spacing: -0.005em !important;
   color: rgba(8,8,8,0.88) !important;
@@ -9775,17 +9825,25 @@ body.page-home::after,
   object-fit: contain;
   object-position: left center;
   margin-bottom: 0.6rem;
-  filter: brightness(0) invert(1);
-  opacity: 0.72;
+  filter: none;
+  opacity: 1;
 }
 
 .testimonial-card:hover .testimonial-logo {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* ═══════════════════════════════════════════════════════
    TIPOGRAFIA — Obrazec (display) · EB Garamond (body) · Josefin Sans (labels)
    ═══════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "LeagueSpartan";
+  src: url("/assets/fonts/LeagueSpartan/LeagueSpartan-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Obrazec";
@@ -9821,9 +9879,9 @@ body.page-home::after,
 
 /* 1. Font tokens */
 :root {
-  --font-display: "BingoDilan", Georgia, serif;
-  --font-body:    "Josefin Sans", "Arial Narrow", sans-serif;
-  --font-mono:    "Josefin Sans", "Arial Narrow", sans-serif;
+  --font-display: "LeagueSpartan", Arial, sans-serif;
+  --font-body:    "LeagueSpartan", Arial, sans-serif;
+  --font-mono:    "LeagueSpartan", Arial, sans-serif;
 }
 
 /* 2. Base */
@@ -9837,7 +9895,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 .page-home td,
 .page-home th,
 .page-home span:not([class*="eyebrow"]):not([class*="index"]):not([class*="kicker"]):not([class*="label"]):not([class*="link"]):not([class*="cursor"]) {
-  font-family: "Josefin Sans", "Arial Narrow", sans-serif !important;
+  font-family: var(--font-body) !important;
   letter-spacing: 0 !important;
 }
 
@@ -9848,7 +9906,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   font-weight: 300 !important;
 }
 
-/* 3. Display headings hardcoded ("Anybody" / "Space Grotesk") → Playfair Display */
+/* 3. Section and card headings */
 .page-home .services-scene .landing-copy h2,
 .page-home .trust-scene h2,
 .page-home .results-cinema h2,
@@ -9867,7 +9925,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 .page-home .metric-proof li strong,
 .page-home .case-spotlight h3,
 .page-home .process-row strong {
-  font-family: "BingoDilan", Georgia, serif !important;
+  font-family: var(--font-display) !important;
   letter-spacing: 0em !important;
 }
 
@@ -9910,7 +9968,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 .page-home .footer-links a,
 .page-home .footer p,
 .page-home .footer small {
-  font-family: "Josefin Sans", "Arial Narrow", sans-serif !important;
+  font-family: var(--font-body) !important;
   letter-spacing: 0em !important;
 }
 
@@ -9947,12 +10005,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 .page-home .footer-grid h3,
 .page-home .footer-grid > div:not(:first-child):not(:last-child)::before,
 .page-home .home-system-bar__inner {
-  font-family: "Josefin Sans", "Arial Narrow", sans-serif !important;
+  font-family: var(--font-mono) !important;
 }
 
 /* 6. Testimonial blockquote — Cormorant Garamond italic */
 .testimonial-card blockquote {
-  font-family: "BingoDilan", Georgia, serif !important;
+  font-family: var(--font-body) !important;
   font-size: clamp(1.05rem, 1.4vw, 1.2rem) !important;
 }
 
@@ -10503,6 +10561,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 
 .page-home .testimonials-scene .landing-copy h2 {
   color: rgba(247, 244, 242, 0.96) !important;
+}
+
+.page-home .testimonials-scene .landing-copy h2 .word,
+.page-home .testimonials-scene .landing-copy h2 .word-wrap {
+  color: rgba(247, 244, 242, 0.96) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
 }
 
 .page-home .testimonials-scene .landing-copy,
@@ -11102,25 +11168,52 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 @media (max-width: 980px) {
   .page-home .mainframe-nav-shell {
     position: relative !important;
+    min-height: 58px !important;
+    padding: 12px 16px !important;
+    gap: 12px !important;
+  }
+
+  .page-home .mainframe-site-header {
+    z-index: 1200 !important;
+  }
+
+  .page-home .mainframe-brand img {
+    width: 136px !important;
+  }
+
+  .page-home .brand-star {
+    font-size: 19px !important;
+  }
+
+  .page-home .mainframe-header-actions {
+    gap: 8px !important;
+  }
+
+  .page-home .mainframe-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    position: relative !important;
+    z-index: 1202 !important;
   }
 
   .page-home .mainframe-nav {
     position: absolute !important;
     inset: auto !important;
-    top: calc(100% + 6px) !important;
-    left: 1rem !important;
-    right: 1rem !important;
+    top: calc(100% + 8px) !important;
+    left: 0.75rem !important;
+    right: 0.75rem !important;
     bottom: auto !important;
-    z-index: 200 !important;
+    z-index: 1201 !important;
     display: none !important;
     opacity: 1 !important;
     pointer-events: auto !important;
     flex-direction: column !important;
     gap: 0 !important;
-    padding: 0.8rem 1rem !important;
+    padding: 0.75rem 0.9rem !important;
     background: rgba(255,255,255,0.97) !important;
     border: 1px solid rgba(17,17,17,0.09) !important;
-    border-radius: 18px !important;
+    border-radius: 16px !important;
     box-shadow: 0 16px 32px rgba(0,0,0,0.10) !important;
     backdrop-filter: blur(14px) !important;
     -webkit-backdrop-filter: blur(14px) !important;
@@ -11132,12 +11225,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 
   .page-home .mainframe-nav a {
     width: 100% !important;
-    padding: 0.75rem 0.5rem !important;
+    padding: 0.68rem 0.45rem !important;
     min-height: 44px !important;
     display: flex !important;
     align-items: center !important;
     border-bottom: 1px solid rgba(17,17,17,0.07) !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     color: #111111 !important;
     opacity: 1 !important;
     letter-spacing: 0 !important;
@@ -11150,6 +11243,10 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   .page-home .mainframe-nav a::after {
     content: none !important;
   }
+
+  body.nav-open {
+    overflow: hidden;
+  }
 }
 
 /* Fix 2 — desplaçament lateral: html sense overflow horitzontal + tanca clip del manifest */
@@ -11159,4 +11256,186 @@ html {
 
 .page-home .manifest-scene {
   overflow: hidden !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPO FINAL — League Spartan para textos y UI uppercase
+   ═══════════════════════════════════════════════════════ */
+
+body,
+p,
+li,
+small,
+label,
+input,
+select,
+textarea,
+button,
+a,
+blockquote,
+figcaption,
+caption,
+td,
+th {
+  font-family: var(--font-body);
+}
+
+body :where(
+  p,
+  li,
+  small,
+  label,
+  input,
+  select,
+  textarea,
+  button,
+  a,
+  blockquote,
+  figcaption,
+  caption,
+  td,
+  th,
+  span,
+  strong,
+  em,
+  dd,
+  dt
+):not(h1 *):not(h2 *):not(h3 *):not(h4 *):not(h5 *):not(h6 *) {
+  font-family: var(--font-body);
+}
+
+/* Mantiene la display decorativa en headings, pero unifica
+   navegación, botones, labels y cualquier UI en mayúsculas. */
+.site-header,
+.site-header a,
+.nav-menu a,
+.lang-switch,
+.button,
+.button-secondary,
+.button-link,
+.footer,
+.footer a,
+.footer strong,
+.eyebrow,
+.kicker,
+.label,
+.tag,
+.badge,
+.chip,
+.project-card-type,
+.project-card-name,
+.contact-form-card label,
+.cookie-banner button,
+.cookie-manage,
+.home-system-bar__inner,
+.hero-intro,
+.hero-trust,
+.meta,
+[class*="meta"],
+[class*="nav"],
+[class*="menu"],
+[class*="link"],
+[class*="button"],
+[class*="eyebrow"],
+[class*="kicker"],
+[class*="label"],
+[class*="tag"],
+[class*="badge"],
+[class*="chip"],
+[style*="text-transform: uppercase"],
+[style*="text-transform:uppercase"] {
+  font-family: var(--font-mono) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HEADER FINAL — transparente sobre hero, sólido al scroll
+   ═══════════════════════════════════════════════════════ */
+
+.page-home .site-header,
+.page-home .mainframe-site-header {
+  background: transparent !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page-home .site-header.scrolled,
+.page-home .mainframe-site-header.scrolled {
+  background: rgba(255,255,255,0.9) !important;
+  border-bottom: 1px solid rgba(17,17,17,0.06) !important;
+  box-shadow: 0 8px 24px rgba(17,17,17,0.035) !important;
+  backdrop-filter: blur(12px) saturate(1.04) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(1.04) !important;
+}
+
+.page-home .mainframe-brand img {
+  filter: brightness(0) invert(1) !important;
+}
+
+.page-home .brand-star,
+.page-home .mainframe-nav a,
+.page-home .mainframe-nav a::after,
+.page-home .site-nav a,
+.page-home .site-nav a::after,
+.page-home .mainframe-contact,
+.page-home .mainframe-language,
+.page-home .mainframe-language a,
+.page-home .mainframe-language a[aria-current="page"],
+.page-home .nav-toggle,
+.page-home .nav-toggle span,
+.page-home .mainframe-toggle,
+.page-home .mainframe-toggle span {
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.22) !important;
+  background-color: transparent;
+}
+
+.page-home .nav-toggle span,
+.page-home .mainframe-toggle span {
+  background: #ffffff !important;
+}
+
+.page-home .site-header.scrolled .mainframe-brand img,
+.page-home .mainframe-site-header.scrolled .mainframe-brand img {
+  filter: brightness(0) invert(0) !important;
+}
+
+.page-home .site-header.scrolled .brand-star,
+.page-home .mainframe-site-header.scrolled .brand-star,
+.page-home .site-header.scrolled .mainframe-nav a,
+.page-home .mainframe-site-header.scrolled .mainframe-nav a,
+.page-home .site-header.scrolled .mainframe-nav a::after,
+.page-home .mainframe-site-header.scrolled .mainframe-nav a::after,
+.page-home .site-header.scrolled .site-nav a,
+.page-home .mainframe-site-header.scrolled .site-nav a,
+.page-home .site-header.scrolled .site-nav a::after,
+.page-home .mainframe-site-header.scrolled .site-nav a::after,
+.page-home .site-header.scrolled .mainframe-contact,
+.page-home .mainframe-site-header.scrolled .mainframe-contact,
+.page-home .site-header.scrolled .mainframe-language,
+.page-home .mainframe-site-header.scrolled .mainframe-language,
+.page-home .site-header.scrolled .mainframe-language a,
+.page-home .mainframe-site-header.scrolled .mainframe-language a,
+.page-home .site-header.scrolled .mainframe-language a[aria-current="page"],
+.page-home .mainframe-site-header.scrolled .mainframe-language a[aria-current="page"],
+.page-home .site-header.scrolled .nav-toggle,
+.page-home .mainframe-site-header.scrolled .nav-toggle,
+.page-home .site-header.scrolled .mainframe-toggle,
+.page-home .mainframe-site-header.scrolled .mainframe-toggle {
+  color: #111111 !important;
+  border-color: rgba(17,17,17,0.14) !important;
+}
+
+.page-home .site-header.scrolled .nav-toggle span,
+.page-home .mainframe-site-header.scrolled .nav-toggle span,
+.page-home .site-header.scrolled .mainframe-toggle span,
+.page-home .mainframe-site-header.scrolled .mainframe-toggle span {
+  background: #111111 !important;
+}
+
+@media (min-width: 981px) {
+  .page-home .services-scene .landing-copy {
+    top: clamp(132px, 16vh, 184px) !important;
+  }
 }

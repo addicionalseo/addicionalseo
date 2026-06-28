@@ -19,22 +19,41 @@ if (document.body.classList.contains("page-home")) {
 }
 
 if (navToggle && siteNav) {
-  navToggle.addEventListener("click", () => {
+  const closeNav = () => {
+    siteNav.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("nav-open");
+  };
+
+  navToggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const isOpen = siteNav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("nav-open", isOpen);
   });
 
   siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      siteNav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeNav();
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!siteNav.classList.contains("is-open")) return;
+    if (siteNav.contains(event.target) || navToggle.contains(event.target)) return;
+    closeNav();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNav();
+    }
   });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 980) {
-      siteNav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeNav();
     }
   });
 }
@@ -161,6 +180,7 @@ function initHomeMotion() {
   if (!prefersReducedMotion()) {
     initParallax(parallaxMedia);
     initScrollZoom(zoomMedia);
+    initServicesCopyParallax();
     initHeroVideoScrub();
   }
 }
@@ -532,6 +552,50 @@ function initParallax(nodes) {
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
   requestTick();
+}
+
+function initServicesCopyParallax() {
+  const node = document.querySelector(".page-home .services-copy-parallax");
+  const section = document.querySelector(".page-home .services-scene");
+
+  if (!node || !section) {
+    return;
+  }
+
+  let ticking = false;
+
+  const update = () => {
+    if (window.innerWidth <= 768) {
+      node.style.setProperty("--services-copy-y", "0px");
+      ticking = false;
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || 1;
+    const sectionTravel = viewportHeight + rect.height;
+    const travelled = viewportHeight - rect.top;
+    const progress = Math.min(Math.max(travelled / sectionTravel, 0), 1);
+    const maxTranslate = Math.max(
+      0,
+      Math.min(section.offsetHeight - node.offsetHeight - 96, 240)
+    );
+    const translate = progress * maxTranslate;
+
+    node.style.setProperty("--services-copy-y", `${translate.toFixed(2)}px`);
+    ticking = false;
+  };
+
+  const requestTick = () => {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  };
+
+  update();
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick);
 }
 
 // ── BLOC 1: Word clip-reveal ──────────────────────────

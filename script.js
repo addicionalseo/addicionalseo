@@ -13,10 +13,8 @@ const siteNav = document.querySelector(".site-nav");
 const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const prefersReducedMotion = () => prefersReducedMotionQuery.matches;
 
-// Split H2 headings into word spans BEFORE the reveal observer fires
-if (document.body.classList.contains("page-home")) {
-  initWordReveal();
-}
+// Split headings into word spans BEFORE the reveal observer fires
+initWordReveal();
 
 if (navToggle && siteNav) {
   const closeNav = () => {
@@ -177,10 +175,29 @@ function initHomeMotion() {
 
   syncServiceCardBackgrounds();
 
+  // Hero entrance sequence
+  const heroLines = document.querySelectorAll(".hero-h1-line");
+  const heroIntro = document.querySelector(".mainframe-hero .hero-intro");
+  const heroTyped = document.querySelector(".mainframe-hero .hero-typed");
+  const heroTrust = document.querySelector(".mainframe-hero .hero-trust");
+  const heroPills = document.querySelector(".mainframe-pills");
+
+  if (prefersReducedMotion()) {
+    [heroIntro, ...heroLines, heroTyped, heroTrust, heroPills].forEach(el => el && el.classList.add("is-active", "is-visible"));
+  } else {
+    const showEl = (el, delay) => { if (!el) return; setTimeout(() => el.classList.add("is-active"), delay); };
+    showEl(heroIntro, 80);
+    heroLines.forEach((line, i) => showEl(line, 260 + i * 160));
+    showEl(heroTyped, 260 + heroLines.length * 160 + 80);
+    showEl(heroTrust, 260 + heroLines.length * 160 + 260);
+    setTimeout(() => heroPills && heroPills.classList.add("is-visible"), 1100);
+  }
+
+  initServicesCopyParallax();
+
   if (!prefersReducedMotion()) {
     initParallax(parallaxMedia);
     initScrollZoom(zoomMedia);
-    initServicesCopyParallax();
     initHeroVideoScrub();
   }
 }
@@ -555,54 +572,15 @@ function initParallax(nodes) {
 }
 
 function initServicesCopyParallax() {
-  const node = document.querySelector(".page-home .services-copy-parallax");
-  const section = document.querySelector(".page-home .services-scene");
-
-  if (!node || !section) {
-    return;
-  }
-
-  let ticking = false;
-
-  const update = () => {
-    if (window.innerWidth <= 768) {
-      node.style.setProperty("--services-copy-y", "0px");
-      ticking = false;
-      return;
-    }
-
-    const rect = section.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || 1;
-    const sectionTravel = viewportHeight + rect.height;
-    const travelled = viewportHeight - rect.top;
-    const progress = Math.min(Math.max(travelled / sectionTravel, 0), 1);
-    const maxTranslate = Math.max(
-      0,
-      Math.min(section.offsetHeight - node.offsetHeight - 96, 240)
-    );
-    const translate = progress * maxTranslate;
-
-    node.style.setProperty("--services-copy-y", `${translate.toFixed(2)}px`);
-    ticking = false;
-  };
-
-  const requestTick = () => {
-    if (!ticking) {
-      ticking = true;
-      window.requestAnimationFrame(update);
-    }
-  };
-
-  update();
-  window.addEventListener("scroll", requestTick, { passive: true });
-  window.addEventListener("resize", requestTick);
+  // Handled entirely by the inline script in index.html
 }
 
 // ── BLOC 1: Word clip-reveal ──────────────────────────
 function initWordReveal() {
   if (prefersReducedMotion()) return;
 
-  var titles = document.querySelectorAll(".js-split-title");
+  // Covers home (.js-split-title) and all other pages (main h1, main h2 inside data-reveal)
+  var titles = document.querySelectorAll(".js-split-title, main [data-reveal] h1, main [data-reveal] h2");
   if (!titles.length) return;
 
   titles.forEach(function (el) {

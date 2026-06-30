@@ -92,7 +92,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/styles.css?v=59">
+  <link rel="stylesheet" href="/styles.css?v=60">
 </head>
 <body class="page-home">
 
@@ -421,11 +421,11 @@
 
     <section class="landing-block testimonials-scene" id="testimonis">
       <div class="container landing-shell">
-        <div class="landing-copy">
+        <div class="landing-copy" data-reveal>
           <p class="eyebrow">CLIENTS</p>
           <h2 class="js-split-title">El que diuen els qui han confiat en nosaltres.</h2>
         </div>
-        <div class="testimonials-grid">
+        <div class="testimonials-grid" data-reveal>
           <article class="testimonial-card">
             <blockquote>Portàvem anys sense renovar la presència digital. La nova web reflecteix el nivell real de l'empresa i ara apareixem quan algú cerca control de plagues a la nostra comarca. Ha estat una inversió amb retorn molt clar.</blockquote>
             <footer class="testimonial-card-footer">
@@ -691,7 +691,44 @@
   </div>
 </footer>
 
-<script src="/script.js?v=28" defer></script>
+<script src="/script.js?v=35" defer></script>
+<script>
+(function () {
+  function startParallax() {
+    var node = document.querySelector('.services-copy-parallax');
+    var section = document.querySelector('.services-scene');
+    var editorial = document.querySelector('.services-editorial');
+    if (!node || !section || !editorial) return;
+
+    var editH, stickyTop, active;
+    function measure() {
+      var cs = window.getComputedStyle(node.parentElement);
+      active = cs.position === 'sticky';
+      stickyTop = parseFloat(cs.top) || 120;
+      editH = editorial.offsetHeight;
+    }
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+
+    (function loop() {
+      requestAnimationFrame(loop);
+      if (!active) { node.style.transform = ''; return; }
+      var edTop = editorial.getBoundingClientRect().top;
+      var vh = window.innerHeight;
+      // progress 0→1 as editorial scrolls from viewport-bottom to editorial-bottom-at-viewport-bottom
+      var progress = Math.max(0, Math.min((vh - edTop) / Math.max(1, editH), 1));
+      var maxY = Math.max(0, vh - stickyTop - 20);
+      node.style.transform = 'translateY(' + (progress * maxY).toFixed(1) + 'px)';
+    }());
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startParallax);
+  } else {
+    startParallax();
+  }
+}());
+</script>
 <script>
   window.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.button-row .button').forEach(function (btn) {

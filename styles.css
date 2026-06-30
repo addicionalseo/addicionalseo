@@ -1153,8 +1153,8 @@ textarea:focus-visible {
 }
 
 .landing-copy-inner {
-  transform: translate3d(0, var(--services-copy-y, 0px), 0);
   will-change: transform;
+  transition: none;
 }
 
 .landing-copy .page-intro,
@@ -10572,8 +10572,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 }
 
 .page-home .testimonials-scene .landing-copy,
-.page-home .testimonials-scene .testimonials-grid,
-.page-home .testimonials-scene .testimonial-card {
+.page-home .testimonials-scene .testimonials-grid {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
@@ -11437,5 +11436,85 @@ body :where(
 @media (min-width: 981px) {
   .page-home .services-scene .landing-copy {
     top: clamp(132px, 16vh, 184px) !important;
+  }
+}
+
+/* services parallax — ensure overflow never clips the sticky+transformed text */
+.page-home .services-scene {
+  overflow: visible !important;
+}
+.page-home .services-copy-parallax {
+  will-change: transform;
+  transition: none !important;
+}
+
+/* ── Hero entrance sequence ─────────────────────────── */
+.page-home .hero-h1-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.page-home .hero-h1-line.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-home .mainframe-hero .hero-intro,
+.page-home .mainframe-hero .hero-typed,
+.page-home .mainframe-hero .hero-trust {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.page-home .mainframe-hero .hero-intro.is-active,
+.page-home .mainframe-hero .hero-typed.is-active,
+.page-home .mainframe-hero .hero-trust.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-home .hero-h1-line,
+  .page-home .mainframe-hero .hero-intro,
+  .page-home .mainframe-hero .hero-typed,
+  .page-home .mainframe-hero .hero-trust {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── Service card stagger: add opacity to existing transition ── */
+.page-home .services-editorial .service-stage,
+.page-home .services-editorial .service-stage-featured {
+  transition:
+    opacity 500ms ease,
+    transform 440ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 440ms ease,
+    border-color 300ms ease !important;
+}
+.page-home .services-editorial.is-visible .service-stage,
+.page-home .services-editorial.is-visible .service-stage-featured {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ── Testimonial card stagger ──────────────────────── */
+.testimonials-grid:not(.is-visible) .testimonial-card {
+  opacity: 0 !important;
+  transform: translateY(18px) !important;
+}
+.testimonials-grid.is-visible .testimonial-card {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.testimonials-grid.is-visible .testimonial-card:nth-child(1) { transition-delay: 60ms; }
+.testimonials-grid.is-visible .testimonial-card:nth-child(2) { transition-delay: 180ms; }
+.testimonials-grid.is-visible .testimonial-card:nth-child(3) { transition-delay: 300ms; }
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-grid .testimonial-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

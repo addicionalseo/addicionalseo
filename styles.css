@@ -11745,3 +11745,225 @@ body :where(
     transition: none !important;
   }
 }
+
+/* ── Audience panel ("Quan encaixa més" / símptomes) ───
+   Component sense estils propis: apareixia com a text pla
+   sense targetes ni icones a totes les pàgines de servei. */
+.audience-layout,
+.editorial-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.audience-note {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.audience-panel,
+.insight-card {
+  padding: 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.audience-panel .tagline,
+.insight-card .tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.3rem;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.audience-rail,
+.trust-list {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.rail-card,
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.rail-card:last-child,
+.trust-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.rail-icon,
+.trust-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.rail-icon svg,
+.trust-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rail-card strong,
+.trust-item strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--cream);
+  font-size: 0.98rem;
+}
+
+.trust-item strong a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.trust-item strong a:hover {
+  text-decoration: underline;
+}
+
+.rail-card > div > span,
+.trust-item > div > span {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .audience-layout,
+  .editorial-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── CTA band: columna de copy + llista lateral ───────
+   Igual que .audience-panel/.insight-card, aquest bloc
+   no tenia estils propis (cta-layout, cta-proof, cta-side). */
+.cta-band .cta-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.9fr);
+  gap: clamp(1.8rem, 3vw, 3rem);
+  align-items: start;
+}
+
+.cta-band .cta-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.cta-band .cta-proof span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 20, 16, 0.16);
+  background: rgba(27, 20, 16, 0.05);
+  color: var(--stage-ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.cta-side {
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(27, 20, 16, 0.04);
+  border: 1px solid rgba(27, 20, 16, 0.1);
+}
+
+.cta-side h3 {
+  margin-bottom: 1.1rem;
+  color: var(--stage-ink);
+  font-size: 1rem;
+}
+
+.cta-side-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.cta-side-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(27, 20, 16, 0.1);
+}
+
+.cta-side-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cta-side-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(27, 20, 16, 0.08);
+  color: var(--stage-ink);
+}
+
+.cta-side-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cta-side-item strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--stage-ink);
+  font-size: 0.92rem;
+}
+
+.cta-side-item > div > span {
+  display: block;
+  color: rgba(27, 20, 16, 0.62);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  .cta-band .cta-layout {
+    grid-template-columns: 1fr;
+  }
+}

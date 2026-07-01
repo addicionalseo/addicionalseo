@@ -251,49 +251,27 @@ function initHeroVideoScrub() {
   }
 
   const sensitivity = 0.8;
-  let prevX = null;
-  let isSeeking = false;
-  let pendingTime = null;
+  const ease = 0.12;
   let targetTime = 0;
-
-  const seekTo = (nextTime) => {
-    if (!Number.isFinite(video.duration) || video.duration <= 0) {
-      return;
-    }
-
-    const clamped = Math.min(Math.max(nextTime, 0), video.duration);
-    targetTime = clamped;
-
-    if (isSeeking) {
-      pendingTime = clamped;
-      return;
-    }
-
-    isSeeking = true;
-    video.currentTime = clamped;
-  };
+  let prevX = null;
 
   video.pause();
 
   video.addEventListener("loadedmetadata", () => {
     video.pause();
+    targetTime = video.currentTime;
   });
 
-  video.addEventListener("seeked", () => {
-    if (pendingTime !== null && Math.abs(pendingTime - video.currentTime) > 0.01) {
-      const queuedTime = pendingTime;
-      pendingTime = null;
-      video.currentTime = queuedTime;
-      return;
+  const tick = () => {
+    if (Number.isFinite(video.duration) && video.duration > 0) {
+      const diff = targetTime - video.currentTime;
+      if (Math.abs(diff) > 0.005) {
+        video.currentTime += diff * ease;
+      }
     }
-
-    pendingTime = null;
-    isSeeking = false;
-
-    if (Math.abs(targetTime - video.currentTime) > 0.01) {
-      seekTo(targetTime);
-    }
-  });
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 
   window.addEventListener("mousemove", (event) => {
     if (!Number.isFinite(video.duration) || video.duration <= 0) {
@@ -309,7 +287,7 @@ function initHeroVideoScrub() {
     const delta = event.clientX - prevX;
     prevX = event.clientX;
     const deltaTime = (delta / window.innerWidth) * sensitivity * video.duration;
-    seekTo(video.currentTime + deltaTime);
+    targetTime = Math.min(Math.max(targetTime + deltaTime, 0), video.duration);
   });
 
   window.addEventListener("mouseleave", () => {

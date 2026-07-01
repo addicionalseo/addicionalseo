@@ -167,6 +167,9 @@ if (yearNode) {
 
 if (document.body.classList.contains("page-home")) {
   initHomeMotion();
+} else if (!prefersReducedMotion()) {
+  initParallax(document.querySelectorAll("[data-parallax]"));
+  initScrollZoom(document.querySelectorAll("[data-scroll-zoom]"));
 }
 
 function initHomeMotion() {

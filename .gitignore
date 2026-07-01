@@ -27,9 +27,12 @@ backups*/
 # Credencials / configuracions sensibles
 .env
 .env.*
+!.env.deploy.example
 config.php
 wp-config.php
 *.sql
+*.local
+*.secret
 
 # Node / builds si existissin
 node_modules/
@@ -64,3 +67,6 @@ bingo_dilan_extracted/
 /Diseño sin título - *.png
 /hdesigner-*.jpg
 /2024-03-21.png
+
+_deploy/.env.deploy
+

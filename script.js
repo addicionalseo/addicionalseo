@@ -185,6 +185,8 @@ function initHomeMotion() {
   if (prefersReducedMotion()) {
     [heroIntro, ...heroLines, heroTyped, heroTrust, heroPills].forEach(el => el && el.classList.add("is-active", "is-visible"));
   } else {
+    // Add .hero-anm first (hides elements via CSS), then schedule reveals
+    [heroIntro, ...heroLines, heroTyped, heroTrust].forEach(el => el && el.classList.add("hero-anm"));
     const showEl = (el, delay) => { if (!el) return; setTimeout(() => el.classList.add("is-active"), delay); };
     showEl(heroIntro, 80);
     heroLines.forEach((line, i) => showEl(line, 260 + i * 160));

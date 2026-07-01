@@ -11449,19 +11449,21 @@ body :where(
 }
 
 /* ── Hero entrance sequence ─────────────────────────── */
-.page-home .hero-h1-line {
+/* Initial hidden state is applied via JS (.hero-anm class), never via raw CSS,
+   so elements are always visible if JS fails to run */
+.page-home .hero-h1-line.hero-anm {
   display: block;
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .page-home .hero-h1-line.is-active {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
-.page-home .mainframe-hero .hero-intro,
-.page-home .mainframe-hero .hero-typed,
-.page-home .mainframe-hero .hero-trust {
+.page-home .mainframe-hero .hero-intro.hero-anm,
+.page-home .mainframe-hero .hero-typed.hero-anm,
+.page-home .mainframe-hero .hero-trust.hero-anm {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.55s ease, transform 0.55s ease;
@@ -11469,18 +11471,8 @@ body :where(
 .page-home .mainframe-hero .hero-intro.is-active,
 .page-home .mainframe-hero .hero-typed.is-active,
 .page-home .mainframe-hero .hero-trust.is-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .page-home .hero-h1-line,
-  .page-home .mainframe-hero .hero-intro,
-  .page-home .mainframe-hero .hero-typed,
-  .page-home .mainframe-hero .hero-trust {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* ── Service card stagger: add opacity to existing transition ── */

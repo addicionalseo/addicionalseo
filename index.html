@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ca">
 <head>
   <meta charset="UTF-8">
@@ -92,7 +92,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/styles.css?v=61">
+  <link rel="stylesheet" href="/styles.css?v=62">
 </head>
 <body class="page-home">
 
@@ -700,12 +700,13 @@
     var editorial = document.querySelector('.services-editorial');
     if (!node || !section || !editorial) return;
 
-    var editH, stickyTop, active;
+    var editH, stickyTop, nodeH, active;
     function measure() {
       var cs = window.getComputedStyle(node.parentElement);
       active = cs.position === 'sticky';
       stickyTop = parseFloat(cs.top) || 120;
       editH = editorial.offsetHeight;
+      nodeH = node.offsetHeight;
     }
     measure();
     window.addEventListener('resize', measure);
@@ -716,9 +717,10 @@
       if (!active) { node.style.transform = ''; return; }
       var edTop = editorial.getBoundingClientRect().top;
       var vh = window.innerHeight;
-      // progress 0→1 as editorial scrolls from viewport-bottom to editorial-bottom-at-viewport-bottom
-      var progress = Math.max(0, Math.min((vh - edTop) / Math.max(1, editH), 1));
-      var maxY = Math.max(0, vh - stickyTop - 20);
+      // progress 0 quan editorial.top arriba al sticky header, 1 quan editorial.bottom toca viewport bottom
+      var range = Math.max(1, editH - vh + stickyTop);
+      var progress = Math.max(0, Math.min((stickyTop - edTop) / range, 1));
+      var maxY = Math.max(0, vh - stickyTop - nodeH - 40);
       node.style.transform = 'translateY(' + (progress * maxY).toFixed(1) + 'px)';
     }());
   }

@@ -13,23 +13,45 @@ const siteNav = document.querySelector(".site-nav");
 const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const prefersReducedMotion = () => prefersReducedMotionQuery.matches;
 
+// Split headings into word spans BEFORE the reveal observer fires
+initWordReveal();
+
 if (navToggle && siteNav) {
-  navToggle.addEventListener("click", () => {
+  const closeNav = () => {
+    siteNav.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("nav-open");
+  };
+
+  navToggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const isOpen = siteNav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("nav-open", isOpen);
   });
 
   siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      siteNav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeNav();
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!siteNav.classList.contains("is-open")) return;
+    if (siteNav.contains(event.target) || navToggle.contains(event.target)) return;
+    closeNav();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNav();
+    }
   });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 980) {
-      siteNav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeNav();
     }
   });
 }
@@ -54,12 +76,25 @@ if (revealElements.length) {
         });
       },
       {
-        threshold: 0.16,
+        threshold: 0,
         rootMargin: "0px 0px -40px 0px"
       }
     );
 
     revealElements.forEach((element) => observer.observe(element));
+
+    // Fallback: force-reveal elements already in viewport after 600ms.
+    // Handles direct links, hash navigation and fast scroll that can bypass
+    // the IntersectionObserver callback before the element leaves view.
+    setTimeout(function () {
+      revealElements.forEach(function (el) {
+        if (el.classList.contains("is-visible")) return;
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 20 && rect.bottom > 0) {
+          el.classList.add("is-visible");
+        }
+      });
+    }, 600);
   }
 }
 
@@ -140,6 +175,28 @@ function initHomeMotion() {
 
   syncServiceCardBackgrounds();
 
+  // Hero entrance sequence
+  const heroLines = document.querySelectorAll(".hero-h1-line");
+  const heroIntro = document.querySelector(".mainframe-hero .hero-intro");
+  const heroTyped = document.querySelector(".mainframe-hero .hero-typed");
+  const heroTrust = document.querySelector(".mainframe-hero .hero-trust");
+  const heroPills = document.querySelector(".mainframe-pills");
+
+  if (prefersReducedMotion()) {
+    [heroIntro, ...heroLines, heroTyped, heroTrust, heroPills].forEach(el => el && el.classList.add("is-active", "is-visible"));
+  } else {
+    // Add .hero-anm first (hides elements via CSS), then schedule reveals
+    [heroIntro, ...heroLines, heroTyped, heroTrust].forEach(el => el && el.classList.add("hero-anm"));
+    const showEl = (el, delay) => { if (!el) return; setTimeout(() => el.classList.add("is-active"), delay); };
+    showEl(heroIntro, 80);
+    heroLines.forEach((line, i) => showEl(line, 260 + i * 160));
+    showEl(heroTyped, 260 + heroLines.length * 160 + 80);
+    showEl(heroTrust, 260 + heroLines.length * 160 + 260);
+    setTimeout(() => heroPills && heroPills.classList.add("is-visible"), 1100);
+  }
+
+  initServicesCopyParallax();
+
   if (!prefersReducedMotion()) {
     initParallax(parallaxMedia);
     initScrollZoom(zoomMedia);
@@ -194,49 +251,27 @@ function initHeroVideoScrub() {
   }
 
   const sensitivity = 0.8;
-  let prevX = null;
-  let isSeeking = false;
-  let pendingTime = null;
+  const ease = 0.12;
   let targetTime = 0;
-
-  const seekTo = (nextTime) => {
-    if (!Number.isFinite(video.duration) || video.duration <= 0) {
-      return;
-    }
-
-    const clamped = Math.min(Math.max(nextTime, 0), video.duration);
-    targetTime = clamped;
-
-    if (isSeeking) {
-      pendingTime = clamped;
-      return;
-    }
-
-    isSeeking = true;
-    video.currentTime = clamped;
-  };
+  let prevX = null;
 
   video.pause();
 
   video.addEventListener("loadedmetadata", () => {
     video.pause();
+    targetTime = video.currentTime;
   });
 
-  video.addEventListener("seeked", () => {
-    if (pendingTime !== null && Math.abs(pendingTime - video.currentTime) > 0.01) {
-      const queuedTime = pendingTime;
-      pendingTime = null;
-      video.currentTime = queuedTime;
-      return;
+  const tick = () => {
+    if (Number.isFinite(video.duration) && video.duration > 0) {
+      const diff = targetTime - video.currentTime;
+      if (Math.abs(diff) > 0.005) {
+        video.currentTime += diff * ease;
+      }
     }
-
-    pendingTime = null;
-    isSeeking = false;
-
-    if (Math.abs(targetTime - video.currentTime) > 0.01) {
-      seekTo(targetTime);
-    }
-  });
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 
   window.addEventListener("mousemove", (event) => {
     if (!Number.isFinite(video.duration) || video.duration <= 0) {
@@ -252,7 +287,7 @@ function initHeroVideoScrub() {
     const delta = event.clientX - prevX;
     prevX = event.clientX;
     const deltaTime = (delta / window.innerWidth) * sensitivity * video.duration;
-    seekTo(video.currentTime + deltaTime);
+    targetTime = Math.min(Math.max(targetTime + deltaTime, 0), video.duration);
   });
 
   window.addEventListener("mouseleave", () => {
@@ -514,4 +549,53 @@ function initParallax(nodes) {
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
   requestTick();
+}
+
+function initServicesCopyParallax() {
+  // Handled entirely by the inline script in index.html
+}
+
+// ── BLOC 1: Word clip-reveal ──────────────────────────
+function initWordReveal() {
+  if (prefersReducedMotion()) return;
+
+  // Covers home (.js-split-title) and all other pages (main h1, main h2 inside data-reveal)
+  var titles = document.querySelectorAll(".js-split-title, main [data-reveal] h1, main [data-reveal] h2");
+  if (!titles.length) return;
+
+  titles.forEach(function (el) {
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = "";
+    var idx = 0;
+
+    nodes.forEach(function (node) {
+      if (node.nodeType !== 3) {
+        // preserve non-text nodes (e.g. <br>, <em>)
+        el.appendChild(node.cloneNode(true));
+        return;
+      }
+
+      node.textContent.split(/(\s+)/).forEach(function (chunk) {
+        if (/^\s+$/.test(chunk) || chunk === "") {
+          if (chunk) el.appendChild(document.createTextNode(chunk));
+          return;
+        }
+        var wrap = document.createElement("span");
+        wrap.className = "word-wrap";
+        var inner = document.createElement("span");
+        inner.className = "word";
+        inner.style.setProperty("--word-idx", idx);
+        inner.textContent = chunk;
+        wrap.appendChild(inner);
+        el.appendChild(wrap);
+        idx++;
+      });
+    });
+  });
+}
+
+// BLOC 5 — Interactive surface on contact form card (any page)
+var contactFormCard = document.querySelector(".contact-form-card");
+if (contactFormCard && !prefersReducedMotion()) {
+  initInteractiveSurface(contactFormCard);
 }

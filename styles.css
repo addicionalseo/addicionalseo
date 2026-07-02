@@ -12239,3 +12239,36 @@ select option {
 .page-home .mainframe-site-header.scrolled .mainframe-toggle span {
   background: #ffffff !important;
 }
+
+/* ── Home mobil: el boto hamburguesa quedava fora de pantalla ──
+   Una regla antiga (position:fixed + left:min(-52px + 100vw, 336px)) es
+   va substituir per position:relative en una regla posterior, pero mai
+   es va netejar el "left" heretat. Amb position:relative, aquell left
+   desplaçava el boto ~336px cap a la dreta de la seva posicio normal al
+   flex, traient-lo de la pantalla. Resultat: el menu no es podia obrir
+   perque el boto real era inaccessible. ── */
+.page-home .nav-toggle,
+.page-home .mainframe-toggle {
+  left: auto !important;
+  right: auto !important;
+}
+
+/* ── Home mobil: el desplegable del menu (un cop obert) heretava
+   "width: auto" (pensat pel menu horitzontal d'escriptori) fent-se molt
+   estret en lloc d'ocupar tot l'ample entre els marges, i el text es
+   veia blanc sobre un fons blanc (heretat de l'estil pensat pel menu
+   d'escriptori sobre la foto fosca del hero). ── */
+@media (max-width: 980px) {
+  .page-home .site-nav.is-open,
+  .page-home .mainframe-nav.is-open {
+    width: calc(100% - 24px) !important;
+    align-items: stretch !important;
+  }
+
+  .page-home .site-nav.is-open a,
+  .page-home .mainframe-nav.is-open a {
+    color: #050505 !important;
+    text-shadow: none !important;
+    width: 100%;
+  }
+}

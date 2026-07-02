@@ -12163,3 +12163,10 @@ select option {
 .page-home .result-bench article {
   background: transparent !important;
 }
+
+/* ── Carrusel de projectes: la imatge de Livingraphics és molt més ampla (2.08:1)
+   que la caixa de la targeta (3:2), i el retall centrat tallava el text "LIVING
+   GRAPHICS" per l'esquerra. Desplacem el punt de retall cap a l'esquerra. ── */
+.page-home .project-card-img[src*="Livingraphics"] {
+  object-position: 38% top;
+}

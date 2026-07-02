@@ -12151,3 +12151,8 @@ select option {
   background-color: #14171c;
   color: var(--cream);
 }
+
+/* ── Home: treu el fons gris de la llista Expectatives/Rendiment/Captació ── */
+.page-home .metric-proof li {
+  background: transparent !important;
+}

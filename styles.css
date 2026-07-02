@@ -12170,3 +12170,12 @@ select option {
 .page-home .project-card-img[src*="Livingraphics"] {
   object-position: 38% top;
 }
+
+/* ── Cards del magazine: les portades son 1200x630 (1.9:1) pero la caixa fixa de
+   200px d'alçada retallava els costats i tallava el titol i el tag "PRESSUPOST"
+   que porten incrustats. Ajustem la caixa a la proporcio real de la imatge. ── */
+.article-card img {
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+}

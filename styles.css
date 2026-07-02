@@ -12157,3 +12157,9 @@ select option {
 .page-home .metric-proof ul {
   background: transparent !important;
 }
+
+/* ── Home: treu el fons gris de SEO local/Rendiment/Captació (result-bench) ── */
+.page-home .result-bench,
+.page-home .result-bench article {
+  background: transparent !important;
+}

@@ -643,4 +643,52 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/disseny-web-tarragona/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/disseny-web-tarragona/"/>
   </url>
+  <url>
+    <loc>https://addicionalseo.com/branding/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/branding/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/branding/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/branding/"/>
+  </url>
+  <url>
+    <loc>https://addicionalseo.com/es/branding/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/branding/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/branding/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/branding/"/>
+  </url>
+  <url>
+    <loc>https://addicionalseo.com/disseny-grafic/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/disseny-grafic/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/diseno-grafico/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/diseno-grafico/"/>
+  </url>
+  <url>
+    <loc>https://addicionalseo.com/es/diseno-grafico/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/diseno-grafico/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/disseny-grafic/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/diseno-grafico/"/>
+  </url>
+  <url>
+    <loc>https://addicionalseo.com/fotografia-video/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/fotografia-video/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/fotografia-video/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/fotografia-video/"/>
+  </url>
+  <url>
+    <loc>https://addicionalseo.com/es/fotografia-video/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/fotografia-video/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://addicionalseo.com/fotografia-video/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/fotografia-video/"/>
+  </url>
+  <url>
+    <loc>https://addicionalseo.com/es/diseno-web-seo-latinoamerica/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://addicionalseo.com/es/diseno-web-seo-latinoamerica/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://addicionalseo.com/es/diseno-web-seo-latinoamerica/"/>
+  </url>
 </urlset>

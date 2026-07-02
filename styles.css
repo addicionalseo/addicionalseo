@@ -12272,3 +12272,17 @@ select option {
     width: 100%;
   }
 }
+
+/* ── Home mobil: icona d'hamburguesa duplicada ──
+   .mainframe-site-header::after dibuixava una segona icona (3 barres via
+   box-shadow) amb position:fixed a unes coordenades pensades per l'antiga
+   posicio (tambe position:fixed) del boto .mainframe-toggle. Quan el boto
+   es va corregir a la seva posicio normal dins el flex, aquest pseudo-
+   element decoratiu es va quedar "solt" a la posicio antiga, creant dues
+   icones visibles alhora. El boto real ja dibuixa la seva propia icona
+   (els 3 <span> interns), aixi que aquest pseudo-element ja no fa falta. ── */
+@media (max-width: 980px) {
+  .page-home .mainframe-site-header::after {
+    content: none !important;
+  }
+}

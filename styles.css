@@ -12180,11 +12180,12 @@ select option {
   object-fit: cover;
 }
 
-/* ── Home: menu de navegacio mes llegible (mida i espaiat de lletra ajustats,
-   ombra suau per mantenir contrast sobre la imatge de fons variable) ── */
+/* ── Home: el menu ha de tenir el mateix pes que a la resta de pagines
+   (font-weight 600, no 700) i una mida coherent amb .site-nav a general ── */
 .page-home .mainframe-nav a,
 .page-home .site-nav a {
-  font-size: clamp(16px, 1.15vw, 19px) !important;
-  letter-spacing: 0 !important;
+  font-size: clamp(14px, 1vw, 0.92rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.005em !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }

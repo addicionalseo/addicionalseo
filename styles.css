@@ -12189,3 +12189,53 @@ select option {
   letter-spacing: 0.005em !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
+
+/* ── Home: l'efecte de scroll del capçal invertia a fons blanc/crema amb text
+   negre, diferent de la resta del lloc (que es queda fosc amb blur). Ho
+   unifiquem: el capçal del home es queda fosc en fer scroll, sense inversio. ── */
+.page-home .site-header.scrolled,
+.page-home .mainframe-site-header.scrolled {
+  background: rgba(7, 10, 15, 0.86) !important;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.08) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.page-home .site-header.scrolled .mainframe-brand img,
+.page-home .mainframe-site-header.scrolled .mainframe-brand img {
+  filter: brightness(0) invert(1) !important;
+}
+
+.page-home .site-header.scrolled .brand-star,
+.page-home .mainframe-site-header.scrolled .brand-star,
+.page-home .site-header.scrolled .mainframe-nav a,
+.page-home .mainframe-site-header.scrolled .mainframe-nav a,
+.page-home .site-header.scrolled .mainframe-nav a::after,
+.page-home .mainframe-site-header.scrolled .mainframe-nav a::after,
+.page-home .site-header.scrolled .site-nav a,
+.page-home .mainframe-site-header.scrolled .site-nav a,
+.page-home .site-header.scrolled .site-nav a::after,
+.page-home .mainframe-site-header.scrolled .site-nav a::after,
+.page-home .site-header.scrolled .mainframe-contact,
+.page-home .mainframe-site-header.scrolled .mainframe-contact,
+.page-home .site-header.scrolled .mainframe-language,
+.page-home .mainframe-site-header.scrolled .mainframe-language,
+.page-home .site-header.scrolled .mainframe-language a,
+.page-home .mainframe-site-header.scrolled .mainframe-language a,
+.page-home .site-header.scrolled .mainframe-language a[aria-current="page"],
+.page-home .mainframe-site-header.scrolled .mainframe-language a[aria-current="page"],
+.page-home .site-header.scrolled .nav-toggle,
+.page-home .mainframe-site-header.scrolled .nav-toggle,
+.page-home .site-header.scrolled .mainframe-toggle,
+.page-home .mainframe-site-header.scrolled .mainframe-toggle {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+.page-home .site-header.scrolled .nav-toggle span,
+.page-home .mainframe-site-header.scrolled .nav-toggle span,
+.page-home .site-header.scrolled .mainframe-toggle span,
+.page-home .mainframe-site-header.scrolled .mainframe-toggle span {
+  background: #ffffff !important;
+}

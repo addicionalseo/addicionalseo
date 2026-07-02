@@ -12139,3 +12139,15 @@ body.modal-open {
     top: 0 !important;
   }
 }
+
+/* ── Desplegables (select): el fons del <select> es semitransparent, pero el
+   navegador no pot fer transparent el popup natiu d'opcions. Sense això, el
+   popup surt clar amb text clar (il·legible). Forcem colors opacs a les opcions. ── */
+select {
+  background-color: #14171c;
+}
+
+select option {
+  background-color: #14171c;
+  color: var(--cream);
+}

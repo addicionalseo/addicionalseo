@@ -98,11 +98,11 @@ if (revealElements.length) {
   }
 }
 
-document.querySelectorAll(".js-contact-form .f-type").forEach((select) => {
-  const form = select.closest("form");
+function initContactFormTypeToggle(form) {
+  const select = form.querySelector(".f-type");
   const businessGroup = form.querySelector(".f-business-group");
-  const businessInput = businessGroup ? businessGroup.querySelector("input") : null;
-  if (!businessGroup) return;
+  if (!select || !businessGroup) return;
+  const businessInput = businessGroup.querySelector("input");
   const syncBusinessField = () => {
     const show = select.value === "autonom" || select.value === "empresa";
     businessGroup.hidden = !show;
@@ -110,9 +110,9 @@ document.querySelectorAll(".js-contact-form .f-type").forEach((select) => {
   };
   select.addEventListener("change", syncBusinessField);
   syncBusinessField();
-});
+}
 
-document.querySelectorAll(".js-contact-form").forEach((form) => {
+function initContactFormSubmit(form) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -174,6 +174,135 @@ document.querySelectorAll(".js-contact-form").forEach((form) => {
     const body = encodeURIComponent(bodyLines.join("\n"));
 
     window.location.href = `mailto:info@addicionalseo.com?subject=${subject}&body=${body}`;
+
+    const modal = form.closest(".contact-modal");
+    if (modal) closeContactModal(modal);
+  });
+}
+
+document.querySelectorAll(".js-contact-form").forEach((form) => {
+  initContactFormTypeToggle(form);
+  initContactFormSubmit(form);
+});
+
+let contactModalEl = null;
+
+function closeContactModal(modal) {
+  modal.classList.remove("is-open");
+  document.body.classList.remove("modal-open");
+}
+
+function buildContactModal() {
+  if (contactModalEl) return contactModalEl;
+
+  const locale = document.documentElement.lang.toLowerCase().startsWith("es") ? "es" : "ca";
+  const copy = locale === "es"
+    ? {
+        title: "Hablemos de tu proyecto",
+        subtitle: "Respuesta en menos de 48 h. Sin compromiso.",
+        close: "Cerrar",
+        name: "Nombre y apellidos", namePh: "Tu nombre y apellidos",
+        type: "Eres...", typeOpt: "Selecciona una opción",
+        typeParticular: "Particular", typeAutonom: "Autónomo", typeEmpresa: "Empresa",
+        business: "Nombre del proyecto o empresa", businessPh: "Nombre del proyecto o de la empresa",
+        phone: "Teléfono", phonePh: "6XX XXX XXX",
+        email: "Correo electrónico", emailPh: "tu@correo.com",
+        postal: "Código postal", postalOptional: "(opcional)", postalPh: "08001",
+        submit: "Enviar",
+        privacy: "Al enviar el formulario aceptas nuestra",
+        privacyHref: "/es/politica-privacidad/", privacyText: "política de privacidad"
+      }
+    : {
+        title: "Parlem del teu projecte",
+        subtitle: "Resposta en menys de 48 h. Sense compromís.",
+        close: "Tancar",
+        name: "Nom i cognoms", namePh: "El teu nom i cognoms",
+        type: "Ets...", typeOpt: "Selecciona una opció",
+        typeParticular: "Particular", typeAutonom: "Autònom", typeEmpresa: "Empresa",
+        business: "Nom del projecte o empresa", businessPh: "Nom del projecte o de l'empresa",
+        phone: "Telèfon", phonePh: "6XX XXX XXX",
+        email: "Correu electrònic", emailPh: "el.teu@correu.com",
+        postal: "Codi postal", postalOptional: "(opcional)", postalPh: "08001",
+        submit: "Enviar",
+        privacy: "Enviant el formulari acceptes la nostra",
+        privacyHref: "/politica-privacitat/", privacyText: "política de privacitat"
+      };
+
+  const modal = document.createElement("div");
+  modal.className = "contact-modal";
+  modal.innerHTML = `
+    <div class="contact-modal-backdrop" data-modal-close></div>
+    <div class="contact-modal-panel" role="dialog" aria-modal="true" aria-label="${copy.title}">
+      <button type="button" class="contact-modal-close" data-modal-close aria-label="${copy.close}">&times;</button>
+      <p class="eyebrow">${copy.title}</p>
+      <p class="contact-modal-subtitle">${copy.subtitle}</p>
+      <form class="js-contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label>${copy.name} *</label>
+            <input type="text" name="name" autocomplete="name" required placeholder="${copy.namePh}">
+          </div>
+          <div class="form-group">
+            <label>${copy.type} *</label>
+            <select name="type" class="f-type" required>
+              <option value="" disabled selected>${copy.typeOpt}</option>
+              <option value="particular">${copy.typeParticular}</option>
+              <option value="autonom">${copy.typeAutonom}</option>
+              <option value="empresa">${copy.typeEmpresa}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group f-business-group" hidden>
+          <label>${copy.business}</label>
+          <input type="text" name="business" autocomplete="organization" placeholder="${copy.businessPh}">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>${copy.phone} *</label>
+            <input type="tel" name="phone" autocomplete="tel" required placeholder="${copy.phonePh}">
+          </div>
+          <div class="form-group">
+            <label>${copy.email} *</label>
+            <input type="email" name="email" autocomplete="email" required placeholder="${copy.emailPh}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>${copy.postal} <span class="form-optional">${copy.postalOptional}</span></label>
+          <input type="text" name="postal" autocomplete="postal-code" inputmode="numeric" placeholder="${copy.postalPh}">
+        </div>
+        <p class="form-note">${copy.privacy} <a href="${copy.privacyHref}">${copy.privacyText}</a>.</p>
+        <button type="submit" class="button">${copy.submit}</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.querySelectorAll("[data-modal-close]").forEach((el) => {
+    el.addEventListener("click", () => closeContactModal(modal));
+  });
+
+  const form = modal.querySelector(".js-contact-form");
+  initContactFormTypeToggle(form);
+  initContactFormSubmit(form);
+
+  contactModalEl = modal;
+  return modal;
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && contactModalEl && contactModalEl.classList.contains("is-open")) {
+    closeContactModal(contactModalEl);
+  }
+});
+
+document.querySelectorAll(".js-open-contact-modal").forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    const modal = buildContactModal();
+    modal.classList.add("is-open");
+    document.body.classList.add("modal-open");
+    const firstField = modal.querySelector("input");
+    if (firstField) window.setTimeout(() => firstField.focus(), 50);
   });
 });
 

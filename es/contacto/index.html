@@ -96,46 +96,39 @@
           <div class="contact-form-card" data-reveal>
             <p class="eyebrow">Cuéntanos el proyecto</p>
             <h2>¿Qué necesitas?</h2>
-            <form class="js-contact-form">
+            <form class="js-contact-form" novalidate>
               <div class="form-row">
-                <div>
-                  <label for="name">Nombre</label>
-                  <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+                <div class="form-group">
+                  <label for="name">Nombre y apellidos *</label>
+                  <input id="name" name="name" type="text" placeholder="Tu nombre y apellidos" autocomplete="name" required>
                 </div>
-                <div>
-                  <label for="business">Empresa / Proyecto</label>
-                  <input id="business" name="business" type="text" placeholder="Nombre de la empresa o proyecto">
+                <div class="form-group">
+                  <label for="type">Eres... *</label>
+                  <select id="type" name="type" class="f-type" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="particular">Particular</option>
+                    <option value="autonom">Autónomo</option>
+                    <option value="empresa">Empresa</option>
+                  </select>
                 </div>
+              </div>
+              <div class="form-group f-business-group" hidden>
+                <label for="business">Nombre del proyecto o empresa</label>
+                <input id="business" name="business" type="text" autocomplete="organization" placeholder="Nombre del proyecto o de la empresa">
               </div>
               <div class="form-row">
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+                <div class="form-group">
+                  <label for="phone">Teléfono *</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="699 00 00 00" required>
                 </div>
-                <div>
-                  <label for="phone">Teléfono</label>
-                  <input id="phone" name="phone" type="tel" placeholder="699 00 00 00">
+                <div class="form-group">
+                  <label for="email">Correo electrónico *</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
                 </div>
               </div>
-              <div>
-                <label for="service">¿En qué podemos ayudarte?</label>
-                <select id="service" name="service">
-                  <option value="Diseno web">Diseño web profesional</option>
-                  <option value="Web para particulares">Web para particulares / proyecto personal</option>
-                  <option value="SEO">SEO (posicionamiento en Google)</option>
-                  <option value="SEO local">SEO local (Google Maps)</option>
-                  <option value="Google Ads">Google Ads (publicidad)</option>
-                  <option value="Migracion desde WordPress">Migración desde WordPress</option>
-                </select>
-              </div>
-              <div>
-                <label for="message">Cuéntanos más</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="¿Tienes web actualmente? ¿Qué quieres mejorar? ¿Cuál es tu objetivo principal? Cuanto más nos cuentes, mejor te podemos orientar."
-                  required
-                ></textarea>
+              <div class="form-group">
+                <label for="postal">Código postal <span class="form-optional">(opcional)</span></label>
+                <input id="postal" name="postal" type="text" autocomplete="postal-code" inputmode="numeric" placeholder="08001">
               </div>
               <div class="button-row">
                 <button class="button" type="submit">Solicitar presupuesto gratuito</button>

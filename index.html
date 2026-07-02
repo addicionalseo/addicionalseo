@@ -601,39 +601,36 @@
         <form class="js-contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label for="f-name">Nom *</label>
-              <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="El teu nom">
+              <label for="f-name">Nom i cognoms *</label>
+              <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="El teu nom i cognoms">
             </div>
             <div class="form-group">
-              <label for="f-business">Empresa</label>
-              <input type="text" id="f-business" name="business" autocomplete="organization" placeholder="Nom de l'empresa">
+              <label for="f-type">Ets... *</label>
+              <select id="f-type" name="type" class="f-type" required>
+                <option value="" disabled selected>Selecciona una opció</option>
+                <option value="particular">Particular</option>
+                <option value="autonom">Autònom</option>
+                <option value="empresa">Empresa</option>
+              </select>
             </div>
+          </div>
+          <div class="form-group f-business-group" hidden>
+            <label for="f-business">Nom del projecte o empresa</label>
+            <input type="text" id="f-business" name="business" autocomplete="organization" placeholder="Nom del projecte o de l'empresa">
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="f-email">Email *</label>
-              <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="tu@empresa.com">
+              <label for="f-phone">Telèfon *</label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" required placeholder="6XX XXX XXX">
             </div>
             <div class="form-group">
-              <label for="f-phone">Telèfon</label>
-              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="6XX XXX XXX">
+              <label for="f-email">Correu electrònic *</label>
+              <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="tu@empresa.com">
             </div>
           </div>
           <div class="form-group">
-            <label for="f-service">Servei d'interès</label>
-            <select id="f-service" name="service">
-              <option value="" disabled selected>Quin servei t'interessa?</option>
-              <option value="seo">SEO Orgànic</option>
-              <option value="web">Disseny web</option>
-              <option value="ads">Google Ads / SEM</option>
-              <option value="branding">Branding</option>
-              <option value="tot">Tot integrat</option>
-              <option value="altre">No ho sé encara</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="f-message">Missatge</label>
-            <textarea id="f-message" name="message" rows="4" placeholder="Explica'ns el teu negoci, objectius o dubtes..."></textarea>
+            <label for="f-postal">Codi postal <span class="form-optional">(opcional)</span></label>
+            <input type="text" id="f-postal" name="postal" autocomplete="postal-code" inputmode="numeric" placeholder="08001">
           </div>
           <p class="form-trust">Resposta en menys de 48 h. Sense compromís.</p>
           <p class="form-note">Enviant el formulari acceptes la nostra <a href="/politica-privacitat/">política de privacitat</a>.</p>

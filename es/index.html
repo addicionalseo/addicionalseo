@@ -601,39 +601,36 @@
         <form class="js-contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label for="f-name">Nombre *</label>
-              <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="Tu nombre">
+              <label for="f-name">Nombre y apellidos *</label>
+              <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="Tu nombre y apellidos">
             </div>
             <div class="form-group">
-              <label for="f-business">Empresa</label>
-              <input type="text" id="f-business" name="business" autocomplete="organization" placeholder="Nombre de la empresa">
+              <label for="f-type">Eres... *</label>
+              <select id="f-type" name="type" class="f-type" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="particular">Particular</option>
+                <option value="autonom">Autónomo</option>
+                <option value="empresa">Empresa</option>
+              </select>
             </div>
+          </div>
+          <div class="form-group f-business-group" hidden>
+            <label for="f-business">Nombre del proyecto o empresa</label>
+            <input type="text" id="f-business" name="business" autocomplete="organization" placeholder="Nombre del proyecto o de la empresa">
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="f-email">Email *</label>
-              <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="tu@empresa.com">
+              <label for="f-phone">Teléfono *</label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" required placeholder="6XX XXX XXX">
             </div>
             <div class="form-group">
-              <label for="f-phone">Teléfono</label>
-              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="6XX XXX XXX">
+              <label for="f-email">Correo electrónico *</label>
+              <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="tu@empresa.com">
             </div>
           </div>
           <div class="form-group">
-            <label for="f-service">Servicio de interés</label>
-            <select id="f-service" name="service">
-              <option value="" disabled selected>¿Qué servicio te interesa?</option>
-              <option value="seo">SEO Orgánico</option>
-              <option value="web">Diseño web</option>
-              <option value="ads">Google Ads / SEM</option>
-              <option value="branding">Branding</option>
-              <option value="tot">Todo integrado</option>
-              <option value="altre">Aún no lo sé</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="f-message">Mensaje</label>
-            <textarea id="f-message" name="message" rows="4" placeholder="Cuéntanos tu negocio, objetivos o dudas..."></textarea>
+            <label for="f-postal">Código postal <span class="form-optional">(opcional)</span></label>
+            <input type="text" id="f-postal" name="postal" autocomplete="postal-code" inputmode="numeric" placeholder="08001">
           </div>
           <p class="form-trust">Respuesta en menos de 48 h. Sin compromiso.</p>
           <p class="form-note">Al enviar el formulario aceptas nuestra <a href="/es/politica-privacidad/">política de privacidad</a>.</p>

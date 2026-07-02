@@ -88,38 +88,35 @@
             </div>
           </aside>
           <div data-reveal>
-            <form class="contact-form" action="/gràcies/" method="POST">
+            <form class="js-contact-form" novalidate>
               <div class="form-group">
                 <label for="name">Nom i cognoms <span aria-hidden="true">*</span></label>
-                <input type="text" id="name" name="name" autocomplete="name" required placeholder="El teu nom">
+                <input type="text" id="name" name="name" autocomplete="name" required placeholder="El teu nom i cognoms">
               </div>
               <div class="form-group">
-                <label for="business">Empresa o projecte <span class="form-optional">(opcional)</span></label>
-                <input type="text" id="business" name="business" autocomplete="organization" placeholder="Nom de l'empresa o del projecte">
+                <label for="type">Ets... <span aria-hidden="true">*</span></label>
+                <select id="type" name="type" class="f-type" required>
+                  <option value="" disabled selected>Selecciona una opció</option>
+                  <option value="particular">Particular</option>
+                  <option value="autonom">Autònom</option>
+                  <option value="empresa">Empresa</option>
+                </select>
+              </div>
+              <div class="form-group f-business-group" hidden>
+                <label for="business">Nom del projecte o empresa</label>
+                <input type="text" id="business" name="business" autocomplete="organization" placeholder="Nom del projecte o de l'empresa">
+              </div>
+              <div class="form-group">
+                <label for="phone">Telèfon <span aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="6XX XXX XXX">
               </div>
               <div class="form-group">
                 <label for="email">Correu electrònic <span aria-hidden="true">*</span></label>
                 <input type="email" id="email" name="email" autocomplete="email" required placeholder="el.teu@correu.com">
               </div>
               <div class="form-group">
-                <label for="phone">Telèfon <span class="form-optional">(opcional)</span></label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="6XX XXX XXX">
-              </div>
-              <div class="form-group">
-                <label for="service">Servei d'interès <span aria-hidden="true">*</span></label>
-                <select id="service" name="service" required>
-                  <option value="" disabled selected>Selecciona un servei</option>
-                  <option value="disseny-web">Disseny web</option>
-                  <option value="seo">SEO</option>
-                  <option value="seo-local">SEO local</option>
-                  <option value="google-ads">Google Ads</option>
-                  <option value="web-particulars">Web per a particulars</option>
-                  <option value="migracio-wordpress">Migració WordPress</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Explica'ns el projecte <span aria-hidden="true">*</span></label>
-                <textarea id="message" name="message" rows="5" required placeholder="Descriu breument el teu projecte o el que necessites. Com més detall ens donis, millor podrem orientar-te."></textarea>
+                <label for="postal">Codi postal <span class="form-optional">(opcional)</span></label>
+                <input type="text" id="postal" name="postal" autocomplete="postal-code" inputmode="numeric" placeholder="08001">
               </div>
               <button type="submit" class="button">Enviar missatge</button>
             </form>

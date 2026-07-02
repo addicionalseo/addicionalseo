@@ -98,6 +98,20 @@ if (revealElements.length) {
   }
 }
 
+document.querySelectorAll(".js-contact-form .f-type").forEach((select) => {
+  const form = select.closest("form");
+  const businessGroup = form.querySelector(".f-business-group");
+  const businessInput = businessGroup ? businessGroup.querySelector("input") : null;
+  if (!businessGroup) return;
+  const syncBusinessField = () => {
+    const show = select.value === "autonom" || select.value === "empresa";
+    businessGroup.hidden = !show;
+    if (!show && businessInput) businessInput.value = "";
+  };
+  select.addEventListener("change", syncBusinessField);
+  syncBusinessField();
+});
+
 document.querySelectorAll(".js-contact-form").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -107,53 +121,57 @@ document.querySelectorAll(".js-contact-form").forEach((form) => {
       ca: {
         subjectWithName: "Consulta web de",
         defaultSubject: "Nova consulta des del web",
+        typeLabels: { particular: "Particular", autonom: "Autònom", empresa: "Empresa" },
         labels: {
-          name: "Nom",
-          business: "Empresa",
+          name: "Nom i cognoms",
+          type: "Tipus",
+          business: "Projecte / Empresa",
+          phone: "Telèfon",
           email: "Email",
-          phone: "Telefon",
-          service: "Servei",
-          message: "Missatge"
+          postal: "Codi postal"
         }
       },
       es: {
         subjectWithName: "Consulta web de",
         defaultSubject: "Nueva consulta desde la web",
+        typeLabels: { particular: "Particular", autonom: "Autónomo", empresa: "Empresa" },
         labels: {
-          name: "Nombre",
-          business: "Empresa",
+          name: "Nombre y apellidos",
+          type: "Tipo",
+          business: "Proyecto / Empresa",
+          phone: "Teléfono",
           email: "Email",
-          phone: "Telefono",
-          service: "Servicio",
-          message: "Mensaje"
+          postal: "Código postal"
         }
       }
     };
     const copy = copyByLocale[locale];
     const data = new FormData(form);
     const name = (data.get("name") || "").toString().trim();
+    const type = (data.get("type") || "").toString().trim();
     const business = (data.get("business") || "").toString().trim();
-    const email = (data.get("email") || "").toString().trim();
     const phone = (data.get("phone") || "").toString().trim();
-    const service = (data.get("service") || "").toString().trim();
-    const message = (data.get("message") || "").toString().trim();
+    const email = (data.get("email") || "").toString().trim();
+    const postal = (data.get("postal") || "").toString().trim();
 
     const subject = encodeURIComponent(
       name ? `${copy.subjectWithName} ${name}` : copy.defaultSubject
     );
 
-    const body = encodeURIComponent(
-      [
-        `${copy.labels.name}: ${name || "-"}`,
-        `${copy.labels.business}: ${business || "-"}`,
-        `${copy.labels.email}: ${email || "-"}`,
-        `${copy.labels.phone}: ${phone || "-"}`,
-        `${copy.labels.service}: ${service || "-"}`,
-        "",
-        `${copy.labels.message}:`,
-        message || "-"
-      ].join("\n")
+    const bodyLines = [
+      `${copy.labels.name}: ${name || "-"}`,
+      `${copy.labels.type}: ${copy.typeLabels[type] || "-"}`
+    ];
+    if (type === "autonom" || type === "empresa") {
+      bodyLines.push(`${copy.labels.business}: ${business || "-"}`);
+    }
+    bodyLines.push(
+      `${copy.labels.phone}: ${phone || "-"}`,
+      `${copy.labels.email}: ${email || "-"}`,
+      `${copy.labels.postal}: ${postal || "-"}`
     );
+
+    const body = encodeURIComponent(bodyLines.join("\n"));
 
     window.location.href = `mailto:info@addicionalseo.com?subject=${subject}&body=${body}`;
   });

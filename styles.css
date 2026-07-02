@@ -12153,6 +12153,7 @@ select option {
 }
 
 /* ── Home: treu el fons gris de la llista Expectatives/Rendiment/Captació ── */
-.page-home .metric-proof li {
+.page-home .metric-proof li,
+.page-home .metric-proof ul {
   background: transparent !important;
 }

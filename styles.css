@@ -12123,3 +12123,19 @@ body.modal-open {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Home: la columna mes curta del bloc de contacte es queda enganxada mentre es fa scroll per l'altra ── */
+.page-home .contact-grid aside,
+.page-home .contact-grid .contact-form-card {
+  position: sticky !important;
+  top: 110px !important;
+  align-self: start !important;
+}
+
+@media (max-width: 900px) {
+  .page-home .contact-grid aside,
+  .page-home .contact-grid .contact-form-card {
+    position: relative !important;
+    top: 0 !important;
+  }
+}

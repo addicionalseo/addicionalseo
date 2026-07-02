@@ -12179,3 +12179,12 @@ select option {
   aspect-ratio: 1200 / 630;
   object-fit: cover;
 }
+
+/* ── Home: menu de navegacio mes llegible (mida i espaiat de lletra ajustats,
+   ombra suau per mantenir contrast sobre la imatge de fons variable) ── */
+.page-home .mainframe-nav a,
+.page-home .site-nav a {
+  font-size: clamp(16px, 1.15vw, 19px) !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}

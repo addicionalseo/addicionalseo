@@ -1453,7 +1453,7 @@ body.page-home main { padding-top: 0; }
 
 .page-hero {
   position: relative;
-  padding: 7.5rem 0 4.5rem;
+  padding: 6.4rem 0 3rem;
   overflow: hidden;
   border-radius: 0 0 var(--radius) var(--radius);
   background: linear-gradient(168deg, #14171c 0%, #0a0c0f 100%);
@@ -1553,15 +1553,15 @@ body.page-home main { padding-top: 0; }
 .page-hero-inner {
   display: grid;
   grid-template-columns: 1fr;
-  max-width: 820px;
-  margin-top: 1.8rem;
+  max-width: 780px;
+  margin-top: 1.1rem;
 }
 
 .page-hero-inner h1 {
-  font-size: clamp(2.6rem, 4.8vw, 4.2rem);
-  line-height: 1.08;
+  font-size: clamp(2.1rem, 3.4vw, 3.05rem);
+  line-height: 1.1;
   letter-spacing: -0.03em;
-  margin: 0.4rem 0 1.2rem;
+  margin: 0.3rem 0 0.9rem;
   color: var(--cream);
 }
 
@@ -1575,7 +1575,7 @@ body.page-home main { padding-top: 0; }
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin: 1.4rem 0 2rem;
+  margin: 1rem 0 0;
 }
 .page-hero .proof-chip {
   display: inline-flex;
@@ -1607,7 +1607,7 @@ body.page-home main { padding-top: 0; }
 .page-hero .hero-badge-row .eyebrow { margin: 0; }
 
 .page-hero .accent-script {
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
 }
 
 /* Intro card sense fons propi: just spacing */
@@ -1616,6 +1616,15 @@ body.page-home main { padding-top: 0; }
   border: none;
   padding: 0;
   margin-top: 0;
+}
+
+.page-hero .page-intro {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.page-hero .button-row {
+  margin-top: 1.3rem;
 }
 
 /* ── SECCIÓ AMB FONS D'IMATGE ─────────────── */
@@ -12285,4 +12294,276 @@ select option {
   .page-home .mainframe-site-header::after {
     content: none !important;
   }
+}
+
+/* ── Hero visual: petita gràfica animada als heros de serveis ──
+   Nomes visible en pantalles amples (hi ha espai lliure a la dreta del
+   text un cop l'H1 s'ha fet mes compacte). Decoratiu (aria-hidden),
+   s'anima nomes un cop via el sistema data-reveal existent i respecta
+   prefers-reduced-motion. ── */
+.page-hero .hero-visual {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .page-hero .hero-visual {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-52%);
+    width: 300px;
+    padding: 1.5rem 1.4rem 1.3rem;
+    border-radius: 18px;
+    background: rgba(244, 240, 232, 0.05);
+    border: 1px solid rgba(244, 240, 232, 0.14);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1;
+  }
+}
+
+.hero-visual-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 232, 0.5);
+  margin-bottom: 0.7rem;
+}
+
+.hero-visual-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.hero-visual-number {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.hero-visual-trend {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.hero-visual-chart {
+  width: 100%;
+  height: 84px;
+  display: block;
+  overflow: visible;
+}
+
+.hero-visual-grid {
+  fill: none;
+  stroke: rgba(244, 240, 232, 0.12);
+  stroke-width: 1;
+}
+
+.hero-visual-line {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+}
+
+.hero-visual.is-visible .hero-visual-line {
+  animation: hero-line-draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+}
+
+@keyframes hero-line-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero-visual-dot,
+.hero-visual-dot-pulse {
+  fill: var(--gold);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.hero-visual.is-visible .hero-visual-dot {
+  animation: hero-dot-in 0.4s ease 1.5s forwards;
+}
+
+.hero-visual.is-visible .hero-visual-dot-pulse {
+  animation: hero-dot-ripple 2.4s ease-out 1.7s infinite;
+}
+
+@keyframes hero-dot-in {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hero-dot-ripple {
+  0%   { opacity: 0.45; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.8); }
+}
+
+.hero-visual-caption {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: rgba(244, 240, 232, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual-line { stroke-dashoffset: 0; animation: none !important; }
+  .hero-visual-dot { opacity: 1; animation: none !important; }
+  .hero-visual-dot-pulse { animation: none !important; }
+}
+
+/* ── Variant: barres (Google Ads) ── */
+.hero-visual-bar {
+  fill: var(--gold);
+  opacity: 0.5;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+.hero-visual-bar-accent { opacity: 1; }
+.hero-visual.is-visible .hero-visual-bar {
+  animation: hero-bar-grow 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.hero-visual.is-visible .hero-visual-bar:nth-of-type(1) { animation-delay: 0.1s; }
+.hero-visual.is-visible .hero-visual-bar:nth-of-type(2) { animation-delay: 0.22s; }
+.hero-visual.is-visible .hero-visual-bar:nth-of-type(3) { animation-delay: 0.34s; }
+.hero-visual.is-visible .hero-visual-bar:nth-of-type(4) { animation-delay: 0.46s; }
+.hero-visual.is-visible .hero-visual-bar:nth-of-type(5) { animation-delay: 0.58s; }
+@keyframes hero-bar-grow { to { transform: scaleY(1); } }
+
+/* ── Variant: wireframe de navegador (Disseny web) ── */
+.hero-visual-browser-frame {
+  fill: none;
+  stroke: rgba(244, 240, 232, 0.18);
+  stroke-width: 1.5;
+}
+.hero-visual-browser-dot { fill: rgba(244, 240, 232, 0.22); }
+.hero-visual-block {
+  fill: rgba(244, 240, 232, 0.16);
+  transform-box: fill-box;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.hero-visual-block-accent { fill: var(--gold); }
+.hero-visual.is-visible .hero-visual-block {
+  animation: hero-block-grow 0.55s ease-out forwards;
+}
+.hero-visual.is-visible .hero-visual-block:nth-of-type(1) { animation-delay: 0.15s; }
+.hero-visual.is-visible .hero-visual-block:nth-of-type(2) { animation-delay: 0.32s; }
+.hero-visual.is-visible .hero-visual-block:nth-of-type(3) { animation-delay: 0.49s; }
+.hero-visual.is-visible .hero-visual-block:nth-of-type(4) { animation-delay: 0.66s; }
+@keyframes hero-block-grow { to { transform: scaleX(1); } }
+
+/* ── Variant: paleta de colors (Branding) ── */
+.hero-visual-swatch {
+  fill: rgba(244, 240, 232, 0.14);
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0);
+  opacity: 0;
+}
+.hero-visual-swatch-accent { fill: var(--gold); }
+.hero-visual.is-visible .hero-visual-swatch {
+  animation: hero-swatch-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.hero-visual.is-visible .hero-visual-swatch:nth-of-type(1) { animation-delay: 0.1s; }
+.hero-visual.is-visible .hero-visual-swatch:nth-of-type(2) { animation-delay: 0.24s; }
+.hero-visual.is-visible .hero-visual-swatch:nth-of-type(3) { animation-delay: 0.38s; }
+.hero-visual.is-visible .hero-visual-swatch:nth-of-type(4) { animation-delay: 0.52s; }
+@keyframes hero-swatch-in { to { transform: scale(1); opacity: 1; } }
+
+/* ── Variant: composició de formes (Disseny gràfic) ── */
+.hero-visual-shape {
+  fill: none;
+  stroke: rgba(244, 240, 232, 0.28);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.6) rotate(-8deg);
+  opacity: 0;
+}
+.hero-visual-shape-accent {
+  stroke: var(--gold);
+  fill: rgba(213, 198, 174, 0.14);
+}
+.hero-visual.is-visible .hero-visual-shape {
+  animation: hero-shape-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.hero-visual.is-visible .hero-visual-shape:nth-of-type(1) { animation-delay: 0.1s; }
+.hero-visual.is-visible .hero-visual-shape:nth-of-type(2) { animation-delay: 0.26s; }
+.hero-visual.is-visible .hero-visual-shape:nth-of-type(3) { animation-delay: 0.42s; }
+@keyframes hero-shape-in { to { transform: scale(1) rotate(0deg); opacity: 1; } }
+
+/* ── Variant: reproductor / aperture (Fotografia i vídeo) ── */
+.hero-visual-play-bg {
+  fill: rgba(244, 240, 232, 0.08);
+  stroke: rgba(244, 240, 232, 0.22);
+  stroke-width: 1.5;
+}
+.hero-visual-play-icon {
+  fill: var(--gold);
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0);
+}
+.hero-visual.is-visible .hero-visual-play-icon {
+  animation: hero-swatch-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+}
+.hero-visual-play-ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hero-visual.is-visible .hero-visual-play-ring-1 {
+  animation: hero-ring-pulse 2.6s ease-out 0.5s infinite;
+}
+.hero-visual.is-visible .hero-visual-play-ring-2 {
+  animation: hero-ring-pulse 2.6s ease-out 1.3s infinite;
+}
+@keyframes hero-ring-pulse {
+  0%   { opacity: 0.55; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.7); }
+}
+.hero-visual-wave {
+  fill: rgba(244, 240, 232, 0.35);
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleY(0.3);
+}
+.hero-visual.is-visible .hero-visual-wave {
+  animation: hero-wave-bounce 1.3s ease-in-out 0.7s infinite alternate;
+}
+.hero-visual.is-visible .hero-visual-wave:nth-of-type(1) { animation-delay: 0.7s; }
+.hero-visual.is-visible .hero-visual-wave:nth-of-type(2) { animation-delay: 0.85s; }
+.hero-visual.is-visible .hero-visual-wave:nth-of-type(3) { animation-delay: 1s; }
+.hero-visual.is-visible .hero-visual-wave:nth-of-type(4) { animation-delay: 1.15s; }
+@keyframes hero-wave-bounce {
+  from { transform: scaleY(0.3); }
+  to   { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual-bar,
+  .hero-visual-block,
+  .hero-visual-swatch,
+  .hero-visual-play-icon { transform: none !important; opacity: 1 !important; animation: none !important; }
+  .hero-visual-shape { transform: none !important; opacity: 1 !important; animation: none !important; }
+  .hero-visual-play-ring { animation: none !important; opacity: 0 !important; }
+  .hero-visual-wave { transform: scaleY(0.65) !important; animation: none !important; }
 }

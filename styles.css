@@ -12585,10 +12585,25 @@ select option {
   justify-content: center;
 }
 
+/* Foto de fons (reutilitza les fotos "retro-oficina" ja usades als
+   heros de servei) amb el mateix tractament grayscale/dark que allà,
+   perque la card tingui una veritable imatge de portada fotografica
+   i no nomes gradient pla. */
+.article-card-visual-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.35) brightness(0.4) contrast(1.05) sepia(0.12);
+}
+
 .article-card-visual::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: repeating-linear-gradient(
     to bottom,
     rgba(244, 240, 232, 0.05) 0px,
@@ -12603,7 +12618,8 @@ select option {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,0.4) 100%);
+  z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%);
   pointer-events: none;
 }
 
@@ -12611,7 +12627,7 @@ select option {
   position: absolute;
   top: 0.85rem;
   left: 1rem;
-  z-index: 1;
+  z-index: 2;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 600;
@@ -12634,7 +12650,7 @@ select option {
 
 .article-card-visual-icon {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 30%;
   height: 30%;
   min-width: 44px;
@@ -12667,4 +12683,14 @@ select option {
 
 @media (prefers-reduced-motion: reduce) {
   .article-card-visual-index::after { animation: none; opacity: 0.85; }
+}
+
+/* ── Magazine: el boto "Llegir article" queda a mides diferents segons
+   la llargada del titol/descripcio de cada card. Les cards ja son
+   grid items estirats a la mateixa alçada (grid stretch per defecte);
+   nomes calia empenyer el boto avall amb margin-top:auto dins la
+   columna flex per alinear-lo a la mateixa alçada a totes les cards
+   d'una mateixa fila. ── */
+.article-card > .button-secondary {
+  margin-top: auto;
 }

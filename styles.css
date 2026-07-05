@@ -12260,6 +12260,7 @@ select option {
 .page-home .mainframe-toggle {
   left: auto !important;
   right: auto !important;
+  top: auto !important;
 }
 
 /* ── Home mobil: el desplegable del menu (un cop obert) heretava

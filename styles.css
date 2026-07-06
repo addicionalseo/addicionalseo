@@ -32,10 +32,10 @@
   --radius:    22px;
   --radius-sm: 12px;
   --max:       1200px;
-  --font-display: "Space Grotesk", Arial, sans-serif;
-  --font-script:  "Space Grotesk", Arial, sans-serif;
-  --font-mono:    "IBM Plex Mono", monospace;
-  --font-body:    "Manrope", Arial, sans-serif;
+  --font-display: "LeagueSpartan", Arial, sans-serif;
+  --font-script:  "LeagueSpartan", Arial, sans-serif;
+  --font-mono:    "LeagueSpartan", Arial, sans-serif;
+  --font-body:    "LeagueSpartan", Arial, sans-serif;
 }
 
 /* ── RESET ──────────────────────────────── */
@@ -4752,7 +4752,7 @@ html {
   object-fit: cover !important;
   object-position: center center !important;
   filter: blur(28px) grayscale(0.1) saturate(0.48) contrast(1.08) brightness(0.4) !important;
-  opacity: 0.56;
+  opacity: 0.56 !important;
 }
 
 .page-home #oficina .scene-media .manifest-video-main {
@@ -10030,7 +10030,9 @@ body.page-home::after,
 }
 
 /* ═══════════════════════════════════════════════════════
-   TIPOGRAFIA — Obrazec (display) · EB Garamond (body) · Josefin Sans (labels)
+   FONTS — self-hosted LeagueSpartan (the font actually in use).
+   Font tokens live in :root at the top of this file; do not
+   redeclare --font-display/body/mono here.
    ═══════════════════════════════════════════════════════ */
 
 @font-face {
@@ -10071,13 +10073,6 @@ body.page-home::after,
   font-weight: 400;
   font-style: italic;
   font-display: swap;
-}
-
-/* 1. Font tokens */
-:root {
-  --font-display: "LeagueSpartan", Arial, sans-serif;
-  --font-body:    "LeagueSpartan", Arial, sans-serif;
-  --font-mono:    "LeagueSpartan", Arial, sans-serif;
 }
 
 /* 2. Base */

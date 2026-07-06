@@ -12387,6 +12387,26 @@ select option {
   to { stroke-dashoffset: 0; }
 }
 
+.hero-visual-area {
+  opacity: 0;
+  transition: opacity 0.8s ease 1.1s;
+}
+.hero-visual.is-visible .hero-visual-area {
+  opacity: 1;
+}
+
+.hero-visual-tick {
+  stroke: rgba(244, 240, 232, 0.16);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+
+.hero-visual-month {
+  fill: rgba(244, 240, 232, 0.38);
+  font-size: 7px;
+  font-family: var(--font-mono);
+}
+
 .hero-visual-dot,
 .hero-visual-dot-pulse {
   fill: var(--gold);
@@ -12445,6 +12465,23 @@ select option {
 .hero-visual.is-visible .hero-visual-bar:nth-of-type(5) { animation-delay: 0.58s; }
 @keyframes hero-bar-grow { to { transform: scaleY(1); } }
 
+.hero-visual-bar-value {
+  fill: rgba(244, 240, 232, 0.55);
+  font-size: 8px;
+  font-family: var(--font-mono);
+  text-anchor: middle;
+  opacity: 0;
+}
+.hero-visual.is-visible .hero-visual-bar-value {
+  animation: hero-bar-value-in 0.4s ease forwards;
+}
+.hero-visual.is-visible .hero-visual-bar-value:nth-of-type(1) { animation-delay: 0.4s; }
+.hero-visual.is-visible .hero-visual-bar-value:nth-of-type(2) { animation-delay: 0.52s; }
+.hero-visual.is-visible .hero-visual-bar-value:nth-of-type(3) { animation-delay: 0.64s; }
+.hero-visual.is-visible .hero-visual-bar-value:nth-of-type(4) { animation-delay: 0.76s; }
+.hero-visual.is-visible .hero-visual-bar-value:nth-of-type(5) { animation-delay: 0.88s; }
+@keyframes hero-bar-value-in { to { opacity: 1; } }
+
 /* ── Variant: wireframe de navegador (Disseny web) ── */
 .hero-visual-browser-frame {
   fill: none;
@@ -12467,6 +12504,20 @@ select option {
 .hero-visual.is-visible .hero-visual-block:nth-of-type(3) { animation-delay: 0.49s; }
 .hero-visual.is-visible .hero-visual-block:nth-of-type(4) { animation-delay: 0.66s; }
 @keyframes hero-block-grow { to { transform: scaleX(1); } }
+
+.hero-visual-cursor,
+.hero-visual-cursor-pulse {
+  fill: var(--gold);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hero-visual.is-visible .hero-visual-cursor {
+  animation: hero-dot-in 0.35s ease 0.95s forwards;
+}
+.hero-visual.is-visible .hero-visual-cursor-pulse {
+  animation: hero-dot-ripple 2s ease-out 1.1s infinite;
+}
 
 /* ── Variant: paleta de colors (Branding) ── */
 .hero-visual-swatch {
@@ -12809,6 +12860,9 @@ select option {
 .page-home .service-preview--stage .hero-visual-line,
 .page-home .service-preview--stage .hero-visual-dot,
 .page-home .service-preview--stage .hero-visual-dot-pulse { stroke: var(--pinkd); fill: var(--pinkd); }
+.page-home .service-preview--stage .hero-visual-area { fill: url(#heroAreaStage); }
+.page-home .service-preview--stage .hero-visual-tick { stroke: rgba(21,23,28,0.16); }
+.page-home .service-preview--stage .hero-visual-month { fill: rgba(21,23,28,0.42); }
 
 /* Variant C — fosc amb imatge de textura (Google Ads) */
 .page-home .service-preview--dark {
@@ -12857,4 +12911,30 @@ select option {
   .service-preview-visual .hero-visual {
     max-width: 380px;
   }
+}
+
+/* ── Home "ESTRATÈGIA, DISSENY I POSICIONAMENT": el panell de text
+   sobre el video quedava com un rectangle opac, cantonades vives i
+   sense cap blur -- un "pegot" enganxat sobre l'escena en lloc d'un
+   panell integrat. Nomes toquem #oficina .manifest-content (no els
+   altres selectors que compartien la regla original: trust-scene,
+   final-cta-surface, contact-form-card, que no formaven part del
+   feedback). ── */
+.page-home #oficina .manifest-content {
+  border-radius: var(--radius) !important;
+  background: rgba(13, 13, 13, 0.6) !important;
+  backdrop-filter: blur(18px) saturate(1.08) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.08) !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35) !important;
+}
+
+.page-home #oficina .manifest-title {
+  font-size: clamp(30px, 3.2vw, 46px) !important;
+  max-width: none !important;
+  text-wrap: pretty;
+}
+
+.page-home #oficina .manifest-content {
+  width: min(920px, calc(100vw - 56px)) !important;
+  max-width: 920px !important;
 }

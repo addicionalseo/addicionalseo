@@ -1,3 +1,18 @@
+// Fix: html { scroll-behavior: smooth } makes the browser's native
+// jump-to-anchor-on-load get interrupted before finishing (likely fought
+// by other scroll-linked effects running during initial load), leaving
+// the page stuck near scrollY 0 even though the hash is present in the
+// URL. Force an instant, explicit scroll to the target after everything
+// (images, video, fonts) has settled, so it runs after -- and wins over --
+// any interrupted native attempt.
+if (location.hash) {
+  const jumpToHash = () => {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
+  };
+  window.addEventListener("load", () => setTimeout(jumpToHash, 120));
+}
+
 // Header scroll effect
 const siteHeader = document.querySelector(".site-header");
 if (siteHeader) {

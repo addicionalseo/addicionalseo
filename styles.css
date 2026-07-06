@@ -12668,3 +12668,73 @@ select option {
 .article-card > .button-secondary {
   margin-top: auto;
 }
+
+/* ── Home: seccions propies per a Disseny web / SEO / Google Ads ──
+   Punt d'ancoratge del menu principal (/#disseny-web, /#seo,
+   /#google-ads). Reutilitzen el mateix hero-visual (SVG animat) que
+   ja existeix a cada pagina de servei, pero com a columna estatica
+   dins un grid en lloc de position:absolute sobre un hero. ── */
+.service-preview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.service-preview + .service-preview {
+  border-top: 1px solid var(--line);
+}
+
+.service-preview-copy .eyebrow { margin-bottom: 0.6rem; }
+.service-preview-copy h2 { margin-bottom: 1rem; }
+.service-preview-copy .page-intro { margin-bottom: 1.4rem; }
+
+.service-preview-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.service-preview-proof li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--line2);
+  background: rgba(244,240,232,0.04);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.service-preview-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.service-preview-visual .hero-visual {
+  position: static;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 1.5rem 1.4rem 1.3rem;
+  border-radius: 18px;
+  background: rgba(244, 240, 232, 0.05);
+  border: 1px solid var(--line2);
+}
+
+@media (max-width: 860px) {
+  .service-preview-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-preview-visual {
+    order: -1;
+  }
+  .service-preview-visual .hero-visual {
+    max-width: 380px;
+  }
+}

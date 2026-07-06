@@ -366,7 +366,36 @@ function initHomeMotion() {
     initParallax(parallaxMedia);
     initScrollZoom(zoomMedia);
     initHeroVideoScrub();
+    initHeroVisualInteractive();
   }
+}
+
+// Grafiques dels serveis (home): inclinacio 3D amb el ratoli + realçat
+// individual de barres/punts en fer-hi hover, perque siguin "jugables"
+// enlloc de nomes decoratives.
+function initHeroVisualInteractive() {
+  document.querySelectorAll(".hero-visual").forEach((card) => {
+    const chart = card.querySelector(".hero-visual-chart");
+    if (!chart) return;
+
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      chart.style.transform = `perspective(700px) rotateX(${(-py * 12).toFixed(2)}deg) rotateY(${(px * 16).toFixed(2)}deg) scale(1.03)`;
+      card.style.setProperty("--glow-x", `${(px + 0.5) * 100}%`);
+      card.style.setProperty("--glow-y", `${(py + 0.5) * 100}%`);
+    });
+
+    card.addEventListener("pointerleave", () => {
+      chart.style.transform = "";
+    });
+
+    card.querySelectorAll(".hero-visual-bar, .hero-visual-point, .hero-visual-dot").forEach((el) => {
+      el.style.transformBox = "fill-box";
+      el.style.transformOrigin = "center";
+    });
+  });
 }
 
 function initScrollZoom(nodes) {

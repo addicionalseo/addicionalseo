@@ -12938,264 +12938,183 @@ select option {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   Hero-visual v2 — tractament mes "premium": glow, degradats reals,
-   escombrada de llum (shimmer) i icona de tendencia propia enlloc del
-   caracter unicode "↗", perque no faci l'efecte de grafica generica
-   feta en dos minuts. ══════════════════════════════════════════ */
+   Hero-visual — redisseny "epic": sense card/fons al voltant, mes
+   grans, multicolor real (no un sol to), i interactives (inclinacio
+   3D amb el ratoli via JS + hover individual per barra/punt amb CSS).
+   Tot escopat a .service-preview-visual perque no afecti el hero-
+   visual compacte que ja existeix a cada pagina de servei propia.
+   ══════════════════════════════════════════════════════════════ */
+
+.service-preview-visual {
+  perspective: 900px;
+}
 
 .service-preview-visual .hero-visual {
   position: relative;
-  overflow: hidden;
-  background: linear-gradient(155deg, rgba(244,240,232,0.07) 0%, rgba(244,240,232,0.02) 100%);
-  box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(244,240,232,0.08);
+  overflow: visible;
+  max-width: 420px;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  animation: none !important;
 }
 
-.hero-visual::before {
-  content: "";
+.service-preview-visual .hero-visual-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.service-preview-visual .hero-visual-stat {
+  margin-bottom: 1.4rem;
+}
+
+.service-preview-visual .hero-visual-number {
+  font-size: 3.4rem;
+  letter-spacing: -0.03em;
+  filter: drop-shadow(0 0 22px rgba(213,198,174,0.35));
+}
+
+.page-home .service-preview--stage .hero-visual-number {
+  filter: drop-shadow(0 0 18px rgba(128,147,168,0.3));
+}
+
+.service-preview-visual .hero-visual-trend-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.service-preview-visual .hero-visual-chart {
+  overflow: visible;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* Orbs ambient: ara floten darrere de tota la composicio, mes grans i
+   multicolor (no nomes un to per variant). */
+.hero-visual-orb {
   position: absolute;
-  inset: -40% -20%;
-  z-index: 2;
-  background: linear-gradient(
-    115deg,
-    transparent 40%,
-    rgba(244,240,232,0.16) 48%,
-    rgba(244,240,232,0.22) 50%,
-    rgba(244,240,232,0.16) 52%,
-    transparent 60%
-  );
-  transform: translateX(-120%);
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(34px);
+  opacity: 0;
   pointer-events: none;
 }
-.hero-visual.is-visible::before {
-  animation: hero-visual-shimmer 1.4s ease 0.3s 1;
+.hero-visual-orb-1 {
+  width: 220px;
+  height: 220px;
+  top: -50px;
+  right: -40px;
+  background: radial-gradient(circle, #ff6b9d 0%, transparent 70%);
 }
-@keyframes hero-visual-shimmer {
-  to { transform: translateX(120%); }
+.hero-visual-orb-2 {
+  width: 190px;
+  height: 190px;
+  bottom: -60px;
+  left: -50px;
+  background: radial-gradient(circle, #5b8def 0%, transparent 70%);
 }
-
-.hero-visual-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
+.hero-visual.is-visible .hero-visual-orb-1 {
+  animation: hero-orb-fade-in 1.2s ease 0.5s forwards, hero-orb-drift-1 8s ease-in-out 1.7s infinite;
 }
-
-.hero-visual-trend-icon {
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 4px rgba(213,198,174,0.7));
-  opacity: 0;
-  transform: translate(-3px, 3px) scale(0.7);
+.hero-visual.is-visible .hero-visual-orb-2 {
+  animation: hero-orb-fade-in 1.2s ease 0.7s forwards, hero-orb-drift-2 10s ease-in-out 1.9s infinite;
 }
-.hero-visual.is-visible .hero-visual-trend-icon {
-  animation: hero-trend-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.3s forwards;
+@keyframes hero-orb-fade-in { to { opacity: 0.5; } }
+@keyframes hero-orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-18px, 20px) scale(1.2); }
 }
-@keyframes hero-trend-in {
-  to { opacity: 1; transform: translate(0, 0) scale(1); }
+@keyframes hero-orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(16px, -16px) scale(1.15); }
 }
 
-.page-home .service-preview--stage .hero-visual-trend-icon {
-  stroke: var(--pinkd);
-  filter: drop-shadow(0 0 4px rgba(128,147,168,0.5));
-}
-
-/* ── SEO: linia amb degradat + glow ── */
-.hero-visual-line-glow {
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.5;
-  filter: blur(4px);
-  stroke-dasharray: 360;
-  stroke-dashoffset: 360;
-}
-.hero-visual.is-visible .hero-visual-line-glow {
-  animation: hero-line-draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
-}
-
+/* ── SEO: linia gruixuda multicolor + punts jugables ── */
 .hero-visual-line {
   stroke: url(#heroLineGradient);
+  stroke-width: 4px;
 }
+.hero-visual-line-glow {
+  stroke: url(#heroLineGradient);
+  stroke-width: 9px;
+  opacity: 0.45;
+  filter: blur(6px);
+}
+.hero-visual-area { fill: url(#heroAreaStage); }
 
 .hero-visual-point {
   fill: var(--bg);
-  stroke: var(--gold);
-  stroke-width: 2px;
+  stroke: url(#heroLineGradient);
+  stroke-width: 2.5px;
+  r: 4.5px;
   opacity: 0;
+  cursor: pointer;
+  transition: r 0.2s ease, filter 0.2s ease;
+}
+.hero-visual-point:hover {
+  r: 7px;
+  filter: drop-shadow(0 0 10px #ff6b9d);
 }
 .hero-visual.is-visible .hero-visual-point {
   animation: hero-dot-in 0.3s ease forwards;
 }
-.hero-visual.is-visible .hero-visual-point:nth-of-type(1) { animation-delay: 0.5s; }
-.hero-visual.is-visible .hero-visual-point:nth-of-type(2) { animation-delay: 0.85s; }
 
-.page-home .service-preview--stage .hero-visual-line-glow { stroke: var(--pinkd); }
-.page-home .service-preview--stage .hero-visual-point { stroke: var(--pinkd); fill: var(--cream); }
-
-/* ── Google Ads: barres amb degradat + glow + reflex ── */
-.hero-visual-bar {
-  fill: url(#heroBarGradient);
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+.hero-visual-dot {
+  r: 6px;
+  cursor: pointer;
+  transition: r 0.2s ease;
 }
-.hero-visual-bar-accent {
-  filter: drop-shadow(0 0 10px rgba(213,198,174,0.55)) drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+.hero-visual-dot:hover { r: 9px; }
+
+/* ── Google Ads: cada barra un color propi, hover que les fa "saltar" ── */
+.hero-visual-bar { cursor: pointer; transition: filter 0.2s ease; }
+.hero-visual-bar:nth-of-type(1) { fill: url(#heroBarTeal); }
+.hero-visual-bar:nth-of-type(2) { fill: url(#heroBarBlue); }
+.hero-visual-bar:nth-of-type(3) { fill: url(#heroBarPurple); }
+.hero-visual-bar:nth-of-type(4) { fill: url(#heroBarPink); }
+.hero-visual-bar-accent { fill: url(#heroBarGold) !important; }
+
+.hero-visual.is-visible .hero-visual-bar:hover {
+  filter: brightness(1.25) drop-shadow(0 8px 16px rgba(0,0,0,0.35));
 }
 
 .hero-visual-bar-value {
-  font-weight: 700;
+  font-size: 9px;
+  font-weight: 800;
 }
 
-/* ── Disseny web: wireframe amb blocs de color variats ── */
-.hero-visual-block-image {
-  fill: url(#heroImageGradient);
-}
-.hero-visual-caret {
-  fill: var(--gold);
-  opacity: 0;
-}
-.hero-visual.is-visible .hero-visual-caret {
-  animation: hero-caret-blink 1s step-end 1s infinite;
-}
-@keyframes hero-caret-blink {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
+/* ── Disseny web: bloc imatge multicolor + tot interactiu ── */
+.hero-visual-block-image { fill: url(#heroImageGradient); }
+.hero-visual-block-accent { fill: url(#heroButtonGradient); }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-visual::before { animation: none !important; display: none; }
-  .hero-visual-trend-icon { opacity: 1 !important; transform: none !important; }
-  .hero-visual-line-glow { stroke-dashoffset: 0 !important; animation: none !important; }
-  .hero-visual-point { opacity: 1 !important; animation: none !important; }
-  .hero-visual-caret { opacity: 1 !important; animation: none !important; }
+/* Un glow no es pot veure "mes brillant" que un fons blanc: als fons
+   clars (SEO) els orbs es veien com taques de color enlloc de llum.
+   Reduits a un halo molt subtil nomes darrere del propi grafic. */
+.page-home .service-preview--stage .hero-visual-orb {
+  filter: blur(50px);
+  mix-blend-mode: multiply;
 }
+.page-home .service-preview--stage .hero-visual.is-visible .hero-visual-orb-1,
+.page-home .service-preview--stage .hero-visual.is-visible .hero-visual-orb-2 {
+  animation-name: hero-orb-fade-in-stage, hero-orb-drift-1;
+}
+.page-home .service-preview--stage .hero-visual.is-visible .hero-visual-orb-2 {
+  animation-name: hero-orb-fade-in-stage, hero-orb-drift-2;
+}
+@keyframes hero-orb-fade-in-stage { to { opacity: 0.09; } }
 
-/* ══════════════════════════════════════════════════════════════
-   Hero-visual v3 — no nomes una entrada polida, sinó vida continua:
-   orbs de llum ambient a la deriva, un "cometa" que recorre la linia
-   en bucle, respiracio de glow a les barres i shimmer permanent al
-   bloc d'imatge. Tot en CSS/SVG natiu, sense JS nou. ══════════════ */
-
-.hero-visual-orb {
-  position: absolute;
-  z-index: 0;
-  border-radius: 50%;
-  filter: blur(26px);
-  opacity: 0;
-  pointer-events: none;
-}
-.hero-visual.is-visible .hero-visual-orb {
-  animation: hero-orb-fade-in 1.2s ease 0.6s forwards;
-}
-.hero-visual-orb-1 {
-  width: 130px;
-  height: 130px;
-  top: -36px;
-  right: -30px;
-  background: radial-gradient(circle, var(--gold) 0%, transparent 72%);
-}
-.hero-visual-orb-2 {
-  width: 100px;
-  height: 100px;
-  bottom: -30px;
-  left: -20px;
-  background: radial-gradient(circle, var(--pinkd) 0%, transparent 72%);
-}
-.hero-visual.is-visible .hero-visual-orb-1 {
-  animation: hero-orb-fade-in 1.2s ease 0.6s forwards, hero-orb-drift-1 9s ease-in-out 1.8s infinite;
-}
-.hero-visual.is-visible .hero-visual-orb-2 {
-  animation: hero-orb-fade-in 1.2s ease 0.8s forwards, hero-orb-drift-2 11s ease-in-out 2s infinite;
-}
-@keyframes hero-orb-fade-in { to { opacity: 0.4; } }
-@keyframes hero-orb-drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-14px, 16px) scale(1.18); }
-}
-@keyframes hero-orb-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(12px, -12px) scale(1.12); }
-}
-
-.page-home .service-preview--stage .hero-visual-orb-1 { background: radial-gradient(circle, var(--pinkd) 0%, transparent 72%); }
-.page-home .service-preview--stage .hero-visual-orb-2 { background: radial-gradient(circle, #c9b98f 0%, transparent 72%); }
-
-/* Respiracio continua de la card un cop revelada */
-.hero-visual.is-visible {
-  animation: hero-card-breathe 5s ease-in-out 2s infinite;
-}
-@keyframes hero-card-breathe {
-  0%, 100% { box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(244,240,232,0.08); }
-  50% { box-shadow: 0 30px 80px -16px rgba(0,0,0,0.55), inset 0 1px 0 rgba(244,240,232,0.08), 0 0 40px -8px rgba(213,198,174,0.28); }
-}
-.page-home .service-preview--stage.hero-visual.is-visible,
-.page-home .service-preview--stage .hero-visual.is-visible { animation-name: hero-card-breathe-stage; }
-@keyframes hero-card-breathe-stage {
-  0%, 100% { box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(244,240,232,0.08); }
-  50% { box-shadow: 0 30px 80px -16px rgba(0,0,0,0.55), inset 0 1px 0 rgba(244,240,232,0.08), 0 0 40px -8px rgba(128,147,168,0.32); }
-}
-
-/* ── SEO: cometa que recorre la corba en bucle continu ── */
-.hero-visual-comet {
-  fill: var(--cream);
-  filter: drop-shadow(0 0 6px var(--gold)) drop-shadow(0 0 12px rgba(213,198,174,0.8));
-  opacity: 0;
-  offset-rotate: 0deg;
-  offset-path: path('M2,80 C40,76 55,52 88,46 C124,39 148,22 188,17 C218,13 248,8 276,4');
-}
-.hero-visual.is-visible .hero-visual-comet {
-  animation: hero-comet-travel 3.2s cubic-bezier(0.45, 0, 0.55, 1) 2.1s infinite;
-}
-@keyframes hero-comet-travel {
-  0%   { offset-distance: 0%; opacity: 0; }
-  6%   { opacity: 1; }
-  92%  { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
-}
-.page-home .service-preview--stage .hero-visual-comet {
-  fill: var(--stage-ink);
-  filter: drop-shadow(0 0 6px var(--pinkd)) drop-shadow(0 0 12px rgba(128,147,168,0.7));
-}
-
-/* ── Google Ads: respiracio continua del glow a la barra destacada ── */
-.hero-visual.is-visible .hero-visual-bar-accent {
-  animation: hero-bar-grow 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-             hero-bar-glow-pulse 2.6s ease-in-out 1.2s infinite;
-}
-@keyframes hero-bar-glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(213,198,174,0.55)) drop-shadow(0 4px 6px rgba(0,0,0,0.35)); }
-  50% { filter: drop-shadow(0 0 20px rgba(213,198,174,0.85)) drop-shadow(0 4px 6px rgba(0,0,0,0.35)); }
-}
-
-/* ── Disseny web: shimmer permanent sobre el bloc "imatge" ── */
-.hero-visual-block-image-shine {
-  fill: rgba(255,255,255,0.5);
-  transform-box: fill-box;
-  transform-origin: center;
-  transform: translateX(-140%) skewX(-18deg);
-  opacity: 0;
-}
-.hero-visual.is-visible .hero-visual-block-image-shine {
-  animation: hero-image-shine 3.4s ease-in-out 1.3s infinite;
-}
-@keyframes hero-image-shine {
-  0%   { transform: translateX(-140%) skewX(-18deg); opacity: 0; }
-  8%   { opacity: 0.9; }
-  35%  { opacity: 0; }
-  100% { transform: translateX(140%) skewX(-18deg); opacity: 0; }
+@media (max-width: 860px) {
+  .service-preview-visual .hero-visual-chart { transform: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-visual-orb { animation: none !important; opacity: 0.3 !important; }
-  .hero-visual.is-visible { animation: none !important; }
-  .hero-visual-comet { display: none; }
-  .hero-visual.is-visible .hero-visual-bar-accent { animation: none !important; }
-  .hero-visual-block-image-shine { display: none; }
+  .hero-visual-orb { animation: none !important; opacity: 0.35 !important; }
 }
+
+@media (hover: none) {
+  .service-preview-visual .hero-visual-chart { cursor: default; }
+}
+

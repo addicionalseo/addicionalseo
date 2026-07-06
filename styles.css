@@ -3117,17 +3117,6 @@ body.page-home::after { opacity: 0.018; mix-blend-mode: multiply; }
   filter: brightness(0) saturate(100%) !important;
   opacity: 1;
 }
-.page-home .brand-star {
-  display: inline-flex;
-  align-items: center;
-  color: #050505;
-  font-size: clamp(25px, 1.8vw, 30px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  transform: translateY(-1px);
-  user-select: none;
-}
-
 .page-home .mainframe-nav {
   position: static;
   display: flex;
@@ -3390,7 +3379,6 @@ body.page-home::after { opacity: 0.018; mix-blend-mode: multiply; }
     padding: 17px 22px;
   }
   .page-home .mainframe-brand img { width: 150px; }
-  .page-home .brand-star { font-size: 25px; }
   .page-home .mainframe-toggle { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; }
   .page-home .mainframe-header-actions { gap: 12px; }
   .page-home .mainframe-contact,
@@ -3434,7 +3422,6 @@ body.page-home::after { opacity: 0.018; mix-blend-mode: multiply; }
 
 @media (max-width: 640px) {
   .page-home .mainframe-brand img { width: 138px; }
-  .page-home .brand-star { display: none; }
   .page-home .mainframe-bg-video { object-position: 62% center; }
   .page-home .mainframe-hero .hero-intro,
   .page-home .mainframe-hero .hero-typed,
@@ -3618,12 +3605,6 @@ body.page-home::after {
   width: clamp(188px, 12vw, 222px);
   max-width: none;
   filter: none !important;
-}
-
-.page-home .brand-star {
-  color: rgba(17,17,17,0.6);
-  font-size: clamp(18px, 1.2vw, 21px);
-  transform: translateY(-1px);
 }
 
 .page-home .mainframe-nav {
@@ -3872,11 +3853,6 @@ html {
 
 .page-home .mainframe-brand img {
   width: clamp(180px, 11vw, 208px);
-}
-
-.page-home .brand-star {
-  font-size: 16px;
-  color: rgba(17,17,17,0.55);
 }
 
 .page-home .mainframe-nav {
@@ -6283,11 +6259,6 @@ html {
 .page-home .mainframe-brand img {
   width: 194px;
   max-width: 42vw;
-}
-
-.page-home .brand-star {
-  color: rgba(17,17,17,0.48);
-  font-size: 15px;
 }
 
 .page-home .mainframe-nav {
@@ -8956,17 +8927,6 @@ body.page-home .process-row span {
   color: #FFB000 !important;
 }
 
-.page-home .services-scene .landing-copy .eyebrow::before,
-.page-home .trust-scene .eyebrow::before,
-.page-home .results-cinema .eyebrow::before,
-.page-home .process-intro .eyebrow::before,
-.page-home .final-scene .eyebrow::before,
-.page-home #contacte .eyebrow::before {
-  content: "✳︎";
-  color: #FFB000;
-  text-shadow: 0 0 8px rgba(255,176,0,0.36);
-}
-
 .page-home .services-scene .landing-copy h2,
 .page-home .trust-scene h2,
 .page-home .results-cinema h2,
@@ -10741,8 +10701,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   }
 }
 
-/* Final override layer: testimonials contrast */
-.page-home .testimonials-scene {
+/* Final override layer: testimonials contrast.
+   Bug real preexistent: ".landing-block:nth-of-type(even)" (mes amunt
+   al fitxer) te mes especificitat que ".testimonials-scene" i guanyava,
+   deixant fons clar amb text crem (pensat per a fons fosc) a sobre.
+   Fem servir l'id #testimonis perque cap regla basada nomes en classes
+   el pugui tornar a guanyar. */
+.page-home #testimonis.testimonials-scene,
+.page-home #testimonios.testimonials-scene {
   background: linear-gradient(180deg, rgba(11, 12, 13, 0.98) 0%, rgba(8, 9, 10, 0.98) 100%) !important;
 }
 
@@ -11371,10 +11337,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
     width: 136px !important;
   }
 
-  .page-home .brand-star {
-    font-size: 19px !important;
-  }
-
   .page-home .mainframe-header-actions {
     gap: 8px !important;
   }
@@ -11563,7 +11525,6 @@ body :where(
   filter: brightness(0) invert(1) !important;
 }
 
-.page-home .brand-star,
 .page-home .mainframe-nav a,
 .page-home .mainframe-nav a::after,
 .page-home .site-nav a,
@@ -11591,8 +11552,6 @@ body :where(
   filter: brightness(0) invert(0) !important;
 }
 
-.page-home .site-header.scrolled .brand-star,
-.page-home .mainframe-site-header.scrolled .brand-star,
 .page-home .site-header.scrolled .mainframe-nav a,
 .page-home .mainframe-site-header.scrolled .mainframe-nav a,
 .page-home .site-header.scrolled .mainframe-nav a::after,
@@ -12211,8 +12170,6 @@ select option {
   filter: brightness(0) invert(1) !important;
 }
 
-.page-home .site-header.scrolled .brand-star,
-.page-home .mainframe-site-header.scrolled .brand-star,
 .page-home .site-header.scrolled .mainframe-nav a,
 .page-home .mainframe-site-header.scrolled .mainframe-nav a,
 .page-home .site-header.scrolled .mainframe-nav a::after,
@@ -12776,6 +12733,204 @@ select option {
   border-radius: 18px;
   background: rgba(244, 240, 232, 0.05);
   border: 1px solid var(--line2);
+}
+
+/* Panell "senyal" retro-tech: base fosca compartida per les 3 escenes
+   de servei del home, cada una amb un motiu propi (cursor dissenyant /
+   oscil·loscopi CRT / VU-metre). Substitueix els grafics de dashboard
+   genèrics. Cap xifra representa cap dada real de cap client. */
+.service-preview-visual .signal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-soft2);
+  border: 1px solid rgba(244,240,232,0.14);
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SEO viu en una secció de fons clar (--stage). El fons quasi
+   transparent es confonia amb blanc; card champagne amb presencia
+   real, de la mateixa familia calida que el groc #FFB000 del lloc.
+   Especificitat igual o superior a ".service-preview-visual .signal-panel"
+   perque aquest override guanyi de veritat la cascada. */
+.service-preview-visual .signal-panel--seo {
+  background: transparent;
+  border-color: rgba(21,23,28,0.16);
+}
+
+.signal-cap {
+  position: absolute;
+  left: 1.4rem;
+  bottom: 1.2rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,176,0,0.7);
+}
+
+/* Disseny web — cursor traçant els blocs d'una pagina, en bucle.
+   #FFB000 es el groc real i dominant del home (eyebrows, CTAs, grafic
+   de creixement de la seccio de resultats): --gold es un accent palid
+   que gairebe no s'usa al home, no era el color correcte per aixo. */
+.signal-draw {
+  width: 78%;
+  height: auto;
+  overflow: visible;
+}
+
+.signal-draw-shape {
+  fill: none;
+  stroke: #FFB000;
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: signal-draw-in 8s ease-in-out infinite;
+}
+
+.signal-draw-shape.s1 { --len: 400; animation-delay: 0s; }
+.signal-draw-shape.s2 { --len: 320; animation-delay: 0.7s; }
+.signal-draw-shape.s3 { --len: 100; animation-delay: 1.5s; }
+.signal-draw-shape.s4 { --len: 80;  animation-delay: 1.9s; }
+.signal-draw-shape.s5 { --len: 140; animation-delay: 2.3s; }
+
+.signal-draw-shape {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+}
+
+@keyframes signal-draw-in {
+  0%   { stroke-dashoffset: var(--len); }
+  10%  { stroke-dashoffset: 0; }
+  88%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -4; }
+}
+
+.signal-draw-cursor {
+  fill: var(--cream);
+  filter: drop-shadow(0 0 3px rgba(255,176,0,0.8));
+  animation: signal-cursor-move 8s ease-in-out infinite;
+}
+
+@keyframes signal-cursor-move {
+  0%   { transform: translate(20px,20px); opacity: 0; }
+  3%   { opacity: 1; }
+  9%   { transform: translate(214px,20px); }
+  16%  { transform: translate(20px,50px); }
+  24%  { transform: translate(104px,110px); }
+  32%  { transform: translate(126px,58px); }
+  40%  { transform: translate(198px,58px); }
+  47%  { transform: translate(126px,78px); }
+  54%  { transform: translate(178px,78px); }
+  88%  { transform: translate(178px,78px); opacity: 1; }
+  96%  { opacity: 0; }
+  100% { transform: translate(20px,20px); opacity: 0; }
+}
+
+/* SEO — oscil·loscopi CRT, traça sempre ascendent */
+.signal-scope-grid {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 8%;
+  bottom: 8%;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,176,0,0.10) 0 1px, transparent 1px 20%),
+    repeating-linear-gradient(180deg, rgba(255,176,0,0.10) 0 1px, transparent 1px 25%);
+}
+
+.signal-scope-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 8%;
+  bottom: 8%;
+  width: 90%;
+  height: 84%;
+  display: block;
+}
+
+.signal-scope-path {
+  fill: none;
+  stroke: #FFB000;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(255,176,0,0.85)) drop-shadow(0 0 10px rgba(255,176,0,0.35));
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  animation: signal-scope-sweep 3.6s linear infinite;
+}
+
+@keyframes signal-scope-sweep {
+  0%   { stroke-dashoffset: 520; }
+  70%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -520; }
+}
+
+/* Variant clara (SEO): graella en tinta fosca sobre paper, traça amb
+   ombra en lloc de resplendor (no te sentit un "glow" sobre paper clar). */
+.signal-panel--seo .signal-scope-grid {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(21,23,28,0.12) 0 1px, transparent 1px 20%),
+    repeating-linear-gradient(180deg, rgba(21,23,28,0.12) 0 1px, transparent 1px 25%);
+}
+
+.signal-panel--seo .signal-scope-path {
+  stroke: #FFB000;
+  filter: drop-shadow(0 1px 2px rgba(21,23,28,0.22));
+}
+
+.signal-panel--seo .signal-cap {
+  color: rgba(21,23,28,0.5);
+}
+
+/* Google Ads — VU-metre d'equalitzador */
+.signal-vu-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 60%;
+}
+
+.signal-vu-bar {
+  width: 9px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, #ffcf4d, #FFB000);
+  transform-origin: bottom;
+  animation: signal-vu-pulse 1.1s ease-in-out infinite;
+}
+
+.signal-vu-bar:nth-child(1) { height: 32%; animation-delay: 0s; }
+.signal-vu-bar:nth-child(2) { height: 58%; animation-delay: 0.08s; }
+.signal-vu-bar:nth-child(3) { height: 80%; animation-delay: 0.16s; }
+.signal-vu-bar:nth-child(4) { height: 46%; animation-delay: 0.24s; }
+.signal-vu-bar:nth-child(5) { height: 70%; animation-delay: 0.32s; }
+.signal-vu-bar:nth-child(6) { height: 38%; animation-delay: 0.4s; }
+.signal-vu-bar:nth-child(7) { height: 60%; animation-delay: 0.48s; }
+.signal-vu-bar:nth-child(8) { height: 28%; animation-delay: 0.56s; }
+
+@keyframes signal-vu-pulse {
+  0%, 100% { transform: scaleY(0.55); opacity: 0.75; }
+  50%      { transform: scaleY(1); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .signal-vu-bar { width: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-draw-shape,
+  .signal-draw-cursor,
+  .signal-scope-path,
+  .signal-vu-bar {
+    animation: none !important;
+  }
 }
 
 /* Variant A — video de fons, tractament fosc (Disseny web) */

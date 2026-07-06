@@ -12489,20 +12489,18 @@ select option {
   stroke-width: 1.5;
 }
 .hero-visual-browser-dot { fill: rgba(244, 240, 232, 0.22); }
-.hero-visual-block {
+.hero-visual-block,
+.hero-visual-block-image {
   fill: rgba(244, 240, 232, 0.16);
   transform-box: fill-box;
   transform-origin: left;
   transform: scaleX(0);
 }
 .hero-visual-block-accent { fill: var(--gold); }
-.hero-visual.is-visible .hero-visual-block {
+.hero-visual.is-visible .hero-visual-block,
+.hero-visual.is-visible .hero-visual-block-image {
   animation: hero-block-grow 0.55s ease-out forwards;
 }
-.hero-visual.is-visible .hero-visual-block:nth-of-type(1) { animation-delay: 0.15s; }
-.hero-visual.is-visible .hero-visual-block:nth-of-type(2) { animation-delay: 0.32s; }
-.hero-visual.is-visible .hero-visual-block:nth-of-type(3) { animation-delay: 0.49s; }
-.hero-visual.is-visible .hero-visual-block:nth-of-type(4) { animation-delay: 0.66s; }
 @keyframes hero-block-grow { to { transform: scaleX(1); } }
 
 .hero-visual-cursor,
@@ -12937,4 +12935,144 @@ select option {
 .page-home #oficina .manifest-content {
   width: min(920px, calc(100vw - 56px)) !important;
   max-width: 920px !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Hero-visual v2 — tractament mes "premium": glow, degradats reals,
+   escombrada de llum (shimmer) i icona de tendencia propia enlloc del
+   caracter unicode "↗", perque no faci l'efecte de grafica generica
+   feta en dos minuts. ══════════════════════════════════════════ */
+
+.service-preview-visual .hero-visual {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(155deg, rgba(244,240,232,0.07) 0%, rgba(244,240,232,0.02) 100%);
+  box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(244,240,232,0.08);
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20%;
+  z-index: 2;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(244,240,232,0.16) 48%,
+    rgba(244,240,232,0.22) 50%,
+    rgba(244,240,232,0.16) 52%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.hero-visual.is-visible::before {
+  animation: hero-visual-shimmer 1.4s ease 0.3s 1;
+}
+@keyframes hero-visual-shimmer {
+  to { transform: translateX(120%); }
+}
+
+.hero-visual-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.hero-visual-trend-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px rgba(213,198,174,0.7));
+  opacity: 0;
+  transform: translate(-3px, 3px) scale(0.7);
+}
+.hero-visual.is-visible .hero-visual-trend-icon {
+  animation: hero-trend-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.3s forwards;
+}
+@keyframes hero-trend-in {
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+.page-home .service-preview--stage .hero-visual-trend-icon {
+  stroke: var(--pinkd);
+  filter: drop-shadow(0 0 4px rgba(128,147,168,0.5));
+}
+
+/* ── SEO: linia amb degradat + glow ── */
+.hero-visual-line-glow {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.5;
+  filter: blur(4px);
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+}
+.hero-visual.is-visible .hero-visual-line-glow {
+  animation: hero-line-draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+}
+
+.hero-visual-line {
+  stroke: url(#heroLineGradient);
+}
+
+.hero-visual-point {
+  fill: var(--bg);
+  stroke: var(--gold);
+  stroke-width: 2px;
+  opacity: 0;
+}
+.hero-visual.is-visible .hero-visual-point {
+  animation: hero-dot-in 0.3s ease forwards;
+}
+.hero-visual.is-visible .hero-visual-point:nth-of-type(1) { animation-delay: 0.5s; }
+.hero-visual.is-visible .hero-visual-point:nth-of-type(2) { animation-delay: 0.85s; }
+
+.page-home .service-preview--stage .hero-visual-line-glow { stroke: var(--pinkd); }
+.page-home .service-preview--stage .hero-visual-point { stroke: var(--pinkd); fill: var(--cream); }
+
+/* ── Google Ads: barres amb degradat + glow + reflex ── */
+.hero-visual-bar {
+  fill: url(#heroBarGradient);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+}
+.hero-visual-bar-accent {
+  filter: drop-shadow(0 0 10px rgba(213,198,174,0.55)) drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+}
+
+.hero-visual-bar-value {
+  font-weight: 700;
+}
+
+/* ── Disseny web: wireframe amb blocs de color variats ── */
+.hero-visual-block-image {
+  fill: url(#heroImageGradient);
+}
+.hero-visual-caret {
+  fill: var(--gold);
+  opacity: 0;
+}
+.hero-visual.is-visible .hero-visual-caret {
+  animation: hero-caret-blink 1s step-end 1s infinite;
+}
+@keyframes hero-caret-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual::before { animation: none !important; display: none; }
+  .hero-visual-trend-icon { opacity: 1 !important; transform: none !important; }
+  .hero-visual-line-glow { stroke-dashoffset: 0 !important; animation: none !important; }
+  .hero-visual-point { opacity: 1 !important; animation: none !important; }
+  .hero-visual-caret { opacity: 1 !important; animation: none !important; }
 }

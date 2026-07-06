@@ -12671,18 +12671,25 @@ select option {
 
 /* ── Home: seccions propies per a Disseny web / SEO / Google Ads ──
    Punt d'ancoratge del menu principal (/#disseny-web, /#seo,
-   /#google-ads). Reutilitzen el mateix hero-visual (SVG animat) que
-   ja existeix a cada pagina de servei, pero com a columna estatica
+   /#google-ads). Tres tractaments deliberadament diferents (video de
+   fons, "escenari" cream invertit, fosc amb imatge) perque no semblin
+   3 cards correlatives repetides -- cadascuna una "escena" propia amb
+   prou espai i contrast. Reutilitzen el mateix hero-visual (SVG animat)
+   que ja existeix a cada pagina de servei, pero com a columna estatica
    dins un grid en lloc de position:absolute sobre un hero. ── */
+.page-home .service-preview {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  overflow: hidden;
+}
+
 .service-preview-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
-}
-
-.service-preview + .service-preview {
-  border-top: 1px solid var(--line);
 }
 
 .service-preview-copy .eyebrow { margin-bottom: 0.6rem; }
@@ -12727,11 +12734,124 @@ select option {
   border: 1px solid var(--line2);
 }
 
+/* Variant A — video de fons, tractament fosc (Disseny web) */
+.page-home .service-preview--media {
+  background: #0a0c0f;
+}
+
+.service-preview-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.25) brightness(0.42) contrast(1.05);
+}
+
+.service-preview--media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(100deg, rgba(7,9,13,0.92) 20%, rgba(7,9,13,0.55) 65%, rgba(7,9,13,0.78) 100%);
+}
+
+.page-home .service-preview--media .eyebrow { color: var(--gold); }
+.page-home .service-preview--media h2 { color: var(--cream); }
+.page-home .service-preview--media .page-intro { color: var(--ink-soft); }
+.page-home .service-preview--media .service-preview-proof li {
+  color: var(--cream);
+  border-color: rgba(244,240,232,0.28);
+  background: rgba(244,240,232,0.08);
+}
+.page-home .service-preview--media .button-secondary {
+  color: var(--cream) !important;
+  border-color: rgba(244,240,232,0.3) !important;
+}
+
+/* Variant B — "escenari" cream, invertit (SEO). Visual a l'esquerra. */
+.page-home .service-preview--stage {
+  background: var(--cream);
+}
+
+.page-home .service-preview--stage .eyebrow { color: var(--pinkd); }
+.page-home .service-preview--stage h2 { color: var(--stage-ink); }
+.page-home .service-preview--stage .page-intro { color: rgba(21,23,28,0.7); }
+.page-home .service-preview--stage .service-preview-proof li {
+  color: var(--stage-ink);
+  border-color: rgba(21,23,28,0.16);
+  background: rgba(21,23,28,0.04);
+}
+.page-home .service-preview--stage .button {
+  background: var(--stage-ink) !important;
+  color: var(--cream) !important;
+  border-color: var(--stage-ink) !important;
+}
+.page-home .service-preview--stage .button-secondary {
+  color: var(--stage-ink) !important;
+  border-color: rgba(21,23,28,0.28) !important;
+}
+.page-home .service-preview--stage .service-preview-grid {
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+}
+.page-home .service-preview--stage .service-preview-visual { order: -1; }
+
+.page-home .service-preview--stage .hero-visual {
+  background: rgba(21,23,28,0.05);
+  border-color: rgba(21,23,28,0.14);
+}
+.page-home .service-preview--stage .hero-visual-label,
+.page-home .service-preview--stage .hero-visual-caption { color: rgba(21,23,28,0.55); }
+.page-home .service-preview--stage .hero-visual-number { color: var(--stage-ink); }
+.page-home .service-preview--stage .hero-visual-trend { color: var(--pinkd); }
+.page-home .service-preview--stage .hero-visual-grid { stroke: rgba(21,23,28,0.14); }
+.page-home .service-preview--stage .hero-visual-line,
+.page-home .service-preview--stage .hero-visual-dot,
+.page-home .service-preview--stage .hero-visual-dot-pulse { stroke: var(--pinkd); fill: var(--pinkd); }
+
+/* Variant C — fosc amb imatge de textura (Google Ads) */
+.page-home .service-preview--dark {
+  background: linear-gradient(165deg, var(--bg-soft2) 0%, var(--bg) 100%);
+}
+
+.service-preview-bg-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.22;
+}
+.service-preview-bg-tint .service-preview-bg {
+  filter: grayscale(0.4) brightness(0.5) contrast(1.05);
+}
+.service-preview--dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 20% 30%, transparent 0%, var(--bg) 82%);
+}
+
+.page-home .service-preview--dark .eyebrow { color: var(--gold); }
+.page-home .service-preview--dark h2 { color: var(--cream); }
+.page-home .service-preview--dark .page-intro { color: var(--ink-soft); }
+.page-home .service-preview--dark .service-preview-proof li {
+  color: var(--cream);
+  border-color: rgba(244,240,232,0.22);
+  background: rgba(244,240,232,0.06);
+}
+.page-home .service-preview--dark .button-secondary {
+  color: var(--cream) !important;
+  border-color: rgba(244,240,232,0.3) !important;
+}
+
 @media (max-width: 860px) {
-  .service-preview-grid {
+  .service-preview-grid,
+  .page-home .service-preview--stage .service-preview-grid {
     grid-template-columns: 1fr;
   }
-  .service-preview-visual {
+  .service-preview-visual,
+  .page-home .service-preview--stage .service-preview-visual {
     order: -1;
   }
   .service-preview-visual .hero-visual {

@@ -10484,7 +10484,18 @@ select option {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  filter: sepia(0.3) saturate(0.78) contrast(0.95) brightness(0.92) hue-rotate(-6deg);
+  filter: sepia(0.3) saturate(0.78) contrast(0.88) brightness(1.4) hue-rotate(-6deg);
+}
+
+/* Sense línies divisòries entre les 3 seccions del trio: només es manté
+   la vora superior de #disseny-web (límit amb #oficina). */
+.page-home #seo.section-shell,
+.page-home #google-ads.section-shell {
+  border-top: 0 !important;
+}
+.page-home #seo.landing-block::before,
+.page-home #google-ads.landing-block::before {
+  content: none !important;
 }
 
 /* Variant A — video de fons, tractament fosc (Disseny web) */
@@ -10508,7 +10519,7 @@ select option {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(100deg, rgba(7,9,13,0.8) 20%, rgba(7,9,13,0.4) 65%, rgba(7,9,13,0.62) 100%);
+  background: linear-gradient(100deg, rgba(7,9,13,0.58) 20%, rgba(7,9,13,0.22) 65%, rgba(7,9,13,0.42) 100%);
 }
 
 .page-home .service-preview--media .eyebrow { color: var(--gold); }
@@ -10535,7 +10546,7 @@ select option {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(260deg, rgba(7,9,13,0.8) 20%, rgba(7,9,13,0.4) 65%, rgba(7,9,13,0.62) 100%);
+  background: linear-gradient(260deg, rgba(7,9,13,0.58) 20%, rgba(7,9,13,0.22) 65%, rgba(7,9,13,0.42) 100%);
 }
 
 .page-home .service-preview--stage .eyebrow { color: var(--gold); }
@@ -10581,7 +10592,7 @@ select option {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(100deg, rgba(7,9,13,0.8) 20%, rgba(7,9,13,0.4) 65%, rgba(7,9,13,0.62) 100%);
+  background: linear-gradient(100deg, rgba(7,9,13,0.58) 20%, rgba(7,9,13,0.22) 65%, rgba(7,9,13,0.42) 100%);
 }
 
 .page-home .service-preview--dark .eyebrow { color: var(--gold); }

@@ -8716,7 +8716,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 }
 
 .page-home .projects-marquee-scene .marquee-view-all {
-  color: rgba(244, 240, 232, 0.74) !important;
+  color: rgba(17, 17, 17, 0.6) !important;
 }
 
 .page-home .projects-marquee-scene .project-card-type {

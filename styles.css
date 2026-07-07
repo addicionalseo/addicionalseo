@@ -10496,17 +10496,17 @@ select option {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.22;
+  opacity: 0.34;
 }
 .service-preview-bg-tint .service-preview-bg {
-  filter: grayscale(0.4) brightness(0.5) contrast(1.05);
+  filter: sepia(0.3) saturate(0.85) contrast(1) brightness(0.65) hue-rotate(-6deg);
 }
 .service-preview--dark::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse at 20% 30%, transparent 0%, var(--bg) 82%);
+  background: radial-gradient(ellipse at 78% 55%, transparent 0%, var(--bg) 78%);
 }
 
 .page-home .service-preview--dark .eyebrow { color: var(--gold); }

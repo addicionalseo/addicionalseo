@@ -5066,14 +5066,14 @@ body.page-home::after {
 .page-home .services-scene .services-editorial .service-stage-featured,
 .page-home .services-scene .services-editorial .service-stage.service-stage-cinema,
 .page-home .services-scene .services-editorial .service-stage.service-stage-image {
-  --service-bg-image: url("/assets/home/images/3.png");
+  --service-bg-image: url("/assets/home/images/nous/22.png");
   --bg-width: 100%;
   --bg-height: 100%;
   --bg-pos-x: 50%;
   --bg-pos-y: 50%;
-  --card-overlay-top: rgba(7, 9, 12, 0.42);
-  --card-overlay-mid: rgba(7, 9, 12, 0.58);
-  --card-overlay-bottom: rgba(7, 9, 12, 0.82);
+  --card-overlay-top: rgba(26, 18, 10, 0.4);
+  --card-overlay-mid: rgba(26, 18, 10, 0.56);
+  --card-overlay-bottom: rgba(26, 18, 10, 0.82);
   min-height: clamp(204px, 20vw, 312px) !important;
   padding: clamp(22px, 2.5vw, 32px) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -6556,7 +6556,7 @@ body.page-home .process-row span {
   grid-auto-rows: minmax(188px, auto) !important;
   display: grid !important;
   grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
-  --service-bg-image: url("/assets/home/images/3.png");
+  --service-bg-image: url("/assets/home/images/nous/22.png");
   position: relative;
   isolation: isolate;
   overflow: visible;

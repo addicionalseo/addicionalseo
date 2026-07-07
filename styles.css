@@ -3847,7 +3847,7 @@ body.page-home,
 .page-home .manifest-scene .scene-media {
   background:
     linear-gradient(90deg, rgba(5,6,8,0.84), rgba(5,6,8,0.44)),
-    url("/public/media/home/images/3.png") center/cover !important;
+    url("/assets/home/images/3.png") center/cover !important;
 }
 
 .page-home .scene-media .manifest-bg-video {
@@ -4110,7 +4110,7 @@ body.page-home,
   justify-content: flex-end;
   color: #ffffff;
   background: linear-gradient(180deg, rgba(5,6,8,0.1), rgba(5,6,8,0.84)),
-    url("/public/media/home/images/1.png") center/cover !important;
+    url("/assets/home/images/1.png") center/cover !important;
   border-color: rgba(255,255,255,0.16);
 }
 
@@ -4144,7 +4144,7 @@ body.page-home,
 .page-home .service-stage-image {
   color: #ffffff;
   background: linear-gradient(180deg, rgba(5,6,8,0.18), rgba(5,6,8,0.82)),
-    url("/public/media/home/images/3.png") 42% center/cover !important;
+    url("/assets/home/images/3.png") 42% center/cover !important;
 }
 
 .page-home .service-stage-image h3,
@@ -5053,7 +5053,7 @@ body.page-home::after {
 .page-home .services-scene .services-editorial .service-stage-featured,
 .page-home .services-scene .services-editorial .service-stage.service-stage-cinema,
 .page-home .services-scene .services-editorial .service-stage.service-stage-image {
-  --service-bg-image: url("/public/media/home/images/3.png");
+  --service-bg-image: url("/assets/home/images/3.png");
   --bg-width: 100%;
   --bg-height: 100%;
   --bg-pos-x: 50%;
@@ -6543,7 +6543,7 @@ body.page-home .process-row span {
   grid-auto-rows: minmax(188px, auto) !important;
   display: grid !important;
   grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
-  --service-bg-image: url("/public/media/home/images/3.png");
+  --service-bg-image: url("/assets/home/images/3.png");
   position: relative;
   isolation: isolate;
   overflow: visible;

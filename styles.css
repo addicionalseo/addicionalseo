@@ -10274,8 +10274,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 /* ── G8: Ritme vertical ──────────────────────────────── */
 /* Respiració extra entre seccions dark consecutives */
 .page-home .testimonials-scene {
-  padding-top: clamp(64px, 7vw, 96px) !important;
-  padding-bottom: clamp(64px, 7vw, 96px) !important;
+  padding-top: clamp(64px, 7vw, 104px) !important;
+  padding-bottom: clamp(64px, 7vw, 104px) !important;
   border-top: 1px solid rgba(17,17,17,0.08) !important;
 }
 /* Separació visual subtil entre seccions clares */

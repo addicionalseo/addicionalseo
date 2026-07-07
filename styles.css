@@ -3823,7 +3823,7 @@ body.page-home,
 }
 
 .page-home .trust-scene .scene-media img {
-  filter: grayscale(0.12) saturate(0.5) contrast(1.1) brightness(0.42) !important;
+  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.85) hue-rotate(-6deg) !important;
   object-position: 46% center !important;
 }
 

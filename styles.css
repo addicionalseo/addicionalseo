@@ -6712,6 +6712,48 @@ body.page-home .process-row span {
   flex: 0 0 auto;
 }
 
+/* Revifa el panell "Mapa estratègic" com a visual d'acompanyament del text,
+   coherent amb els signal panels dels serveis. Estava a display:none des
+   d'una simplificació anterior. */
+.page-home #oficina .scene-panel-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.66fr) minmax(240px, 0.34fr) !important;
+  align-items: end !important;
+  gap: clamp(20px, 3vw, 40px) !important;
+}
+
+.page-home #oficina .strategy-map,
+.page-home .manifest-scene .strategy-map {
+  display: flex !important;
+  flex-direction: column;
+  gap: 18px;
+  align-self: end;
+}
+
+.page-home #oficina .strategy-map-flow {
+  display: flex !important;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.page-home #oficina .strategy-map-flow article {
+  padding: 0 0 14px !important;
+  min-height: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255,176,0,0.16) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.page-home #oficina .strategy-map-flow article:last-child {
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+.page-home #oficina .strategy-map-flow p {
+  color: rgba(244,240,232,0.6) !important;
+}
+
 .page-home .strategy-map {
   border-radius: 0 !important;
   border: 1px solid #5f4a1d !important;

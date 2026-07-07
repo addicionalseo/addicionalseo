@@ -7625,27 +7625,9 @@ body.page-home .process-row span {
   border-color: rgba(255,255,255,0.32) !important;
 }
 
-.page-home .mainframe-pill-tertiary,
-.page-home .mainframe-pill-tertiary:first-child,
-.page-home .mainframe-pill-tertiary:last-child {
-  background: transparent !important;
-  color: rgba(255,255,255,0.82) !important;
-  border-color: rgba(255,255,255,0.2) !important;
-}
-
-.page-home .mainframe-pill-secondary:hover,
-.page-home .mainframe-pill-tertiary:hover {
+.page-home .mainframe-pill-secondary:hover {
   border-color: rgba(255,255,255,0.42) !important;
   color: #ffffff !important;
-}
-
-.page-home .hero-trust {
-  max-width: 520px !important;
-  margin: 16px 0 0 !important;
-  color: rgba(255,255,255,0.68) !important;
-  font-size: 13px !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.01em !important;
 }
 
 .page-home .manifest-scene {
@@ -7930,17 +7912,9 @@ body.page-home .process-row span {
     justify-content: center !important;
   }
 
-  .page-home .mainframe-pill-secondary,
-  .page-home .mainframe-pill-tertiary {
+  .page-home .mainframe-pill-secondary {
     width: auto !important;
     justify-content: center !important;
-  }
-
-  .page-home .hero-trust {
-    max-width: min(420px, calc(100vw - 36px)) !important;
-    margin-top: 14px !important;
-    font-size: 12.5px !important;
-    line-height: 1.52 !important;
   }
 
   .page-home #oficina .manifest-content {
@@ -8101,22 +8075,6 @@ body.page-home .process-row span {
 .page-home .mainframe-pill:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 18px 38px rgba(8,8,8,0.18) !important;
-}
-
-.page-home .hero-trust {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  padding-top: 12px !important;
-  border-top: 1px solid rgba(255,255,255,0.14) !important;
-}
-
-.page-home .hero-trust::before {
-  content: "";
-  width: 34px;
-  height: 1px;
-  background: rgba(255,255,255,0.34);
-  flex: 0 0 auto;
 }
 
 .page-home .home-wrap {
@@ -8540,21 +8498,6 @@ body.page-home .process-row span {
   border-radius: 999px !important;
 }
 
-.page-home .cookie-manage {
-  color: #111111 !important;
-  background: rgba(255,255,255,0.92) !important;
-  border-color: rgba(17,17,17,0.12) !important;
-  box-shadow: 0 12px 30px rgba(17,17,17,0.12) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-}
-
-.page-home .cookie-manage:hover {
-  color: #111111 !important;
-  background: #ffffff !important;
-  border-color: rgba(17,17,17,0.18) !important;
-}
-
 /* Final readability pass: separate labels and titles cleanly across the home body */
 .page-home .manifesto-line,
 .page-home .metric-proof li,
@@ -8698,19 +8641,8 @@ body.page-home .process-row span {
     width: min(100%, calc(100vw - 28px)) !important;
   }
 
-  .page-home .mainframe-hero .hero-typed,
-  .page-home .hero-trust {
+  .page-home .mainframe-hero .hero-typed {
     max-width: min(420px, calc(100vw - 34px)) !important;
-  }
-
-  .page-home .hero-trust {
-    display: block !important;
-    padding-top: 10px !important;
-  }
-
-  .page-home .hero-trust::before {
-    display: block;
-    margin-bottom: 8px;
   }
 
   .page-home .services-scene {
@@ -9387,8 +9319,7 @@ body.page-home .process-row span {
 .page-home .button,
 .page-home .button-secondary,
 .page-home .contact-form-card button,
-.page-home .cookie-banner button,
-.page-home .cookie-manage {
+.page-home .cookie-banner button {
   border-radius: 0 !important;
   font-family: "Space Mono", monospace !important;
   font-size: 12px !important;
@@ -10149,7 +10080,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 .page-home .button-secondary,
 .page-home .contact-form-card button,
 .page-home .cookie-banner button,
-.page-home .cookie-manage,
 .page-home .contact-form-card label,
 .page-home .cd-label,
 .page-home .footer-links strong,
@@ -10225,17 +10155,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   border: 1px solid rgba(255,255,255,0.52) !important;
   font-weight: 400 !important;
 }
-.page-home .mainframe-pill-tertiary {
-  background: transparent !important;
-  color: rgba(255,255,255,0.52) !important;
-  border: none !important;
-  padding-inline: 0.4rem !important;
-  font-weight: 400 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-  text-decoration-color: rgba(255,255,255,0.28) !important;
-  box-shadow: none !important;
-}
 .page-home .mainframe-pill-primary:hover {
   background: #f0e8d0 !important;
   border-color: #f0e8d0 !important;
@@ -10245,14 +10164,9 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   border-color: rgba(255,255,255,0.85) !important;
   color: #ffffff !important;
 }
-.page-home .mainframe-pill-tertiary:hover {
-  color: rgba(255,255,255,0.85) !important;
-  text-decoration-color: rgba(255,255,255,0.5) !important;
-}
 @media (prefers-reduced-motion: reduce) {
   .page-home .mainframe-pill-primary,
-  .page-home .mainframe-pill-secondary,
-  .page-home .mainframe-pill-tertiary { transition: none !important; }
+  .page-home .mainframe-pill-secondary { transition: none !important; }
 }
 
 /* ── G2: Overlays direccionals ───────────────────────── */
@@ -11478,10 +11392,8 @@ body :where(
 .project-card-name,
 .contact-form-card label,
 .cookie-banner button,
-.cookie-manage,
 .home-system-bar__inner,
 .hero-intro,
-.hero-trust,
 .meta,
 [class*="meta"],
 [class*="nav"],
@@ -11612,15 +11524,13 @@ body :where(
   transform: translateY(0) !important;
 }
 .page-home .mainframe-hero .hero-intro.hero-anm,
-.page-home .mainframe-hero .hero-typed.hero-anm,
-.page-home .mainframe-hero .hero-trust.hero-anm {
+.page-home .mainframe-hero .hero-typed.hero-anm {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.55s ease, transform 0.55s ease;
 }
 .page-home .mainframe-hero .hero-intro.is-active,
-.page-home .mainframe-hero .hero-typed.is-active,
-.page-home .mainframe-hero .hero-trust.is-active {
+.page-home .mainframe-hero .hero-typed.is-active {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }

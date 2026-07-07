@@ -2055,7 +2055,7 @@ p { margin: 0; }
 /* ── CONTACT FORM ───────────────────────── */
 .contact-card,
 .contact-form-card {
-  background: rgba(255,255,255,0.045);
+  background: rgba(15,15,15,0.86);
   backdrop-filter: blur(16px);
 }
 
@@ -6515,6 +6515,22 @@ body.page-home .process-row span {
   border-top: 1px solid rgba(95, 74, 29, 0.56) !important;
   background:
     linear-gradient(180deg, rgba(17,17,17,0.98) 0%, rgba(13,13,13,0.98) 100%) !important;
+}
+
+.page-home #contacte .scene-media {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  overflow: hidden;
+}
+
+.page-home #contacte .scene-media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 0.62 !important;
+  filter: sepia(0.3) saturate(0.75) contrast(0.95) brightness(0.55) hue-rotate(-6deg) !important;
 }
 
 .page-home .services-scene .landing-copy,

@@ -100,7 +100,9 @@ $EXCLUDE_DIRS = @(
     "_deploy", "references", "docs",
     "addicionalseo-mainframe-polished-v2",
     "addicionalseo-mainframe-porting-FINAL",
-    ".agents", ".claude", ".impeccable"
+    ".agents", ".claude", ".impeccable",
+    "bingo_dilan_extracted",
+    "Obrazec2 - FREE"
 )
 $EXCLUDE_DIR_PATTERNS = @("backup*", "_backup*", "backup-*")
 $EXCLUDE_EXTENSIONS  = @(".zip", ".bak", ".old", ".log", ".tmp", ".ps1", ".py", ".sql")
@@ -164,7 +166,8 @@ $errors   = 0
 
 foreach ($file in $files) {
     $rel = $file.FullName.Substring($ProjectRoot.Length + 1).Replace("\", "/")
-    $remoteUrl = "ftp://$FTP_HOST$FTP_REMOTE/$rel"
+    $relEncoded = ($rel -split "/" | ForEach-Object { [System.Uri]::EscapeDataString($_) }) -join "/"
+    $remoteUrl = "ftp://$FTP_HOST$FTP_REMOTE/$relEncoded"
 
     if ($DryRun) {
         Write-Host "  [DRY] $rel" -ForegroundColor DarkGray

@@ -9206,6 +9206,13 @@ body :where(
   align-self: stretch !important;
 }
 
+/* Amb només 2 cards (Branding + Analítica) el text ja no necessita seguir
+   el scroll: desactivem el sticky/parallax heretat d'una versió amb més cards. */
+.page-home .services-scene .landing-copy {
+  position: static !important;
+  top: auto !important;
+}
+
 /* Gràfica animada del cas destacat (secció de resultats) */
 /* ── Audience panel ("Quan encaixa més" / símptomes) ───
    Component sense estils propis: apareixia com a text pla

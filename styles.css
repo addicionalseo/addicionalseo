@@ -3823,7 +3823,7 @@ body.page-home,
 }
 
 .page-home .trust-scene .scene-media img {
-  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.85) hue-rotate(-6deg) !important;
+  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(1.05) hue-rotate(-6deg) !important;
   object-position: 46% center !important;
 }
 
@@ -3857,7 +3857,7 @@ body.page-home,
   height: 100% !important;
   object-fit: cover !important;
   object-position: 58% center !important;
-  filter: sepia(0.32) saturate(0.8) contrast(0.94) brightness(0.98) hue-rotate(-6deg) !important;
+  filter: sepia(0.32) saturate(0.8) contrast(0.94) brightness(1.08) hue-rotate(-6deg) !important;
   transform: translate3d(0, var(--scene-scroll-y, 0px), 0) scale(var(--scene-zoom, 1.08));
   transform-origin: center center;
   will-change: transform;
@@ -4176,8 +4176,8 @@ body.page-home,
 }
 
 .page-home .trust-scene::before {
-  background: linear-gradient(90deg, rgba(5,6,8,0.2), rgba(5,6,8,0.68) 44%, rgba(5,6,8,0.92)),
-    linear-gradient(180deg, rgba(5,6,8,0.08), rgba(5,6,8,0.54)) !important;
+  background: linear-gradient(90deg, rgba(5,6,8,0.14), rgba(5,6,8,0.52) 44%, rgba(5,6,8,0.78)),
+    linear-gradient(180deg, rgba(5,6,8,0.05), rgba(5,6,8,0.4)) !important;
 }
 
 .page-home .trust-scene .manifesto-line {
@@ -5071,9 +5071,9 @@ body.page-home::after {
   --bg-height: 100%;
   --bg-pos-x: 50%;
   --bg-pos-y: 50%;
-  --card-overlay-top: rgba(26, 18, 10, 0.4);
-  --card-overlay-mid: rgba(26, 18, 10, 0.56);
-  --card-overlay-bottom: rgba(26, 18, 10, 0.82);
+  --card-overlay-top: rgba(26, 18, 10, 0.28);
+  --card-overlay-mid: rgba(26, 18, 10, 0.42);
+  --card-overlay-bottom: rgba(26, 18, 10, 0.72);
   min-height: clamp(204px, 20vw, 312px) !important;
   padding: clamp(22px, 2.5vw, 32px) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -6111,7 +6111,7 @@ body.page-home .process-row span {
   object-fit: cover !important;
   object-position: center center !important;
   opacity: 1 !important;
-  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.55) hue-rotate(-6deg) !important;
+  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.78) hue-rotate(-6deg) !important;
 }
 
 .page-home #proces::before {
@@ -6120,7 +6120,7 @@ body.page-home .process-row span {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(9,9,9,0.4) 0%, rgba(9,9,9,0.6) 100%);
+  background: linear-gradient(180deg, rgba(9,9,9,0.25) 0%, rgba(9,9,9,0.45) 100%);
 }
 
 .page-home .process-intro h2 {
@@ -6529,8 +6529,8 @@ body.page-home .process-row span {
   height: 100% !important;
   object-fit: cover !important;
   object-position: center center !important;
-  opacity: 0.62 !important;
-  filter: sepia(0.3) saturate(0.75) contrast(0.95) brightness(0.55) hue-rotate(-6deg) !important;
+  opacity: 0.68 !important;
+  filter: sepia(0.3) saturate(0.75) contrast(0.95) brightness(0.72) hue-rotate(-6deg) !important;
 }
 
 .page-home .services-scene .landing-copy,
@@ -7971,8 +7971,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 }
 /* Results — reforç extra sota les xifres */
 .page-home .results-cinema .scene-media img {
-  opacity: 0.68 !important;
-  filter: sepia(0.3) saturate(0.75) contrast(0.95) brightness(0.7) hue-rotate(-6deg) !important;
+  opacity: 0.78 !important;
+  filter: sepia(0.3) saturate(0.75) contrast(0.95) brightness(0.88) hue-rotate(-6deg) !important;
 }
 
 /* ── G3: Text secundari WCAG AA ──────────────────────── */
@@ -8331,7 +8331,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   object-fit: cover !important;
   object-position: center center !important;
   opacity: 1 !important;
-  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.8) hue-rotate(-6deg) !important;
+  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(1) hue-rotate(-6deg) !important;
 }
 
 .page-home .testimonials-scene::before {
@@ -8340,7 +8340,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(8,9,10,0.32) 0%, rgba(8,9,10,0.62) 55%, rgba(8,9,10,0.78) 100%);
+  background: linear-gradient(180deg, rgba(8,9,10,0.22) 0%, rgba(8,9,10,0.48) 55%, rgba(8,9,10,0.66) 100%);
 }
 
 .page-home .testimonials-scene .landing-copy .eyebrow {
@@ -10305,14 +10305,12 @@ select option {
   justify-content: center;
 }
 
-/* SEO viu en una secció de fons clar (--stage). El fons quasi
-   transparent es confonia amb blanc; card champagne amb presencia
-   real, de la mateixa familia calida que el groc #FFB000 del lloc.
-   Especificitat igual o superior a ".service-preview-visual .signal-panel"
-   perque aquest override guanyi de veritat la cascada. */
+/* SEO ara comparteix el video de fons fosc amb Disseny web:
+   el panell fa servir el mateix tractament que --web/--ads (base
+   .signal-panel), no cal cap override clar. */
 .service-preview-visual .signal-panel--seo {
-  background: transparent;
-  border-color: rgba(21,23,28,0.16);
+  background: var(--bg-soft2);
+  border-color: rgba(244,240,232,0.14);
 }
 
 .signal-cap {
@@ -10421,23 +10419,6 @@ select option {
   100% { stroke-dashoffset: -520; }
 }
 
-/* Variant clara (SEO): graella en tinta fosca sobre paper, traça amb
-   ombra en lloc de resplendor (no te sentit un "glow" sobre paper clar). */
-.signal-panel--seo .signal-scope-grid {
-  background-image:
-    repeating-linear-gradient(90deg, rgba(21,23,28,0.12) 0 1px, transparent 1px 20%),
-    repeating-linear-gradient(180deg, rgba(21,23,28,0.12) 0 1px, transparent 1px 25%);
-}
-
-.signal-panel--seo .signal-scope-path {
-  stroke: #FFB000;
-  filter: drop-shadow(0 1px 2px rgba(21,23,28,0.22));
-}
-
-.signal-panel--seo .signal-cap {
-  color: rgba(21,23,28,0.5);
-}
-
 /* Google Ads — VU-metre d'equalitzador */
 .signal-vu-row {
   display: flex;
@@ -10481,9 +10462,35 @@ select option {
   }
 }
 
+/* Disseny web + SEO + Google Ads comparteixen UN sol video de fons continu
+   que s'estén per tota l'alçada de les 3 seccions juntes, no una instància
+   per secció, perquè no es reinicïi ni es talli en canviar de secció. */
+.service-trio {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.service-trio-sticky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.service-trio-bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  filter: sepia(0.3) saturate(0.78) contrast(0.95) brightness(0.92) hue-rotate(-6deg);
+}
+
 /* Variant A — video de fons, tractament fosc (Disseny web) */
-.page-home .service-preview--media {
-  background: #0a0c0f;
+.page-home .service-preview--media,
+.page-home #disseny-web.service-preview--media {
+  background: transparent !important;
 }
 
 .service-preview-bg {
@@ -10493,7 +10500,7 @@ select option {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: sepia(0.3) saturate(0.78) contrast(0.95) brightness(0.7) hue-rotate(-6deg);
+  filter: sepia(0.3) saturate(0.78) contrast(0.95) brightness(0.92) hue-rotate(-6deg);
 }
 
 .service-preview--media::after {
@@ -10501,7 +10508,7 @@ select option {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(100deg, rgba(7,9,13,0.92) 20%, rgba(7,9,13,0.55) 65%, rgba(7,9,13,0.78) 100%);
+  background: linear-gradient(100deg, rgba(7,9,13,0.8) 20%, rgba(7,9,13,0.4) 65%, rgba(7,9,13,0.62) 100%);
 }
 
 .page-home .service-preview--media .eyebrow { color: var(--gold); }
@@ -10517,27 +10524,31 @@ select option {
   border-color: rgba(244,240,232,0.3) !important;
 }
 
-/* Variant B — "escenari" cream, invertit (SEO). Visual a l'esquerra. */
-.page-home .service-preview--stage {
-  background: var(--cream);
+/* Variant B — comparteix el mateix video de fons que Disseny web (abans "escenari" cream). Visual a l'esquerra. */
+.page-home .service-preview--stage,
+.page-home #seo.service-preview--stage {
+  background: transparent !important;
 }
 
-.page-home .service-preview--stage .eyebrow { color: var(--pinkd); }
-.page-home .service-preview--stage h2 { color: var(--stage-ink); }
-.page-home .service-preview--stage .page-intro { color: rgba(21,23,28,0.7); }
-.page-home .service-preview--stage .service-preview-proof li {
-  color: var(--stage-ink);
-  border-color: rgba(21,23,28,0.16);
-  background: rgba(21,23,28,0.04);
+.page-home .service-preview--stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(260deg, rgba(7,9,13,0.8) 20%, rgba(7,9,13,0.4) 65%, rgba(7,9,13,0.62) 100%);
 }
-.page-home .service-preview--stage .button {
-  background: var(--stage-ink) !important;
-  color: var(--cream) !important;
-  border-color: var(--stage-ink) !important;
+
+.page-home .service-preview--stage .eyebrow { color: var(--gold); }
+.page-home .service-preview--stage h2 { color: var(--cream); }
+.page-home .service-preview--stage .page-intro { color: var(--ink-soft); }
+.page-home .service-preview--stage .service-preview-proof li {
+  color: var(--cream);
+  border-color: rgba(244,240,232,0.28);
+  background: rgba(244,240,232,0.08);
 }
 .page-home .service-preview--stage .button-secondary {
-  color: var(--stage-ink) !important;
-  border-color: rgba(21,23,28,0.28) !important;
+  color: var(--cream) !important;
+  border-color: rgba(244,240,232,0.3) !important;
 }
 .page-home .service-preview--stage .service-preview-grid {
   grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
@@ -10560,25 +10571,17 @@ select option {
 .page-home .service-preview--stage .hero-visual-month { fill: rgba(21,23,28,0.42); }
 
 /* Variant C — fosc amb imatge de textura (Google Ads) */
-.page-home .service-preview--dark {
-  background: linear-gradient(165deg, var(--bg-soft2) 0%, var(--bg) 100%);
+.page-home .service-preview--dark,
+.page-home #google-ads.service-preview--dark {
+  background: transparent !important;
 }
 
-.service-preview-bg-tint {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.34;
-}
-.service-preview-bg-tint .service-preview-bg {
-  filter: sepia(0.3) saturate(0.85) contrast(1) brightness(0.65) hue-rotate(-6deg);
-}
 .service-preview--dark::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse at 78% 55%, transparent 0%, var(--bg) 78%);
+  background: linear-gradient(100deg, rgba(7,9,13,0.8) 20%, rgba(7,9,13,0.4) 65%, rgba(7,9,13,0.62) 100%);
 }
 
 .page-home .service-preview--dark .eyebrow { color: var(--gold); }

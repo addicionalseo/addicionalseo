@@ -3,7 +3,6 @@
   const CONSENT_KEY = "addicionalseo_cookie_consent";
   const ANALYTICS_STORAGE_KEY = "analytics";
   const BANNER_ID = "cookie-consent";
-  const MANAGE_BUTTON_ID = "cookie-manage";
 
   if (
     typeof window === "undefined" ||
@@ -47,16 +46,14 @@
           description:
             "Usamos herramientas de medicion para mejorar la experiencia del sitio. Puedes aceptar o rechazar este uso.",
           accept: "Aceptar",
-          reject: "Rechazar",
-          manage: "Gestionar consentimiento"
+          reject: "Rechazar"
         }
       : {
           title: "Cookies d'analitica",
           description:
             "Fem servir eines de mesura per millorar l'experiencia del lloc. Pots acceptar o rebutjar aquest us.",
           accept: "Acceptar",
-          reject: "Rebutjar",
-          manage: "Gestionar consentiment"
+          reject: "Rebutjar"
         };
   }
 
@@ -121,30 +118,10 @@
     document.getElementById(BANNER_ID)?.remove();
   }
 
-  function showManageButton() {
-    if (document.getElementById(MANAGE_BUTTON_ID)) {
-      return;
-    }
-
-    const copy = getCopy();
-    const button = document.createElement("button");
-    button.type = "button";
-    button.id = MANAGE_BUTTON_ID;
-    button.className = "cookie-manage";
-    button.textContent = copy.manage;
-    button.addEventListener("click", () => {
-      button.remove();
-      showBanner();
-    });
-
-    document.body.appendChild(button);
-  }
-
   function handleConsentChoice(analyticsEnabled) {
     setStoredConsent(analyticsEnabled);
     applyConsent(analyticsEnabled);
     removeBanner();
-    showManageButton();
   }
 
   function showBanner() {
@@ -185,8 +162,7 @@
     const style = document.createElement("style");
     style.id = "cookie-consent-styles";
     style.textContent = `
-      .cookie-banner,
-      .cookie-manage {
+      .cookie-banner {
         font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
@@ -235,8 +211,7 @@
         margin-top: 16px;
       }
 
-      .cookie-banner__button,
-      .cookie-manage {
+      .cookie-banner__button {
         appearance: none;
         border: 1px solid transparent;
         border-radius: 999px;
@@ -251,20 +226,10 @@
         color: #080808;
       }
 
-      .cookie-banner__button--ghost,
-      .cookie-manage {
+      .cookie-banner__button--ghost {
         background: rgba(255, 255, 255, 0.06);
         color: #fff;
         border-color: rgba(255,255,255,0.12);
-      }
-
-      .cookie-manage {
-        position: fixed;
-        right: 16px;
-        bottom: 16px;
-        z-index: 1999;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.24);
       }
 
       @media (max-width: 640px) {
@@ -321,10 +286,19 @@
   injectStyles();
   bindInteractionTracking();
 
+  document.addEventListener("click", (event) => {
+    const link = event.target instanceof Element ? event.target.closest("[data-cookie-manage]") : null;
+    if (!link) {
+      return;
+    }
+
+    event.preventDefault();
+    showBanner();
+  });
+
   const storedConsent = getStoredConsent();
   if (storedConsent && typeof storedConsent[ANALYTICS_STORAGE_KEY] === "boolean") {
     applyConsent(storedConsent[ANALYTICS_STORAGE_KEY]);
-    showManageButton();
   } else {
     showBanner();
   }

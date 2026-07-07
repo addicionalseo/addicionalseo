@@ -3063,8 +3063,8 @@ body.page-home,
 
 .page-home .mainframe-nav a:hover,
 .page-home .mainframe-nav a[aria-current="page"] {
-  color: #111111 !important;
-  opacity: 0.58;
+  color: #FFB000 !important;
+  opacity: 1;
 }
 
 .page-home .mainframe-header-actions {
@@ -4445,12 +4445,6 @@ body.page-home::after {
   box-shadow: none !important;
 }
 
-.page-home .mainframe-nav a:not(:last-child)::after {
-  content: none !important;
-  margin-right: 0;
-  color: #050505;
-}
-
 .page-home .mainframe-language {
   padding-left: 18px;
   margin-left: 6px;
@@ -5431,7 +5425,7 @@ body.page-home .process-row span {
 .page-home .mainframe-nav a[aria-current="page"],
 .page-home .site-nav a:hover,
 .page-home .site-nav a[aria-current="page"] {
-  color: #000 !important;
+  color: #FFB000 !important;
   opacity: 1 !important;
 }
 
@@ -5828,7 +5822,6 @@ body.page-home .process-row span {
   line-height: 1;
 }
 
-.page-home .mainframe-nav a:hover,
 .page-home .mainframe-contact:hover,
 .page-home .mainframe-language a:hover {
   color: #111111 !important;
@@ -9663,7 +9656,7 @@ select option {
   align-items: center !important;
   padding: 4px 0 !important;
   font-family: var(--font-body) !important;
-  color: rgba(8,8,8,0.88) !important;
+  color: #ffffff !important;
   opacity: 1 !important;
 }
 

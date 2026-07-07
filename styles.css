@@ -6698,6 +6698,20 @@ body.page-home .process-row span {
   border-right: 1px solid rgba(95, 74, 29, 0.4) !important;
 }
 
+.page-home #oficina .manifest-point-title {
+  display: flex !important;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.page-home #oficina .manifest-point-title::before {
+  content: "";
+  width: 1.1rem;
+  height: 1px;
+  background: #FFB000;
+  flex: 0 0 auto;
+}
+
 .page-home .strategy-map {
   border-radius: 0 !important;
   border: 1px solid #5f4a1d !important;

@@ -99,14 +99,16 @@ $EXCLUDE_DIRS = @(
     ".git", "node_modules", "dist", ".vercel", ".playwright-mcp",
     "_deploy", "references", "docs",
     "addicionalseo-mainframe-polished-v2",
-    "addicionalseo-mainframe-porting-FINAL"
+    "addicionalseo-mainframe-porting-FINAL",
+    ".agents", ".claude", ".impeccable"
 )
 $EXCLUDE_DIR_PATTERNS = @("backup*", "_backup*", "backup-*")
 $EXCLUDE_EXTENSIONS  = @(".zip", ".bak", ".old", ".log", ".tmp", ".ps1", ".py", ".sql")
 $EXCLUDE_ROOT_FILES  = @(
     "vite.config.js", "package.json", "package-lock.json",
     "vercel.json", ".cpanel.yml", ".gitignore",
-    "CLAUDE_CONTEXT.md"
+    "CLAUDE_CONTEXT.md", "skills-lock.json",
+    "cpanel_cookies.txt", "cpanel_upload_test.txt"
 )
 # Imatges temporals a l'arrel (captures de pantalla, etc.)
 $ROOT_IMAGE_EXCLUDE_PATTERN = @("*.png", "*.jpg", "*.jpeg", "*.webp")

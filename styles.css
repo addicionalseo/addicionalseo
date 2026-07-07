@@ -5579,7 +5579,7 @@ body.page-home .process-row span {
 .page-home #oficina .manifest-point-title {
   display: block !important;
   margin-bottom: 8px !important;
-  font-size: 14px !important;
+  font-size: 17px !important;
   font-weight: 700 !important;
   line-height: 1.35 !important;
   letter-spacing: 0 !important;
@@ -5587,7 +5587,7 @@ body.page-home .process-row span {
 }
 
 .page-home #oficina .manifest-point p {
-  font-size: 13.5px !important;
+  font-size: 15px !important;
   line-height: 1.56 !important;
 }
 

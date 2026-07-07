@@ -8271,6 +8271,34 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   background: linear-gradient(180deg, rgba(11, 12, 13, 0.98) 0%, rgba(8, 9, 10, 0.98) 100%) !important;
 }
 
+.page-home .testimonials-scene .scene-media {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  overflow: hidden;
+}
+
+.page-home .testimonials-scene .scene-media .testimonials-bg-video {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 1 !important;
+  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.8) hue-rotate(-6deg) !important;
+}
+
+.page-home .testimonials-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,9,10,0.32) 0%, rgba(8,9,10,0.62) 55%, rgba(8,9,10,0.78) 100%);
+}
+
 .page-home .testimonials-scene .landing-copy .eyebrow {
   color: rgba(255, 176, 0, 0.88) !important;
 }

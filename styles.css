@@ -6095,6 +6095,34 @@ body.page-home .process-row span {
   background-size: 88px 88px, auto;
 }
 
+.page-home #proces .scene-media {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  overflow: hidden;
+}
+
+.page-home #proces .scene-media .proces-bg-video {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 1 !important;
+  filter: sepia(0.3) saturate(0.8) contrast(0.95) brightness(0.55) hue-rotate(-6deg) !important;
+}
+
+.page-home #proces::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(9,9,9,0.4) 0%, rgba(9,9,9,0.6) 100%);
+}
+
 .page-home .process-intro h2 {
   max-width: 12ch !important;
   letter-spacing: 0.004em !important;

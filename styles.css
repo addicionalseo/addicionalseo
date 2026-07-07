@@ -7927,8 +7927,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
 }
 /* Results — reforç extra sota les xifres */
 .page-home .results-cinema .scene-media img {
-  opacity: 0.52 !important;
-  filter: brightness(0.72) !important;
+  opacity: 0.68 !important;
+  filter: sepia(0.3) saturate(0.75) contrast(0.95) brightness(0.7) hue-rotate(-6deg) !important;
 }
 
 /* ── G3: Text secundari WCAG AA ──────────────────────── */

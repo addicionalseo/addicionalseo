@@ -10532,10 +10532,10 @@ select option {
    feedback). ── */
 .page-home #oficina .manifest-content {
   border-radius: var(--radius) !important;
-  background: rgba(13, 13, 13, 0.6) !important;
-  backdrop-filter: blur(18px) saturate(1.08) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(1.08) !important;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.35) !important;
+  background: rgba(10, 10, 10, 0.32) !important;
+  backdrop-filter: blur(6px) saturate(1.08) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(1.08) !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.28) !important;
 }
 
 .page-home #oficina .manifest-title {

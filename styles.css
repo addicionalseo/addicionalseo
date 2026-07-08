@@ -10298,8 +10298,11 @@ select option {
   aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--bg-soft2);
-  border: 1px solid rgba(244,240,232,0.14);
+  background: rgba(9,10,13,0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(244,240,232,0.16);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
   isolation: isolate;
   display: flex;
   align-items: center;

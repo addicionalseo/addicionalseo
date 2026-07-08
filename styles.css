@@ -10515,11 +10515,7 @@ select option {
 }
 
 .service-preview--media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(100deg, rgba(7,9,13,0.42) 20%, rgba(7,9,13,0.14) 65%, rgba(7,9,13,0.3) 100%);
+  content: none;
 }
 
 .page-home .service-preview--media .eyebrow { color: var(--gold); }
@@ -10542,11 +10538,7 @@ select option {
 }
 
 .page-home .service-preview--stage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(260deg, rgba(7,9,13,0.42) 20%, rgba(7,9,13,0.14) 65%, rgba(7,9,13,0.3) 100%);
+  content: none;
 }
 
 .page-home .service-preview--stage .eyebrow { color: var(--gold); }
@@ -10588,11 +10580,7 @@ select option {
 }
 
 .service-preview--dark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(100deg, rgba(7,9,13,0.42) 20%, rgba(7,9,13,0.14) 65%, rgba(7,9,13,0.3) 100%);
+  content: none;
 }
 
 .page-home .service-preview--dark .eyebrow { color: var(--gold); }

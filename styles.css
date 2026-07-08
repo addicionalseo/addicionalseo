@@ -10484,8 +10484,8 @@ select option {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
-  filter: sepia(0.3) saturate(0.85) contrast(0.92) brightness(1.15) hue-rotate(-6deg);
+  object-position: center 35%;
+  filter: sepia(0.15) saturate(0.8) contrast(0.98) brightness(0.85) hue-rotate(-4deg);
 }
 
 /* Sense línies divisòries entre les 3 seccions del trio: només es manté

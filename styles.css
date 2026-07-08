@@ -2128,38 +2128,51 @@ form > * + *,
   transform: translateY(0);
 }
 
-/* Entrada esglaonada dels elements interns d'#oficina i del trio
-   disseny-web/SEO/Google Ads, perquè no apareguin tots de cop. */
+/* Entrada esglaonada i "spectacular" (focus-pull: blur + scale + moviment)
+   dels elements interns d'#oficina i del trio disseny-web/SEO/Google Ads.
+   !important perquè hi ha regles preexistents més especifiques (amb
+   selectors de tipus com ".editorial-points article") que sinó guanyarien
+   la cascada i deixarien els elements invisibles per sempre. */
 .manifest-content .manifest-point,
 .service-preview-copy .service-preview-proof li,
 .service-preview-copy .button-row > * {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0 !important;
+  transform: translateY(22px) scale(0.94) !important;
+  filter: blur(6px) !important;
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .manifest-content.is-visible .manifest-point,
 .service-preview-copy.is-visible .service-preview-proof li,
 .service-preview-copy.is-visible .button-row > * {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
 }
-.manifest-content.is-visible .manifest-point:nth-child(1) { transition-delay: 0.08s; }
-.manifest-content.is-visible .manifest-point:nth-child(2) { transition-delay: 0.16s; }
-.manifest-content.is-visible .manifest-point:nth-child(3) { transition-delay: 0.24s; }
-.service-preview-copy.is-visible .service-preview-proof li:nth-child(1) { transition-delay: 0.06s; }
-.service-preview-copy.is-visible .service-preview-proof li:nth-child(2) { transition-delay: 0.12s; }
-.service-preview-copy.is-visible .service-preview-proof li:nth-child(3) { transition-delay: 0.18s; }
-.service-preview-copy.is-visible .button-row > *:nth-child(1) { transition-delay: 0.24s; }
-.service-preview-copy.is-visible .button-row > *:nth-child(2) { transition-delay: 0.3s; }
+.manifest-content.is-visible .manifest-point:nth-child(1) { transition-delay: 0.1s !important; }
+.manifest-content.is-visible .manifest-point:nth-child(2) { transition-delay: 0.2s !important; }
+.manifest-content.is-visible .manifest-point:nth-child(3) { transition-delay: 0.3s !important; }
+.service-preview-copy.is-visible .service-preview-proof li:nth-child(1) { transition-delay: 0.08s !important; }
+.service-preview-copy.is-visible .service-preview-proof li:nth-child(2) { transition-delay: 0.16s !important; }
+.service-preview-copy.is-visible .service-preview-proof li:nth-child(3) { transition-delay: 0.24s !important; }
+.service-preview-copy.is-visible .button-row > *:nth-child(1) { transition-delay: 0.32s !important; }
+.service-preview-copy.is-visible .button-row > *:nth-child(2) { transition-delay: 0.4s !important; }
 
 .signal-panel {
-  opacity: 0;
-  transform: translateY(20px) scale(0.96);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0 !important;
+  transform: translateY(28px) scale(0.9) !important;
+  filter: blur(8px) !important;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .signal-panel.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2169,6 +2182,7 @@ form > * + *,
   .signal-panel {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
   }
 }

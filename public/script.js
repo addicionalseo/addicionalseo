@@ -916,3 +916,37 @@ document.querySelectorAll(".marquee-overflow").forEach(function (overflowEl) {
     true
   );
 });
+
+// BLOC 7 — Bateria de progrés: es va carregant a mesura que fas scroll
+// per tot el <main> (hero fins contacte).
+(function initScrollBattery() {
+  var fill = document.querySelector(".scroll-battery-fill");
+  var pct = document.querySelector(".scroll-battery-pct");
+  var main = document.getElementById("main-content");
+  if (!fill || !main) return;
+
+  var ticking = false;
+  function update() {
+    var rect = main.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var total = rect.height + vh;
+    var scrolled = vh - rect.top;
+    var progress = Math.min(1, Math.max(0, scrolled / total));
+    fill.style.height = (progress * 100) + "%";
+    if (pct) pct.textContent = Math.round(progress * 100) + "%";
+    ticking = false;
+  }
+
+  update();
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", update);
+})();

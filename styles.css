@@ -5583,6 +5583,7 @@ body.page-home .process-row span {
 .page-home .manifest-scene::before {
   background:
     linear-gradient(180deg, rgba(6,7,9,0.92) 0%, rgba(6,7,9,0.55) 8%, rgba(6,7,9,0) 22%),
+    linear-gradient(180deg, rgba(6,7,9,0) 80%, rgba(6,7,9,0.9) 100%),
     linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 18%, rgba(255,255,255,0) 42%),
     linear-gradient(90deg, rgba(7,8,10,0.34) 0%, rgba(7,8,10,0.22) 32%, rgba(7,8,10,0.08) 58%, rgba(7,8,10,0.18) 100%) !important;
   z-index: -1;
@@ -10532,6 +10533,17 @@ select option {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+}
+
+.service-trio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(6,7,9,0.92) 0%, rgba(6,7,9,0.55) 8%, rgba(6,7,9,0) 22%),
+    linear-gradient(180deg, rgba(6,7,9,0) 88%, rgba(6,7,9,0.85) 100%);
 }
 
 .service-trio-sticky {

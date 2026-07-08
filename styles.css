@@ -3851,6 +3851,7 @@ body.page-home,
 }
 
 .page-home .manifest-scene .scene-media .manifest-bg-photo {
+  display: block !important;
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;

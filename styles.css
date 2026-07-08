@@ -10519,6 +10519,19 @@ select option {
   content: none;
 }
 
+.page-home .service-preview--media .service-preview-copy,
+.page-home .service-preview--stage .service-preview-copy,
+.page-home .service-preview--dark .service-preview-copy {
+  position: relative;
+  z-index: 1;
+  padding: clamp(20px, 2.6vw, 32px);
+  margin: -20px;
+  border-radius: 4px;
+  background: rgba(6,7,10,0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 .page-home .service-preview--media .eyebrow,
 .page-home .service-preview--stage .eyebrow,
 .page-home .service-preview--dark .eyebrow {

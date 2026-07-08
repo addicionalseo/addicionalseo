@@ -124,23 +124,36 @@ if (revealElements.length) {
 // #oficina i el trio disseny-web/SEO/Google Ads: efecte d'entrada que es
 // repeteix cada vegada que la secció entra al viewport, tant baixant com
 // pujant (a diferència del reveal general, que només s'activa un cop).
+// Fet amb getBoundingClientRect() en un listener de scroll (no amb
+// IntersectionObserver) perquè es recalculi de forma explícita i fiable
+// en cada frame, sense dependre de la finestra d'intersecció d'un observer.
 if (repeatingRevealElements.length) {
   if (prefersReducedMotion()) {
     repeatingRevealElements.forEach((element) => element.classList.add("is-visible"));
   } else {
-    const repeatingObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          entry.target.classList.toggle("is-visible", entry.isIntersecting);
-        });
-      },
-      {
-        threshold: 0,
-        rootMargin: "0px 0px -40px 0px"
-      }
-    );
+    let repeatingRevealTicking = false;
+    const updateRepeatingReveal = () => {
+      const vh = window.innerHeight;
+      repeatingRevealElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < vh - 40 && rect.bottom > 0;
+        element.classList.toggle("is-visible", isVisible);
+      });
+      repeatingRevealTicking = false;
+    };
 
-    repeatingRevealElements.forEach((element) => repeatingObserver.observe(element));
+    updateRepeatingReveal();
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!repeatingRevealTicking) {
+          repeatingRevealTicking = true;
+          requestAnimationFrame(updateRepeatingReveal);
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", updateRepeatingReveal);
   }
 }
 

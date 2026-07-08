@@ -5317,6 +5317,30 @@ body.page-home::after {
   animation-delay: 0.75s;
 }
 
+/* Separa visualment el punt final de cada línia de la paraula
+   destacada: una mica d'espai i color neutre (no daurat), perquè
+   no quedi enganxat com si formés part de la paraula. */
+.page-home .hero-h1-dot,
+.page-home .mainframe-hero .hero-h1-dot {
+  display: inline-block;
+  margin-left: 0.1em;
+  color: inherit;
+  opacity: 0;
+  animation: heroAccentReveal 0.5s cubic-bezier(.22,1,.36,1) forwards;
+}
+.page-home .hero-h1-line:nth-child(1) .hero-h1-dot,
+.page-home .mainframe-hero .hero-h1-line:nth-child(1) .hero-h1-dot {
+  animation-delay: 0.45s;
+}
+.page-home .hero-h1-line:nth-child(2) .hero-h1-dot,
+.page-home .mainframe-hero .hero-h1-line:nth-child(2) .hero-h1-dot {
+  animation-delay: 0.75s;
+}
+.page-home .hero-h1-line:nth-child(3) .hero-h1-dot,
+.page-home .mainframe-hero .hero-h1-line:nth-child(3) .hero-h1-dot {
+  animation-delay: 1.05s;
+}
+
 .page-home .landing-block h2,
 .page-home .section-shell h2,
 .page-home .case-spotlight h3,

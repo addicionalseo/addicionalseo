@@ -837,3 +837,82 @@ var contactFormCard = document.querySelector(".contact-form-card");
 if (contactFormCard && !prefersReducedMotion()) {
   initInteractiveSurface(contactFormCard);
 }
+
+// BLOC 6 — Projects marquee: arrossegable amb el ratolí, a més de l'auto-scroll
+document.querySelectorAll(".marquee-overflow").forEach(function (overflowEl) {
+  var track = overflowEl.querySelector(".marquee-track");
+  if (!track) return;
+
+  var speed = 40; // px/s d'auto-scroll
+  var position = 0;
+  var halfWidth = track.scrollWidth / 2;
+  var dragging = false;
+  var draggedPastThreshold = false;
+  var startX = 0;
+  var startPos = 0;
+  var lastTime = null;
+
+  track.style.animation = "none";
+  track.style.cursor = "grab";
+  track.style.touchAction = "pan-y";
+
+  function applyTransform() {
+    if (halfWidth > 0) {
+      position = (((position % halfWidth) + halfWidth) % halfWidth) - halfWidth;
+    }
+    track.style.transform = "translateX(" + position + "px)";
+  }
+
+  function frame(t) {
+    if (lastTime === null) lastTime = t;
+    var dt = (t - lastTime) / 1000;
+    lastTime = t;
+    if (!dragging && !prefersReducedMotion()) {
+      position -= speed * dt;
+      applyTransform();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  function onPointerDown(e) {
+    dragging = true;
+    draggedPastThreshold = false;
+    startX = e.clientX;
+    startPos = position;
+    track.style.cursor = "grabbing";
+    if (track.setPointerCapture) {
+      try { track.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+  }
+  function onPointerMove(e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) draggedPastThreshold = true;
+    position = startPos + dx;
+    applyTransform();
+  }
+  function onPointerUp() {
+    if (!dragging) return;
+    dragging = false;
+    lastTime = null;
+    track.style.cursor = "grab";
+  }
+
+  track.addEventListener("pointerdown", onPointerDown);
+  window.addEventListener("pointermove", onPointerMove);
+  window.addEventListener("pointerup", onPointerUp);
+  window.addEventListener("pointercancel", onPointerUp);
+
+  // Evita que arrossegar activi el link de la targeta.
+  track.addEventListener(
+    "click",
+    function (e) {
+      if (draggedPastThreshold) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    true
+  );
+});

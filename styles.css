@@ -10309,13 +10309,9 @@ select option {
   justify-content: center;
 }
 
-/* SEO ara comparteix el video de fons fosc amb Disseny web:
-   el panell fa servir el mateix tractament que --web/--ads (base
-   .signal-panel), no cal cap override clar. */
-.service-preview-visual .signal-panel--seo {
-  background: var(--bg-soft2);
-  border-color: rgba(244,240,232,0.14);
-}
+/* SEO comparteix el mateix fons que --web/--ads: el panell fa servir
+   el tractament de vidre gebrat de la base .signal-panel, sense
+   override propi. */
 
 .signal-cap {
   position: absolute;

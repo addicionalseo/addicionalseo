@@ -10311,7 +10311,7 @@ select option {
    dins un grid en lloc de position:absolute sobre un hero. ── */
 .page-home .service-preview {
   position: relative;
-  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  padding: clamp(2.25rem, 4.5vw, 3.75rem) 0;
   overflow: hidden;
 }
 

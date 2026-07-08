@@ -3858,7 +3858,7 @@ body.page-home,
   height: 100% !important;
   object-fit: cover !important;
   object-position: 58% center !important;
-  filter: sepia(0.32) saturate(0.8) contrast(0.94) brightness(1.08) hue-rotate(-6deg) !important;
+  filter: sepia(0.5) saturate(0.62) contrast(1.08) brightness(1.02) hue-rotate(-8deg) !important;
   transform: translate3d(0, var(--scene-scroll-y, 0px), 0) scale(var(--scene-zoom, 1.08));
   transform-origin: center center;
   will-change: transform;
@@ -10484,7 +10484,7 @@ select option {
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
-  filter: sepia(0.15) saturate(0.8) contrast(0.98) brightness(0.85) hue-rotate(-4deg);
+  filter: sepia(0.48) saturate(0.6) contrast(1.1) brightness(0.9) hue-rotate(-8deg);
 }
 
 /* Sense línies divisòries entre les 3 seccions del trio: només es manté

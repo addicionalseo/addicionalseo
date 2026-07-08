@@ -3858,7 +3858,7 @@ body.page-home,
   height: 100% !important;
   object-fit: cover !important;
   object-position: 58% center !important;
-  filter: sepia(0.32) saturate(0.8) contrast(0.94) brightness(1.08) hue-rotate(-6deg) !important;
+  filter: sepia(0.32) saturate(0.8) contrast(0.98) brightness(0.62) hue-rotate(-6deg) !important;
   transform: translate3d(0, var(--scene-scroll-y, 0px), 0) scale(var(--scene-zoom, 1.08));
   transform-origin: center center;
   will-change: transform;

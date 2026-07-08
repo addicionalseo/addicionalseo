@@ -884,7 +884,12 @@ document.querySelectorAll(".marquee-overflow").forEach(function (overflowEl) {
     if (track.setPointerCapture) {
       try { track.setPointerCapture(e.pointerId); } catch (err) {}
     }
+    e.preventDefault();
   }
+
+  track.addEventListener("dragstart", function (e) {
+    e.preventDefault();
+  });
   function onPointerMove(e) {
     if (!dragging) return;
     var dx = e.clientX - startX;
@@ -917,21 +922,16 @@ document.querySelectorAll(".marquee-overflow").forEach(function (overflowEl) {
   );
 });
 
-// BLOC 7 — Bateria de progrés: es va carregant a mesura que fas scroll
-// per tot el <main> (hero fins contacte).
+// BLOC 7 — Bateria de progrés: 0% dalt de tot de la pàgina, 100% baix de tot.
 (function initScrollBattery() {
   var fill = document.querySelector(".scroll-battery-fill");
   var pct = document.querySelector(".scroll-battery-pct");
-  var main = document.getElementById("main-content");
-  if (!fill || !main) return;
+  if (!fill) return;
 
   var ticking = false;
   function update() {
-    var rect = main.getBoundingClientRect();
-    var vh = window.innerHeight;
-    var total = rect.height + vh;
-    var scrolled = vh - rect.top;
-    var progress = Math.min(1, Math.max(0, scrolled / total));
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
     fill.style.height = (progress * 100) + "%";
     if (pct) pct.textContent = Math.round(progress * 100) + "%";
     ticking = false;

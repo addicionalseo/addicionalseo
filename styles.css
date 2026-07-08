@@ -1408,10 +1408,10 @@ body.page-home .scroll-battery {
 }
 .scroll-battery-cell {
   position: relative;
-  width: 28px;
-  height: 84px;
+  width: 30px;
+  height: min(46vh, 420px);
   border: 2px solid rgba(244, 240, 232, 0.4);
-  border-radius: 5px;
+  border-radius: 6px;
   overflow: hidden;
   background: rgba(6, 7, 9, 0.35);
   backdrop-filter: blur(3px);
@@ -4295,7 +4295,8 @@ body.page-home,
 }
 
 .page-home .trust-scene::before {
-  background: linear-gradient(90deg, rgba(5,6,8,0.14), rgba(5,6,8,0.52) 44%, rgba(5,6,8,0.78)),
+  background: linear-gradient(180deg, rgba(6,7,9,0) 80%, rgba(6,7,9,0.9) 100%),
+    linear-gradient(90deg, rgba(5,6,8,0.14), rgba(5,6,8,0.52) 44%, rgba(5,6,8,0.78)),
     linear-gradient(180deg, rgba(5,6,8,0.05), rgba(5,6,8,0.4)) !important;
 }
 
@@ -4314,7 +4315,9 @@ body.page-home,
 }
 
 .page-home .results-cinema::before {
-  background: linear-gradient(180deg, rgba(5,6,8,0.78), rgba(5,6,8,0.96)),
+  background: linear-gradient(180deg, rgba(6,7,9,0.9) 0%, rgba(6,7,9,0) 20%),
+    linear-gradient(180deg, rgba(6,7,9,0) 78%, rgba(6,7,9,0.9) 100%),
+    linear-gradient(180deg, rgba(5,6,8,0.78), rgba(5,6,8,0.96)),
     radial-gradient(circle at 70% 12%, rgba(255,255,255,0.13), transparent 26%) !important;
 }
 
@@ -6244,7 +6247,10 @@ body.page-home .process-row span {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(9,9,9,0.25) 0%, rgba(9,9,9,0.45) 100%);
+  background:
+    linear-gradient(180deg, rgba(6,7,9,0.9) 0%, rgba(6,7,9,0) 20%),
+    linear-gradient(180deg, rgba(6,7,9,0) 82%, rgba(6,7,9,0.9) 100%),
+    linear-gradient(180deg, rgba(9,9,9,0.25) 0%, rgba(9,9,9,0.45) 100%);
 }
 
 .page-home .process-intro h2 {
@@ -8464,7 +8470,10 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(8,9,10,0.22) 0%, rgba(8,9,10,0.48) 55%, rgba(8,9,10,0.66) 100%);
+  background:
+    linear-gradient(180deg, rgba(6,7,9,0.9) 0%, rgba(6,7,9,0) 20%),
+    linear-gradient(180deg, rgba(6,7,9,0) 78%, rgba(6,7,9,0.9) 100%),
+    linear-gradient(180deg, rgba(8,9,10,0.22) 0%, rgba(8,9,10,0.48) 55%, rgba(8,9,10,0.66) 100%);
 }
 
 .page-home .testimonials-scene .landing-copy .eyebrow {
@@ -8739,6 +8748,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   background: #111316;
   border: 1px solid rgba(255,255,255,0.07);
   transition: transform 360ms ease, border-color 280ms ease;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 @media (hover: hover) {
   .page-home .project-card-link:hover {
@@ -8764,6 +8775,9 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   display: block;
   filter: saturate(0.72) contrast(1.04);
   transition: transform 480ms ease, filter 480ms ease;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }
 @media (hover: hover) {
   .page-home .project-card-link:hover .project-card-img {

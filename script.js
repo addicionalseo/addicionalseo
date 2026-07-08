@@ -71,7 +71,15 @@ if (navToggle && siteNav) {
   });
 }
 
-const revealElements = document.querySelectorAll("[data-reveal]");
+const isRepeatingReveal = (element) =>
+  !!(element.closest("#oficina") || element.closest(".service-trio"));
+
+const revealElements = Array.from(document.querySelectorAll("[data-reveal]")).filter(
+  (element) => !isRepeatingReveal(element)
+);
+const repeatingRevealElements = Array.from(document.querySelectorAll("[data-reveal]")).filter(
+  isRepeatingReveal
+);
 
 if (revealElements.length) {
   revealElements.forEach((element, index) => {
@@ -110,6 +118,29 @@ if (revealElements.length) {
         }
       });
     }, 600);
+  }
+}
+
+// #oficina i el trio disseny-web/SEO/Google Ads: efecte d'entrada que es
+// repeteix cada vegada que la secció entra al viewport, tant baixant com
+// pujant (a diferència del reveal general, que només s'activa un cop).
+if (repeatingRevealElements.length) {
+  if (prefersReducedMotion()) {
+    repeatingRevealElements.forEach((element) => element.classList.add("is-visible"));
+  } else {
+    const repeatingObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-visible", entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    repeatingRevealElements.forEach((element) => repeatingObserver.observe(element));
   }
 }
 

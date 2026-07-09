@@ -1455,8 +1455,12 @@ body.page-home .scroll-battery {
   color: #FFB000;
   font-variant-numeric: tabular-nums;
 }
-@media (max-width: 980px) {
-  .scroll-battery { display: none; }
+@media (max-width: 1500px) {
+  /* El .container arriba a 1200px amb marges mínims per sota d'això:
+     per sota de ~1500px de finestra no hi ha prou marge lateral perquè
+     la bateria no taqui text en fer scroll. Cal la mateixa especificitat
+     que "body.page-home .scroll-battery" (display:flex) per guanyar-li. */
+  body.page-home .scroll-battery { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-battery-fill { transition: none; }
@@ -6479,8 +6483,12 @@ body.page-home .process-row span {
 
   .page-home .mainframe-hero-content {
   width: min(100%, calc(100vw - 28px)) !important;
-  top: auto !important;
-  bottom: 28px !important;
+  /* .mainframe-hero-content és position:relative, no absolute: amb
+     "bottom" l'element es desplaçava cap AMUNT des del seu lloc natural
+     (que ja és dalt de tot, darrere del header fix), tapant el logo/menú.
+     Amb "top" positiu es desplaça cap avall, allunyant-lo del header. */
+  top: 96px !important;
+  bottom: auto !important;
   transform: none !important;
   padding-left: 18px !important;
   padding-right: 14px !important;
@@ -6754,6 +6762,22 @@ body.page-home .process-row span {
   position: relative;
   isolation: isolate;
   overflow: visible;
+}
+
+/* Aquesta regla !important sense condició de mida guanyava sempre sobre
+   l'apilament a 1 columna que hi havia definit dins @media(max-width:760px),
+   deixant les targetes "Branding digital"/"Analítica" escanyades a 1/12
+   de l'amplada en mòbil. Repetim el fix aquí amb el mateix pes perquè
+   guanyi la comparació entre declaracions !important. */
+@media (max-width: 760px) {
+  .page-home .services-editorial {
+    grid-template-columns: 1fr !important;
+  }
+  .page-home .services-editorial .service-stage.large,
+  .page-home .services-editorial .service-stage.medium,
+  .page-home .services-editorial .service-stage.half {
+    grid-column: auto !important;
+  }
 }
 
 .page-home .services-editorial .service-stage,
@@ -9445,6 +9469,16 @@ body :where(
 }
 .page-home .services-scene .landing-copy {
   align-self: stretch !important;
+}
+
+/* La regla d'aquí dalt (minmax(300px,...) sense condició de mida) guanyava
+   sempre sobre l'apilament a 1 columna del @media(max-width:900px)
+   d'aquesta mateixa família de selectors, deixant .services-editorial
+   escanyat a amplada 0 en mòbil. Repetim el fix aquí amb el mateix pes. */
+@media (max-width: 900px) {
+  .page-home .services-scene .landing-shell {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Amb només 2 cards (Branding + Analítica) el text ja no necessita seguir
